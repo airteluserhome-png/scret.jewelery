@@ -69,7 +69,7 @@ export default function TechnicalBlueprint() {
                         {specs.map((spec, i) => (
                             <motion.div
                                 key={i}
-                                className="flex-1 flex flex-col justify-center px-8 border-b border-black/5 hover:bg-black hover:text-white transition-colors duration-300 group"
+                                className="flex-1 flex flex-col justify-center px-8 border-b border-black/5 hover:bg-rose-400 hover:text-white transition-colors duration-300 group"
                                 initial={{ opacity: 0, x: 20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ delay: i * 0.05 }}
