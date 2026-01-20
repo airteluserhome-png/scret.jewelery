@@ -6,13 +6,11 @@ import Footer from "@/components/footer";
 
 export default function Home() {
     return (
-        <LuxuryLayout>
-            <main className="flex flex-col w-full">
-                <HeroMagazine />
-                <TechnicalBlueprint />
-                <CommerceGrid />
-                <Footer />
-            </main>
-        </LuxuryLayout>
+        <main className="flex flex-col w-full">
+            <HeroMagazine />
+            <TechnicalBlueprint />
+            <CommerceGrid />
+            <Footer />
+        </main>
     );
 }

@@ -84,7 +84,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr]">
 
                 {/* LEFT: Sticky Configurator Panel */}
-                <div className="sticky top-0 h-screen flex flex-col justify-between p-8 lg:p-12 bg-white border-r border-black/10 overflow-y-auto">
+                <div className="sticky top-0 h-screen flex flex-col justify-between p-8 lg:p-12 bg-white border-r border-black/10 overflow-y-auto will-change-transform transform-gpu">
 
                     {/* Breadcrumbs */}
                     <div>
@@ -120,8 +120,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                                         key={i}
                                         onClick={() => setSelectedMaterial(i)}
                                         className={`relative aspect-square border-2 transition-all ${selectedMaterial === i
-                                                ? "border-black"
-                                                : "border-gray-200 hover:border-gray-400"
+                                            ? "border-black"
+                                            : "border-gray-200 hover:border-gray-400"
                                             }`}
                                     >
                                         <div
@@ -155,8 +155,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                                         key={i}
                                         onClick={() => setSelectedSize(i)}
                                         className={`font-sans text-sm pb-1 transition-all ${selectedSize === i
-                                                ? "border-b-2 border-black font-medium"
-                                                : "text-gray-400 hover:text-black"
+                                            ? "border-b-2 border-black font-medium"
+                                            : "text-gray-400 hover:text-black"
                                             }`}
                                     >
                                         {size}
@@ -203,12 +203,12 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 </div>
 
                 {/* RIGHT: Scrollable Image Gallery */}
-                <div className="relative bg-stone-100">
+                <div className="relative bg-stone-100 will-change-transform transform-gpu">
                     {product.images?.map((img: string, i: number) => (
                         <motion.div
                             key={i}
                             layoutId={i === 0 ? `image-${product.id}` : undefined}
-                            className="relative w-full h-screen"
+                            className="relative w-full h-screen will-change-transform"
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: i * 0.1 }}
@@ -218,7 +218,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                                 alt={`${product.name} view ${i + 1}`}
                                 fill
                                 className="object-cover"
-                                sizes="60vw"
+                                sizes="(max-width: 768px) 100vw, 50vw"
                                 priority={i === 0}
                             />
                         </motion.div>
