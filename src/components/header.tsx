@@ -5,6 +5,7 @@ import { Search, User, ShoppingBag, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
+import ScrambleText from "./scramble-text";
 
 const megaMenus: Record<string, { categories: string[], collections: string[], featuredImage: string }> = {
     "Gifts": {
@@ -65,7 +66,9 @@ export default function Header() {
                 {/* Center: Logo */}
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                     <Link href="/">
-                        <h1 className="font-serif text-3xl tracking-wide">SECRETLY</h1>
+                        <h1 className="font-serif text-3xl tracking-wide">
+                            <ScrambleText text="SECRETLY" revealSpeed={30} scrambleSpeed={20} delay={0} />
+                        </h1>
                     </Link>
                 </div>
 
