@@ -16,7 +16,7 @@ export default function HeroMagazine() {
             {/* Video/Image Background */}
             <motion.div
                 style={{ y: yVideo }}
-                className="absolute inset-0 z-0"
+                className="absolute inset-0 z-0 will-change-transform transform-gpu"
             >
                 {/* Using a high-end luxury mechanical video/cinemagraph or image */}
                 <video
