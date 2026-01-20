@@ -10,7 +10,7 @@ export default function LuxuryLoader() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsVisible(false);
-        }, 1500); // 1.5s delay for cinematic feel
+        }, 800); // 0.8s delay for snappier transitions
 
         return () => clearTimeout(timer);
     }, []);
@@ -40,7 +40,7 @@ export default function LuxuryLoader() {
                             initial={{ opacity: 0.3 }}
                             animate={{ opacity: [0.3, 1, 0.3] }}
                             transition={{
-                                duration: 1.5,
+                                duration: 0.8,
                                 repeat: Infinity,
                                 ease: "easeInOut"
                             }}
@@ -55,7 +55,7 @@ export default function LuxuryLoader() {
                                 initial={{ width: "0%" }}
                                 animate={{ width: "100%" }}
                                 transition={{
-                                    duration: 1.5,
+                                    duration: 0.8,
                                     ease: "easeInOut"
                                 }}
                             />
