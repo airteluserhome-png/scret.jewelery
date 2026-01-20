@@ -21,6 +21,7 @@ export const metadata: Metadata = {
 
 import LuxuryLayout from "@/components/luxury-layout";
 import Header from "@/components/header";
+import InitialLoader from "@/components/initial-loader";
 
 export default function RootLayout({
     children,
@@ -30,6 +31,7 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
             <body className="bg-luxury-white text-gray-900 antialiased overflow-x-hidden">
+                <InitialLoader />
                 <LuxuryLayout>
                     <Header />
                     {children}
