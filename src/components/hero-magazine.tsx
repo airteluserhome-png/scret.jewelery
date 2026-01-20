@@ -36,8 +36,8 @@ export default function HeroMagazine() {
             </motion.div>
 
             {/* Huge Overlay Title - Bottom Aligned & Readable */}
-            <div className="absolute inset-0 z-10 flex flex-col justify-end pb-12 pointer-events-none">
-                <h1 className="font-serif text-[15vw] leading-[0.8] tracking-tighter text-white text-center">
+            <div className="absolute inset-0 z-10 flex flex-col justify-end pb-8 md:pb-12 px-4 pointer-events-none">
+                <h1 className="font-serif text-[12vw] md:text-[15vw] leading-[0.8] tracking-tighter text-white text-center">
                     <ScrambleText text="SECRETLY" revealSpeed={200} scrambleSpeed={60} delay={800} />
                 </h1>
             </div>
