@@ -32,35 +32,37 @@ export default function HeroMagazine() {
                     <source src="/hero-mechanism.mp4" type="video/mp4" />
                 </video>
                 {/* Darker Overlay for Text Readability */}
-                <div className="absolute inset-0 bg-black/40" />
+                <div className="absolute inset-0 bg-black/50" />
             </motion.div>
 
-            {/* Huge Overlay Title - Bottom Aligned & Readable */}
-            <div className="absolute inset-0 z-10 flex flex-col justify-end pb-8 md:pb-12 px-4 pointer-events-none">
-                <h1 className="font-serif text-[12vw] md:text-[15vw] leading-[0.8] tracking-tighter text-white text-center">
+            {/* Top Bar Info */}
+            <div className="absolute top-0 left-0 right-0 z-20 flex justify-between p-6 md:p-12">
+                <span className="font-mono text-xs uppercase tracking-widest text-white/80">Est. 1924</span>
+                <span className="font-mono text-xs uppercase tracking-widest text-white/80">Geneva, CH</span>
+            </div>
+
+            {/* Centered Title - Vertically and Horizontally Centered */}
+            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 pointer-events-none">
+                <h1 className="font-serif text-[12vw] md:text-[15vw] leading-[0.8] tracking-tighter text-white text-center mb-8">
                     <ScrambleText text="SECRETLY" revealSpeed={200} scrambleSpeed={60} delay={800} />
                 </h1>
+                <p className="font-mono text-xs md:text-sm uppercase text-white/70 tracking-widest">Timeless Precision</p>
             </div>
 
-            {/* Top Bar Info */}
-            <div className="absolute top-0 left-0 right-0 z-20 flex justify-between p-6 md:p-12 mix-blend-difference">
-                <span className="font-mono text-xs uppercase tracking-widest">Est. 1924</span>
-                <span className="font-mono text-xs uppercase tracking-widest">Geneva, CH</span>
-            </div>
-
-            {/* Bottom Metadata */}
-            <div className="absolute bottom-12 left-0 right-0 z-20 flex justify-between px-6 md:px-12 items-end">
-                <div className="max-w-xs">
-                    <p className="font-mono text-xs uppercase text-white/70 mb-2">[ New Arrival ]</p>
-                    <p className="font-sans text-sm leading-relaxed text-white/90">
-                        The culmination of a century of mechanical innovation.
-                        Precision that defies time itself.
-                    </p>
-                </div>
-                {/* Scroll Indicator */}
-                <div className="hidden md:block">
-                    <span className="block w-[1px] h-24 bg-white/50 mx-auto mb-2" />
-                    <span className="font-mono text-[10px] uppercase tracking-widest -rotate-90 block">Scroll</span>
+            {/* Bottom Metadata - Moved higher to avoid overlap */}
+            <div className="absolute bottom-8 md:bottom-12 left-0 right-0 z-20 px-6 md:px-12">
+                <div className="flex justify-between items-end">
+                    <div className="max-w-xs">
+                        <p className="font-mono text-xs uppercase text-white/70 mb-2">[ New Arrival ]</p>
+                        <p className="font-sans text-sm leading-relaxed text-white/90 hidden md:block">
+                            The culmination of a century of mechanical innovation.
+                        </p>
+                    </div>
+                    {/* Scroll Indicator */}
+                    <div className="hidden md:flex flex-col items-center">
+                        <span className="font-mono text-[10px] uppercase tracking-widest text-white/70 mb-2">Scroll</span>
+                        <span className="block w-[1px] h-16 bg-white/30" />
+                    </div>
                 </div>
             </div>
         </section>
