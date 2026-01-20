@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import ScrambleText from "./scramble-text";
 
 export default function HeroMagazine() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -37,7 +38,7 @@ export default function HeroMagazine() {
             {/* Huge Overlay Title - Bottom Aligned & Readable */}
             <div className="absolute inset-0 z-10 flex flex-col justify-end pb-12 pointer-events-none">
                 <h1 className="font-serif text-[15vw] leading-[0.8] tracking-tighter text-white text-center">
-                    SECRETLY
+                    <ScrambleText text="SECRETLY" revealSpeed={80} scrambleSpeed={40} delay={500} />
                 </h1>
             </div>
 

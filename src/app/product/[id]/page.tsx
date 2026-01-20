@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import ScrambleText from "@/components/scramble-text";
 
 // Mock Product Data
 // Optimized for O(1) Lookup
@@ -87,11 +88,15 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
                         {/* Header */}
                         <div className="mb-6">
-                            <h2 className="font-serif text-2xl mb-2 text-gray-600">{product.collection}</h2>
+                            <h2 className="font-serif text-2xl mb-2 text-gray-600">
+                                <ScrambleText text={product.collection} revealSpeed={40} delay={200} />
+                            </h2>
                             <h1 className="font-sans text-3xl lg:text-4xl leading-tight mb-4">
-                                {product.name}
+                                <ScrambleText text={product.name} revealSpeed={50} delay={400} as="span" />
                             </h1>
-                            <p className="font-mono text-2xl font-semibold">{product.price}</p>
+                            <p className="font-mono text-2xl font-semibold">
+                                <ScrambleText text={product.price} revealSpeed={80} delay={600} />
+                            </p>
                         </div>
 
                         <p className="font-sans text-sm leading-relaxed text-gray-600 mb-8 pb-8 border-b border-black/5">

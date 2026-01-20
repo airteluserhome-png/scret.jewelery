@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Plus } from "lucide-react";
 import Link from "next/link";
+import ScrambleText from "./scramble-text";
 
 const products = [
     {
@@ -101,10 +102,14 @@ function ProductCard({ product }: { product: typeof products[0] }) {
                         transition={{ duration: 0.4, ease: "easeInOut" }}
                     >
                         <div className="flex flex-col">
-                            <span className="font-serif text-lg leading-none mb-1">{product.name}</span>
+                            <span className="font-serif text-lg leading-none mb-1">
+                                <ScrambleText text={product.name} revealSpeed={40} delay={100} />
+                            </span>
                             <span className="font-mono text-[10px] text-gray-400 uppercase tracking-widest">Ref. 2024</span>
                         </div>
-                        <span className="font-mono text-sm tracking-tight">{product.price}</span>
+                        <span className="font-mono text-sm tracking-tight">
+                            <ScrambleText text={product.price} revealSpeed={60} delay={300} />
+                        </span>
                     </motion.div>
 
                     {/* Hover State: Add to Bag */}
