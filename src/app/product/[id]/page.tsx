@@ -89,13 +89,13 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                         {/* Header */}
                         <div className="mb-6">
                             <h2 className="font-serif text-2xl mb-2 text-gray-600">
-                                <ScrambleText text={product.collection} revealSpeed={40} delay={200} />
+                                <ScrambleText text={product.collection} revealSpeed={120} delay={300} />
                             </h2>
                             <h1 className="font-sans text-3xl lg:text-4xl leading-tight mb-4">
-                                <ScrambleText text={product.name} revealSpeed={50} delay={400} as="span" />
+                                <ScrambleText text={product.name} revealSpeed={150} delay={600} as="span" />
                             </h1>
                             <p className="font-mono text-2xl font-semibold">
-                                <ScrambleText text={product.price} revealSpeed={80} delay={600} />
+                                <ScrambleText text={product.price} revealSpeed={200} delay={900} />
                             </p>
                         </div>
 

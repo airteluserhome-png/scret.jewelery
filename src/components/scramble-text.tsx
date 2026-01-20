@@ -6,8 +6,8 @@ import { motion, useInView } from "framer-motion";
 interface ScrambleTextProps {
     text: string;
     className?: string;
-    revealSpeed?: number; // Speed of revealing characters (lower is faster)
-    scrambleSpeed?: number; // Speed of shuffling characters
+    revealSpeed?: number; // Speed of revealing characters (higher is slower)
+    scrambleSpeed?: number; // Speed of shuffling characters (higher is slower)
     delay?: number;
     as?: React.ElementType; // Allow rendering as h1, h2, span, etc.
 }
@@ -17,8 +17,8 @@ const CHARACTERS = "ABCDEFGHJKLMNOPQRSTUVWXYZ0123456789_#@!/[]";
 export default function ScrambleText({
     text,
     className = "",
-    revealSpeed = 50, // ms per character reveal
-    scrambleSpeed = 30, // ms per scramble update
+    revealSpeed = 150, // Increased default for slower reveal
+    scrambleSpeed = 50, // Increased default for slower scramble
     delay = 0,
     as: Component = "span",
 }: ScrambleTextProps) {
@@ -61,8 +61,7 @@ export default function ScrambleText({
 
                 setDisplayText(scopedDisplayText);
 
-                // Speed of revealing: Every 2nd text update, reveal another letter
-                // Adjusting this modulo changes how "frantic" it looks vs how fast it solves
+                // Speed of revealing: Every Nth frame, reveal another letter
                 if (frame % Math.max(1, Math.floor(revealSpeed / scrambleSpeed)) === 0) {
                     if (revealIndex < length) {
                         revealIndex++;
@@ -84,7 +83,7 @@ export default function ScrambleText({
     return (
         <Component
             ref={ref}
-            className={`${className} ${isScrambling ? "font-mono" : ""}`} // Force mono during scramble if desired, or handle via CSS
+            className={className}
         >
             {displayText}
         </Component>

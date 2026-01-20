@@ -103,12 +103,12 @@ function ProductCard({ product }: { product: typeof products[0] }) {
                     >
                         <div className="flex flex-col">
                             <span className="font-serif text-lg leading-none mb-1">
-                                <ScrambleText text={product.name} revealSpeed={40} delay={100} />
+                                <ScrambleText text={product.name} revealSpeed={120} delay={200} />
                             </span>
                             <span className="font-mono text-[10px] text-gray-400 uppercase tracking-widest">Ref. 2024</span>
                         </div>
                         <span className="font-mono text-sm tracking-tight">
-                            <ScrambleText text={product.price} revealSpeed={60} delay={300} />
+                            <ScrambleText text={product.price} revealSpeed={180} delay={500} />
                         </span>
                     </motion.div>
 

@@ -38,7 +38,7 @@ export default function HeroMagazine() {
             {/* Huge Overlay Title - Bottom Aligned & Readable */}
             <div className="absolute inset-0 z-10 flex flex-col justify-end pb-12 pointer-events-none">
                 <h1 className="font-serif text-[15vw] leading-[0.8] tracking-tighter text-white text-center">
-                    <ScrambleText text="SECRETLY" revealSpeed={80} scrambleSpeed={40} delay={500} />
+                    <ScrambleText text="SECRETLY" revealSpeed={200} scrambleSpeed={60} delay={800} />
                 </h1>
             </div>
 
