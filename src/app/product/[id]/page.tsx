@@ -7,6 +7,7 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
 // Mock Product Data
+// Optimized for O(1) Lookup
 const products: Record<string, any> = {
     "1": {
         id: "1",
@@ -68,11 +69,11 @@ const products: Record<string, any> = {
     },
 };
 
-export default async function ProductPage({ params }: { params: { id: string } }) {
-    // Artificial luxury delay
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
+export default function ProductPage({ params }: { params: { id: string } }) {
+    // Robust Data Fecthing: Fast O(1) Lookup with Safe Fallback
     const product = products[params.id] || products["1"];
+
+    // UI State
     const [selectedMaterial, setSelectedMaterial] = useState(0);
     const [selectedSize, setSelectedSize] = useState(1);
     const [ctaHovered, setCtaHovered] = useState(false);
@@ -114,13 +115,13 @@ export default async function ProductPage({ params }: { params: { id: string } }
                                 Material
                             </label>
                             <div className="grid grid-cols-3 gap-3">
-                                {product.materials.map((material: any, i: number) => (
+                                {product.materials?.map((material: any, i: number) => (
                                     <button
                                         key={i}
                                         onClick={() => setSelectedMaterial(i)}
                                         className={`relative aspect-square border-2 transition-all ${selectedMaterial === i
-                                            ? "border-black"
-                                            : "border-gray-200 hover:border-gray-400"
+                                                ? "border-black"
+                                                : "border-gray-200 hover:border-gray-400"
                                             }`}
                                     >
                                         <div
@@ -129,13 +130,13 @@ export default async function ProductPage({ params }: { params: { id: string } }
                                         />
                                         <div className="absolute inset-0 flex items-center justify-center">
                                             <span className="text-[10px] font-mono uppercase tracking-widest text-white mix-blend-difference">
-                                                {material.name.split(' ')[1]}
+                                                {material.name?.split(' ')[1] || 'Gold'}
                                             </span>
                                         </div>
                                     </button>
                                 ))}
                             </div>
-                            <p className="font-sans text-xs text-gray-500 mt-3">{product.materials[selectedMaterial].name}</p>
+                            <p className="font-sans text-xs text-gray-500 mt-3">{product.materials?.[selectedMaterial]?.name}</p>
                         </div>
 
                         {/* Size Selector - Minimalist Underline Style */}
@@ -149,13 +150,13 @@ export default async function ProductPage({ params }: { params: { id: string } }
                                 </button>
                             </div>
                             <div className="flex gap-6">
-                                {product.sizes.map((size: string, i: number) => (
+                                {product.sizes?.map((size: string, i: number) => (
                                     <button
                                         key={i}
                                         onClick={() => setSelectedSize(i)}
                                         className={`font-sans text-sm pb-1 transition-all ${selectedSize === i
-                                            ? "border-b-2 border-black font-medium"
-                                            : "text-gray-400 hover:text-black"
+                                                ? "border-b-2 border-black font-medium"
+                                                : "text-gray-400 hover:text-black"
                                             }`}
                                     >
                                         {size}
@@ -203,7 +204,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
 
                 {/* RIGHT: Scrollable Image Gallery */}
                 <div className="relative bg-stone-100">
-                    {product.images.map((img: string, i: number) => (
+                    {product.images?.map((img: string, i: number) => (
                         <motion.div
                             key={i}
                             layoutId={i === 0 ? `image-${product.id}` : undefined}
