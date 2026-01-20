@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.brand-title {
+    position: absolute;
+    top: 5%;
+    font-size: 25vw; /* Massive responsive font size */
+    font-weight: 900;
+    color: #FFB6C1; /* Light Pink */
+    text-transform: uppercase;
+    z-index: 1; /* Behind image */
+    line-height: 0.8;
+    white-space: nowrap;
+    letter-spacing: -0.05em;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+}
+
+.image-wrapper {
+    position: relative;
+    z-index: 2; /* In front of text */
+    height: 80vh;
+    display: flex;
+    align-items: flex-end;
+}
+
+.hero-image {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+.content {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 3;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.year-label {
+    font-size: 2rem;
+    color: #555;
+    font-weight: 400;
+}
+
+.description {
+    max-width: 400px;
+    text-align: left;
+    line-height: 1.5;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+@media (max-width: 768px) {
+    .brand-title {
+        font-size: 20vw;
+        top: 10%;
+    }
+    
+    .content {
+        flex-direction: column-reverse; /* Stack year below/above description properly if needed, but here simple stack */
+        align-items: flex-start;
+        gap: 20px;
+    }
+    
+    .description {
+        max-width: 100%;
+    }
+}
