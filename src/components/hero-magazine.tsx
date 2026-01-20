@@ -1,8 +1,7 @@
 "use client";
 
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
-import { useRef, useEffect } from "react";
-import { ArrowRight } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function HeroMagazine() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -11,38 +10,13 @@ export default function HeroMagazine() {
     // Parallax
     const yVideo = useTransform(scrollY, [0, 1000], [0, 400]);
 
-    // Magnetic Button Cursor Follower
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
-    const springX = useSpring(mouseX, { stiffness: 60, damping: 20 });
-    const springY = useSpring(mouseY, { stiffness: 60, damping: 20 });
-
-    useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            mouseX.set(e.clientX - 50); // Center adjustment
-            mouseY.set(e.clientY - 50);
-        };
-        window.addEventListener("mousemove", handleMouseMove);
-        return () => window.removeEventListener("mousemove", handleMouseMove);
-    }, [mouseX, mouseY]);
-
     return (
         <section ref={containerRef} className="relative h-screen w-full overflow-hidden bg-black text-white">
-            {/* Magnetic Shop Button - Visible on Hover/Move */}
-            <motion.div
-                className="fixed z-50 pointer-events-none hidden md:flex items-center justify-center w-24 h-24 rounded-full bg-white text-black mix-blend-difference"
-                style={{ x: springX, y: springY }}
-            >
-                <div className="flex flex-col items-center">
-                    <span className="text-[10px] font-mono uppercase tracking-widest">Shop</span>
-                    <span className="text-[10px] font-mono uppercase tracking-widest">Now</span>
-                </div>
-            </motion.div>
 
             {/* Video/Image Background */}
             <motion.div
                 style={{ y: yVideo }}
-                className="absolute inset-0 z-0 opacity-80"
+                className="absolute inset-0 z-0"
             >
                 {/* Using a high-end luxury mechanical video/cinemagraph or image */}
                 <video
@@ -50,18 +24,19 @@ export default function HeroMagazine() {
                     muted
                     loop
                     playsInline
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover opacity-80"
                     poster="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=1600&q=90"
                 >
                     {/* Fallback to image if video not provided/loaded */}
                     <source src="/hero-mechanism.mp4" type="video/mp4" />
                 </video>
-                <div className="absolute inset-0 bg-black/30" />
+                {/* Darker Overlay for Text Readability */}
+                <div className="absolute inset-0 bg-black/40" />
             </motion.div>
 
-            {/* Huge Overlay Title - Bottom Aligned & Cut Off */}
-            <div className="absolute inset-0 z-10 flex flex-col justify-end pb-0 pointer-events-none mix-blend-overlay">
-                <h1 className="font-serif text-[15vw] leading-[0.8] tracking-tighter text-white/90 text-center translate-y-[2vw]">
+            {/* Huge Overlay Title - Bottom Aligned & Readable */}
+            <div className="absolute inset-0 z-10 flex flex-col justify-end pb-12 pointer-events-none">
+                <h1 className="font-serif text-[15vw] leading-[0.8] tracking-tighter text-white text-center">
                     SECRETLY
                 </h1>
             </div>

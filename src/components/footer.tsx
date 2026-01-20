@@ -5,6 +5,9 @@ export default function Footer() {
                 <div className="col-span-1 md:col-span-1">
                     <h4 className="font-serif text-2xl mb-6">Secretly</h4>
                     <p className="font-sans text-sm text-gray-400">© 2024</p>
+                    <p className="font-mono text-[10px] uppercase tracking-widest opacity-60">
+                        Paris — Geneva — New York
+                    </p>
                 </div>
 
                 <div>
