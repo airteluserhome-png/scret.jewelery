@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ShoppingCart } from "lucide-react";
+import { Plus } from "lucide-react";
 
 const products = [
     {
@@ -86,30 +86,37 @@ function ProductCard({ product }: { product: typeof products[0] }) {
                 </motion.div>
             </div>
 
-            {/* Bottom Bar - Product Info */}
-            <div className="absolute bottom-0 left-0 right-0 h-[15%] bg-white border-t border-black/5 flex items-center justify-between px-6">
-                <div className="flex flex-col">
-                    <span className="font-serif text-lg leading-none mb-1">{product.name}</span>
-                    <span className="font-mono text-[10px] text-gray-400 uppercase tracking-widest">Ref. 2024</span>
-                </div>
-                <span className="font-mono text-sm tracking-tight">{product.price}</span>
-            </div>
-
-            {/* Hover Overlay - Add to Cart Button */}
-            <motion.div
-                className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-            >
-                <motion.button
-                    className="bg-rose-400 text-white px-8 py-4 rounded-full flex items-center gap-3 font-mono text-sm uppercase tracking-widest hover:bg-rose-500 transition-colors"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+            {/* Bottom Bar - Strict Black Bar Interaction */}
+            <div className="absolute bottom-0 left-0 right-0 h-[15%] bg-white border-t border-black/5 flex flex-col justify-end overflow-hidden">
+                {/* Default State: Name & Price */}
+                <motion.div
+                    className="absolute inset-0 flex items-center justify-between px-6"
+                    variants={{
+                        initial: { y: 0 },
+                        hover: { y: "-100%" }
+                    }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
                 >
-                    <ShoppingCart className="w-5 h-5" />
-                    Add to Cart
-                </motion.button>
-            </motion.div>
+                    <div className="flex flex-col">
+                        <span className="font-serif text-lg leading-none mb-1">{product.name}</span>
+                        <span className="font-mono text-[10px] text-gray-400 uppercase tracking-widest">Ref. 2024</span>
+                    </div>
+                    <span className="font-mono text-sm tracking-tight">{product.price}</span>
+                </motion.div>
+
+                {/* Hover State: Add to Bag */}
+                <motion.div
+                    className="absolute inset-0 bg-black text-white flex items-center justify-between px-6"
+                    variants={{
+                        initial: { y: "100%" },
+                        hover: { y: 0 }
+                    }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                    <span className="font-mono text-xs uppercase tracking-widest">Add to Bag</span>
+                    <Plus className="w-4 h-4" />
+                </motion.div>
+            </div>
         </motion.div>
     );
 }
