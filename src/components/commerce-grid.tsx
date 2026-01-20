@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Plus } from "lucide-react";
 import Link from "next/link";
 import ScrambleText from "./scramble-text";
+import { useState, useEffect } from "react";
 
 const products = [
     {
@@ -38,14 +39,15 @@ const products = [
 export default function CommerceGrid() {
     return (
         <section className="bg-stone-50 border-t border-black/5">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            {/* Responsive Grid: 1 col mobile, 2 cols tablet, 4 cols desktop */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                 {products.map((product) => (
                     <ProductCard key={product.id} product={product} />
                 ))}
             </div>
 
-            <div className="py-24 text-center border-t border-black/5">
-                <button className="border border-black px-12 py-4 font-mono text-xs uppercase tracking-widest hover:bg-black hover:text-white transition-colors duration-300">
+            <div className="py-16 md:py-24 text-center border-t border-black/5 px-4">
+                <button className="border border-black px-8 md:px-12 py-3 md:py-4 font-mono text-xs uppercase tracking-widest hover:bg-black hover:text-white transition-colors duration-300">
                     View Full Collection
                 </button>
             </div>
@@ -54,10 +56,19 @@ export default function CommerceGrid() {
 }
 
 function ProductCard({ product }: { product: typeof products[0] }) {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <Link href={`/product/${product.id}`} className="block">
             <motion.div
-                className="group relative h-[600px] border-b border-r border-black/5 bg-white overflow-hidden"
+                className="group relative h-[500px] md:h-[600px] border-b border-r border-black/5 bg-white overflow-hidden"
                 initial="initial"
                 whileHover="hover"
             >
@@ -86,6 +97,7 @@ function ProductCard({ product }: { product: typeof products[0] }) {
                             alt={product.name}
                             fill
                             className="object-cover object-center"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                         />
                     </motion.div>
                 </div>
@@ -94,27 +106,27 @@ function ProductCard({ product }: { product: typeof products[0] }) {
                 <div className="absolute bottom-0 left-0 right-0 h-[15%] bg-white border-t border-black/5 flex flex-col justify-end overflow-hidden">
                     {/* Default State: Name & Price */}
                     <motion.div
-                        className="absolute inset-0 flex items-center justify-between px-6"
+                        className="absolute inset-0 flex items-center justify-between px-4 md:px-6"
                         variants={{
                             initial: { y: 0 },
                             hover: { y: "-100%" }
                         }}
                         transition={{ duration: 0.4, ease: "easeInOut" }}
                     >
-                        <div className="flex flex-col">
-                            <span className="font-serif text-lg leading-none mb-1">
-                                <ScrambleText text={product.name} revealSpeed={120} delay={200} />
+                        <div className="flex flex-col min-w-0 flex-1">
+                            <span className="font-serif text-base md:text-lg leading-none mb-1 truncate">
+                                {isMobile ? product.name : <ScrambleText text={product.name} revealSpeed={120} delay={200} />}
                             </span>
                             <span className="font-mono text-[10px] text-gray-400 uppercase tracking-widest">Ref. 2024</span>
                         </div>
-                        <span className="font-mono text-sm tracking-tight">
-                            <ScrambleText text={product.price} revealSpeed={180} delay={500} />
+                        <span className="font-mono text-sm tracking-tight ml-2 flex-shrink-0">
+                            {isMobile ? product.price : <ScrambleText text={product.price} revealSpeed={180} delay={500} />}
                         </span>
                     </motion.div>
 
                     {/* Hover State: Add to Bag */}
                     <motion.div
-                        className="absolute inset-0 bg-black text-white flex items-center justify-between px-6"
+                        className="absolute inset-0 bg-black text-white flex items-center justify-between px-4 md:px-6"
                         variants={{
                             initial: { y: "100%" },
                             hover: { y: 0 }
