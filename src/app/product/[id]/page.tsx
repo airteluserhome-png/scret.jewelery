@@ -11,61 +11,50 @@ import { ChevronRight } from "lucide-react";
 const products: Record<string, any> = {
     "1": {
         id: "1",
-        collection: "Secretly Collection",
-        name: "Caliber 9001 Automatic",
+        collection: "Cosmograph",
+        name: "Daytona Rose Gold Test",
         price: "$42,000",
-        ref: "9001-A/X",
-        description: "The culmination of a century of mechanical innovation. Precision that defies time itself. Hand-assembled in Geneva by master horologists.",
+        ref: "116505",
+        description: "The ultimate tool watch for those with a passion for driving and speed. Features a 40mm 18 ct Everose gold case and an Oyster bracelet.",
         images: [
-            "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=1200&q=90",
-            "https://images.unsplash.com/photo-1611591437764-0f82e48c4707?w=1200&q=90",
-            "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=1200&q=90",
-            "https://images.unsplash.com/photo-1587836374608-f94ae1c72ec5?w=1200&q=90",
+            "/rolex-daytona.png",
+            "/rolex-daytona.png",
+            "/rolex-daytona.png",
         ],
         materials: [
             {
                 name: "18k Rose Gold",
                 color: "#B76E79",
-                image: "https://images.unsplash.com/photo-1611591437764-0f82e48c4707?w=200&q=90"
+                image: "/rolex-daytona.png"
             },
             {
                 name: "18k Yellow Gold",
                 color: "#D4AF37",
-                image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=200&q=90"
-            },
-            {
-                name: "18k White Gold",
-                color: "#E5E4E2",
-                image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=200&q=90"
+                image: "/rolex-daytona.png"
             },
         ],
-        sizes: ["Small", "Medium", "Large"],
+        sizes: ["40mm"],
     },
     "2": {
         id: "2",
-        collection: "Heritage Collection",
-        name: "Royal Black Bay Diver",
-        price: "$4,150",
-        ref: "2024-B/Y",
-        description: "A modern interpretation of classic dive watch design. Built for those who demand both form and function.",
+        collection: "Royal Oak",
+        name: "Selfwinding 41mm",
+        price: "$34,150",
+        ref: "15500ST",
+        description: "Stainless steel case, glareproofed sapphire crystal and caseback, screw-locked crown.",
         images: [
-            "https://images.unsplash.com/photo-1611591437764-0f82e48c4707?w=1200&q=90",
-            "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=1200&q=90",
-            "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=1200&q=90",
+            "/ap-royal-oak.png",
+            "/ap-royal-oak.png",
+            "/ap-royal-oak.png",
         ],
         materials: [
             {
                 name: "Stainless Steel",
                 color: "#C0C0C0",
-                image: "https://images.unsplash.com/photo-1611591437764-0f82e48c4707?w=200&q=90"
-            },
-            {
-                name: "Black PVD",
-                color: "#1a1a1a",
-                image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=200&q=90"
+                image: "/ap-royal-oak.png"
             },
         ],
-        sizes: ["Small", "Medium", "Large"],
+        sizes: ["41mm"],
     },
 };
 

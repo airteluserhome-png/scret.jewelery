@@ -8,16 +8,16 @@ import Link from "next/link";
 const products = [
     {
         id: 1,
-        name: "Lange & Söhne 1",
+        name: "Daytona Rose Gold",
         price: "$42,000",
-        image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800&q=90",
+        image: "/rolex-daytona.png",
         badge: "Low Stock",
     },
     {
         id: 2,
-        name: "Royal Black Bay",
-        price: "$4,150",
-        image: "https://images.unsplash.com/photo-1611591437764-0f82e48c4707?w=800&q=90",
+        name: "Royal Oak Steel",
+        price: "$34,150",
+        image: "/ap-royal-oak.png",
         badge: "New",
     },
     {
