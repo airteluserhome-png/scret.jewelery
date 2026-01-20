@@ -68,7 +68,10 @@ const products: Record<string, any> = {
     },
 };
 
-export default function ProductPage({ params }: { params: { id: string } }) {
+export default async function ProductPage({ params }: { params: { id: string } }) {
+    // Artificial luxury delay
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
     const product = products[params.id] || products["1"];
     const [selectedMaterial, setSelectedMaterial] = useState(0);
     const [selectedSize, setSelectedSize] = useState(1);
@@ -116,8 +119,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                                         key={i}
                                         onClick={() => setSelectedMaterial(i)}
                                         className={`relative aspect-square border-2 transition-all ${selectedMaterial === i
-                                                ? "border-black"
-                                                : "border-gray-200 hover:border-gray-400"
+                                            ? "border-black"
+                                            : "border-gray-200 hover:border-gray-400"
                                             }`}
                                     >
                                         <div
@@ -151,8 +154,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                                         key={i}
                                         onClick={() => setSelectedSize(i)}
                                         className={`font-sans text-sm pb-1 transition-all ${selectedSize === i
-                                                ? "border-b-2 border-black font-medium"
-                                                : "text-gray-400 hover:text-black"
+                                            ? "border-b-2 border-black font-medium"
+                                            : "text-gray-400 hover:text-black"
                                             }`}
                                     >
                                         {size}
