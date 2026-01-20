@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Plus } from "lucide-react";
+import Link from "next/link";
 
 const products = [
     {
@@ -53,70 +54,73 @@ export default function CommerceGrid() {
 
 function ProductCard({ product }: { product: typeof products[0] }) {
     return (
-        <motion.div
-            className="group relative h-[600px] border-b border-r border-black/5 bg-white overflow-hidden"
-            initial="initial"
-            whileHover="hover"
-        >
-            {/* Badge */}
-            {product.badge && (
-                <div className="absolute top-4 left-4 z-20">
-                    <span className="bg-black text-white px-2 py-1 font-mono text-[10px] uppercase tracking-widest">
-                        {product.badge}
-                    </span>
-                </div>
-            )}
-
-            {/* Image Area - 85% height */}
-            <div className="h-[85%] w-full relative overflow-hidden bg-stone-100">
-                <motion.div
-                    className="w-full h-full relative"
-                    variants={{
-                        initial: { scale: 1 },
-                        hover: { scale: 1.05 }
-                    }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                >
-                    <Image
-                        src={product.image}
-                        alt={product.name}
-                        fill
-                        className="object-cover object-center"
-                    />
-                </motion.div>
-            </div>
-
-            {/* Bottom Bar - Strict Black Bar Interaction */}
-            <div className="absolute bottom-0 left-0 right-0 h-[15%] bg-white border-t border-black/5 flex flex-col justify-end overflow-hidden">
-                {/* Default State: Name & Price */}
-                <motion.div
-                    className="absolute inset-0 flex items-center justify-between px-6"
-                    variants={{
-                        initial: { y: 0 },
-                        hover: { y: "-100%" }
-                    }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                    <div className="flex flex-col">
-                        <span className="font-serif text-lg leading-none mb-1">{product.name}</span>
-                        <span className="font-mono text-[10px] text-gray-400 uppercase tracking-widest">Ref. 2024</span>
+        <Link href={`/product/${product.id}`} className="block">
+            <motion.div
+                className="group relative h-[600px] border-b border-r border-black/5 bg-white overflow-hidden"
+                initial="initial"
+                whileHover="hover"
+            >
+                {/* Badge */}
+                {product.badge && (
+                    <div className="absolute top-4 left-4 z-20">
+                        <span className="bg-black text-white px-2 py-1 font-mono text-[10px] uppercase tracking-widest">
+                            {product.badge}
+                        </span>
                     </div>
-                    <span className="font-mono text-sm tracking-tight">{product.price}</span>
-                </motion.div>
+                )}
 
-                {/* Hover State: Add to Bag */}
-                <motion.div
-                    className="absolute inset-0 bg-black text-white flex items-center justify-between px-6"
-                    variants={{
-                        initial: { y: "100%" },
-                        hover: { y: 0 }
-                    }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                    <span className="font-mono text-xs uppercase tracking-widest">Add to Bag</span>
-                    <Plus className="w-4 h-4" />
-                </motion.div>
-            </div>
-        </motion.div>
+                {/* Image Area - 85% height */}
+                <div className="h-[85%] w-full relative overflow-hidden bg-stone-100">
+                    <motion.div
+                        layoutId={`image-${product.id}`}
+                        className="w-full h-full relative"
+                        variants={{
+                            initial: { scale: 1 },
+                            hover: { scale: 1.05 }
+                        }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                        <Image
+                            src={product.image}
+                            alt={product.name}
+                            fill
+                            className="object-cover object-center"
+                        />
+                    </motion.div>
+                </div>
+
+                {/* Bottom Bar - Strict Black Bar Interaction */}
+                <div className="absolute bottom-0 left-0 right-0 h-[15%] bg-white border-t border-black/5 flex flex-col justify-end overflow-hidden">
+                    {/* Default State: Name & Price */}
+                    <motion.div
+                        className="absolute inset-0 flex items-center justify-between px-6"
+                        variants={{
+                            initial: { y: 0 },
+                            hover: { y: "-100%" }
+                        }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                    >
+                        <div className="flex flex-col">
+                            <span className="font-serif text-lg leading-none mb-1">{product.name}</span>
+                            <span className="font-mono text-[10px] text-gray-400 uppercase tracking-widest">Ref. 2024</span>
+                        </div>
+                        <span className="font-mono text-sm tracking-tight">{product.price}</span>
+                    </motion.div>
+
+                    {/* Hover State: Add to Bag */}
+                    <motion.div
+                        className="absolute inset-0 bg-black text-white flex items-center justify-between px-6"
+                        variants={{
+                            initial: { y: "100%" },
+                            hover: { y: 0 }
+                        }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                    >
+                        <span className="font-mono text-xs uppercase tracking-widest">Add to Bag</span>
+                        <Plus className="w-4 h-4" />
+                    </motion.div>
+                </div>
+            </motion.div>
+        </Link>
     );
 }
