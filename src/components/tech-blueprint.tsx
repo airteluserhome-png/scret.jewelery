@@ -1,26 +1,104 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
-const specs = [
-    { label: "Caliber", value: "9001 Automatic" },
-    { label: "Jewels", value: "42 Rubies" },
-    { label: "Frequency", value: "28,800 VPH" },
-    { label: "Power Reserve", value: "72 Hours" },
-    { label: "Water Resistance", value: "100 Meters" },
-    { label: "Case Material", value: "18k Rose Gold" },
-    { label: "Crystal", value: "Domed Sapphire" },
-    { label: "Strap", value: "Alligator Leather" },
+// Dynamic Blueprint Data
+const blueprintData = [
+    {
+        id: "rolex",
+        title: "CALIBER\n4130",
+        ref: "Ref. 116505",
+        image: "/rolex-daytona.png",
+        specs: [
+            { label: "Caliber", value: "4130 Manufacture" },
+            { label: "Jewels", value: "44 Rubies" },
+            { label: "Frequency", value: "28,800 VPH" },
+            { label: "Power Reserve", value: "72 Hours" },
+            { label: "Water Resistance", value: "100 Meters" },
+            { label: "Case Material", value: "18k Everose Gold" },
+            { label: "Crystal", value: "Scratch-resistant Sapphire" },
+            { label: "Strap", value: "Oyster Bracelet" },
+        ]
+    },
+    {
+        id: "ap",
+        title: "CALIBER\n4302",
+        ref: "Ref. 15500ST",
+        image: "/ap-royal-oak.png",
+        specs: [
+            { label: "Caliber", value: "4302 Selfwinding" },
+            { label: "Jewels", value: "32 Rubies" },
+            { label: "Frequency", value: "28,800 VPH" },
+            { label: "Power Reserve", value: "70 Hours" },
+            { label: "Water Resistance", value: "50 Meters" },
+            { label: "Case Material", value: "Stainless Steel" },
+            { label: "Crystal", value: "Glareproofed Sapphire" },
+            { label: "Strap", value: "Integrated Steel" },
+        ]
+    },
+    {
+        id: "prada",
+        title: "QUARTZ\nMIYOTA",
+        ref: "Ref. PRA-2024",
+        image: "/prada-watch.png",
+        specs: [
+            { label: "Movement", value: "Japanese Quartz" },
+            { label: "Battery Life", value: "3 Years" },
+            { label: "Frequency", value: "32,768 Hz" },
+            { label: "Case Width", value: "38mm Ceramic" },
+            { label: "Water Resistance", value: "30 Meters" },
+            { label: "Case Material", value: "Black Ceramic" },
+            { label: "Crystal", value: "Mineral Glass" },
+            { label: "Strap", value: "Matte Ceramic Link" },
+        ]
+    }
 ];
 
+// Typewriter Text Component
+const TypewriterText = ({ text, delay = 0 }: { text: string, delay?: number }) => {
+    // Split text into characters, preserving spaces
+    const characters = Array.from(text);
+
+    return (
+        <span className="inline-block">
+            {characters.map((char, i) => (
+                <motion.span
+                    key={i}
+                    initial={{ opacity: 0, display: "none" }}
+                    animate={{ opacity: 1, display: "inline" }}
+                    transition={{
+                        duration: 0.01,
+                        delay: delay + (i * 0.03), // Fast typing speed
+                        ease: "linear"
+                    }}
+                >
+                    {char === " " ? "\u00A0" : char}
+                </motion.span>
+            ))}
+        </span>
+    );
+};
+
 export default function TechnicalBlueprint() {
+    const [currentIndex, setCurrentIndex] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end end"]
     });
+
+    // Auto-Cycle Logic
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % blueprintData.length);
+        }, 5000); // 5 Seconds per product
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const currentProduct = blueprintData[currentIndex];
 
     return (
         <section ref={containerRef} className="relative min-h-[150vh] bg-stone-50 border-t border-black/5">
@@ -29,13 +107,45 @@ export default function TechnicalBlueprint() {
                 {/* Col 1: Title (Sticky) */}
                 <div className="w-full md:w-1/4 p-6 md:p-12 border-b md:border-b-0 md:border-r border-black/5 flex flex-col justify-between">
                     <div>
-                        <h2 className="font-mono text-xs uppercase tracking-widest text-gray-500 mb-4">[ Specification ]</h2>
-                        <h3 className="font-serif text-5xl md:text-7xl leading-none tracking-tighter text-gray-900">
-                            CALIBER<br />9001
-                        </h3>
+                        <h2 className="font-mono text-xs uppercase tracking-widest text-gray-500 mb-4 h-4">
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={currentProduct.id}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                >
+                                    <TypewriterText text="[ SPECIFICATION ]" />
+                                </motion.div>
+                            </AnimatePresence>
+                        </h2>
+                        <div className="min-h-[120px]"> {/* Fixed height container to prevent jumps */}
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={currentProduct.id}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                    transition={{ duration: 0.5 }}
+                                >
+                                    <h3 className="font-serif text-5xl md:text-7xl leading-none tracking-tighter text-gray-900 whitespace-pre-line">
+                                        <TypewriterText text={currentProduct.title} delay={0.2} />
+                                    </h3>
+                                </motion.div>
+                            </AnimatePresence>
+                        </div>
                     </div>
                     <div className="font-mono text-[10px] text-gray-400 uppercase hidden md:block">
-                        Ref. 2499-A/X
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={currentProduct.id}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                            >
+                                <TypewriterText text={currentProduct.ref} delay={0.5} />
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
                 </div>
 
@@ -50,34 +160,54 @@ export default function TechnicalBlueprint() {
                         }}
                     />
 
-                    <motion.div
-                        className="relative w-[300px] md:w-[500px] aspect-square"
-                        style={{ rotate: useTransform(scrollYProgress, [0, 1], [0, 90]) }}
-                    >
-                        <Image
-                            src="https://images.unsplash.com/photo-1587836374608-f94ae1c72ec5?w=1000&q=90" // Close up mechanism or transparent watch
-                            alt="Watch Mechanism"
-                            fill
-                            className="object-contain mix-blend-multiplycontrast-125 grayscale hover:grayscale-0 transition-all duration-700"
-                        />
-                    </motion.div>
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={currentProduct.id}
+                            className="relative w-[300px] md:w-[400px] aspect-square"
+                            initial={{ opacity: 0, scale: 0.9, rotate: -10 }}
+                            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                            exit={{ opacity: 0, scale: 1.1, rotate: 10 }}
+                            transition={{ duration: 0.8, ease: "easeInOut" }}
+                            style={{ rotate: useTransform(scrollYProgress, [0, 1], [0, 45]) }} // Subtle scroll rotation
+                        >
+                            <Image
+                                src={currentProduct.image}
+                                alt={currentProduct.title}
+                                fill
+                                className="object-contain drop-shadow-2xl"
+                                priority
+                            />
+                        </motion.div>
+                    </AnimatePresence>
                 </div>
 
                 {/* Col 3: Scrolling Specs */}
                 <div className="w-full md:w-1/4 h-full overflow-hidden relative bg-white">
                     <div className="absolute inset-0 flex flex-col">
-                        {specs.map((spec, i) => (
+                        <AnimatePresence mode="wait">
                             <motion.div
-                                key={i}
-                                className="flex-1 flex flex-col justify-center px-8 border-b border-black/5 hover:bg-rose-400 hover:text-white transition-colors duration-300 group"
-                                initial={{ opacity: 0, x: 20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ delay: i * 0.05 }}
+                                key={currentProduct.id}
+                                className="w-full h-full flex flex-col"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ staggerChildren: 0.1 }}
                             >
-                                <span className="font-mono text-[10px] uppercase tracking-widest opacity-50 mb-1 group-hover:text-white/50">{spec.label}</span>
-                                <span className="font-sans text-xl md:text-2xl font-medium tracking-tight group-hover:pl-4 transition-all duration-300">{spec.value}</span>
+                                {currentProduct.specs.map((spec, i) => (
+                                    <div
+                                        key={spec.label}
+                                        className="flex-1 flex flex-col justify-center px-8 border-b border-black/5 hover:bg-black hover:text-white transition-colors duration-300 group"
+                                    >
+                                        <span className="font-mono text-[10px] uppercase tracking-widest opacity-50 mb-1 group-hover:text-white/50 block h-4">
+                                            <TypewriterText text={spec.label} delay={0.6 + (i * 0.1)} />
+                                        </span>
+                                        <span className="font-sans text-xl md:text-2xl font-medium tracking-tight group-hover:pl-4 transition-all duration-300 block">
+                                            <TypewriterText text={spec.value} delay={0.8 + (i * 0.1)} />
+                                        </span>
+                                    </div>
+                                ))}
                             </motion.div>
-                        ))}
+                        </AnimatePresence>
                     </div>
                 </div>
 
