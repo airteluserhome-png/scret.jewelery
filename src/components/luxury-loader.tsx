@@ -22,41 +22,72 @@ export default function LuxuryLoader() {
         <AnimatePresence>
             {isVisible && (
                 <motion.div
-                    className="fixed inset-0 z-[100] flex items-center justify-center bg-[#ffffff]"
+                    className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white"
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    transition={{ duration: 0.5, ease: "circIn" }}
                 >
                     {/* Global Noise Overlay */}
                     <div
                         style={{ backgroundImage: `url(${noiseSvg})` }}
-                        className="absolute inset-0 z-0 opacity-[0.03] mix-blend-multiply pointer-events-none"
+                        className="absolute inset-0 z-0 opacity-[0.05] mix-blend-multiply pointer-events-none"
                     />
 
                     <div className="relative z-10 flex flex-col items-center">
-                        {/* Pulsing Brand Text */}
-                        <motion.h1
-                            className="font-serif text-sm uppercase tracking-[0.5em] text-black"
-                            initial={{ opacity: 0.3 }}
-                            animate={{ opacity: [0.3, 1, 0.3] }}
-                            transition={{
-                                duration: 0.8,
-                                repeat: Infinity,
-                                ease: "easeInOut"
-                            }}
-                        >
-                            Secretly
-                        </motion.h1>
+                        {/* BRUTALIST BRANDING */}
+                        <div className="relative">
+                            {/* Pink Shadow Layer */}
+                            <motion.h1
+                                className="absolute top-1 left-1 font-brutalist text-6xl md:text-8xl uppercase tracking-tighter text-hot-pink select-none"
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                            >
+                                SECRETLY
+                            </motion.h1>
 
-                        {/* Progress Line */}
-                        <div className="w-full h-[1px] bg-black/10 mt-4 overflow-hidden w-24">
+                            {/* Main Black Text */}
+                            <motion.h1
+                                className="relative font-brutalist text-6xl md:text-8xl uppercase tracking-tighter text-black select-none z-10"
+                                initial={{ clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)" }}
+                                animate={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}
+                                transition={{ duration: 0.4, ease: "circOut" }}
+                            >
+                                SECRETLY
+                            </motion.h1>
+                        </div>
+
+                        {/* LOADING STATUS */}
+                        <div className="mt-8 flex items-center gap-4">
                             <motion.div
-                                className="h-full bg-black"
+                                className="w-3 h-3 bg-hot-pink"
+                                animate={{
+                                    scale: [1, 0, 1],
+                                    rotate: [0, 90, 180]
+                                }}
+                                transition={{
+                                    duration: 0.8,
+                                    repeat: Infinity,
+                                    ease: "steps(1)"
+                                }}
+                            />
+                            <motion.p
+                                className="font-mono text-xs uppercase tracking-widest text-black"
+                                animate={{ opacity: [1, 0, 1] }}
+                                transition={{ duration: 0.2, repeat: Infinity }}
+                            >
+                                LOADING_ASSETS
+                            </motion.p>
+                        </div>
+
+                        {/* Thicker Progress Bar */}
+                        <div className="w-64 h-2 bg-black/10 mt-4 overflow-hidden border border-black">
+                            <motion.div
+                                className="h-full bg-hot-pink"
                                 initial={{ width: "0%" }}
                                 animate={{ width: "100%" }}
                                 transition={{
-                                    duration: 0.8,
-                                    ease: "easeInOut"
+                                    duration: 0.6,
+                                    ease: "circOut"
                                 }}
                             />
                         </div>
