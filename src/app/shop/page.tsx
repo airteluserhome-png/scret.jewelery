@@ -111,41 +111,43 @@ function ShopContent() {
                                 transition={{ duration: 0.3 }}
                                 className="card-3d flex flex-col"
                             >
-                                {/* Image Area */}
-                                <div className="bg-white h-[300px] md:h-[350px] flex items-center justify-center brutalist-border-b overflow-hidden relative">
-                                    <div className="relative w-[75%] h-[75%]">
-                                        <Image
-                                            src={product.image}
-                                            alt={product.name}
-                                            fill
-                                            className="object-contain mix-blend-multiply product-img-card"
-                                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                        />
-                                    </div>
-
-                                    {/* Badge */}
-                                    <div className="absolute top-3 left-3 bg-hot-pink text-white px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-wider border-[2px] border-black">
-                                        {product.badge || "NEW"}
-                                    </div>
-                                </div>
-
-                                {/* Card Info */}
-                                <div className="p-5 md:p-6 bg-white flex flex-col gap-4">
-                                    <div>
-                                        <div className="font-bold uppercase text-lg md:text-xl leading-none text-dark">
-                                            {product.name}
+                                <Link href={`/product/${product.id}`} className="flex flex-col h-full text-inherit no-underline">
+                                    {/* Image Area */}
+                                    <div className="bg-white h-[300px] md:h-[350px] flex items-center justify-center brutalist-border-b overflow-hidden relative">
+                                        <div className="relative w-[75%] h-[75%]">
+                                            <Image
+                                                src={product.image}
+                                                alt={product.name}
+                                                fill
+                                                className="object-contain mix-blend-multiply product-img-card"
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                            />
                                         </div>
-                                        <div className="text-base md:text-xl font-black text-dark mt-3">
-                                            {product.price}
+
+                                        {/* Badge */}
+                                        <div className="absolute top-3 left-3 bg-hot-pink text-white px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-wider border-[2px] border-black">
+                                            {product.badge || "NEW"}
                                         </div>
                                     </div>
 
-                                    <Link href={`/product/${product.id}`} className="mt-auto">
-                                        <button className="buy-btn-card w-full py-3 md:py-3 font-brutalist text-base md:text-xl tracking-widest uppercase">
-                                            VIEW
-                                        </button>
-                                    </Link>
-                                </div>
+                                    {/* Card Info */}
+                                    <div className="p-5 md:p-6 bg-white flex flex-col gap-4 flex-grow">
+                                        <div>
+                                            <div className="font-bold uppercase text-lg md:text-xl leading-none text-dark">
+                                                {product.name}
+                                            </div>
+                                            <div className="text-base md:text-xl font-black text-dark mt-3">
+                                                {product.price}
+                                            </div>
+                                        </div>
+
+                                        <div className="mt-auto">
+                                            <button className="buy-btn-card w-full py-3 md:py-3 font-brutalist text-base md:text-xl tracking-widest uppercase">
+                                                VIEW
+                                            </button>
+                                        </div>
+                                    </div>
+                                </Link>
                             </motion.div>
                         ))}
                     </AnimatePresence>
