@@ -197,12 +197,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 </div>
             </div>
 
-            {/* Back Link */}
-            <div className="p-6 text-center">
-                <Link href="/shop" className="font-bold text-hot-pink hover:underline uppercase tracking-wider">
-                    ← Back to Collection
-                </Link>
-            </div>
+            {/* Back Link Removed per user request */}
             {/* Cross Tape for Hype */}
             <CrossTape />
 
