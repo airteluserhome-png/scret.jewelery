@@ -13,6 +13,29 @@ body {
     /* Default text hot pink */
     background: white;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mobile-First Typography */
+html {
+    font-size: 16px;
+}
+
+@media (max-width: 640px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+/* Touch Target Optimization */
+@media (max-width: 768px) {
+
+    button,
+    a {
+        min-height: 44px;
+        /* iOS recommended touch target */
+    }
 }
 
 /* Brutalist Custom Utilities */
@@ -28,8 +51,33 @@ body {
     border-right: 2px solid #FF007F;
 }
 
+/* Prevent horizontal scroll on mobile */
+body {
+    overflow-x: hidden;
+}
+
+/* Safe area for notched devices */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: max(0px, env(safe-area-inset-left));
+        padding-right: max(0px, env(safe-area-inset-right));
+    }
+}
+
 @layer utilities {
     .text-balance {
         text-wrap: balance;
+    }
+
+    /* Mobile-optimized tap highlight */
+    .tap-highlight-none {
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+/* Smooth scrolling for better UX */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
     }
 }

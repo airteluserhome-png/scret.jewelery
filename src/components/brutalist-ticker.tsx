@@ -9,10 +9,14 @@ export default function BrutalistTicker({
 
     return (
         <div
-            className={`w-full overflow-hidden bg-hot-pink text-white py-4 whitespace-nowrap border-y-2 border-hot-pink ${rotated ? 'transform -rotate-1 scale-[1.02] border-2 border-white my-10' : ''}`}
+            className={`
+                w-full overflow-hidden bg-hot-pink text-white 
+                py-3 md:py-4 whitespace-nowrap border-y-2 border-hot-pink
+                ${rotated ? 'transform -rotate-1 scale-[1.02] border-2 border-white my-6 md:my-10' : ''}
+            `}
         >
             <motion.div
-                className="inline-block font-bold text-xl md:text-2xl uppercase tracking-widest"
+                className="inline-block font-bold text-sm md:text-xl lg:text-2xl uppercase tracking-widest"
                 animate={{ x: ["0%", "-50%"] }}
                 transition={{
                     repeat: Infinity,
@@ -21,7 +25,7 @@ export default function BrutalistTicker({
                 }}
             >
                 {/* Repeat text to ensure continuous loop */}
-                <span className="px-4">{text} ✽ {text} ✽ {text} ✽ {text}</span>
+                <span className="px-2 md:px-4">{text} ✽ {text} ✽ {text} ✽ {text}</span>
             </motion.div>
         </div>
     );
