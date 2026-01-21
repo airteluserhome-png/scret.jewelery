@@ -4,6 +4,10 @@ import "./globals.css";
 export const metadata: Metadata = {
     title: "Secretly - Luxury Goods",
     description: "Premium Accessories and Collectibles",
+    icons: {
+        icon: "/icon.svg",
+        apple: "/apple-icon.svg", // Note: iOS prefers PNG, but this links the resource.
+    },
 };
 
 import { CartProvider } from "@/context/cart-context";
