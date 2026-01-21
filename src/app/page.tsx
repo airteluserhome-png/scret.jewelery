@@ -6,10 +6,10 @@ export default function Page() {
     return (
         <main className="min-h-screen bg-white text-hot-pink font-sans selection:bg-hot-pink selection:text-white">
 
-            {/* Header with Navigation */}
+            {/* Single Pink Navigation + Header */}
             <BrutalistHeader />
 
-            {/* Main Ticker */}
+            {/* Main Ticker - SECRETLY Branding */}
             <BrutalistTicker />
 
             {/* PLAIN WATCHES Section */}
@@ -18,9 +18,9 @@ export default function Page() {
             </h2>
             <BrutalistGrid category="plain-watches" ctaCard={{ text: "VIEW ALL", href: "/shop" }} />
 
-            {/* Angled Ticker Between Sections */}
+            {/* Angled Ticker - SECRETLY Branding */}
             <div className="py-8 md:py-12 overflow-hidden">
-                <BrutalistTicker text="ICED OUT COLLECTION ✽ FULL DIAMOND PAVÉ ✽ 5A SWISS MOVEMENT ✽ BOX AND PAPERS" rotated={true} />
+                <BrutalistTicker text="SECRETLY ✽ ICED OUT COLLECTION ✽ FULL DIAMOND PAVÉ ✽ 5A SWISS" rotated={true} />
             </div>
 
             {/* ICED OUT Section */}
@@ -29,12 +29,17 @@ export default function Page() {
             </h2>
             <BrutalistGrid category="iced-watches" ctaCard={{ text: "CONTACT US", href: "/shop" }} />
 
-            {/* Footer - Mobile Optimized */}
+            {/* Footer - SECRETLY Branding */}
             <footer className="bg-hot-pink text-white p-6 md:p-12 lg:p-16 mt-8 md:mt-12">
-                <h2 className="text-[18vw] md:text-[15vw] leading-none font-black uppercase opacity-90">
-                    OFFICINE<br />PINK
+                <h2 className="text-[18vw] md:text-[15vw] leading-none font-black uppercase opacity-90 mb-4">
+                    SECRETLY
                 </h2>
-                <p className="mt-4 md:mt-8 font-bold tracking-widest uppercase text-xs md:text-sm lg:text-base">Box and Papers Included.</p>
+                <p className="font-bold tracking-widest uppercase text-xs md:text-sm lg:text-base opacity-80">
+                    Luxury Timepieces &amp; Accessories
+                </p>
+                <p className="mt-2 md:mt-4 font-bold tracking-widest uppercase text-xs md:text-sm">
+                    Box and Papers Included.
+                </p>
             </footer>
 
         </main>

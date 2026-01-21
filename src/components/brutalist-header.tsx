@@ -2,26 +2,25 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingBag, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function BrutalistHeader() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const navLinks = [
-        { label: "GIFTS", href: "/shop" },
-        { label: "JEWELRY", href: "/shop" },
-        { label: "HIGH JEWELRY", href: "/shop" },
-        { label: "WATCHES", href: "/shop" },
+        { label: "PLAIN WATCHES", href: "/shop" },
+        { label: "ICED WATCHES", href: "/shop" },
         { label: "HOME", href: "/" },
-        { label: "ACCESSORIES", href: "/shop" },
-        { label: "WORLD OF SECRETLY", href: "/shop" },
+        { label: "ABOUT SECRETLY", href: "/shop" },
     ];
 
     return (
         <>
-            {/* Top Bar */}
-            <div className="flex justify-between items-center px-4 md:px-5 py-3 border-b-2 border-hot-pink font-bold text-[10px] md:text-sm tracking-widest uppercase">
+            {/* Single Pink Navigation Bar */}
+            <nav className="flex justify-between items-center px-4 md:px-6 lg:px-8 py-4 border-b-2 border-hot-pink font-bold tracking-wider uppercase bg-white">
+
+                {/* Mobile: Hamburger */}
                 <button
                     className="md:hidden"
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -29,22 +28,34 @@ export default function BrutalistHeader() {
                 >
                     {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
                 </button>
-                <span className="hidden md:inline">Assistance</span>
-                <span className="text-center flex-1 md:flex-none">Collection 2026</span>
-                <span>Log In</span>
-            </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex justify-center items-center gap-6 lg:gap-8 px-5 py-4 border-b-2 border-hot-pink text-xs lg:text-sm font-bold tracking-wider uppercase flex-wrap">
-                {navLinks.map((link) => (
-                    <Link
-                        key={link.label}
-                        href={link.href}
-                        className="hover:bg-hot-pink hover:text-white px-2 py-1 transition-colors"
-                    >
-                        {link.label}
+                {/* Center: Brand Logo / Nav Links */}
+                <div className="hidden md:flex items-center gap-6 lg:gap-8 text-xs lg:text-sm">
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.label}
+                            href={link.href}
+                            className="hover:bg-hot-pink hover:text-white px-3 py-2 transition-colors"
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
+                </div>
+
+                {/* Center on Mobile: Brand */}
+                <Link href="/" className="md:hidden text-xl font-black tracking-tighter">
+                    SECRETLY
+                </Link>
+
+                {/* Right: Icons */}
+                <div className="flex items-center gap-4">
+                    <Link href="/shop" className="hover:opacity-70 transition-opacity">
+                        <User size={20} />
                     </Link>
-                ))}
+                    <Link href="/shop" className="hover:opacity-70 transition-opacity">
+                        <ShoppingBag size={20} />
+                    </Link>
+                </div>
             </nav>
 
             {/* Mobile Menu Drawer */}
@@ -69,8 +80,8 @@ export default function BrutalistHeader() {
                             transition={{ type: "tween", duration: 0.3 }}
                         >
                             <div className="p-6">
-                                <div className="flex justify-between items-center mb-8">
-                                    <h2 className="text-2xl font-black uppercase">Menu</h2>
+                                <div className="flex justify-between items-center mb-8 border-b-2 border-hot-pink pb-4">
+                                    <h2 className="text-2xl font-black uppercase tracking-tighter">SECRETLY</h2>
                                     <button onClick={() => setMobileMenuOpen(false)}>
                                         <X size={24} />
                                     </button>
@@ -94,11 +105,14 @@ export default function BrutalistHeader() {
                 )}
             </AnimatePresence>
 
-            {/* Main Header Title */}
+            {/* Main Header Title - SECRETLY Branding */}
             <header className="border-b-2 border-hot-pink text-center py-8 md:py-12 lg:py-24 px-4">
                 <h1 className="text-[18vw] md:text-[12vw] leading-[0.8] font-black uppercase tracking-tighter">
-                    Accessory<br />Archive
+                    SECRETLY
                 </h1>
+                <p className="text-xs md:text-sm uppercase tracking-[0.3em] mt-4 font-bold opacity-70">
+                    Luxury Timepieces
+                </p>
             </header>
         </>
     );

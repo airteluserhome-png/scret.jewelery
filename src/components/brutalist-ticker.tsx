@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 export default function BrutalistTicker({
-    text = "ALL 5 A SWISS MOVEMENT ✽ COMES WITH BOX AND PAPERS ✽ GLOBAL SHIPPING",
+    text = "SECRETLY ✽ 5 A SWISS MOVEMENT ✽ BOX AND PAPERS INCLUDED ✽ WORLDWIDE SHIPPING",
     rotated = false
 }: { text?: string, rotated?: boolean }) {
 
