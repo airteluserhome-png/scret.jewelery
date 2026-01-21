@@ -149,8 +149,8 @@ export default function TechnicalBlueprint() {
                     </div>
                 </div>
 
-                {/* Col 2: Watch Image (Centered & blueprint style) */}
-                <div className="w-full md:w-1/2 relative bg-stone-100/50 border-b md:border-b-0 md:border-r border-black/5 flex items-center justify-center overflow-hidden">
+                {/* Col 2: Watch Image (Centered & huge) */}
+                <div className="w-full md:w-1/2 relative bg-stone-100 border-b md:border-b-0 md:border-r border-black/5 flex items-center justify-center overflow-hidden p-8">
                     {/* Grid Lines Background */}
                     <div
                         className="absolute inset-0 opacity-[0.03]"
@@ -163,20 +163,22 @@ export default function TechnicalBlueprint() {
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentProduct.id}
-                            className="relative w-[300px] md:w-[400px] aspect-square"
-                            initial={{ opacity: 0, scale: 0.9, rotate: -10 }}
+                            className="relative w-full h-full flex items-center justify-center"
+                            initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
                             animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                            exit={{ opacity: 0, scale: 1.1, rotate: 10 }}
+                            exit={{ opacity: 0, scale: 1.1, rotate: 5 }}
                             transition={{ duration: 0.8, ease: "easeInOut" }}
-                            style={{ rotate: useTransform(scrollYProgress, [0, 1], [0, 45]) }} // Subtle scroll rotation
+                            style={{ rotate: useTransform(scrollYProgress, [0, 1], [0, 20]) }}
                         >
-                            <Image
-                                src={currentProduct.image}
-                                alt={currentProduct.title}
-                                fill
-                                className="object-cover rounded-md drop-shadow-2xl"
-                                priority
-                            />
+                            <div className="relative w-[90%] h-[90%] md:w-[85%] md:h-[85%] transition-all duration-500 hover:scale-105">
+                                <Image
+                                    src={currentProduct.image}
+                                    alt={currentProduct.title}
+                                    fill
+                                    className="object-contain mix-blend-multiply drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)]"
+                                    priority
+                                />
+                            </div>
                         </motion.div>
                     </AnimatePresence>
                 </div>
