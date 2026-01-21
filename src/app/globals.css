@@ -306,3 +306,26 @@ html {
     opacity: 0.6;
     pointer-events: none;
 }
+
+/* --- FORCE TRANSPARENCY ON ALL WATCH IMAGES (OPTION 1) --- */
+
+/* 1. Target the Product Page Main Image */
+.product-visual img,
+.main-watch-img {
+    mix-blend-mode: multiply !important;
+    filter: contrast(1.05) !important;
+    /* Slight boost to make it pop */
+}
+
+/* 2. Target the Collection Grid Images */
+.product-card img,
+.card-image img {
+    mix-blend-mode: multiply !important;
+}
+
+/* 3. Ensure the containers behind them are clear */
+.product-visual,
+.card-image {
+    background-color: transparent !important;
+    /* No white background on the box itself */
+}
