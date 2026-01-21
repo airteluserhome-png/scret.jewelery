@@ -103,14 +103,14 @@ export const products: Product[] = [
     },
     {
         id: 6,
-        name: "Patek",
+        name: "Patek Nautilus",
         category: "plain-watches",
         brand: "Patek Philippe",
         price: "$600",
         priceNum: 600,
         image: "/patek-plain-1.jpg",
         badge: "5A Swiss",
-        description: "5A Swiss movement Patek. Comes with box and papers.",
+        description: "5A Swiss movement Patek Philippe. Comes with box and papers.",
         specs: {
             movement: "5A Swiss Movement",
             quality: "AAA+ Quality",
@@ -119,6 +119,22 @@ export const products: Product[] = [
     },
     {
         id: 7,
+        name: "Patek Aquanaut",
+        category: "plain-watches",
+        brand: "Patek Philippe",
+        price: "$600",
+        priceNum: 600,
+        image: "/patek-plain-2.jpg",
+        badge: "5A Swiss",
+        description: "5A Swiss movement Patek Philippe. Comes with box and papers.",
+        specs: {
+            movement: "5A Swiss Movement",
+            quality: "AAA+ Quality",
+            includes: "Box & Papers"
+        }
+    },
+    {
+        id: 8,
         name: "Cartier",
         category: "plain-watches",
         brand: "Cartier",
@@ -134,7 +150,7 @@ export const products: Product[] = [
         }
     },
     {
-        id: 8,
+        id: 9,
         name: "RM",
         category: "plain-watches",
         brand: "Richard Mille",
@@ -152,8 +168,8 @@ export const products: Product[] = [
 
     // ========== ICED OUT WATCHES (5A) ==========
     {
-        id: 9,
-        name: "Rolex",
+        id: 10,
+        name: "Iced Out Rolex I",
         category: "iced-watches",
         brand: "Rolex",
         price: "$700",
@@ -168,8 +184,24 @@ export const products: Product[] = [
         }
     },
     {
-        id: 10,
-        name: "AP",
+        id: 11,
+        name: "Iced Out Rolex II",
+        category: "iced-watches",
+        brand: "Rolex",
+        price: "$700",
+        priceNum: 700,
+        image: "/iced-rolex-2.jpg",
+        badge: "Iced Out",
+        description: "5A Swiss movement Iced Out Rolex. Comes with box and papers.",
+        specs: {
+            movement: "5A Swiss Movement",
+            quality: "AAA+ Iced Quality",
+            includes: "Box & Papers"
+        }
+    },
+    {
+        id: 12,
+        name: "Iced Out AP",
         category: "iced-watches",
         brand: "Audemars Piguet",
         price: "$750",
@@ -184,8 +216,8 @@ export const products: Product[] = [
         }
     },
     {
-        id: 11,
-        name: "Patek",
+        id: 13,
+        name: "Iced Out Patek I",
         category: "iced-watches",
         brand: "Patek Philippe",
         price: "$800",
@@ -200,8 +232,24 @@ export const products: Product[] = [
         }
     },
     {
-        id: 12,
-        name: "Cartier",
+        id: 14,
+        name: "Iced Out Patek II",
+        category: "iced-watches",
+        brand: "Patek Philippe",
+        price: "$800",
+        priceNum: 800,
+        image: "/iced-patek-2.jpg",
+        badge: "Iced Out",
+        description: "5A Swiss movement Iced Out Patek. Comes with box and papers.",
+        specs: {
+            movement: "5A Swiss Movement",
+            quality: "AAA+ Iced Quality",
+            includes: "Box & Papers"
+        }
+    },
+    {
+        id: 15,
+        name: "Iced Out Cartier",
         category: "iced-watches",
         brand: "Cartier",
         price: "$700",
@@ -216,8 +264,8 @@ export const products: Product[] = [
         }
     },
     {
-        id: 13,
-        name: "RM",
+        id: 16,
+        name: "Iced Out RM",
         category: "iced-watches",
         brand: "Richard Mille",
         price: "$1,350",
@@ -244,8 +292,8 @@ export const getProductsByCategory = (category: Product["category"]): Product[] 
 
 export const getAllCategories = () => {
     return [
-        { id: "accessories", name: "Accessories", count: 3 },
-        { id: "plain-watches", name: "Plain Watches (5A)", count: 5 },
-        { id: "iced-watches", name: "Iced Out Watches (5A)", count: 5 },
+        { id: "accessories", name: "Accessories", count: products.filter(p => p.category === "accessories").length },
+        { id: "plain-watches", name: "Plain Watches (5A)", count: products.filter(p => p.category === "plain-watches").length },
+        { id: "iced-watches", name: "Iced Out Watches (5A)", count: products.filter(p => p.category === "iced-watches").length },
     ];
 };
