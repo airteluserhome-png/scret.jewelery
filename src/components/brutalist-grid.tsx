@@ -21,9 +21,10 @@ export default function BrutalistGrid({
             {/* 3D Trading Card Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-[1400px] mx-auto">
                 {products.map((product, index) => (
-                    <div
+                    <Link
                         key={product.id}
-                        className="card-3d flex flex-col"
+                        href={`/product/${product.id}`}
+                        className="card-3d flex flex-col no-underline text-inherit cursor-pointer"
                     >
                         {/* Pulsing Urgency Badge */}
                         <div className="urgency-badge absolute top-4 right-4 bg-hot-pink text-white px-3 py-1.5 text-xs md:text-sm font-brutalist uppercase z-20 border-[2px] border-black shadow-[3px_3px_0_black]"
@@ -57,28 +58,26 @@ export default function BrutalistGrid({
                                 </div>
                             </div>
 
-                            {/* Price & Button */}
+                            {/* Price & CTA */}
                             <div className="flex justify-between items-end mt-auto">
                                 <span className="font-black text-2xl md:text-3xl text-dark">
                                     {product.price}
                                 </span>
                             </div>
 
-                            <Link href={`/product/${product.id}`} className="w-full">
-                                <button className="buy-btn-card w-full py-3 md:py-4 font-brutalist text-base md:text-xl uppercase flex justify-between items-center px-4">
-                                    <span>SECURE YOURS</span>
-                                    <span className="transition-transform duration-200 group-hover:translate-x-1">➔</span>
-                                </button>
-                            </Link>
+                            <div className="buy-btn-card w-full py-3 md:py-4 font-brutalist text-base md:text-xl uppercase flex justify-between items-center px-4">
+                                <span>SECURE YOURS</span>
+                                <span className="transition-transform duration-200 group-hover:translate-x-1">➔</span>
+                            </div>
                         </div>
-                    </div>
+                    </Link>
                 ))}
 
                 {/* CTA Card */}
                 {ctaCard && (
                     <Link
                         href={ctaCard.href || "/shop"}
-                        className="card-3d flex flex-col justify-center items-center bg-dark text-white p-8 md:p-12 min-h-[380px] cursor-pointer"
+                        className="card-3d flex flex-col justify-center items-center bg-dark text-white p-8 md:p-12 min-h-[380px] cursor-pointer no-underline"
                     >
                         <h3 className="text-3xl md:text-4xl lg:text-5xl font-brutalist text-center leading-none tracking-[0.05em]">
                             {ctaCard.text.split(' ').map((word, i) => (

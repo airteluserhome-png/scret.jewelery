@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { getProductById } from "@/data/products";
+import BackButton from "@/components/back-button";
 
 export default function ProductPage({ params }: { params: { id: string } }) {
     const product = getProductById(parseInt(params.id));
@@ -22,6 +23,11 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
     return (
         <div className="min-h-screen bg-off-white">
+            {/* Back Button */}
+            <div className="px-6 md:px-12 pt-6 md:pt-8">
+                <BackButton fallback="/shop" />
+            </div>
+
             {/* Split Screen Container */}
             <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[90vh] brutalist-border-b">
 
