@@ -9,13 +9,13 @@ import { useState, useEffect } from "react";
 import { products } from "@/data/products";
 
 export default function CommerceGrid() {
-    // Show first 8 products on homepage
-    const featuredProducts = products.slice(0, 8);
+    // Show all 6 products on homepage
+    const featuredProducts = products;
 
     return (
         <section className="bg-soft-pink border-t border-rose-pink/20">
             {/* Responsive Grid: 1 col mobile, 2 cols tablet, 4 cols desktop */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
                 {featuredProducts.map((product) => (
                     <ProductCard key={product.id} product={product} />
                 ))}
