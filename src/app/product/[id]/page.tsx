@@ -35,8 +35,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             {/* Split Screen Container */}
             <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[90vh] brutalist-border-b">
 
-                {/* LEFT: Product Details */}
-                <div className="p-8 md:p-12 lg:p-16 lg:brutalist-border-r bg-white flex flex-col justify-center brutalist-border-b lg:border-b-0">
+                {/* LEFT: Product Details (Bottom on Mobile, Left on Desktop) */}
+                <div className="order-2 lg:order-1 p-8 md:p-12 lg:p-16 lg:brutalist-border-r bg-white flex flex-col justify-center brutalist-border-b lg:border-b-0">
                     {/* Brand Tag */}
                     <div className="font-bold text-gray-500 uppercase tracking-[0.2em] text-sm">
                         {product.brand}
@@ -106,9 +106,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     </p>
                 </div>
 
-                {/* RIGHT: Product Image with Floor Shadow */}
+                {/* RIGHT: Product Image with Floor Shadow (Top on Mobile, Right on Desktop) */}
                 <div
-                    className="relative flex items-center justify-center overflow-hidden min-h-[400px] lg:min-h-0 bg-white"
+                    className="order-1 lg:order-2 relative flex items-center justify-center overflow-hidden min-h-[400px] lg:min-h-0 bg-white"
                 >
                     {/* Floor Shadow - Oval underneath */}
                     <div

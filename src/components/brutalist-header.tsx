@@ -41,7 +41,7 @@ export default function BrutalistHeader() {
                     ))}
                 </div>
 
-                <Link href="/" className="md:hidden text-xl font-brutalist tracking-[0.05em]">
+                <Link href="/" className="hidden md:hidden text-xl font-brutalist tracking-[0.05em]">
                     SECRETLY
                 </Link>
 
