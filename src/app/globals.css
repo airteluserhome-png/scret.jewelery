@@ -3,30 +3,72 @@
 @tailwind utilities;
 
 :root {
-    --foreground-rgb: 0, 0, 0;
-    --background-rgb: 255, 255, 255;
-    --primary-pink: #EB277B;
+    --neon-pink: #FF0055;
+    --dark: #111;
+    --off-white: #F8F8F8;
 }
 
 body {
-    color: #EB277B;
-    background: white;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--off-white);
+    font-family: 'Space Grotesk', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
-/* Brutalist Typography - Anton Font */
+/* Typography - Unstick Anton with letter-spacing */
 h1,
 h2,
 h3,
 .brutalist-text {
     font-family: 'Anton', sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.05em;
+    /* UNSTICKS THE LETTERS */
+    margin: 0;
 }
 
-/* Mobile-First Typography */
+/* 3D Text Shadow for Hero */
+.hero-3d-text {
+    text-shadow: 4px 4px 0px #000;
+}
+
+/* 3D Trading Card Effect */
+.card-3d {
+    background: white;
+    border: 3px solid var(--dark);
+    transition: all 0.2s ease-out;
+    box-shadow: 8px 8px 0px var(--dark);
+}
+
+.card-3d:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 15px 15px 0px var(--neon-pink);
+    z-index: 10;
+}
+
+/* Product Image Animation */
+.product-img-card {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.2));
+}
+
+.card-3d:hover .product-img-card {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+/* Kinetic Button - Pink on Card Hover */
+.buy-btn-card {
+    background: var(--dark);
+    color: white;
+    transition: background 0.2s ease;
+}
+
+.card-3d:hover .buy-btn-card {
+    background: var(--neon-pink);
+}
+
+/* Mobile Typography */
 html {
     font-size: 16px;
 }
@@ -37,7 +79,7 @@ html {
     }
 }
 
-/* Touch Target Optimization */
+/* Touch Targets */
 @media (max-width: 768px) {
 
     button,
@@ -46,29 +88,24 @@ html {
     }
 }
 
-/* Brutalist Borders - 3px like reference */
+/* Black Borders for Contrast */
 .brutalist-border {
-    border: 3px solid #EB277B;
+    border: 3px solid #000;
 }
 
 .brutalist-border-b {
-    border-bottom: 3px solid #EB277B;
+    border-bottom: 3px solid #000;
 }
 
 .brutalist-border-r {
-    border-right: 3px solid #EB277B;
+    border-right: 3px solid #000;
 }
 
 .brutalist-border-t {
-    border-top: 3px solid #EB277B;
+    border-top: 3px solid #000;
 }
 
-/* Prevent horizontal scroll on mobile */
-body {
-    overflow-x: hidden;
-}
-
-/* Safe area for notched devices */
+/* Safe Area */
 @supports (padding: max(0px)) {
     body {
         padding-left: max(0px, env(safe-area-inset-left));
@@ -86,7 +123,6 @@ body {
     }
 }
 
-/* Smooth scrolling */
 @media (prefers-reduced-motion: no-preference) {
     html {
         scroll-behavior: smooth;

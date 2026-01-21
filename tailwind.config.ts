@@ -9,17 +9,18 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                'hot-pink': '#EB277B', // Sharper pink as specified
-                'pink-white': '#FFF0F5',
+                'hot-pink': '#FF0055',
+                'neon-pink': '#FF0055',
+                'dark': '#111',
+                'off-white': '#F8F8F8',
             },
             fontFamily: {
-                sans: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
-                brutalist: ['"Anton"', 'sans-serif'], // Anton for headlines
+                sans: ['"Space Grotesk"', '"Inter"', 'sans-serif'], // Wider, more readable
+                brutalist: ['"Anton"', 'sans-serif'],
             },
-            backgroundImage: {
-                "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-                "gradient-conic":
-                    "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+            boxShadow: {
+                'brutalist': '8px 8px 0px #111',
+                'brutalist-hover': '15px 15px 0px #FF0055',
             },
         },
     },

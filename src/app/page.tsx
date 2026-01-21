@@ -4,41 +4,45 @@ import BrutalistGrid from "@/components/brutalist-grid";
 
 export default function Page() {
     return (
-        <main className="min-h-screen bg-white text-hot-pink font-sans selection:bg-hot-pink selection:text-white">
+        <main className="min-h-screen bg-off-white text-dark font-sans selection:bg-hot-pink selection:text-white">
 
-            {/* Single Navigation + Massive Anton Title */}
+            {/* Header with 3D Text */}
             <BrutalistHeader />
 
-            {/* Ticker with Anton Font */}
+            {/* Ticker */}
             <BrutalistTicker />
 
-            {/* PLAIN WATCHES Section - Anton Font */}
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-brutalist p-4 md:p-6 lg:p-8 brutalist-border-b tracking-tight leading-none m-0">
-                PLAIN WATCHES (5A)
-            </h2>
+            {/* PLAIN WATCHES Section */}
+            <div className="px-4 md:px-8 lg:px-10 pt-8 md:pt-12">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-brutalist text-black brutalist-border-b pb-3 md:pb-4 tracking-[0.05em] leading-none">
+                    PLAIN WATCHES (5A)
+                </h2>
+            </div>
             <BrutalistGrid category="plain-watches" ctaCard={{ text: "VIEW ALL", href: "/shop" }} />
 
             {/* Angled Ticker */}
             <div className="py-8 md:py-12 overflow-hidden">
-                <BrutalistTicker text="SECRETLY ✽ ICED OUT COLLECTION ✽ FULL DIAMOND PAVÉ ✽ 5A SWISS" rotated={true} />
+                <BrutalistTicker text="⚠ ICED OUT COLLECTION ⚠ SECRETLY ✽ FULL DIAMOND PAVÉ ✽ 5A SWISS ✽ LIMITED STOCK" rotated={true} />
             </div>
 
-            {/* ICED OUT Section - Anton Font */}
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-brutalist p-4 md:p-6 lg:p-8 brutalist-border-b tracking-tight leading-none m-0">
-                ICED OUT (5A)
-            </h2>
+            {/* ICED OUT Section */}
+            <div className="px-4 md:px-8 lg:px-10">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-brutalist text-black brutalist-border-b pb-3 md:pb-4 tracking-[0.05em] leading-none">
+                    ICED OUT (5A)
+                </h2>
+            </div>
             <BrutalistGrid category="iced-watches" ctaCard={{ text: "CONTACT US", href: "/shop" }} />
 
-            {/* Footer - SECRETLY with Anton */}
-            <footer className="bg-hot-pink text-white p-6 md:p-12 lg:p-16 mt-8 md:mt-12">
+            {/* Footer */}
+            <footer className="bg-black text-white p-6 md:p-12 lg:p-16 mt-12 md:mt-16 text-center">
                 <h2
-                    className="font-brutalist leading-none opacity-90 mb-4"
-                    style={{ fontSize: '16vw' }}
+                    className="font-brutalist leading-none mb-4 tracking-[0.05em]"
+                    style={{ fontSize: '12vw' }}
                 >
-                    SECRETLY
+                    SECURE THE BAG
                 </h2>
-                <p className="font-brutalist tracking-widest text-xs md:text-sm lg:text-base opacity-80">
-                    LUXURY TIMEPIECES &amp; ACCESSORIES
+                <p className="font-bold tracking-widest text-sm md:text-base lg:text-lg opacity-80 mt-6 uppercase">
+                    SECRETLY - LUXURY TIMEPIECES
                 </p>
                 <p className="mt-2 md:mt-4 font-bold tracking-widest uppercase text-xs md:text-sm">
                     Box and Papers Included.

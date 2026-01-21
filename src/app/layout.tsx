@@ -14,10 +14,10 @@ export default function RootLayout({
     return (
         <html lang="en">
             <head>
-                {/* Google Fonts - Anton for Brutalist Headlines */}
+                {/* Google Fonts - Anton + Space Grotesk */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+                <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
             </head>
             <body>
                 {children}
