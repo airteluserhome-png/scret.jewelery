@@ -6,6 +6,8 @@ export const metadata: Metadata = {
     description: "5A Swiss Movement Watches with Box and Papers",
 };
 
+import PixelLoader from "@/components/pixel-loader";
+
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -20,6 +22,7 @@ export default function RootLayout({
                 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
             </head>
             <body>
+                <PixelLoader />
                 {children}
             </body>
         </html>
