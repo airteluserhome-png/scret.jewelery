@@ -1,6 +1,7 @@
 import BrutalistHeader from "@/components/brutalist-header";
 import BrutalistTicker from "@/components/brutalist-ticker";
 import BrutalistGrid from "@/components/brutalist-grid";
+import FeaturedGrid from "@/components/featured-grid";
 import CrossTape from "@/components/cross-tape";
 
 export default function Page() {
@@ -13,24 +14,24 @@ export default function Page() {
             {/* Ticker */}
             <BrutalistTicker />
 
-            {/* PLAIN WATCHES Section */}
+            {/* FEATURED COLLECTION - MIXED PRODUCTS */}
             <div className="px-4 md:px-8 lg:px-10 pt-8 md:pt-12">
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-brutalist text-black brutalist-border-b pb-3 md:pb-4 tracking-[0.05em] leading-none">
-                    PLAIN WATCHES (5A)
+                    FEATURED COLLECTION
                 </h2>
             </div>
-            <BrutalistGrid category="plain-watches" ctaCard={{ text: "VIEW ALL", href: "/shop" }} />
+            <FeaturedGrid />
 
             {/* Cross Tape Effect */}
             <CrossTape />
 
-            {/* ICED OUT Section */}
+            {/* ACCESSORIES Section */}
             <div className="px-4 md:px-8 lg:px-10">
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-brutalist text-black brutalist-border-b pb-3 md:pb-4 tracking-[0.05em] leading-none">
-                    ICED OUT (5A)
+                    VVS ACCESSORIES
                 </h2>
             </div>
-            <BrutalistGrid category="iced-watches" ctaCard={{ text: "CONTACT US", href: "/shop" }} />
+            <BrutalistGrid category="accessories" ctaCard={{ text: "VIEW ALL", href: "/shop" }} />
 
             {/* Footer */}
             <footer className="bg-black text-white p-6 md:p-12 lg:p-16 mt-12 md:mt-16 text-center">

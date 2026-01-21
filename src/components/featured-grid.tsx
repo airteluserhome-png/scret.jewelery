@@ -2,18 +2,12 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { getProductsByCategory } from "@/data/products";
+import { getFeaturedProducts } from "@/data/products";
 
-export default function BrutalistGrid({
-    category,
-    ctaCard
-}: {
-    category: "plain-watches" | "iced-watches" | "accessories";
-    ctaCard?: { text: string; href?: string };
-}) {
-    const products = getProductsByCategory(category);
+export default function FeaturedGrid() {
+    const products = getFeaturedProducts(6);
 
-    // Urgency messages rotate
+    // Urgency messages
     const urgencyMessages = ["SELLING FAST ⚡", "LOW STOCK", "HIGH DEMAND", "ALMOST GONE"];
 
     return (
@@ -72,20 +66,6 @@ export default function BrutalistGrid({
                         </div>
                     </Link>
                 ))}
-
-                {/* CTA Card */}
-                {ctaCard && (
-                    <Link
-                        href={ctaCard.href || "/shop"}
-                        className="card-3d flex flex-col justify-center items-center bg-dark text-white p-8 md:p-12 min-h-[380px] cursor-pointer no-underline"
-                    >
-                        <h3 className="text-3xl md:text-4xl lg:text-5xl font-brutalist text-center leading-none tracking-[0.05em]">
-                            {ctaCard.text.split(' ').map((word, i) => (
-                                <span key={i}>{word}<br /></span>
-                            ))}
-                        </h3>
-                    </Link>
-                )}
             </div>
         </div>
     );

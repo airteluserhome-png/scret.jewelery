@@ -1,7 +1,7 @@
 export interface Product {
     id: number;
     name: string;
-    category: "plain-watches" | "iced-watches";
+    category: "plain-watches" | "iced-watches" | "accessories";
     brand: string;
     price: string;
     priceNum: number;
@@ -85,8 +85,7 @@ export const products: Product[] = [
         price: "$450",
         priceNum: 450,
         image: "/Cartier/Cartier Santos White Gold.jpg",
-        badge: "5A SWISS",
-        description: "5A Swiss movement Cartier Santos with box and papers",
+        badge: "5A SWISS", description: "5A Swiss movement Cartier Santos with box and papers",
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
 
@@ -138,6 +137,80 @@ export const products: Product[] = [
         badge: "ICED OUT",
         description: "5A Swiss movement Iced Cartier Santos with box and papers",
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+    },
+
+    // ACCESSORIES
+    {
+        id: 11,
+        name: "VVS CROSS BRACELET ROSE GOLD",
+        category: "accessories",
+        brand: "VVS",
+        price: "$350",
+        priceNum: 350,
+        image: "/VVS Cross Bracelet rose gold/vvs-cross-rose.jpg",
+        badge: "VVS QUALITY",
+        description: "VVS quality cross bracelet in rose gold",
+        specs: { movement: "N/A", quality: "VVS Quality", includes: "Premium Packaging" }
+    },
+    {
+        id: 12,
+        name: "VVS CROSS BRACELET WHITE GOLD",
+        category: "accessories",
+        brand: "VVS",
+        price: "$350",
+        priceNum: 350,
+        image: "/VVS Cross Bracelet white gold/vvs-cross-white.jpg",
+        badge: "VVS QUALITY",
+        description: "VVS quality cross bracelet in white gold",
+        specs: { movement: "N/A", quality: "VVS Quality", includes: "Premium Packaging" }
+    },
+    {
+        id: 13,
+        name: "VAN CLEEF BLUE DIAMONDS",
+        category: "accessories",
+        brand: "Van Cleef",
+        price: "$200",
+        priceNum: 200,
+        image: "/VVS FLOWER BRACALET BLUE DIAMONDS/2026-01-21 18.36.38.jpg",
+        badge: "VAN CLEEF",
+        description: "Van Cleef bracelet with blue diamonds",
+        specs: { movement: "N/A", quality: "VVS Diamonds", includes: "Premium Packaging" }
+    },
+    {
+        id: 14,
+        name: "VAN CLEEF PINK DIAMONDS",
+        category: "accessories",
+        brand: "Van Cleef",
+        price: "$200",
+        priceNum: 200,
+        image: "/VVS FLOWER BRACALET PINK DIAMONDS/vvs-flower-pink.jpg",
+        badge: "VAN CLEEF",
+        description: "Van Cleef bracelet with pink diamonds",
+        specs: { movement: "N/A", quality: "VVS Diamonds", includes: "Premium Packaging" }
+    },
+    {
+        id: 15,
+        name: "VVS CARTIER GLASSES (TAN)",
+        category: "accessories",
+        brand: "Cartier",
+        price: "$650",
+        priceNum: 650,
+        image: "/VVS CARTIER GLASSES (TAN)/2026-01-21 18.18.57.jpg",
+        badge: "LUXURY",
+        description: "VVS quality Cartier glasses in tan",
+        specs: { movement: "N/A", quality: "VVS Quality", includes: "Case & Cloth" }
+    },
+    {
+        id: 16,
+        name: "VVS CARTIER GLASSES (BLACK)",
+        category: "accessories",
+        brand: "Cartier",
+        price: "$650",
+        priceNum: 650,
+        image: "/VVS CARTIER GLASSES (BLACK)/vvs-cartier-black.jpg",
+        badge: "LUXURY",
+        description: "VVS quality Cartier glasses in black",
+        specs: { movement: "N/A", quality: "VVS Quality", includes: "Case & Cloth" }
     }
 ];
 
@@ -146,10 +219,20 @@ export function getProductById(id: number): Product | undefined {
     return products.find(p => p.id === id);
 }
 
-export function getProductsByCategory(category: "plain-watches" | "iced-watches"): Product[] {
+export function getProductsByCategory(category: "plain-watches" | "iced-watches" | "accessories"): Product[] {
     return products.filter(p => p.category === category);
 }
 
 export function getAllCategories(): string[] {
-    return ["plain-watches", "iced-watches"];
+    return ["plain-watches", "iced-watches", "accessories"];
+}
+
+export function getFeaturedProducts(count: number = 6): Product[] {
+    // Return a mix of products from different categories
+    const featured = [
+        ...products.filter(p => p.category === "plain-watches").slice(0, 2),
+        ...products.filter(p => p.category === "iced-watches").slice(0, 2),
+        ...products.filter(p => p.category === "accessories").slice(0, 2)
+    ];
+    return featured.slice(0, count);
 }
