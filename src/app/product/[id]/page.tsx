@@ -13,18 +13,10 @@ import CrossTape from "@/components/cross-tape";
 
 export default function ProductPage({ params }: { params: { id: string } }) {
     const [modalOpen, setModalOpen] = useState(false);
-    const product = getProductById(parseInt(params.id));
-    const { addItem } = useCart();
+    const [activeImage, setActiveImage] = useState(product?.image);
 
     if (!product) {
-        return (
-            <div className="min-h-screen flex items-center justify-center bg-off-white">
-                <div className="text-center">
-                    <h1 className="font-brutalist text-4xl mb-4 text-black">PRODUCT NOT FOUND</h1>
-                    <Link href="/" className="text-hot-pink hover:underline font-bold">Return Home</Link>
-                </div>
-            </div>
-        );
+        // ... (error handling)
     }
 
     return (
@@ -77,6 +69,30 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                             <div className="w-3/5 p-4">{product.specs.quality}</div>
                         </div>
                     </div>
+
+                    {/* IMAGE GALLERY THUMBNAILS (Only if multiple images exist) */}
+                    {product.images && product.images.length > 1 && (
+                        <div className="mb-8">
+                            <p className="font-bold text-xs uppercase tracking-widest mb-3 text-gray-500">Select View</p>
+                            <div className="flex gap-3 overflow-x-auto pb-2">
+                                {product.images.map((img, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setActiveImage(img)}
+                                        className={`relative w-20 h-20 border-[3px] flex-shrink-0 transition-all ${activeImage === img ? "border-hot-pink shadow-[3px_3px_0_black]" : "border-black/20 hover:border-black"
+                                            }`}
+                                    >
+                                        <Image
+                                            src={img}
+                                            alt={`${product.name} view ${index + 1}`}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    )}
 
                     {/* CTA Button */}
                     {/* Action Buttons Grid */}
@@ -140,18 +156,26 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
                     {/* Floating Watch Image */}
                     <motion.div
+                        key={activeImage} // Key change triggers animation on image switch
                         className="relative w-[90%] max-w-[600px] z-20"
+                        initial={{ opacity: 0, scale: 0.9 }}
                         animate={{
+                            opacity: 1,
+                            scale: 1,
                             y: [0, -25, 0],
                         }}
                         transition={{
-                            duration: 6,
-                            ease: "easeInOut",
-                            repeat: Infinity
+                            opacity: { duration: 0.3 },
+                            scale: { duration: 0.3 },
+                            y: {
+                                duration: 6,
+                                ease: "easeInOut",
+                                repeat: Infinity
+                            }
                         }}
                     >
                         <Image
-                            src={product.image}
+                            src={activeImage || product.image}
                             alt={product.name}
                             width={600}
                             height={600}

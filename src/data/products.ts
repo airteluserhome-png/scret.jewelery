@@ -6,6 +6,7 @@ export interface Product {
     price: string;
     priceNum: number;
     image: string;
+    images?: string[]; // Multiple angles
     badge?: string;
     description: string;
     specs: {
@@ -196,6 +197,11 @@ export const products: Product[] = [
         price: "$650",
         priceNum: 650,
         image: "/VVS CARTIER GLASSES (TAN)/2026-01-21 18.18.57.jpg",
+        images: [
+            "/VVS CARTIER GLASSES (TAN)/2026-01-21 18.18.57.jpg",
+            "/VVS CARTIER GLASSES (TAN)/2026-01-21 18.19.52.jpg",
+            "/VVS CARTIER GLASSES (TAN)/2026-01-21 18.19.58.jpg"
+        ],
         badge: "LUXURY",
         description: "VVS quality Cartier glasses in tan",
         specs: { movement: "N/A", quality: "VVS Quality", includes: "Case & Cloth" }
@@ -208,6 +214,11 @@ export const products: Product[] = [
         price: "$650",
         priceNum: 650,
         image: "/VVS CARTIER GLASSES (BLACK)/2026-01-21 18.20.04.jpg",
+        images: [
+            "/VVS CARTIER GLASSES (BLACK)/2026-01-21 18.20.04.jpg",
+            "/VVS CARTIER GLASSES (BLACK)/2026-01-21 18.20.09.jpg",
+            "/VVS CARTIER GLASSES (BLACK)/2026-01-21 18.20.14.jpg"
+        ],
         badge: "LUXURY",
         description: "VVS quality Cartier glasses in black",
         specs: { movement: "N/A", quality: "VVS Quality", includes: "Case & Cloth" }
