@@ -51,7 +51,7 @@ export default function EditorialHero() {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1, delay: 0.6 }}
                 >
-                    5A Swiss Movement • Box & Papers<br />
+                    Premium Quality • Full Packaging<br />
                     <span className="text-hot-pink font-bold">Limited Availability</span>
                 </motion.p>
 

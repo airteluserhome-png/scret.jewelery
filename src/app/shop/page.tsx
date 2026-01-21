@@ -26,7 +26,7 @@ export default function ShopPage() {
                     THE<br />COLLECTION
                 </h1>
                 <div className="font-bold text-sm md:text-base uppercase tracking-[0.2em] text-gray-700">
-                    Curated Swiss Timepieces (5A)
+                    Curated Luxury Collection
                 </div>
             </div>
 

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-    title: "Secretly - Luxury Timepieces",
-    description: "5A Swiss Movement Watches with Box and Papers",
+    title: "Secretly - Luxury Goods",
+    description: "Premium Accessories and Collectibles",
 };
 
 export default function RootLayout({

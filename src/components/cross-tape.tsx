@@ -20,7 +20,7 @@ export default function CrossTape() {
                     }}
                 >
                     <span className="px-4">
-                        SECRETLY JEWELRY ✦ 5A SWISS MOVEMENT ✦ BOX & PAPERS INCLUDED ✦ 100% SECURE CHECKOUT ✦ SECRETLY JEWELRY ✦ 5A SWISS MOVEMENT ✦ BOX & PAPERS INCLUDED ✦ 100% SECURE CHECKOUT
+                        SECRETLY JEWELRY ✦ PREMIUM QUALITY ✦ FULL PACKAGING INCLUDED ✦ 100% SECURE CHECKOUT ✦ SECRETLY JEWELRY ✦ PREMIUM QUALITY ✦ FULL PACKAGING INCLUDED ✦ 100% SECURE CHECKOUT
                     </span>
                 </motion.div>
             </div>

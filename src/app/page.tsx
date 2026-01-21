@@ -42,7 +42,7 @@ export default function Page() {
                     SECURE THE BAG
                 </h2>
                 <p className="font-bold tracking-widest text-sm md:text-base lg:text-lg opacity-80 mt-6 uppercase">
-                    SECRETLY - LUXURY TIMEPIECES
+                    SECRETLY - LUXURY GOODS
                 </p>
                 <p className="mt-2 md:mt-4 font-bold tracking-widest uppercase text-xs md:text-sm">
                     Box and Papers Included.
