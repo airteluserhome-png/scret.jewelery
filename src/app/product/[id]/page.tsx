@@ -144,7 +144,28 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                         <div className="corner bottom-right"></div>
 
                         <div className="tech-label label-top">REF: {product.id.toString().padStart(6, '0')}</div>
-                        <div className="tech-label label-bottom">5A SWISS // VERIFIED</div>
+
+                        {/* SMART LABEL LOGIC */}
+                        {(() => {
+                            const name = product.name.toUpperCase();
+                            let labelText = "5A SWISS // VERIFIED";
+                            let labelColorClass = "text-hot-pink border-hot-pink";
+
+                            if (name.includes("GLASSES") || name.includes("CARTIER") || name.includes("SUNGLASSES")) {
+                                labelText = "VVS OPTICS // VERIFIED";
+                                labelColorClass = "text-black border-black";
+                            } else if (name.includes("BRACELET") || name.includes("CHAIN") || name.includes("NECKLACE") || name.includes("PENDANT")) {
+                                labelText = "VVS GEMS // VERIFIED";
+                            } else if (name.includes("RING")) {
+                                labelText = "GOLD TESTED // VERIFIED";
+                            }
+
+                            return (
+                                <div className={`tech-label label-bottom ${labelColorClass}`}>
+                                    {labelText}
+                                </div>
+                            );
+                        })()}
 
                         <div className="scan-line"></div>
 

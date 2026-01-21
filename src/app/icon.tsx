@@ -17,8 +17,8 @@ export default function Icon() {
             // ImageResponse JSX element
             <div
                 style={{
-                    fontSize: 26, // Larger text
-                    background: 'black',
+                    fontSize: 32, // Max size
+                    background: 'transparent',
                     width: '100%',
                     height: '100%',
                     display: 'flex',
@@ -26,8 +26,7 @@ export default function Icon() {
                     justifyContent: 'center',
                     color: '#FF0055', // Hot Pink
                     fontWeight: 900, // Extra Bold
-                    borderRadius: '0px',
-                    fontFamily: 'Impact, sans-serif', // Thicker, blockier font
+                    fontFamily: 'sans-serif',
                 }}
             >
                 S
