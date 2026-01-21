@@ -246,3 +246,63 @@ html {
         scroll-behavior: smooth;
     }
 }
+
+/* --- 1. GLOBAL FIX FOR ALL PRODUCT IMAGES --- */
+
+/* Target the containers holding the images */
+.card-image,
+.product-visual,
+.product-card .image-wrapper,
+.grid-view-item__image-wrapper {
+    /* FORCE TRANSPARENCY: Removes the solid white box background */
+    background: transparent !important;
+    background-color: transparent !important;
+
+    /* REMOVES SQUARE SHADOWS: Stops the box from casting a square shadow */
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* Target the images themselves */
+.card-image img,
+.product-visual img,
+.product-card img {
+    /* THE MAGIC TRICK: Makes white pixels transparent */
+    mix-blend-mode: multiply !important;
+
+    /* REMOVES SQUARE BORDERS: Ensures no border sits on the JPG edges */
+    border: none !important;
+    outline: none !important;
+
+    /* FIXES THE SHADOW: Only allows shadows if we did the "fake oval" method */
+    filter: contrast(1.1) !important;
+    /* Boosts contrast, removes square shadow */
+}
+
+/* --- 2. SPECIFIC FIX FOR THE PRODUCT PAGE "SWISS" TEXT --- */
+/* This ensures the image sits ON TOP of the text, but the white box disappears */
+
+.product-visual {
+    position: relative;
+    z-index: 10;
+    /* Brings it above the background text */
+}
+
+/* If you want the "Fake Shadow" oval to return (since we removed the square one) */
+.product-visual::after,
+.card-image::after {
+    /* Re-draws the oval floor shadow */
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    /* Adjust based on your layout */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 20px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
+    z-index: -1;
+    /* Puts it BEHIND the watch */
+    opacity: 0.6;
+    pointer-events: none;
+}
