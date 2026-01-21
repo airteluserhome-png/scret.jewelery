@@ -4,9 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import { Menu, X, ShoppingBag, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useCart } from "@/context/cart-context";
 
 export default function BrutalistHeader() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const { setIsOpen, itemsCount } = useCart();
 
     const navLinks = [
         { label: "HOME", href: "/" },
@@ -47,9 +49,18 @@ export default function BrutalistHeader() {
                     <Link href="/shop" className="hover:opacity-70 transition-opacity" aria-label="Account">
                         <User size={20} />
                     </Link>
-                    <Link href="/shop" className="hover:opacity-70 transition-opacity" aria-label="Cart">
+                    <button
+                        onClick={() => setIsOpen(true)}
+                        className="relative hover:opacity-70 transition-opacity"
+                        aria-label="Cart"
+                    >
                         <ShoppingBag size={20} />
-                    </Link>
+                        {itemsCount > 0 && (
+                            <span className="absolute -top-2 -right-2 bg-hot-pink text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-none border border-black shadow-[2px_2px_0_black]">
+                                {itemsCount}
+                            </span>
+                        )}
+                    </button>
                 </div>
             </nav>
 

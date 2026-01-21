@@ -6,6 +6,9 @@ export const metadata: Metadata = {
     description: "Premium Accessories and Collectibles",
 };
 
+import { CartProvider } from "@/context/cart-context";
+import CartDrawer from "@/components/cart-drawer";
+
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -20,7 +23,10 @@ export default function RootLayout({
                 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
             </head>
             <body>
-                {children}
+                <CartProvider>
+                    <CartDrawer />
+                    {children}
+                </CartProvider>
             </body>
         </html>
     );

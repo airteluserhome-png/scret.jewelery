@@ -7,10 +7,12 @@ import Link from "next/link";
 import { getProductById } from "@/data/products";
 import BackButton from "@/components/back-button";
 import PaymentModal from "@/components/payment-modal";
+import { useCart } from "@/context/cart-context";
 
 export default function ProductPage({ params }: { params: { id: string } }) {
     const [modalOpen, setModalOpen] = useState(false);
     const product = getProductById(parseInt(params.id));
+    const { addItem } = useCart();
 
     if (!product) {
         return (
@@ -79,7 +81,12 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     <div className="grid grid-cols-2 gap-4">
                         <button
                             className="bg-white text-black font-brutalist text-xl md:text-2xl py-4 border-[3px] border-black hover:bg-black hover:text-white transition-all uppercase"
-                            onClick={() => alert("Added to cart!")}
+                            onClick={() => addItem({
+                                id: product.id,
+                                name: product.name,
+                                price: product.price,
+                                image: product.image
+                            })}
                         >
                             ADD TO CART
                         </button>
