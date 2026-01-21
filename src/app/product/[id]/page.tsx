@@ -126,10 +126,17 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
                 {/* RIGHT: Product Image with Floor Shadow (Top on Mobile, Right on Desktop) */}
                 <div
-                    className="order-1 lg:order-2 relative flex items-center justify-center overflow-hidden min-h-[400px] lg:min-h-0 bg-white"
+                    className="order-1 lg:order-2 relative flex items-center justify-center overflow-hidden min-h-[400px] lg:min-h-0 bg-white p-6 md:p-12"
                 >
-                    {/* RETRO ARCADE BACKGROUND */}
-                    <RetroBackground />
+                    {/* BRUTALIST FRAME - Thick Black Border with Corner Accents */}
+                    <div className="absolute inset-4 md:inset-8 border-[6px] md:border-[8px] border-black pointer-events-none z-10">
+                        {/* Corner Cutouts/Accents */}
+                        <div className="absolute top-0 left-0 w-4 h-4 bg-white -translate-x-[50%] -translate-y-[50%] border-r-[6px] md:border-r-[8px] border-b-[6px] md:border-b-[8px] border-black" />
+                        <div className="absolute top-0 right-0 w-4 h-4 bg-white translate-x-[50%] -translate-y-[50%] border-l-[6px] md:border-l-[8px] border-b-[6px] md:border-b-[8px] border-black" />
+                        <div className="absolute bottom-0 left-0 w-4 h-4 bg-white -translate-x-[50%] translate-y-[50%] border-r-[6px] md:border-r-[8px] border-t-[6px] md:border-t-[8px] border-black" />
+                        <div className="absolute bottom-0 right-0 w-4 h-4 bg-white translate-x-[50%] translate-y-[50%] border-l-[6px] md:border-l-[8px] border-t-[6px] md:border-t-[8px] border-black" />
+                    </div>
+
                     {/* Floor Shadow - Oval underneath */}
                     <div
                         className="absolute top-[65%] left-1/2 -translate-x-1/2 w-[300px] h-[40px] z-10"
