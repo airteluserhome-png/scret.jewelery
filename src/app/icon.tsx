@@ -24,7 +24,7 @@ export default function Icon() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#FF55BB', // Hot Pink
+                    color: '#FF0099', // Hot Pink
                     fontWeight: 900, // Extra Bold
                     fontFamily: 'sans-serif',
                 }}

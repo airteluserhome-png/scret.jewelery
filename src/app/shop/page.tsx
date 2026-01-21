@@ -21,7 +21,7 @@ function ShopContent() {
             {/* Brutalist Header */}
             <div className="text-center py-8 md:py-8 px-4 brutalist-border-b">
                 <h1
-                    className="font-brutalist leading-[0.9] text-hot-pink hero-3d-text tracking-[0.05em] mb-4"
+                    className="font-brutalist leading-[0.9] text-black hero-3d-text tracking-[0.05em] mb-4"
                     style={{ fontSize: 'clamp(3rem, 9vw, 6rem)' }}
                 >
                     THE<br />COLLECTION
@@ -70,7 +70,7 @@ function ShopContent() {
                                     {/* Card Info */}
                                     <div className="p-5 md:p-6 bg-white flex flex-col gap-4 flex-grow">
                                         <div>
-                                            <div className="font-bold uppercase text-lg md:text-xl leading-none text-hot-pink text-highlight">
+                                            <div className="font-bold uppercase text-lg md:text-xl leading-none text-dark">
                                                 {product.name}
                                             </div>
                                             <div className="text-base md:text-xl font-black text-dark mt-3">
