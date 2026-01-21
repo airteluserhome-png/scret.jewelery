@@ -1,38 +1,15 @@
 "use client";
 
-import { useState, Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { products, getProductsByCategory, Product } from "@/data/products";
+import { products } from "@/data/products";
 import BrutalistPagination from "@/components/brutalist-pagination";
 import BackButton from "@/components/back-button";
 
 function ShopContent() {
-    const searchParams = useSearchParams();
-    const categoryParam = searchParams.get("category");
-
-    // Determine initial category from URL
-    const getInitialCategory = () => {
-        if (!categoryParam) return "all";
-        const param = categoryParam.toLowerCase();
-        if (param === "iced" || param === "iced-watches") return "iced-watches";
-        if (param === "plain" || param === "plain-watches") return "plain-watches";
-        if (param === "accessories") return "accessories";
-        return "all";
-    };
-
-    const [activeCategory, setActiveCategory] = useState<"all" | Product["category"]>(getInitialCategory);
-
-    // Sync state if URL changes (e.g. browser back button)
-    useEffect(() => {
-        setActiveCategory(getInitialCategory());
-    }, [categoryParam]);
-
-    const filteredProducts = activeCategory === "all"
-        ? products
-        : getProductsByCategory(activeCategory);
+    // Filter logic removed per user request - showing all items
 
     return (
         <div className="min-h-screen bg-off-white">
@@ -54,46 +31,6 @@ function ShopContent() {
                 </div>
             </div>
 
-            {/* Filter Bar */}
-            <div className="flex flex-wrap justify-center gap-4 md:gap-8 p-5 brutalist-border-b bg-white">
-                <button
-                    onClick={() => setActiveCategory("all")}
-                    className={`font-brutalist text-lg md:text-xl uppercase transition-all border-b-2 pb-1 ${activeCategory === "all"
-                        ? "border-hot-pink text-hot-pink"
-                        : "border-transparent text-black hover:border-hot-pink"
-                        }`}
-                >
-                    All Items
-                </button>
-                <button
-                    onClick={() => setActiveCategory("plain-watches")}
-                    className={`font-brutalist text-lg md:text-xl uppercase transition-all border-b-2 pb-1 ${activeCategory === "plain-watches"
-                        ? "border-hot-pink text-hot-pink"
-                        : "border-transparent text-black hover:border-hot-pink"
-                        }`}
-                >
-                    Plain Watches
-                </button>
-                <button
-                    onClick={() => setActiveCategory("iced-watches")}
-                    className={`font-brutalist text-lg md:text-xl uppercase transition-all border-b-2 pb-1 ${activeCategory === "iced-watches"
-                        ? "border-hot-pink text-hot-pink"
-                        : "border-transparent text-black hover:border-hot-pink"
-                        }`}
-                >
-                    Iced Out
-                </button>
-                <button
-                    onClick={() => setActiveCategory("accessories")}
-                    className={`font-brutalist text-lg md:text-xl uppercase transition-all border-b-2 pb-1 ${activeCategory === "accessories"
-                        ? "border-hot-pink text-hot-pink"
-                        : "border-transparent text-black hover:border-hot-pink"
-                        }`}
-                >
-                    Accessories
-                </button>
-            </div>
-
             {/* 3D Product Grid (Matching Homepage) */}
             <div className="px-4 md:px-8 lg:px-10 py-8 md:py-12">
                 <motion.div
@@ -101,7 +38,7 @@ function ShopContent() {
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-[1400px] mx-auto"
                 >
                     <AnimatePresence mode="wait">
-                        {filteredProducts.map((product) => (
+                        {products.map((product) => (
                             <motion.div
                                 key={product.id}
                                 layout
@@ -153,7 +90,7 @@ function ShopContent() {
                     </AnimatePresence>
                 </motion.div>
 
-                {filteredProducts.length === 0 && (
+                {products.length === 0 && (
                     <div className="text-center py-20">
                         <p className="font-brutalist text-2xl text-gray-400">NO PRODUCTS FOUND</p>
                     </div>
