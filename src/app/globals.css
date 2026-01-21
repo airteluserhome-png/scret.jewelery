@@ -16,6 +16,21 @@ body {
     overflow-x: hidden;
 }
 
+/* Global transparent backgrounds for product images */
+img {
+    background: transparent !important;
+}
+
+.product-image-wrap {
+    background: transparent !important;
+}
+
+.product-image {
+    background: transparent !important;
+    display: block;
+    mix-blend-mode: multiply;
+}
+
 /* Typography - Unstick Anton with letter-spacing */
 h1,
 h2,
