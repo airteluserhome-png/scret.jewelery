@@ -148,7 +148,7 @@ export const products: Product[] = [
         brand: "VVS",
         price: "$350",
         priceNum: 350,
-        image: "/VVS Cross Bracelet white gold/IMAGE 2026-01-21 18:37:19.jpg",
+        image: "/VVS Cross Bracelet rose gold/2026-01-21 23.08.42.jpg",
         badge: "VVS QUALITY",
         description: "VVS quality cross bracelet in rose gold",
         specs: { movement: "N/A", quality: "VVS Quality", includes: "Premium Packaging" }
