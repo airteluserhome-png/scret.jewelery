@@ -1,4 +1,4 @@
-import BrutalistHeader from "@/components/brutalist-header";
+import EditorialHero from "@/components/editorial-hero";
 import BrutalistTicker from "@/components/brutalist-ticker";
 import BrutalistGrid from "@/components/brutalist-grid";
 import CrossTape from "@/components/cross-tape";
@@ -8,8 +8,8 @@ export default function Page() {
     return (
         <main className="min-h-screen bg-off-white text-dark font-sans selection:bg-hot-pink selection:text-white">
 
-            {/* Header with 3D Text */}
-            <BrutalistHeader />
+            {/* Editorial Hero - Art Director Style */}
+            <EditorialHero />
 
             {/* Ticker */}
             <BrutalistTicker />
