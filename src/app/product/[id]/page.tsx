@@ -15,6 +15,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     const { addItem } = useCart();
     const [modalOpen, setModalOpen] = useState(false);
     const [activeImage, setActiveImage] = useState(product?.image);
+    const [zoomOpen, setZoomOpen] = useState(false);
 
     if (!product) {
         return (
@@ -180,14 +181,16 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
                         {/* Scan Line Removed per user request */}
 
-                        <Image
-                            key={activeImage} // Re-renders on image switch
-                            src={activeImage || product.image}
-                            alt={product.name}
-                            width={600}
-                            height={600}
-                            className="main-watch-img"
-                        />
+                        <div onClick={() => setZoomOpen(true)} className="cursor-zoom-in">
+                            <Image
+                                key={activeImage} // Re-renders on image switch
+                                src={activeImage || product.image}
+                                alt={product.name}
+                                width={600}
+                                height={600}
+                                className="main-watch-img"
+                            />
+                        </div>
 
                     </div>
 
@@ -202,6 +205,26 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             </div>
             {/* Cross Tape for Hype */}
             <CrossTape />
+
+            {/* Fullscreen Zoom Modal */}
+            {zoomOpen && (
+                <div
+                    className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-md flex items-center justify-center p-4 cursor-zoom-out"
+                    onClick={() => setZoomOpen(false)}
+                >
+                    <div className="relative w-full h-full max-w-[90vw] max-h-[90vh] flex items-center justify-center">
+                        <Image
+                            src={activeImage || product.image}
+                            alt={product.name}
+                            fill
+                            className="object-contain"
+                        />
+                        <div className="absolute top-4 right-4 bg-black text-white px-4 py-2 font-brutalist uppercase tracking-wider">
+                            CLOSE [X]
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
