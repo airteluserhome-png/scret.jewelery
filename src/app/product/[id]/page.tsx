@@ -137,35 +137,6 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     className="order-1 lg:order-2 relative flex items-center justify-center overflow-hidden min-h-[400px] lg:min-h-0 bg-white p-6 md:p-12"
                 >
                     {/* BRUTALIST FRAME - Thick Black Border with Corner Accents */}
-                    {/* HYPEBEAST DISPLAY CASE - Industrial & Premium */}
-                    <div className="absolute inset-6 md:inset-12 border-[3px] border-black z-10 pointer-events-none">
-                        {/* Pink Hard Shadow layer offset */}
-                        <div className="absolute top-2 left-2 w-full h-full border-[3px] border-hot-pink -z-10" />
-
-                        {/* Corner Brackets */}
-                        <div className="absolute -top-[2px] -left-[2px] w-6 h-6 border-t-[6px] border-l-[6px] border-black" />
-                        <div className="absolute -top-[2px] -right-[2px] w-6 h-6 border-t-[6px] border-r-[6px] border-black" />
-                        <div className="absolute -bottom-[2px] -left-[2px] w-6 h-6 border-b-[6px] border-l-[6px] border-black" />
-                        <div className="absolute -bottom-[2px] -right-[2px] w-6 h-6 border-b-[6px] border-r-[6px] border-black" />
-
-                        {/* Technical Labels */}
-                        <div className="absolute top-3 left-3 font-mono text-[10px] md:text-xs font-bold tracking-widest bg-black text-white px-2 py-0.5">
-                            SECURE_VIEW
-                        </div>
-                        <div className="absolute bottom-3 right-3 font-mono text-[10px] md:text-xs font-bold tracking-widest text-black/40">
-                            REF: {product.id.toString().padStart(6, '0')}
-                        </div>
-                        <div className="absolute top-1/2 -left-[14px] -translate-y-1/2 -rotate-90 origin-center font-mono text-[9px] tracking-[0.3em] text-black/30">
-                            AUTHENTIC
-                        </div>
-
-                        {/* Crosshairs */}
-                        <div className="absolute top-1/2 left-0 w-3 h-[2px] bg-black" />
-                        <div className="absolute top-1/2 right-0 w-3 h-[2px] bg-black" />
-                        <div className="absolute top-0 left-1/2 w-[2px] h-3 bg-black" />
-                        <div className="absolute bottom-0 left-1/2 w-[2px] h-3 bg-black" />
-                    </div>
-
                     {/* Floor Shadow - Oval underneath */}
                     <div
                         className="absolute top-[65%] left-1/2 -translate-x-1/2 w-[300px] h-[40px] z-10"
