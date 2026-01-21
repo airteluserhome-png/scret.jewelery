@@ -112,8 +112,8 @@ export default function BrutalistHeader() {
             {/* HERO with 3D Text Shadow */}
             <header className="hidden md:block brutalist-border-b brutalist-border-t text-center py-6 md:py-8 lg:py-12 px-4 bg-white">
                 <h1
-                    className="font-brutalist leading-[0.8] tracking-[0.05em] text-hot-pink hero-3d-text"
-                    style={{ fontSize: '14vw' }}
+                    className="font-brutalist leading-[0.8] tracking-[0.05em] text-hot-pink"
+                    style={{ fontSize: '14vw', textShadow: '4px 4px 0px #000' }}
                 >
                     SECRETLY
                 </h1>
