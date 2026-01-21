@@ -436,23 +436,63 @@ div[class*="product"] {
     /* Subtle pop on hover */
 }
 
-/* --- MOBILE OPTIMIZATION --- */
+/* --- MOBILE OPTIMIZATION PATCH --- */
 @media (max-width: 768px) {
+
+    /* 1. Fix the Container Spacing */
+    .product-visual {
+        /* Adds breathing room so top/bottom labels aren't cut off */
+        padding: 50px 20px !important;
+
+        /* CRITICAL: Allows labels to hang outside the box without disappearing */
+        overflow: visible !important;
+
+        /* Force background to stay transparent */
+        background: transparent !important;
+    }
+
+    /* 2. Resize the Frame */
     .tactical-frame {
-        max-width: 100%;
-        /* Use full width on phone */
-        margin-top: 20px;
+        width: 85% !important;
+        /* Prevents it from touching screen edges */
+        max-width: 320px !important;
+        /* Locks a good size for phones */
+        margin: 0 auto !important;
+        /* Centers it perfectly */
     }
 
+    /* 3. Shrink the Brackets */
     .corner {
-        width: 30px;
-        height: 30px;
-        border-width: 3px;
-        /* Thinner lines for mobile */
+        width: 25px !important;
+        height: 25px !important;
+        border-width: 3px !important;
+        /* Thinner lines look cleaner on mobile */
     }
 
+    /* 4. Fix the Text Labels (So they don't overlap lines) */
+    .tech-label {
+        font-size: 10px !important;
+        /* Smaller, crisp text */
+        padding: 4px 8px !important;
+        letter-spacing: 0.5px !important;
+        white-space: nowrap;
+        /* Forces text to stay on one line */
+        z-index: 20 !important;
+        /* Force it on top of everything */
+    }
+
+    /* Position adjustment to clear the border lines */
+    .label-top {
+        top: -15px !important;
+    }
+
+    .label-bottom {
+        bottom: -15px !important;
+    }
+
+    /* 5. Resize the Watch Image */
     .main-watch-img {
-        width: 80%;
-        /* Slightly smaller to prevent crowding */
+        width: 70% !important;
+        /* Gives the watch space to "breathe" inside the brackets */
     }
 }
