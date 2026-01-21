@@ -45,7 +45,7 @@ export default function BrutalistHeader() {
                     href="/"
                     className="md:hidden text-5xl font-brutalist tracking-[0.05em] text-black"
                     style={{
-                        textShadow: '1px 1px 0px #000, 2px 2px 0px #000, 3px 3px 0px #000, 4px 4px 0px #000, 5px 5px 0px #000, 6px 6px 0px #000, 7px 7px 0px #000, 8px 8px 0px #000'
+                        textShadow: '2px 2px 0px #000, 3px 3px 0px #000, 4px 4px 0px #000, 5px 5px 0px #000'
                     }}
                 >
                     SECRETLY
