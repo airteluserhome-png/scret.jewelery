@@ -41,7 +41,7 @@ export default function BrutalistHeader() {
                     ))}
                 </div>
 
-                <Link href="/" className="hidden md:hidden text-xl font-brutalist tracking-[0.05em]">
+                <Link href="/" className="md:hidden text-3xl font-brutalist tracking-[0.05em] text-hot-pink hero-3d-text" style={{ textShadow: '2px 2px 0px #000' }}>
                     SECRETLY
                 </Link>
 
@@ -110,7 +110,7 @@ export default function BrutalistHeader() {
             </AnimatePresence>
 
             {/* HERO with 3D Text Shadow */}
-            <header className="brutalist-border-b brutalist-border-t text-center py-6 md:py-8 lg:py-12 px-4 bg-white">
+            <header className="hidden md:block brutalist-border-b brutalist-border-t text-center py-6 md:py-8 lg:py-12 px-4 bg-white">
                 <h1
                     className="font-brutalist leading-[0.8] tracking-[0.05em] text-hot-pink hero-3d-text"
                     style={{ fontSize: '14vw' }}
