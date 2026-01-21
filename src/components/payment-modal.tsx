@@ -22,8 +22,7 @@ const watchFacts = [
     "G-Shock watches are designed to survive a 10-meter drop.",
     "The first waterproof watch was the Rolex Oyster.",
     "Diamonds are the hardest natural substance on Earth.",
-    "Gold used in watches is often mixed with copper for durability."
-    // ... (Adding more facts to reach ~60)
+    "Gold used in watches is often mixed with copper for durability.",
     "A 'chronograph' is just a fancy word for a stopwatch.",
     "Mechanical watches can have over 100 tiny parts.",
     "Audemars Piguet invented the first luxury sports watch in steel.",
