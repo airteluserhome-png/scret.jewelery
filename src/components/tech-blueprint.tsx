@@ -4,13 +4,13 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 
-// Dynamic Blueprint Data
+// Dynamic Blueprint Data - Updated images to match new catalog
 const blueprintData = [
     {
         id: "rolex",
-        title: "CALIBER\n4130",
+        title: "ROLEX\nICED",
         ref: "Ref. 116505",
-        image: "/rolex-daytona.png",
+        image: "/iced-rolex-1.jpg",
         specs: [
             { label: "Caliber", value: "4130 Manufacture" },
             { label: "Jewels", value: "44 Rubies" },
@@ -23,35 +23,35 @@ const blueprintData = [
         ]
     },
     {
-        id: "ap",
-        title: "CALIBER\n4302",
-        ref: "Ref. 15500ST",
-        image: "/ap-royal-oak.png",
+        id: "patek",
+        title: "PATEK\nPLAIN",
+        ref: "Ref. 5711/1A",
+        image: "/patek-plain-1.jpg",
         specs: [
-            { label: "Caliber", value: "4302 Selfwinding" },
-            { label: "Jewels", value: "32 Rubies" },
+            { label: "Caliber", value: "26-330 SC" },
+            { label: "Jewels", value: "30 Rubies" },
             { label: "Frequency", value: "28,800 VPH" },
-            { label: "Power Reserve", value: "70 Hours" },
-            { label: "Water Resistance", value: "50 Meters" },
+            { label: "Power Reserve", value: "45 Hours" },
+            { label: "Water Resistance", value: "120 Meters" },
             { label: "Case Material", value: "Stainless Steel" },
-            { label: "Crystal", value: "Glareproofed Sapphire" },
-            { label: "Strap", value: "Integrated Steel" },
+            { label: "Crystal", value: "Sapphire Crystal" },
+            { label: "Strap", value: "Steel Bracelet" },
         ]
     },
     {
-        id: "prada",
-        title: "QUARTZ\nMIYOTA",
-        ref: "Ref. PRA-2024",
-        image: "/prada-watch.png",
+        id: "patek-iced",
+        title: "PATEK\nICED",
+        ref: "Ref. 5719/10G",
+        image: "/iced-patek-1.jpg",
         specs: [
-            { label: "Movement", value: "Japanese Quartz" },
-            { label: "Battery Life", value: "3 Years" },
-            { label: "Frequency", value: "32,768 Hz" },
-            { label: "Case Width", value: "38mm Ceramic" },
-            { label: "Water Resistance", value: "30 Meters" },
-            { label: "Case Material", value: "Black Ceramic" },
-            { label: "Crystal", value: "Mineral Glass" },
-            { label: "Strap", value: "Matte Ceramic Link" },
+            { label: "Movement", value: "Self-winding Mechanical" },
+            { label: "Setting", value: "Full Diamond Pave" },
+            { label: "Frequency", value: "28,800 VPH" },
+            { label: "Case Width", value: "40mm" },
+            { label: "Water Resistance", value: "120 Meters" },
+            { label: "Case Material", value: "18k White Gold" },
+            { label: "Crystal", value: "Sapphire Crystal" },
+            { label: "Strap", value: "Diamond Set Gold" },
         ]
     }
 ];
@@ -128,7 +128,7 @@ export default function TechnicalBlueprint() {
                                     exit={{ opacity: 0, y: -10 }}
                                     transition={{ duration: 0.5 }}
                                 >
-                                    <h3 className="font-serif text-5xl md:text-7xl leading-none tracking-tighter text-gray-900 whitespace-pre-line">
+                                    <h3 className="font-sans font-black text-5xl md:text-7xl leading-none tracking-tighter text-gray-900 whitespace-pre-line uppercase">
                                         <TypewriterText text={currentProduct.title} delay={0.2} />
                                     </h3>
                                 </motion.div>
@@ -174,7 +174,7 @@ export default function TechnicalBlueprint() {
                                 src={currentProduct.image}
                                 alt={currentProduct.title}
                                 fill
-                                className="object-contain drop-shadow-2xl"
+                                className="object-cover rounded-md drop-shadow-2xl"
                                 priority
                             />
                         </motion.div>
@@ -201,7 +201,7 @@ export default function TechnicalBlueprint() {
                                         <span className="font-mono text-[10px] uppercase tracking-widest opacity-50 mb-1 group-hover:text-white/50 block h-4">
                                             <TypewriterText text={spec.label} delay={0.6 + (i * 0.1)} />
                                         </span>
-                                        <span className="font-sans text-xl md:text-2xl font-medium tracking-tight group-hover:pl-4 transition-all duration-300 block">
+                                        <span className="font-sans text-xl md:text-2xl font-black uppercase tracking-tighter group-hover:pl-4 transition-all duration-300 block">
                                             <TypewriterText text={spec.value} delay={0.8 + (i * 0.1)} />
                                         </span>
                                     </div>

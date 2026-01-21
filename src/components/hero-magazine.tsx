@@ -12,7 +12,7 @@ export default function HeroMagazine() {
     const yVideo = useTransform(scrollY, [0, 1000], [0, 400]);
 
     return (
-        <section ref={containerRef} className="relative h-screen w-full overflow-hidden bg-deep-pink text-white">
+        <section ref={containerRef} className="relative h-screen w-full overflow-hidden bg-black text-white">
 
             {/* Video/Image Background */}
             <motion.div
@@ -25,28 +25,28 @@ export default function HeroMagazine() {
                     muted
                     loop
                     playsInline
-                    className="w-full h-full object-cover opacity-80"
+                    className="w-full h-full object-cover opacity-90"
                     poster="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=1600&q=90"
                 >
                     {/* Fallback to image if video not provided/loaded */}
                     <source src="/hero-mechanism.mp4" type="video/mp4" />
                 </video>
-                {/* Darker Overlay for Text Readability */}
-                <div className="absolute inset-0 bg-pink-black/40" />
+                {/* Cleaner, Darker Overlay - No Pink Tint */}
+                <div className="absolute inset-0 bg-black/20" />
             </motion.div>
 
             {/* Top Bar Info */}
             <div className="absolute top-0 left-0 right-0 z-20 flex justify-between p-6 md:p-12">
-                <span className="font-mono text-xs uppercase tracking-widest text-white/80">Est. 1924</span>
-                <span className="font-mono text-xs uppercase tracking-widest text-white/80">Geneva, CH</span>
+                <span className="font-mono text-xs uppercase tracking-widest text-white/90">Est. 1924</span>
+                <span className="font-mono text-xs uppercase tracking-widest text-white/90">Geneva, CH</span>
             </div>
 
-            {/* Centered Title - Vertically and Horizontally Centered */}
+            {/* Centered Title - Bold, Simple, Huge */}
             <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 pointer-events-none">
-                <h1 className="font-serif text-[12vw] md:text-[15vw] leading-[0.8] tracking-tighter text-white text-center mb-8">
-                    <ScrambleText text="SECRETLY" revealSpeed={200} scrambleSpeed={60} delay={800} />
+                <h1 className="font-sans font-black text-[15vw] md:text-[18vw] leading-[0.8] tracking-tighter text-white text-center mb-8 drop-shadow-2xl">
+                    <ScrambleText text="SECRETLY" revealSpeed={150} scrambleSpeed={50} delay={500} />
                 </h1>
-                <p className="font-mono text-xs md:text-sm uppercase text-white/70 tracking-widest">Timeless Precision</p>
+                <p className="font-mono text-sm md:text-base uppercase text-white/90 tracking-[0.5em] font-bold">Timeless Precision</p>
             </div>
 
             {/* Bottom Metadata - Moved higher to avoid overlap */}
