@@ -8,6 +8,8 @@ import { getProductById } from "@/data/products";
 import BackButton from "@/components/back-button";
 import PaymentModal from "@/components/payment-modal";
 import { useCart } from "@/context/cart-context";
+import RetroBackground from "@/components/retro-background";
+import CrossTape from "@/components/cross-tape";
 
 export default function ProductPage({ params }: { params: { id: string } }) {
     const [modalOpen, setModalOpen] = useState(false);
@@ -110,6 +112,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 <div
                     className="order-1 lg:order-2 relative flex items-center justify-center overflow-hidden min-h-[400px] lg:min-h-0 bg-white"
                 >
+                    {/* RETRO ARCADE BACKGROUND */}
+                    <RetroBackground />
                     {/* Floor Shadow - Oval underneath */}
                     <div
                         className="absolute top-[65%] left-1/2 -translate-x-1/2 w-[300px] h-[40px] z-10"
@@ -163,6 +167,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     ← Back to Collection
                 </Link>
             </div>
+            {/* Cross Tape for Hype */}
+            <CrossTape />
         </div>
     );
 }
