@@ -1,48 +1,81 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function PixelLoader() {
-    const [percent, setPercent] = useState(0);
     const [hidden, setHidden] = useState(false);
+    const [percent, setPercent] = useState(0);
+    const router = useRouter();
+    const pathname = usePathname();
 
+    // 1. COUNT UP & CURTAIN UP (HIDE LOADER) LOGIC
     useEffect(() => {
-        // 1. FAKE COUNT UP ANIMATION
+        // Reset state when path changes (Curtain Up logic)
+        setPercent(0);
+        setHidden(false); // Make sure it's visible initially if we want a fresh load feel, 
+        // BUT since we slide it UP (hidden), "false" means it's DOWN (visible).
+        // Wait, if we navigated, we want it to start DOWN then slide UP.
+
+        // Actually, if we just navigated, we want the loader to be visible (Active) then slide up.
+        // The previous logic setHidden(true) slides it UP.
+
         const interval = setInterval(() => {
             setPercent(prev => {
-                const next = prev + Math.floor(Math.random() * 5) + 1;
+                const next = prev + Math.floor(Math.random() * 8) + 2;
                 if (next >= 100) {
                     clearInterval(interval);
                     return 100;
                 }
                 return next;
             });
-        }, 50); // Speed of counter
+        }, 30);
 
-        // 2. HIDE LOADER WHEN PAGE IS READY
-        // In Next.js/React, we can just use a timeout here to simulate "load" 
-        // effectively for the preloader since pure "window load" might fire too early 
-        // depending on how this is mounted.
-        const handleLoad = () => {
-            setTimeout(() => {
-                setHidden(true);
-            }, 1000); /* Keeps it visible for at least 1 second so users see the animation */
-        };
-
-        if (document.readyState === "complete") {
-            handleLoad();
-        } else {
-            window.addEventListener("load", handleLoad);
-        }
+        // Hide loader after delay
+        const timer = setTimeout(() => {
+            setHidden(true); // Slide up (Hide)
+        }, 800);
 
         return () => {
             clearInterval(interval);
-            window.removeEventListener("load", handleLoad);
+            clearTimeout(timer);
         };
-    }, []);
+    }, [pathname]);
+
+    // 2. CURTAIN DOWN (SHOW LOADER) LOGIC
+    useEffect(() => {
+        // Intercept links to show loader before navigating
+        const handleLinkClick = (e: MouseEvent) => {
+            const target = e.target as HTMLElement;
+            const link = target.closest('a');
+
+            if (link) {
+                const href = link.getAttribute('href');
+                // Check if it's a valid internal link
+                if (href && href.startsWith('/') && !href.startsWith('#') && !link.getAttribute('target')) {
+                    // Prevent immediate navigation
+                    e.preventDefault();
+
+                    // Show loader (Curtain Down)
+                    setHidden(false);
+
+                    // Wait for curtain to fall, then push route
+                    setTimeout(() => {
+                        router.push(href);
+                    }, 600);
+                }
+            }
+        };
+
+        document.addEventListener('click', handleLinkClick);
+        return () => document.removeEventListener('click', handleLinkClick);
+    }, [router]);
 
     return (
-        <div id="brutalist-loader" className={hidden ? "loader-hidden" : ""}>
+        <div
+            id="brutalist-loader"
+            className={hidden ? "loader-hidden" : "loader-active"}
+        >
             <div className="loader-content text-center">
 
                 <div className="pixel-eater-wrapper mx-auto">
@@ -52,10 +85,11 @@ export default function PixelLoader() {
                     <div className="pixel-food"></div>
                     <div className="pixel-food"></div>
                     <div className="pixel-food"></div>
+                    <div className="pixel-food"></div>
                 </div>
 
-                <div className="loader-text">
-                    SYSTEM LOADING <span id="load-percent">{percent}</span>%
+                <div className="loader-text flex justify-center items-center">
+                    SYSTEM LOADING <span id="load-percent" className="ml-2 w-[3ch] text-left">{percent}</span>%
                 </div>
             </div>
         </div>
