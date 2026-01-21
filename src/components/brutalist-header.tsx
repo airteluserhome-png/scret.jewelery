@@ -46,12 +46,12 @@ export default function BrutalistHeader() {
                 </Link>
 
                 <div className="flex items-center gap-4">
-                    <Link href="/shop" className="hover:opacity-70 transition-opacity" aria-label="Account">
+                    <Link href="/shop" className="flex items-center justify-center hover:opacity-70 transition-opacity" aria-label="Account">
                         <User size={20} />
                     </Link>
                     <button
                         onClick={() => setIsOpen(true)}
-                        className="relative hover:opacity-70 transition-opacity"
+                        className="relative flex items-center justify-center hover:opacity-70 transition-opacity"
                         aria-label="Cart"
                     >
                         <ShoppingBag size={20} />
