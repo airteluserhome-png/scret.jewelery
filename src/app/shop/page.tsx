@@ -19,25 +19,25 @@ export default function ShopPage() {
     return (
         <div className="min-h-screen bg-off-white">
             {/* Back Button */}
-            <div className="px-4 md:px-8 lg:px-10 pt-6 md:pt-8 bg-white/0 absolute z-50">
+            <div className="px-4 md:px-8 lg:px-10 pt-6 md:pt-8 bg-white/0 z-50 relative">
                 <BackButton fallback="/" />
             </div>
 
             {/* Brutalist Header */}
-            <div className="text-center py-12 md:py-16 px-4 brutalist-border-b">
+            <div className="text-center py-8 md:py-16 px-4 brutalist-border-b">
                 <h1
                     className="font-brutalist leading-[0.9] text-hot-pink hero-3d-text tracking-[0.05em] mb-4"
-                    style={{ fontSize: '8vw' }}
+                    style={{ fontSize: 'max(12vw, 4rem)' }}
                 >
                     THE<br />COLLECTION
                 </h1>
-                <div className="font-bold text-sm md:text-base uppercase tracking-[0.2em] text-gray-700">
+                <div className="font-bold text-xs md:text-base uppercase tracking-[0.2em] text-gray-700">
                     Curated Luxury Collection
                 </div>
             </div>
 
             {/* Filter Bar */}
-            <div className="flex justify-center gap-4 md:gap-8 p-5 brutalist-border-b bg-white">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-8 p-5 brutalist-border-b bg-white">
                 <button
                     onClick={() => setActiveCategory("all")}
                     className={`font-brutalist text-lg md:text-xl uppercase transition-all border-b-2 pb-1 ${activeCategory === "all"
