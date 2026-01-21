@@ -17,7 +17,7 @@ export default function Icon() {
             // ImageResponse JSX element
             <div
                 style={{
-                    fontSize: 24,
+                    fontSize: 26, // Larger text
                     background: 'black',
                     width: '100%',
                     height: '100%',
@@ -25,10 +25,9 @@ export default function Icon() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     color: '#FF0055', // Hot Pink
-                    fontWeight: 900,
-                    borderRadius: '4px', // Subtle rounding
-                    border: '2px solid #FF0055', // Pink Border
-                    fontFamily: 'sans-serif',
+                    fontWeight: 900, // Extra Bold
+                    borderRadius: '0px',
+                    fontFamily: 'Impact, sans-serif', // Thicker, blockier font
                 }}
             >
                 S
@@ -36,8 +35,6 @@ export default function Icon() {
         ),
         // ImageResponse options
         {
-            // For convenience, we can re-use the exported icons size metadata
-            // config to also set the ImageResponse's width and height.
             ...size,
         }
     );
