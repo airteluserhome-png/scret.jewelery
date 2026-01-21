@@ -31,7 +31,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     return (
         <div className="min-h-screen bg-white">
             {/* Back Button */}
-            <div className="px-6 md:px-12 pt-6 md:pt-8 flex justify-center lg:justify-start">
+            <div className="px-6 md:px-12 pt-6 md:pt-8 flex justify-start">
                 <BackButton fallback="/shop" />
             </div>
 
@@ -39,7 +39,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[90vh] brutalist-border-b">
 
                 {/* LEFT: Product Details (Bottom on Mobile, Left on Desktop) */}
-                <div className="order-2 lg:order-1 p-8 md:p-12 lg:p-16 lg:brutalist-border-r bg-white flex flex-col justify-center items-center lg:items-start text-center lg:text-left brutalist-border-b lg:border-b-0">
+                <div className="order-2 lg:order-1 p-8 md:p-12 lg:p-16 lg:brutalist-border-r bg-white flex flex-col justify-center items-start text-left brutalist-border-b lg:border-b-0">
                     {/* Brand Tag */}
                     <div className="font-bold text-gray-500 uppercase tracking-[0.2em] text-sm">
                         {product.brand}
@@ -60,19 +60,19 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     {/* Specs Table */}
                     <div className="border-[2px] border-black my-8 w-full max-w-md lg:max-w-full">
                         <div className="flex border-b-[2px] border-black">
-                            <div className="w-2/5 p-2 md:p-4 bg-gray-100 font-bold border-r-[2px] border-black uppercase text-sm flex items-center justify-center lg:justify-start">
+                            <div className="w-2/5 p-2 md:p-4 bg-gray-100 font-bold border-r-[2px] border-black uppercase text-sm flex items-center justify-start">
                                 Movement
                             </div>
                             <div className="w-3/5 p-2 md:p-4 text-left">{product.specs.movement}</div>
                         </div>
                         <div className="flex border-b-[2px] border-black">
-                            <div className="w-2/5 p-2 md:p-4 bg-gray-100 font-bold border-r-[2px] border-black uppercase text-sm flex items-center justify-center lg:justify-start">
+                            <div className="w-2/5 p-2 md:p-4 bg-gray-100 font-bold border-r-[2px] border-black uppercase text-sm flex items-center justify-start">
                                 Includes
                             </div>
                             <div className="w-3/5 p-2 md:p-4 text-left">{product.specs.includes}</div>
                         </div>
                         <div className="flex">
-                            <div className="w-2/5 p-2 md:p-4 bg-gray-100 font-bold border-r-[2px] border-black uppercase text-sm flex items-center justify-center lg:justify-start">
+                            <div className="w-2/5 p-2 md:p-4 bg-gray-100 font-bold border-r-[2px] border-black uppercase text-sm flex items-center justify-start">
                                 Quality
                             </div>
                             <div className="w-3/5 p-2 md:p-4 text-left">{product.specs.quality}</div>
@@ -81,9 +81,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
                     {/* IMAGE GALLERY THUMBNAILS (Only if multiple images exist) */}
                     {product.images && product.images.length > 1 && (
-                        <div className="mb-8 w-full flex flex-col items-center lg:items-start">
+                        <div className="mb-8 w-full flex flex-col items-start">
                             <p className="font-bold text-xs uppercase tracking-widest mb-3 text-gray-500">Select View</p>
-                            <div className="flex gap-3 overflow-x-auto pb-2 justify-center lg:justify-start w-full">
+                            <div className="flex gap-3 overflow-x-auto pb-2 justify-start w-full">
                                 {product.images.map((img, index) => (
                                     <button
                                         key={index}
@@ -128,14 +128,14 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     {/* Modal */}
                     <PaymentModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 
-                    <p className="text-center mt-4 text-xs opacity-60 uppercase tracking-widest">
+                    <p className="text-center md:text-left mt-4 text-xs opacity-60 uppercase tracking-widest w-full">
                         Secure Checkout • Worldwide Shipping
                     </p>
                 </div>
 
                 {/* RIGHT: Product Image with Floor Shadow (Top on Mobile, Right on Desktop) */}
                 {/* RIGHT: Product Image with Tactical Vault Frame */}
-                <div className="order-1 lg:order-2 product-visual min-h-[400px] lg:min-h-0 bg-white">
+                <div className="order-1 lg:order-2 product-visual min-h-[400px] lg:min-h-0 bg-white w-full flex justify-center items-center">
 
                     <div className="tactical-frame">
 
