@@ -76,14 +76,38 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     </p>
                 </div>
 
-                {/* RIGHT: Product Image */}
+                {/* RIGHT: Product Image with Floor Shadow */}
                 <div
                     className="relative flex items-center justify-center overflow-hidden min-h-[400px] lg:min-h-0"
                     style={{ background: 'radial-gradient(circle, #ffe6f2 0%, #fff 70%)' }}
                 >
-                    {/* Floating Watch Image with Animated Shadow */}
+                    {/* Floor Shadow - Oval underneath */}
+                    <div
+                        className="absolute top-[65%] left-1/2 -translate-x-1/2 w-[300px] h-[40px] z-10"
+                        style={{
+                            background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, transparent 70%)',
+                        }}
+                    >
+                        <motion.div
+                            className="w-full h-full"
+                            animate={{
+                                transform: ['scale(1)', 'scale(0.8)', 'scale(1)'],
+                                opacity: [1, 0.5, 1]
+                            }}
+                            transition={{
+                                duration: 6,
+                                ease: "easeInOut",
+                                repeat: Infinity
+                            }}
+                            style={{
+                                background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, transparent 70%)',
+                            }}
+                        />
+                    </div>
+
+                    {/* Floating Watch Image */}
                     <motion.div
-                        className="relative w-[90%] max-w-[600px] z-10"
+                        className="relative w-[90%] max-w-[600px] z-20"
                         animate={{
                             y: [0, -25, 0],
                         }}
@@ -93,28 +117,13 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                             repeat: Infinity
                         }}
                     >
-                        <motion.div
-                            animate={{
-                                filter: [
-                                    'drop-shadow(0px 25px 30px rgba(0,0,0,0.3))',
-                                    'drop-shadow(0px 50px 50px rgba(0,0,0,0.15))',
-                                    'drop-shadow(0px 25px 30px rgba(0,0,0,0.3))'
-                                ]
-                            }}
-                            transition={{
-                                duration: 6,
-                                ease: "easeInOut",
-                                repeat: Infinity
-                            }}
-                        >
-                            <Image
-                                src={product.image}
-                                alt={product.name}
-                                width={600}
-                                height={600}
-                                className="w-full h-auto mix-blend-multiply"
-                            />
-                        </motion.div>
+                        <Image
+                            src={product.image}
+                            alt={product.name}
+                            width={600}
+                            height={600}
+                            className="w-full h-auto mix-blend-multiply"
+                        />
                     </motion.div>
 
                     {/* Background Text Watermark */}
