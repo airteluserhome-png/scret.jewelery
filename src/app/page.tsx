@@ -22,12 +22,7 @@ export default function Page() {
 
             {/* Footer */}
             <footer className="bg-black text-white p-6 md:p-12 lg:p-16 mt-12 md:mt-16 text-center">
-                <h2
-                    className="font-brutalist leading-none mb-4 tracking-[0.05em]"
-                    style={{ fontSize: '12vw' }}
-                >
-                    SECURE THE BAG
-                </h2>
+
                 <p className="font-bold tracking-widest text-sm md:text-base lg:text-lg opacity-80 mt-6 uppercase">
                     SECRETLY - LUXURY GOODS
                 </p>
