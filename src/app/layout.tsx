@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import PasscodeLock from "@/components/passcode-lock";
 
 export const metadata: Metadata = {
     title: "Secretly - Luxury Timepieces",
@@ -20,7 +21,9 @@ export default function RootLayout({
                 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
             </head>
             <body>
-                {children}
+                <PasscodeLock>
+                    {children}
+                </PasscodeLock>
             </body>
         </html>
     );
