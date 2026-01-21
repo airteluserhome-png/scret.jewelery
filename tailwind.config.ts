@@ -12,7 +12,7 @@ const config: Config = {
                 'hot-pink': '#FF0055',
                 'neon-pink': '#FF0055',
                 'dark': '#111',
-                'off-white': '#F8F8F8',
+                'off-white': '#ffffff',
             },
             fontFamily: {
                 sans: ['"Space Grotesk"', '"Inter"', 'sans-serif'], // Wider, more readable
