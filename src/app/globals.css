@@ -3,14 +3,17 @@
 @tailwind utilities;
 
 :root {
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 255, 255, 255;
-    --background-end-rgb: 255, 255, 255;
+    --foreground-rgb: 74, 31, 46;
+    /* Pink-black for text */
+    --background-start-rgb: 255, 245, 247;
+    /* Soft pink white */
+    --background-end-rgb: 255, 228, 233;
+    /* Light pink */
 }
 
 body {
     color: rgb(var(--foreground-rgb));
-    background: rgb(var(--background-start-rgb));
+    background: linear-gradient(to bottom, rgb(var(--background-start-rgb)), rgb(var(--background-end-rgb)));
 }
 
 @layer utilities {

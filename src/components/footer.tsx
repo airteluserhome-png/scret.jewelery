@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer className="bg-luxury-white border-t border-gray-100 py-12 md:py-20 px-4">
+        <footer className="bg-luxury-white border-t border-rose-pink/20 py-12 md:py-20 px-4">
             <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
                 <div className="col-span-1 sm:col-span-2 md:col-span-1">
                     <h4 className="font-serif text-2xl mb-4 md:mb-6">Secretly</h4>

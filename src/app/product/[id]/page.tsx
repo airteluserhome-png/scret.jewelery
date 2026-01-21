@@ -197,7 +197,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     <div className="hidden md:block space-y-3">
                         {/* Primary CTA */}
                         <motion.button
-                            className="w-full bg-black text-white py-4 font-mono text-xs uppercase tracking-widest relative overflow-hidden"
+                            className="w-full bg-deep-pink text-white py-4 font-mono text-xs uppercase tracking-widest relative overflow-hidden"
                             onHoverStart={() => setCtaHovered(true)}
                             onHoverEnd={() => setCtaHovered(false)}
                             whileTap={{ scale: 0.98 }}
@@ -219,7 +219,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                         </motion.button>
 
                         {/* Secondary CTA */}
-                        <button className="w-full bg-stone-100 text-black py-4 font-mono text-xs uppercase tracking-widest hover:bg-stone-200 transition-colors">
+                        <button className="w-full bg-soft-pink text-pink-black py-4 font-mono text-xs uppercase tracking-widest hover:bg-rose-pink transition-colors">
                             Contact Your Advisor
                         </button>
 
@@ -238,7 +238,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                         <p className="font-mono text-2xl font-semibold">{product.price}</p>
                     </div>
                     <motion.button
-                        className="bg-black text-white px-8 py-4 font-mono text-xs uppercase tracking-widest"
+                        className="bg-deep-pink text-white px-8 py-4 font-mono text-xs uppercase tracking-widest"
                         whileTap={{ scale: 0.95 }}
                     >
                         Acquire Object

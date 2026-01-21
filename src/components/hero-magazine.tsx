@@ -12,7 +12,7 @@ export default function HeroMagazine() {
     const yVideo = useTransform(scrollY, [0, 1000], [0, 400]);
 
     return (
-        <section ref={containerRef} className="relative h-screen w-full overflow-hidden bg-black text-white">
+        <section ref={containerRef} className="relative h-screen w-full overflow-hidden bg-deep-pink text-white">
 
             {/* Video/Image Background */}
             <motion.div
@@ -32,7 +32,7 @@ export default function HeroMagazine() {
                     <source src="/hero-mechanism.mp4" type="video/mp4" />
                 </video>
                 {/* Darker Overlay for Text Readability */}
-                <div className="absolute inset-0 bg-black/50" />
+                <div className="absolute inset-0 bg-pink-black/40" />
             </motion.div>
 
             {/* Top Bar Info */}

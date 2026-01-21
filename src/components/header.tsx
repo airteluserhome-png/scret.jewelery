@@ -52,7 +52,7 @@ export default function Header() {
 
     return (
         <header
-            className="sticky top-0 z-[40] bg-white text-black border-b border-black/5 safe-area-inset-top"
+            className="sticky top-0 z-[40] bg-luxury-white text-pink-black border-b border-rose-pink/20 safe-area-inset-top"
             onMouseLeave={() => setHoveredLink(null)}
         >
             {/* Top Bar */}

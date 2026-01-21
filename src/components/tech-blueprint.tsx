@@ -196,7 +196,7 @@ export default function TechnicalBlueprint() {
                                 {currentProduct.specs.map((spec, i) => (
                                     <div
                                         key={spec.label}
-                                        className="flex-1 flex flex-col justify-center px-8 border-b border-black/5 hover:bg-black hover:text-white transition-colors duration-300 group"
+                                        className="flex-1 flex flex-col justify-center px-8 border-b border-black/5 hover:bg-deep-pink hover:text-white transition-colors duration-300 group"
                                     >
                                         <span className="font-mono text-[10px] uppercase tracking-widest opacity-50 mb-1 group-hover:text-white/50 block h-4">
                                             <TypewriterText text={spec.label} delay={0.6 + (i * 0.1)} />

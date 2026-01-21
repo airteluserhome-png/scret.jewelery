@@ -47,7 +47,7 @@ export default function CommerceGrid() {
             </div>
 
             <div className="py-16 md:py-24 text-center border-t border-black/5 px-4">
-                <button className="border border-black px-8 md:px-12 py-3 md:py-4 font-mono text-xs uppercase tracking-widest hover:bg-black hover:text-white transition-colors duration-300">
+                <button className="border border-deep-pink px-8 md:px-12 py-3 md:py-4 font-mono text-xs uppercase tracking-widest hover:bg-deep-pink hover:text-white transition-colors duration-300">
                     View Full Collection
                 </button>
             </div>
@@ -75,7 +75,7 @@ function ProductCard({ product }: { product: typeof products[0] }) {
                 {/* Badge */}
                 {product.badge && (
                     <div className="absolute top-4 left-4 z-20">
-                        <span className="bg-black text-white px-2 py-1 font-mono text-[10px] uppercase tracking-widest">
+                        <span className="bg-deep-pink text-white px-2 py-1 font-mono text-[10px] uppercase tracking-widest">
                             {product.badge}
                         </span>
                     </div>
@@ -126,7 +126,7 @@ function ProductCard({ product }: { product: typeof products[0] }) {
 
                     {/* Hover State: Add to Bag */}
                     <motion.div
-                        className="absolute inset-0 bg-black text-white flex items-center justify-between px-4 md:px-6"
+                        className="absolute inset-0 bg-deep-pink text-white flex items-center justify-between px-4 md:px-6"
                         variants={{
                             initial: { y: "100%" },
                             hover: { y: 0 }
