@@ -3,7 +3,7 @@ import BrutalistTicker from "@/components/brutalist-ticker";
 import BrutalistGrid from "@/components/brutalist-grid";
 import FeaturedGrid from "@/components/featured-grid";
 import CrossTape from "@/components/cross-tape";
-import ExploreCategories from "@/components/explore-categories";
+import FullProductGrid from "@/components/full-product-grid";
 
 export default function Page() {
     return (
@@ -23,8 +23,8 @@ export default function Page() {
             </div>
             <FeaturedGrid />
 
-            {/* EXPLORE CATEGORIES */}
-            <ExploreCategories />
+            {/* FULL COLLECTION */}
+            <FullProductGrid />
 
             {/* Cross Tape Effect */}
             <CrossTape />
