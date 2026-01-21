@@ -2,6 +2,7 @@ import BrutalistHeader from "@/components/brutalist-header";
 import BrutalistTicker from "@/components/brutalist-ticker";
 import BrutalistGrid from "@/components/brutalist-grid";
 import CrossTape from "@/components/cross-tape";
+import BrutalistCollage from "@/components/brutalist-collage";
 
 export default function Page() {
     return (
@@ -31,6 +32,9 @@ export default function Page() {
                 </h2>
             </div>
             <BrutalistGrid category="iced-watches" ctaCard={{ text: "CONTACT US", href: "/shop" }} />
+
+            {/* Brutalist Collage Section */}
+            <BrutalistCollage />
 
             {/* Footer */}
             <footer className="bg-black text-white p-6 md:p-12 lg:p-16 mt-12 md:mt-16 text-center">
