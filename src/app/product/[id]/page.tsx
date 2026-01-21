@@ -9,7 +9,7 @@ import ScrambleText from "@/components/scramble-text";
 import { getProductById } from "@/data/products";
 
 export default function ProductPage({ params }: { params: { id: string } }) {
-    const product = getProductById(params.id);
+    const product = getProductById(parseInt(params.id));
     const [ctaHovered, setCtaHovered] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
 
