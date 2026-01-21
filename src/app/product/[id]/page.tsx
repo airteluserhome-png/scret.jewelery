@@ -59,22 +59,22 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     {/* Specs Table */}
                     <div className="border-[2px] border-black my-8">
                         <div className="flex border-b-[2px] border-black">
-                            <div className="w-2/5 p-4 bg-gray-100 font-bold border-r-[2px] border-black uppercase text-sm">
+                            <div className="w-2/5 p-2 md:p-4 bg-gray-100 font-bold border-r-[2px] border-black uppercase text-sm">
                                 Movement
                             </div>
-                            <div className="w-3/5 p-4">{product.specs.movement}</div>
+                            <div className="w-3/5 p-2 md:p-4">{product.specs.movement}</div>
                         </div>
                         <div className="flex border-b-[2px] border-black">
-                            <div className="w-2/5 p-4 bg-gray-100 font-bold border-r-[2px] border-black uppercase text-sm">
+                            <div className="w-2/5 p-2 md:p-4 bg-gray-100 font-bold border-r-[2px] border-black uppercase text-sm">
                                 Includes
                             </div>
-                            <div className="w-3/5 p-4">{product.specs.includes}</div>
+                            <div className="w-3/5 p-2 md:p-4">{product.specs.includes}</div>
                         </div>
                         <div className="flex">
-                            <div className="w-2/5 p-4 bg-gray-100 font-bold border-r-[2px] border-black uppercase text-sm">
+                            <div className="w-2/5 p-2 md:p-4 bg-gray-100 font-bold border-r-[2px] border-black uppercase text-sm">
                                 Quality
                             </div>
-                            <div className="w-3/5 p-4">{product.specs.quality}</div>
+                            <div className="w-3/5 p-2 md:p-4">{product.specs.quality}</div>
                         </div>
                     </div>
 

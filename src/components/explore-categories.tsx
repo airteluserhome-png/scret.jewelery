@@ -40,7 +40,7 @@ export default function ExploreCategories() {
                         <Link
                             key={cat.name}
                             href={cat.href}
-                            className={`group relative h-[300px] flex flex-col justify-between p-8 border-[3px] border-black transition-transform hover:-translate-y-2 shadow-[8px_8px_0px_#000] hover:shadow-[12px_12px_0px_#000] ${cat.bgColor} ${cat.textColor}`}
+                            className={`group relative h-[300px] flex flex-col justify-between p-8 border-[3px] border-black transition-transform hover:-translate-y-2 active:scale-95 shadow-[8px_8px_0px_#000] hover:shadow-[12px_12px_0px_#000] ${cat.bgColor} ${cat.textColor}`}
                         >
                             <div>
                                 <h3 className="font-brutalist text-3xl md:text-4xl mb-2 leading-none uppercase">

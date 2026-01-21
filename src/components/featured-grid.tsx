@@ -15,7 +15,7 @@ export default function FeaturedGrid() {
                     <Link
                         key={product.id}
                         href={`/product/${product.id}`}
-                        className="card-3d flex flex-col no-underline text-inherit cursor-pointer"
+                        className="card-3d flex flex-col no-underline text-inherit cursor-pointer transition-transform active:scale-[0.98]"
                     >
 
                         {/* Image Area with Technical Grid */}
