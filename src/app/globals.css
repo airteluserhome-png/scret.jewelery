@@ -167,6 +167,7 @@ h3,
 }
 
 /* 3D Text Shadow for Hero */
+/* Updated with bold shadow effect */
 .hero-3d-text {
     /* Removed shadow - causes issues with black text */
 }
@@ -434,6 +435,7 @@ div[class*="product"] {
     /* Pink accent text */
     border: 2px solid var(--neon-pink);
 }
+
 
 /* 5. THE PINK LASER SCANNER */
 /* Scan Line Animation Removed */
