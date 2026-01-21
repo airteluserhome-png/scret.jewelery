@@ -35,7 +35,7 @@ export default function FeaturedGrid() {
                         <div className="p-5 md:p-6 bg-white flex flex-col gap-3 brutalist-border-t relative z-20">
                             {/* Product Title */}
                             <div>
-                                <div className="font-brutalist uppercase text-xl md:text-2xl leading-[0.9] text-dark mb-1">
+                                <div className="font-brutalist uppercase text-xl md:text-2xl leading-[0.9] text-hot-pink mb-1">
                                     {product.name.split(' ').slice(0, 2).join(' ')}
                                 </div>
                                 <div className="text-sm text-gray-600 uppercase tracking-wide font-normal">

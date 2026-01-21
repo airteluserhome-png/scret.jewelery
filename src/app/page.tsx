@@ -17,7 +17,7 @@ export default function Page() {
 
             {/* FEATURED COLLECTION - MIXED PRODUCTS */}
             <div className="px-4 md:px-8 lg:px-10 pt-8 md:pt-12">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-brutalist text-black brutalist-border-b pb-3 md:pb-4 tracking-[0.05em] leading-none">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-brutalist text-hot-pink brutalist-border-b pb-3 md:pb-4 tracking-[0.05em] leading-none">
                     FEATURED COLLECTION
                 </h2>
             </div>

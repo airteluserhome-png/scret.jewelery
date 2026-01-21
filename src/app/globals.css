@@ -170,14 +170,14 @@ h3,
 /* 3D Trading Card Effect */
 .card-3d {
     background: white;
-    border: 3px solid var(--dark);
+    border: 3px solid var(--neon-pink);
     transition: all 0.2s ease-out;
-    box-shadow: 8px 8px 0px var(--dark);
+    box-shadow: 8px 8px 0px var(--neon-pink);
 }
 
 .card-3d:hover {
     transform: translate(-5px, -5px);
-    box-shadow: 15px 15px 0px var(--neon-pink);
+    box-shadow: 15px 15px 0px var(--dark);
     z-index: 10;
 }
 
@@ -215,13 +215,13 @@ h3,
 
 /* Kinetic Button - Pink on Card Hover */
 .buy-btn-card {
-    background: var(--dark);
+    background: var(--neon-pink);
     color: white;
     transition: background 0.2s ease;
 }
 
 .card-3d:hover .buy-btn-card {
-    background: var(--neon-pink);
+    background: var(--dark);
 }
 
 /* Mobile Typography */
@@ -246,19 +246,19 @@ html {
 
 /* Black Borders for Contrast */
 .brutalist-border {
-    border: 3px solid #000;
+    border: 3px solid var(--neon-pink);
 }
 
 .brutalist-border-b {
-    border-bottom: 3px solid #000;
+    border-bottom: 3px solid var(--neon-pink);
 }
 
 .brutalist-border-r {
-    border-right: 3px solid #000;
+    border-right: 3px solid var(--neon-pink);
 }
 
 .brutalist-border-t {
-    border-top: 3px solid #000;
+    border-top: 3px solid var(--neon-pink);
 }
 
 /* Safe Area */
