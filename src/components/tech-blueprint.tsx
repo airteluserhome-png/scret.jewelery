@@ -128,7 +128,7 @@ export default function TechnicalBlueprint() {
                                     exit={{ opacity: 0, y: -10 }}
                                     transition={{ duration: 0.5 }}
                                 >
-                                    <h3 className="font-sans font-black text-5xl md:text-7xl leading-none tracking-tighter text-gray-900 whitespace-pre-line uppercase">
+                                    <h3 className="font-serif italic text-5xl md:text-7xl leading-none tracking-tighter text-deep-pink whitespace-pre-line">
                                         <TypewriterText text={currentProduct.title} delay={0.2} />
                                     </h3>
                                 </motion.div>
@@ -149,13 +149,13 @@ export default function TechnicalBlueprint() {
                     </div>
                 </div>
 
-                {/* Col 2: Watch Image (Centered & huge) */}
-                <div className="w-full md:w-1/2 relative bg-stone-100 border-b md:border-b-0 md:border-r border-black/5 flex items-center justify-center overflow-hidden p-8">
+                {/* Col 2: Watch Image */}
+                <div className="w-full md:w-1/2 relative bg-stone-50 border-b md:border-b-0 md:border-r border-black/5 flex items-center justify-center overflow-hidden p-8">
                     {/* Grid Lines Background */}
                     <div
-                        className="absolute inset-0 opacity-[0.03]"
+                        className="absolute inset-0 opacity-[0.05]"
                         style={{
-                            backgroundImage: "linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)",
+                            backgroundImage: "linear-gradient(#d4527a 1px, transparent 1px), linear-gradient(90deg, #d4527a 1px, transparent 1px)",
                             backgroundSize: "40px 40px"
                         }}
                     />
@@ -164,18 +164,18 @@ export default function TechnicalBlueprint() {
                         <motion.div
                             key={currentProduct.id}
                             className="relative w-full h-full flex items-center justify-center"
-                            initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
-                            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                            exit={{ opacity: 0, scale: 1.1, rotate: 5 }}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 1.1 }}
                             transition={{ duration: 0.8, ease: "easeInOut" }}
-                            style={{ rotate: useTransform(scrollYProgress, [0, 1], [0, 20]) }}
                         >
                             <div className="relative w-[90%] h-[90%] md:w-[85%] md:h-[85%] transition-all duration-500 hover:scale-105">
+                                {/* Mix Blend Multiply makes white/light pixels transparent */}
                                 <Image
                                     src={currentProduct.image}
                                     alt={currentProduct.title}
                                     fill
-                                    className="object-contain mix-blend-multiply drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)]"
+                                    className="object-contain mix-blend-multiply"
                                     priority
                                 />
                             </div>
@@ -198,12 +198,12 @@ export default function TechnicalBlueprint() {
                                 {currentProduct.specs.map((spec, i) => (
                                     <div
                                         key={spec.label}
-                                        className="flex-1 flex flex-col justify-center px-8 border-b border-black/5 hover:bg-deep-pink hover:text-white transition-colors duration-300 group"
+                                        className="flex-1 flex flex-col justify-center px-8 border-b border-rose-pink/10 hover:bg-deep-pink hover:text-white transition-colors duration-300 group"
                                     >
-                                        <span className="font-mono text-[10px] uppercase tracking-widest opacity-50 mb-1 group-hover:text-white/50 block h-4">
+                                        <span className="font-mono text-[10px] uppercase tracking-widest opacity-50 mb-1 group-hover:text-white/50 block h-4 text-pink-black">
                                             <TypewriterText text={spec.label} delay={0.6 + (i * 0.1)} />
                                         </span>
-                                        <span className="font-sans text-xl md:text-2xl font-black uppercase tracking-tighter group-hover:pl-4 transition-all duration-300 block">
+                                        <span className="font-serif italic text-xl md:text-2xl text-deep-pink group-hover:text-white group-hover:pl-4 transition-all duration-300 block">
                                             <TypewriterText text={spec.value} delay={0.8 + (i * 0.1)} />
                                         </span>
                                     </div>
