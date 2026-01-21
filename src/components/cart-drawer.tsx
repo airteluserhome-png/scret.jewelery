@@ -88,7 +88,7 @@ export default function CartDrawer() {
                                                 {/* Remove */}
                                                 <button
                                                     onClick={() => removeItem(item.id)}
-                                                    className="text-gray-400 hover:text-red-600 transition-colors"
+                                                    className="text-gray-400 hover:text-hot-pink transition-colors"
                                                 >
                                                     <Trash2 size={18} />
                                                 </button>
@@ -116,7 +116,7 @@ export default function CartDrawer() {
 
                                 <button
                                     onClick={clearCart}
-                                    className="w-full text-xs uppercase font-bold tracking-widest text-gray-400 hover:text-red-500 text-center"
+                                    className="w-full text-xs uppercase font-bold tracking-widest text-gray-400 hover:text-hot-pink text-center"
                                 >
                                     Clear Cart
                                 </button>
