@@ -89,34 +89,10 @@ export const products: Product[] = [
         description: "5A Swiss movement Cartier Santos with box and papers",
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
-    {
-        id: 7,
-        name: "PATEK PHILIPPE NAUTILUS X TIFFANY AND CO",
-        category: "plain-watches",
-        brand: "Patek Philippe",
-        price: "$600",
-        priceNum: 600,
-        image: "/PATEK PHILLIPE /Patek Philippe Nautilus x Tiffany And Co.jpg",
-        badge: "5A SWISS",
-        description: "5A Swiss movement Patek Philippe with box and papers",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
-    },
-    {
-        id: 8,
-        name: "PATEK PHILIPPE ROSE GOLD",
-        category: "plain-watches",
-        brand: "Patek Philippe",
-        price: "$600",
-        priceNum: 600,
-        image: "/PATEK PHILLIPE /Patek Philippe Rose Gold.jpg",
-        badge: "5A SWISS",
-        description: "5A Swiss movement Patek Philippe with box and papers",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
-    },
 
     // ICED OUT WATCHES
     {
-        id: 9,
+        id: 7,
         name: "AP ICED OUT ROSE GOLD",
         category: "iced-watches",
         brand: "Audemars Piguet",
@@ -128,7 +104,7 @@ export const products: Product[] = [
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
     {
-        id: 10,
+        id: 8,
         name: "AP ICED OUT",
         category: "iced-watches",
         brand: "Audemars Piguet",
@@ -140,7 +116,7 @@ export const products: Product[] = [
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
     {
-        id: 11,
+        id: 9,
         name: "ICED OUT CARTIER SANTOS ROSE GOLD",
         category: "iced-watches",
         brand: "Cartier",
@@ -152,7 +128,7 @@ export const products: Product[] = [
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
     {
-        id: 12,
+        id: 10,
         name: "ICED OUT CARTIER SANTOS WHITE GOLD",
         category: "iced-watches",
         brand: "Cartier",
@@ -161,54 +137,6 @@ export const products: Product[] = [
         image: "/ICED OUT CARTIER/Iced out Cartier Santos white gold.jpg",
         badge: "ICED OUT",
         description: "5A Swiss movement Iced Cartier Santos with box and papers",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
-    },
-    {
-        id: 13,
-        name: "ICED OUT PATEK PHILLIPE NAUTILUS ROSE GOLD",
-        category: "iced-watches",
-        brand: "Patek Philippe",
-        price: "$800",
-        priceNum: 800,
-        image: "/ICET OUT Patek philipe/Iced out Patek Phillipe Nautilus ROSE GOLD.jpg",
-        badge: "ICED OUT",
-        description: "5A Swiss movement Iced Patek Philippe with box and papers",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
-    },
-    {
-        id: 14,
-        name: "PATEK PHILLIPE ICED OUT NAUTILUS",
-        category: "iced-watches",
-        brand: "Patek Philippe",
-        price: "$800",
-        priceNum: 800,
-        image: "/ICET OUT Patek philipe/Patek Phillipe Iced out Nautilus.jpg",
-        badge: "ICED OUT",
-        description: "5A Swiss movement Iced Patek Philippe with box and papers",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
-    },
-    {
-        id: 15,
-        name: "ICED OUT ROLEX DAY DATE ROSE GOLD",
-        category: "iced-watches",
-        brand: "Rolex",
-        price: "$700",
-        priceNum: 700,
-        image: "/ICE OUT ROLEX /Iced out Rolex Day date rose gold.jpg",
-        badge: "ICED OUT",
-        description: "5A Swiss movement Iced Rolex with box and papers",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
-    },
-    {
-        id: 16,
-        name: "ICED OUT ROLEX DAY DATE WHITE GOLD",
-        category: "iced-watches",
-        brand: "Rolex",
-        price: "$700",
-        priceNum: 700,
-        image: "/ICE OUT ROLEX /Iced out Rolex Day date white gold.jpg",
-        badge: "ICED OUT",
-        description: "5A Swiss movement Iced Rolex with box and papers",
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     }
 ];
