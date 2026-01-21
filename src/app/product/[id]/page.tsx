@@ -24,7 +24,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     }
 
     return (
-        <div className="min-h-screen bg-off-white">
+        <div className="min-h-screen bg-white">
             {/* Back Button */}
             <div className="px-6 md:px-12 pt-6 md:pt-8">
                 <BackButton fallback="/shop" />

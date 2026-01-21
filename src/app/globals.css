@@ -247,85 +247,36 @@ html {
     }
 }
 
-/* --- 1. GLOBAL FIX FOR ALL PRODUCT IMAGES --- */
+/* --- CAMOUFLAGE FIX: FORCE WHITE BACKGROUNDS --- */
 
-/* Target the containers holding the images */
-.card-image,
-.product-visual,
-.product-card .image-wrapper,
-.grid-view-item__image-wrapper {
-    /* FORCE TRANSPARENCY: Removes the solid white box background */
-    background: transparent !important;
-    background-color: transparent !important;
-
-    /* REMOVES SQUARE SHADOWS: Stops the box from casting a square shadow */
-    box-shadow: none !important;
-    border: none !important;
+/* 1. Force the entire page background to Pure White */
+body,
+html,
+main,
+.min-h-screen,
+.bg-off-white,
+.product-page-container {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
 }
 
-/* Target the images themselves */
-.card-image img,
-.product-visual img,
-.product-card img {
-    /* THE MAGIC TRICK: Makes white pixels transparent */
-    mix-blend-mode: multiply !important;
+/* 2. Force the Product Section specifically to White */
+.product-visual,
+.product-details,
+.product-container,
+div[class*="product"] {
+    background-color: #ffffff !important;
+}
 
-    /* REMOVES SQUARE BORDERS: Ensures no border sits on the JPG edges */
+/* 3. Remove the Shadow/Border that outlines the square */
+.product-visual img,
+.main-watch-img,
+.card-image img {
+    box-shadow: none !important;
+    filter: none !important;
     border: none !important;
     outline: none !important;
-
-    /* FIXES THE SHADOW: Only allows shadows if we did the "fake oval" method */
-    filter: contrast(1.1) !important;
-    /* Boosts contrast, removes square shadow */
-}
-
-/* --- 2. SPECIFIC FIX FOR THE PRODUCT PAGE "SWISS" TEXT --- */
-/* This ensures the image sits ON TOP of the text, but the white box disappears */
-
-.product-visual {
-    position: relative;
-    z-index: 10;
-    /* Brings it above the background text */
-}
-
-/* If you want the "Fake Shadow" oval to return (since we removed the square one) */
-.product-visual::after,
-.card-image::after {
-    /* Re-draws the oval floor shadow */
-    content: '';
-    position: absolute;
-    bottom: 10%;
-    /* Adjust based on your layout */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 140px;
-    height: 20px;
-    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
-    z-index: -1;
-    /* Puts it BEHIND the watch */
-    opacity: 0.6;
-    pointer-events: none;
-}
-
-/* --- FORCE TRANSPARENCY ON ALL WATCH IMAGES (OPTION 1) --- */
-
-/* 1. Target the Product Page Main Image */
-.product-visual img,
-.main-watch-img {
-    mix-blend-mode: multiply !important;
-    filter: contrast(1.05) !important;
-    /* Slight boost to make it pop */
-}
-
-/* 2. Target the Collection Grid Images */
-.product-card img,
-.card-image img {
-    mix-blend-mode: multiply !important;
-}
-
-/* 3. Ensure the containers behind them are clear */
-.product-visual,
-.card-image {
-    background-color: transparent !important;
-    /* No white background on the box itself */
+    mix-blend-mode: normal !important;
+    /* RESET BLEND MODE TO NORMAL */
+    background: transparent !important;
 }
