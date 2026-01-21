@@ -9,8 +9,8 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                'hot-pink': '#FF0055',
-                'neon-pink': '#FF0055',
+                'hot-pink': '#FF0099',
+                'neon-pink': '#FF0099',
                 'dark': '#111',
                 'off-white': '#ffffff',
             },
@@ -20,7 +20,7 @@ const config: Config = {
             },
             boxShadow: {
                 'brutalist': '8px 8px 0px #111',
-                'brutalist-hover': '15px 15px 0px #FF0055',
+                'brutalist-hover': '15px 15px 0px #FF0099',
             },
         },
     },
