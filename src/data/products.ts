@@ -173,7 +173,7 @@ export const products: Product[] = [
         price: "$200",
         priceNum: 200,
         image: "/VVS FLOWER BRACALET BLUE DIAMONDS/2026-01-21 18.36.38.jpg",
-        badge: "VAN CLEEF",
+        badge: "VVS",
         description: "Van Cleef bracelet with blue diamonds",
         specs: { movement: "N/A", quality: "VVS Diamonds", includes: "Premium Packaging" }
     },
@@ -185,7 +185,7 @@ export const products: Product[] = [
         price: "$200",
         priceNum: 200,
         image: "/VVS FLOWER BRACALET PINK DIAMONDS/2026-01-21 18.26.58.jpg",
-        badge: "VAN CLEEF",
+        badge: "VVS",
         description: "Van Cleef bracelet with pink diamonds",
         specs: { movement: "N/A", quality: "VVS Diamonds", includes: "Premium Packaging" }
     },
