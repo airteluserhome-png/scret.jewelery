@@ -52,6 +52,66 @@ img {
     color: #fff;
 }
 
+/* Modal Pop Animation */
+@keyframes modal-pop {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.animate-modal-pop {
+    animation: modal-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Product Page Action Buttons */
+.action-buttons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.add-cart-btn {
+    background: black;
+    color: white;
+    font-family: 'Anton', sans-serif;
+    padding: 20px;
+    border: 3px solid black;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.add-cart-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px var(--neon-pink);
+}
+
+.buy-now-btn {
+    background: white;
+    color: black;
+    font-family: 'Anton', sans-serif;
+    padding: 20px;
+    border: 3px solid black;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    box-shadow: 5px 5px 0px var(--neon-pink);
+}
+
+.buy-now-btn:hover {
+    background: var(--neon-pink);
+    color: white;
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px black;
+}
+
 /* Typography - Unstick Anton with letter-spacing */
 h1,
 h2,

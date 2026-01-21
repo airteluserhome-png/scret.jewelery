@@ -6,8 +6,10 @@ import { useState } from "react";
 import Link from "next/link";
 import { getProductById } from "@/data/products";
 import BackButton from "@/components/back-button";
+import PaymentModal from "@/components/payment-modal";
 
 export default function ProductPage({ params }: { params: { id: string } }) {
+    const [modalOpen, setModalOpen] = useState(false);
     const product = getProductById(parseInt(params.id));
 
     if (!product) {
