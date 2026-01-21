@@ -147,7 +147,7 @@ export const products: Product[] = [
         brand: "VVS",
         price: "$350",
         priceNum: 350,
-        image: "/VVS Cross Bracelet rose gold/vvs-cross-rose.jpg",
+        image: "/VVS Cross Bracelet white gold/IMAGE 2026-01-21 18:37:19.jpg",
         badge: "VVS QUALITY",
         description: "VVS quality cross bracelet in rose gold",
         specs: { movement: "N/A", quality: "VVS Quality", includes: "Premium Packaging" }
@@ -159,7 +159,7 @@ export const products: Product[] = [
         brand: "VVS",
         price: "$350",
         priceNum: 350,
-        image: "/VVS Cross Bracelet white gold/vvs-cross-white.jpg",
+        image: "/VVS Cross Bracelet white gold/IMAGE 2026-01-21 18:37:19.jpg",
         badge: "VVS QUALITY",
         description: "VVS quality cross bracelet in white gold",
         specs: { movement: "N/A", quality: "VVS Quality", includes: "Premium Packaging" }
@@ -183,7 +183,7 @@ export const products: Product[] = [
         brand: "Van Cleef",
         price: "$200",
         priceNum: 200,
-        image: "/VVS FLOWER BRACALET PINK DIAMONDS/vvs-flower-pink.jpg",
+        image: "/VVS FLOWER BRACALET PINK DIAMONDS/2026-01-21 18.26.58.jpg",
         badge: "VAN CLEEF",
         description: "Van Cleef bracelet with pink diamonds",
         specs: { movement: "N/A", quality: "VVS Diamonds", includes: "Premium Packaging" }
@@ -207,7 +207,7 @@ export const products: Product[] = [
         brand: "Cartier",
         price: "$650",
         priceNum: 650,
-        image: "/VVS CARTIER GLASSES (BLACK)/vvs-cartier-black.jpg",
+        image: "/VVS CARTIER GLASSES (BLACK)/2026-01-21 18.20.04.jpg",
         badge: "LUXURY",
         description: "VVS quality Cartier glasses in black",
         specs: { movement: "N/A", quality: "VVS Quality", includes: "Case & Cloth" }
