@@ -24,7 +24,7 @@ export default function BrutalistGrid({
                     >
                         {/* Image Area */}
                         <div className="bg-white h-[350px] flex items-center justify-center brutalist-border-b overflow-hidden relative">
-                            <div className="relative w-[70%] h-[70%]">
+                            <div className="relative w-[75%] h-[75%]">
                                 <Image
                                     src={product.image}
                                     alt={product.name}

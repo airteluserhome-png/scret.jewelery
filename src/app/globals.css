@@ -47,14 +47,18 @@ h3,
     z-index: 10;
 }
 
-/* Product Image Animation */
+/* Product Image Animation - Enhanced 3D */
 .product-img-card {
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.2));
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* Stronger base shadow for 3D depth */
+    filter: drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.2));
 }
 
 .card-3d:hover .product-img-card {
-    transform: scale(1.1) rotate(-5deg);
+    /* Lifts up and grows */
+    transform: translateY(-10px) scale(1.05) rotate(-3deg);
+    /* Shadow gets deeper and softer when lifted */
+    filter: drop-shadow(0px 30px 30px rgba(0, 0, 0, 0.3));
 }
 
 /* Kinetic Button - Pink on Card Hover */

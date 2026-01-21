@@ -33,8 +33,8 @@ export default function ShopPage() {
                 <button
                     onClick={() => setActiveCategory("all")}
                     className={`font-brutalist text-lg md:text-xl uppercase transition-all border-b-2 pb-1 ${activeCategory === "all"
-                            ? "border-hot-pink text-hot-pink"
-                            : "border-transparent text-black hover:border-hot-pink"
+                        ? "border-hot-pink text-hot-pink"
+                        : "border-transparent text-black hover:border-hot-pink"
                         }`}
                 >
                     All Items
@@ -42,8 +42,8 @@ export default function ShopPage() {
                 <button
                     onClick={() => setActiveCategory("plain-watches")}
                     className={`font-brutalist text-lg md:text-xl uppercase transition-all border-b-2 pb-1 ${activeCategory === "plain-watches"
-                            ? "border-hot-pink text-hot-pink"
-                            : "border-transparent text-black hover:border-hot-pink"
+                        ? "border-hot-pink text-hot-pink"
+                        : "border-transparent text-black hover:border-hot-pink"
                         }`}
                 >
                     Plain Watches
@@ -51,8 +51,8 @@ export default function ShopPage() {
                 <button
                     onClick={() => setActiveCategory("iced-watches")}
                     className={`font-brutalist text-lg md:text-xl uppercase transition-all border-b-2 pb-1 ${activeCategory === "iced-watches"
-                            ? "border-hot-pink text-hot-pink"
-                            : "border-transparent text-black hover:border-hot-pink"
+                        ? "border-hot-pink text-hot-pink"
+                        : "border-transparent text-black hover:border-hot-pink"
                         }`}
                 >
                     Iced Out
@@ -78,7 +78,7 @@ export default function ShopPage() {
                             >
                                 {/* Image Area */}
                                 <div className="bg-white h-[300px] md:h-[350px] flex items-center justify-center brutalist-border-b overflow-hidden relative">
-                                    <div className="relative w-[65%] h-[65%]">
+                                    <div className="relative w-[75%] h-[75%]">
                                         <Image
                                             src={product.image}
                                             alt={product.name}
