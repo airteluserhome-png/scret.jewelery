@@ -7,6 +7,7 @@ import Link from "next/link";
 import { products, getProductsByCategory, Product } from "@/data/products";
 import CrossTape from "@/components/cross-tape";
 import BrutalistPagination from "@/components/brutalist-pagination";
+import BackButton from "@/components/back-button";
 
 export default function ShopPage() {
     const [activeCategory, setActiveCategory] = useState<"all" | Product["category"]>("all");
@@ -17,6 +18,11 @@ export default function ShopPage() {
 
     return (
         <div className="min-h-screen bg-off-white">
+            {/* Back Button */}
+            <div className="px-4 md:px-8 lg:px-10 pt-6 md:pt-8 bg-white/0 absolute z-50">
+                <BackButton fallback="/" />
+            </div>
+
             {/* Brutalist Header */}
             <div className="text-center py-12 md:py-16 px-4 brutalist-border-b">
                 <h1
