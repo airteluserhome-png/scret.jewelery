@@ -42,10 +42,10 @@ function ShopContent() {
             </div>
 
             {/* Brutalist Header */}
-            <div className="text-center py-8 md:py-16 px-4 brutalist-border-b">
+            <div className="text-center py-8 md:py-8 px-4 brutalist-border-b">
                 <h1
                     className="font-brutalist leading-[0.9] text-hot-pink hero-3d-text tracking-[0.05em] mb-4"
-                    style={{ fontSize: 'max(12vw, 4rem)' }}
+                    style={{ fontSize: 'clamp(3rem, 9vw, 6rem)' }}
                 >
                     THE<br />COLLECTION
                 </h1>
