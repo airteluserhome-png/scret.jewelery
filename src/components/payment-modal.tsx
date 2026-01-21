@@ -16,10 +16,14 @@ const watchFacts = [
     "The tourbillon was invented to counter gravity's effect on accuracy.",
     "Rolex uses a special steel called 904L, which is harder than normal steel.",
     "Cartier designed the first pilot watch in 1904.",
+    "Juste un Clou bracelets by Cartier were designed in the 70s as a 'nail'.",
+    "Van Cleef & Arpels Alhambra collection is inspired by four-leaf clovers.",
+    "The Love Bracelet by Cartier requires a screwdriver to remove.",
     "G-Shock watches are designed to survive a 10-meter drop.",
     "The first waterproof watch was the Rolex Oyster.",
     "Diamonds are the hardest natural substance on Earth.",
-    "Gold used in watches is often mixed with copper for durability.",
+    "Gold used in watches is often mixed with copper for durability."
+    // ... (Adding more facts to reach ~60)
     "A 'chronograph' is just a fancy word for a stopwatch.",
     "Mechanical watches can have over 100 tiny parts.",
     "Audemars Piguet invented the first luxury sports watch in steel.",
@@ -62,6 +66,8 @@ const watchFacts = [
     "Hand-engraving a watch movement can take hundreds of hours.",
     "Some watches use liquid to tell time (HYT).",
     "Richard Mille watches are inspired by F1 race cars.",
+    "Tennis bracelets got their name when Chris Evert dropped hers on court.",
+    "Cuban link chains originated in the hip-hop scene of the 70s.",
     "Your 'Secretly' watch is designed to look like a million bucks."
 ];
 

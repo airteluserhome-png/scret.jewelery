@@ -75,9 +75,24 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     </div>
 
                     {/* CTA Button */}
-                    <button className="w-full bg-dark text-white font-brutalist text-2xl md:text-3xl py-5 md:py-6 hover:bg-hot-pink transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_10px_0_black] active:translate-y-0 active:shadow-none">
-                        ADD TO CART →
-                    </button>
+                    {/* Action Buttons Grid */}
+                    <div className="grid grid-cols-2 gap-4">
+                        <button
+                            className="bg-white text-black font-brutalist text-xl md:text-2xl py-4 border-[3px] border-black hover:bg-black hover:text-white transition-all uppercase"
+                            onClick={() => alert("Added to cart!")}
+                        >
+                            ADD TO CART
+                        </button>
+                        <button
+                            className="bg-hot-pink text-white font-brutalist text-xl md:text-2xl py-4 border-[3px] border-black shadow-[5px_5px_0_black] hover:translate-y-1 hover:shadow-none transition-all uppercase"
+                            onClick={() => setModalOpen(true)}
+                        >
+                            BUY NOW ⚡
+                        </button>
+                    </div>
+
+                    {/* Modal */}
+                    <PaymentModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 
                     <p className="text-center mt-4 text-xs opacity-60 uppercase tracking-widest">
                         Secure Checkout • Worldwide Shipping
@@ -86,8 +101,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
                 {/* RIGHT: Product Image with Floor Shadow */}
                 <div
-                    className="relative flex items-center justify-center overflow-hidden min-h-[400px] lg:min-h-0"
-                    style={{ background: 'radial-gradient(circle, #ffe6f2 0%, #fff 70%)' }}
+                    className="relative flex items-center justify-center overflow-hidden min-h-[400px] lg:min-h-0 bg-white"
                 >
                     {/* Floor Shadow - Oval underneath */}
                     <div
@@ -130,17 +144,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                             alt={product.name}
                             width={600}
                             height={600}
-                            className="w-full h-auto mix-blend-multiply"
+                            className="w-full h-auto"
                         />
                     </motion.div>
-
-                    {/* Background Text Watermark */}
-                    <div
-                        className="absolute bottom-5 font-brutalist text-[8rem] md:text-[10rem] text-black/[0.03] whitespace-nowrap z-0 select-none"
-                        style={{ letterSpacing: '0.1em' }}
-                    >
-                        {product.category === "iced-watches" ? "ICED ICED" : "SWISS SWISS"}
-                    </div>
                 </div>
             </div>
 
