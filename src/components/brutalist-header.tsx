@@ -41,7 +41,13 @@ export default function BrutalistHeader() {
                     ))}
                 </div>
 
-                <Link href="/" className="md:hidden text-5xl font-brutalist tracking-[0.05em] text-black hero-3d-text">
+                <Link
+                    href="/"
+                    className="md:hidden text-5xl font-brutalist tracking-[0.05em] text-black"
+                    style={{
+                        textShadow: '2px 2px 0px #000, 4px 4px 0px #000, 6px 6px 0px #000'
+                    }}
+                >
                     SECRETLY
                 </Link>
 
@@ -115,7 +121,7 @@ export default function BrutalistHeader() {
                     className="font-brutalist leading-[0.8] tracking-[0.05em] text-hot-pink"
                     style={{
                         fontSize: '14vw',
-                        textShadow: '6px 6px 0px #000, 8px 8px 0px rgba(0,0,0,0.3)'
+                        textShadow: '3px 3px 0px #000, 6px 6px 0px #000, 9px 9px 0px #000'
                     }}
                 >
                     SECRETLY
