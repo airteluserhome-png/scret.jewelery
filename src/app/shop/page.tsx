@@ -113,8 +113,8 @@ function ShopContent() {
                             >
                                 <Link href={`/product/${product.id}`} className="flex flex-col h-full text-inherit no-underline">
                                     {/* Image Area */}
-                                    <div className="bg-white h-[300px] md:h-[350px] flex items-center justify-center brutalist-border-b overflow-hidden relative">
-                                        <div className="relative w-[75%] h-[75%]">
+                                    <div className="bg-white h-[300px] md:h-[350px] lg:h-[450px] flex items-center justify-center brutalist-border-b overflow-hidden relative">
+                                        <div className="relative w-[85%] h-[85%]">
                                             <Image
                                                 src={product.image}
                                                 alt={product.name}
