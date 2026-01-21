@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-    --neon-pink: #FF0099;
+    --neon-pink: #FF55BB;
     --dark: #111;
     --off-white: #ffffff;
     /* iOS Safe Area Variables */

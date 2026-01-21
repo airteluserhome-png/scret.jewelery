@@ -63,7 +63,7 @@ export default function EditorialHero() {
                     className="relative z-20"
                 >
                     <Link href="/shop">
-                        <button className="mt-12 bg-black text-white px-10 py-5 font-brutalist text-xl uppercase hover:bg-hot-pink transition-colors duration-300 shadow-[8px_8px_0_#FF0099]">
+                        <button className="mt-12 bg-black text-white px-10 py-5 font-brutalist text-xl uppercase hover:bg-hot-pink transition-colors duration-300 shadow-[8px_8px_0_#FF55BB]">
                             EXPLORE COLLECTION →
                         </button>
                     </Link>
