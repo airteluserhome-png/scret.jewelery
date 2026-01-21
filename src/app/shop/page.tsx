@@ -1,16 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { products, getProductsByCategory, Product } from "@/data/products";
-import CrossTape from "@/components/cross-tape";
 import BrutalistPagination from "@/components/brutalist-pagination";
 import BackButton from "@/components/back-button";
 
-export default function ShopPage() {
-    const [activeCategory, setActiveCategory] = useState<"all" | Product["category"]>("all");
+function ShopContent() {
+    const searchParams = useSearchParams();
+    const categoryParam = searchParams.get("category");
+
+    // Determine initial category from URL
+    const getInitialCategory = () => {
+        if (!categoryParam) return "all";
+        const param = categoryParam.toLowerCase();
+        if (param === "iced" || param === "iced-watches") return "iced-watches";
+        if (param === "plain" || param === "plain-watches") return "plain-watches";
+        if (param === "accessories") return "accessories";
+        return "all";
+    };
+
+    const [activeCategory, setActiveCategory] = useState<"all" | Product["category"]>(getInitialCategory);
+
+    // Sync state if URL changes (e.g. browser back button)
+    useEffect(() => {
+        setActiveCategory(getInitialCategory());
+    }, [categoryParam]);
 
     const filteredProducts = activeCategory === "all"
         ? products
@@ -64,6 +82,15 @@ export default function ShopPage() {
                         }`}
                 >
                     Iced Out
+                </button>
+                <button
+                    onClick={() => setActiveCategory("accessories")}
+                    className={`font-brutalist text-lg md:text-xl uppercase transition-all border-b-2 pb-1 ${activeCategory === "accessories"
+                        ? "border-hot-pink text-hot-pink"
+                        : "border-transparent text-black hover:border-hot-pink"
+                        }`}
+                >
+                    Accessories
                 </button>
             </div>
 
@@ -134,5 +161,13 @@ export default function ShopPage() {
             {/* Brutalist Pagination */}
             <BrutalistPagination currentPage={1} totalPages={4} />
         </div>
+    );
+}
+
+export default function ShopPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center">LOADING...</div>}>
+            <ShopContent />
+        </Suspense>
     );
 }
