@@ -33,24 +33,28 @@ export default function ShopPage() {
                 <button
                     onClick={() => setActiveCategory("all")}
                     className={`px-6 py-2 rounded-full font-mono text-[10px] md:text-xs uppercase tracking-widest transition-all duration-300 ${activeCategory === "all"
-                            ? "bg-deep-pink text-white shadow-lg"
-                            : "bg-luxury-white text-pink-black hover:bg-rose-pink hover:text-white"
+                        ? "bg-deep-pink text-white shadow-lg"
+                        : "bg-luxury-white text-pink-black hover:bg-rose-pink hover:text-white"
                         }`}
                 >
                     All Items ({products.length})
                 </button>
-                {categories.map((cat) => (
-                    <button
-                        key={cat.id}
-                        onClick={() => setActiveCategory(cat.id as Product["category"])}
-                        className={`px-6 py-2 rounded-full font-mono text-[10px] md:text-xs uppercase tracking-widest transition-all duration-300 ${activeCategory === cat.id
+                {categories.map((cat) => {
+                    const categoryProducts = getProductsByCategory(cat as Product["category"]);
+                    const displayName = cat === "plain-watches" ? "Plain Watches" : "Iced Out";
+                    return (
+                        <button
+                            key={cat}
+                            onClick={() => setActiveCategory(cat as Product["category"])}
+                            className={`px-6 py-2 rounded-full font-mono text-[10px] md:text-xs uppercase tracking-widest transition-all duration-300 ${activeCategory === cat
                                 ? "bg-deep-pink text-white shadow-lg"
                                 : "bg-luxury-white text-pink-black hover:bg-rose-pink hover:text-white"
-                            }`}
-                    >
-                        {cat.name} ({cat.count})
-                    </button>
-                ))}
+                                }`}
+                        >
+                            {displayName} ({categoryProducts.length})
+                        </button>
+                    );
+                })}
             </div>
 
             {/* Product Grid */}
