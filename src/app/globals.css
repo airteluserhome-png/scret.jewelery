@@ -387,36 +387,7 @@ div[class*="product"] {
 }
 
 /* 5. THE PINK LASER SCANNER */
-.scan-line {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--neon-pink);
-    box-shadow: 0px 0px 10px var(--neon-pink);
-    /* Glowing effect */
-    z-index: 1;
-    opacity: 0.5;
-    animation: scan 4s ease-in-out infinite;
-}
-
-@keyframes scan {
-    0% {
-        top: 10%;
-        opacity: 0;
-    }
-
-    50% {
-        top: 90%;
-        opacity: 1;
-    }
-
-    100% {
-        top: 10%;
-        opacity: 0;
-    }
-}
+/* Scan Line Animation Removed */
 
 /* 6. IMAGE TWEAKS (Ensures it fits inside) */
 .main-watch-img {

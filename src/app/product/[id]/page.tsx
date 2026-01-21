@@ -178,7 +178,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                             );
                         })()}
 
-                        <div className="scan-line"></div>
+                        {/* Scan Line Removed per user request */}
 
                         <Image
                             key={activeImage} // Re-renders on image switch
