@@ -40,7 +40,7 @@ export default function EditorialHero() {
                     transition={{ duration: 1, delay: 0.2 }}
                 >
                     OWN THE<br />
-                    <span className="text-hot-pink">MOMENT*</span><br />
+                    <span className="text-hot-pink text-highlight">MOMENT*</span><br />
                     SECRETLY
                 </motion.h1>
 

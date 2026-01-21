@@ -64,7 +64,7 @@ export default function CartDrawer() {
                                         <div className="flex-1 flex flex-col justify-between">
                                             <div>
                                                 <h3 className="font-bold uppercase text-sm leading-relaxed mb-1 tracking-widest">{item.name}</h3>
-                                                <p className="font-brutalist text-xl text-hot-pink tracking-wide">{item.price}</p>
+                                                <p className="font-brutalist text-xl text-hot-pink tracking-wide text-highlight">{item.price}</p>
                                             </div>
 
                                             <div className="flex justify-between items-end">
