@@ -280,3 +280,179 @@ div[class*="product"] {
     /* RESET BLEND MODE TO NORMAL */
     background: transparent !important;
 }
+
+/* --- TACTICAL FRAME STYLES --- */
+
+/* 1. RESET THE CONTAINER */
+.product-visual {
+    /* Ensures no old background colors interfere */
+    background: transparent !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+
+/* 2. THE FRAME BOX */
+.tactical-frame {
+    position: relative;
+    width: 100%;
+    max-width: 550px;
+    /* Limits width on big screens */
+    aspect-ratio: 1 / 1;
+    /* Keeps it perfectly square */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 3. HEAVY CORNER BRACKETS */
+.corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 5px solid black;
+    /* Heavy Brutalist Lines */
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+/* Position and shape the "L" corners */
+.top-left {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+}
+
+.top-right {
+    top: 0;
+    right: 0;
+    border-left: none;
+    border-bottom: none;
+}
+
+.bottom-left {
+    bottom: 0;
+    left: 0;
+    border-right: none;
+    border-top: none;
+}
+
+.bottom-right {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+}
+
+/* HOVER EFFECT: Corners tighten in */
+.tactical-frame:hover .corner {
+    width: 50px;
+    height: 50px;
+    /* Brackets grow slightly */
+    border-color: var(--neon-pink);
+    /* Turn PINK on hover */
+}
+
+/* 4. TECH TEXT LABELS */
+.tech-label {
+    position: absolute;
+    font-family: 'Courier New', monospace;
+    /* Tech font */
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: black;
+    background: white;
+    padding: 2px 8px;
+    z-index: 3;
+    letter-spacing: 1px;
+}
+
+.label-top {
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid black;
+}
+
+.label-bottom {
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--neon-pink);
+    /* Pink accent text */
+    border: 2px solid var(--neon-pink);
+}
+
+/* 5. THE PINK LASER SCANNER */
+.scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--neon-pink);
+    box-shadow: 0px 0px 10px var(--neon-pink);
+    /* Glowing effect */
+    z-index: 1;
+    opacity: 0.5;
+    animation: scan 4s ease-in-out infinite;
+}
+
+@keyframes scan {
+    0% {
+        top: 10%;
+        opacity: 0;
+    }
+
+    50% {
+        top: 90%;
+        opacity: 1;
+    }
+
+    100% {
+        top: 10%;
+        opacity: 0;
+    }
+}
+
+/* 6. IMAGE TWEAKS (Ensures it fits inside) */
+.main-watch-img {
+    width: 85%;
+    /* Gives the frame some breathing room */
+    height: auto;
+    z-index: 10;
+    filter: drop-shadow(0px 20px 30px rgba(0, 0, 0, 0.25)) !important;
+    /* 3D Shadow */
+    mix-blend-mode: multiply !important;
+    /* Keeps transparency */
+    transition: transform 0.4s ease;
+}
+
+.tactical-frame:hover .main-watch-img {
+    transform: scale(1.05) rotate(-2deg);
+    /* Subtle pop on hover */
+}
+
+/* --- MOBILE OPTIMIZATION --- */
+@media (max-width: 768px) {
+    .tactical-frame {
+        max-width: 100%;
+        /* Use full width on phone */
+        margin-top: 20px;
+    }
+
+    .corner {
+        width: 30px;
+        height: 30px;
+        border-width: 3px;
+        /* Thinner lines for mobile */
+    }
+
+    .main-watch-img {
+        width: 80%;
+        /* Slightly smaller to prevent crowding */
+    }
+}

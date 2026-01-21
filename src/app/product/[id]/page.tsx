@@ -133,62 +133,32 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 </div>
 
                 {/* RIGHT: Product Image with Floor Shadow (Top on Mobile, Right on Desktop) */}
-                <div
-                    className="order-1 lg:order-2 relative flex items-center justify-center overflow-hidden min-h-[400px] lg:min-h-0 bg-white p-6 md:p-12"
-                >
-                    {/* BRUTALIST FRAME - Thick Black Border with Corner Accents */}
-                    {/* Floor Shadow - Oval underneath */}
-                    <div
-                        className="absolute top-[65%] left-1/2 -translate-x-1/2 w-[300px] h-[40px] z-10"
-                        style={{
-                            background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, transparent 70%)',
-                        }}
-                    >
-                        <motion.div
-                            className="w-full h-full"
-                            animate={{
-                                transform: ['scale(1)', 'scale(0.8)', 'scale(1)'],
-                                opacity: [1, 0.5, 1]
-                            }}
-                            transition={{
-                                duration: 6,
-                                ease: "easeInOut",
-                                repeat: Infinity
-                            }}
-                            style={{
-                                background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, transparent 70%)',
-                            }}
-                        />
-                    </div>
+                {/* RIGHT: Product Image with Tactical Vault Frame */}
+                <div className="order-1 lg:order-2 product-visual min-h-[400px] lg:min-h-0 bg-white">
 
-                    {/* Floating Watch Image */}
-                    <motion.div
-                        key={activeImage} // Key change triggers animation on image switch
-                        className="relative w-[90%] max-w-[600px] z-20"
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{
-                            opacity: 1,
-                            scale: 1,
-                            y: [0, -25, 0],
-                        }}
-                        transition={{
-                            opacity: { duration: 0.3 },
-                            scale: { duration: 0.3 },
-                            y: {
-                                duration: 6,
-                                ease: "easeInOut",
-                                repeat: Infinity
-                            }
-                        }}
-                    >
+                    <div className="tactical-frame">
+
+                        <div className="corner top-left"></div>
+                        <div className="corner top-right"></div>
+                        <div className="corner bottom-left"></div>
+                        <div className="corner bottom-right"></div>
+
+                        <div className="tech-label label-top">REF: {product.id.toString().padStart(6, '0')}</div>
+                        <div className="tech-label label-bottom">5A SWISS // VERIFIED</div>
+
+                        <div className="scan-line"></div>
+
                         <Image
+                            key={activeImage} // Re-renders on image switch
                             src={activeImage || product.image}
                             alt={product.name}
                             width={600}
                             height={600}
-                            className="w-full h-auto"
+                            className="main-watch-img"
                         />
-                    </motion.div>
+
+                    </div>
+
                 </div>
             </div>
 
