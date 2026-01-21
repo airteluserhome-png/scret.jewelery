@@ -44,10 +44,7 @@
     }
 }
 
---neon-pink: #FF0055;
---dark: #111;
---off-white: #ffffff;
-}
+
 
 body {
     background-color: var(--off-white);
