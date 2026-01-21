@@ -458,6 +458,11 @@ div[class*="product"] {
 
         /* Force background to stay transparent */
         background: transparent !important;
+
+        /* Force Centering */
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
 
     /* 2. Resize the Frame */

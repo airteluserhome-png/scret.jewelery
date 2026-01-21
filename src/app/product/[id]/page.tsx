@@ -137,7 +137,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 {/* RIGHT: Product Image with Tactical Vault Frame */}
                 <div className="order-1 lg:order-2 product-visual min-h-[400px] lg:min-h-0 bg-white w-full flex justify-center items-center">
 
-                    <div className="tactical-frame">
+                    <div className="tactical-frame mx-auto">
 
                         <div className="corner top-left"></div>
                         <div className="corner top-right"></div>
@@ -181,7 +181,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
                         {/* Scan Line Removed per user request */}
 
-                        <div onClick={() => setZoomOpen(true)} className="cursor-zoom-in">
+                        <div onClick={() => setZoomOpen(true)} className="cursor-zoom-in w-full h-full flex items-center justify-center">
                             <Image
                                 key={activeImage} // Re-renders on image switch
                                 src={activeImage || product.image}
