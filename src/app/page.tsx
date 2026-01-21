@@ -29,14 +29,6 @@ export default function Page() {
             {/* Cross Tape Effect */}
             <CrossTape />
 
-            {/* ACCESSORIES Section */}
-            <div className="px-4 md:px-8 lg:px-10">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-brutalist text-black brutalist-border-b pb-3 md:pb-4 tracking-[0.05em] leading-none">
-                    VVS ACCESSORIES
-                </h2>
-            </div>
-            <BrutalistGrid category="accessories" />
-
             {/* Footer */}
             <footer className="bg-black text-white p-6 md:p-12 lg:p-16 mt-12 md:mt-16 text-center">
                 <h2
