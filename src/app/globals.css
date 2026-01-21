@@ -5,16 +5,25 @@
 :root {
     --foreground-rgb: 0, 0, 0;
     --background-rgb: 255, 255, 255;
-    --primary-pink: #FF007F;
+    --primary-pink: #EB277B;
 }
 
 body {
-    color: #FF007F;
-    /* Default text hot pink */
+    color: #EB277B;
     background: white;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* Brutalist Typography - Anton Font */
+h1,
+h2,
+h3,
+.brutalist-text {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* Mobile-First Typography */
@@ -34,21 +43,24 @@ html {
     button,
     a {
         min-height: 44px;
-        /* iOS recommended touch target */
     }
 }
 
-/* Brutalist Custom Utilities */
+/* Brutalist Borders - 3px like reference */
 .brutalist-border {
-    border: 2px solid #FF007F;
+    border: 3px solid #EB277B;
 }
 
 .brutalist-border-b {
-    border-bottom: 2px solid #FF007F;
+    border-bottom: 3px solid #EB277B;
 }
 
 .brutalist-border-r {
-    border-right: 2px solid #FF007F;
+    border-right: 3px solid #EB277B;
+}
+
+.brutalist-border-t {
+    border-top: 3px solid #EB277B;
 }
 
 /* Prevent horizontal scroll on mobile */
@@ -69,13 +81,12 @@ body {
         text-wrap: balance;
     }
 
-    /* Mobile-optimized tap highlight */
     .tap-highlight-none {
         -webkit-tap-highlight-color: transparent;
     }
 }
 
-/* Smooth scrolling for better UX */
+/* Smooth scrolling */
 @media (prefers-reduced-motion: no-preference) {
     html {
         scroll-behavior: smooth;

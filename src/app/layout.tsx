@@ -1,27 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-    subsets: ["latin"],
-    variable: "--font-inter",
-    display: "swap",
-});
-
-const playfair = Playfair_Display({
-    subsets: ["latin"],
-    variable: "--font-playfair",
-    display: "swap",
-});
-
 export const metadata: Metadata = {
-    title: "Secretly | Timeless Elegance",
-    description: "Luxury jewelry and watches.",
+    title: "Secretly - Luxury Timepieces",
+    description: "5A Swiss Movement Watches with Box and Papers",
 };
-
-import LuxuryLayout from "@/components/luxury-layout";
-import Header from "@/components/header";
-import InitialLoader from "@/components/initial-loader";
 
 export default function RootLayout({
     children,
@@ -29,13 +12,15 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-            <body className="bg-luxury-white text-gray-900 antialiased overflow-x-hidden">
-                <InitialLoader />
-                <LuxuryLayout>
-                    <Header />
-                    {children}
-                </LuxuryLayout>
+        <html lang="en">
+            <head>
+                {/* Google Fonts - Anton for Brutalist Headlines */}
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+            </head>
+            <body>
+                {children}
             </body>
         </html>
     );

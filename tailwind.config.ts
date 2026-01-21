@@ -9,12 +9,12 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                'hot-pink': '#FF007F',
+                'hot-pink': '#EB277B', // Sharper pink as specified
                 'pink-white': '#FFF0F5',
             },
             fontFamily: {
                 sans: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
-                display: ['"Anton"', '"Oswald"', 'sans-serif'], // We'll try to use a heavy font
+                brutalist: ['"Anton"', 'sans-serif'], // Anton for headlines
             },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

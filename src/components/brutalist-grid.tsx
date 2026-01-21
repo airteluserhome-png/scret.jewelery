@@ -15,20 +15,20 @@ export default function BrutalistGrid({
 
     return (
         <div className="w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-b-2 border-hot-pink">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 brutalist-border-b">
                 {products.map((product, index) => (
                     <div
                         key={product.id}
                         className={`
-                            flex flex-col border-b-2 border-hot-pink
+                            flex flex-col border-b-[3px] border-hot-pink
                             md:border-b-0
-                            ${(index + 1) % 3 !== 0 ? 'lg:border-r-2' : ''} 
-                            ${(index + 1) % 2 !== 0 ? 'md:border-r-2 lg:border-r-0' : ''} 
+                            ${(index + 1) % 3 !== 0 ? 'lg:border-r-[3px]' : ''} 
+                            ${(index + 1) % 2 !== 0 ? 'md:border-r-[3px] lg:border-r-0' : ''} 
                             ${(index + 1) % 3 === 0 ? 'lg:border-r-0' : ''}
                         `}
                     >
                         {/* Image Area */}
-                        <div className="relative aspect-[3/4] bg-pink-white w-full border-b-2 border-hot-pink overflow-hidden group">
+                        <div className="relative aspect-[3/4] bg-pink-white w-full border-b-[3px] border-hot-pink overflow-hidden group">
                             <div className="relative w-full h-full">
                                 <Image
                                     src={product.image}
@@ -38,16 +38,16 @@ export default function BrutalistGrid({
                                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 />
                             </div>
-                            <div className="absolute top-2 left-2 bg-hot-pink text-white px-2 py-1 text-[10px] md:text-xs font-bold uppercase">
+                            <div className="absolute top-2 left-2 bg-hot-pink text-white px-2 py-1 text-[10px] md:text-xs font-bold uppercase font-brutalist">
                                 {product.badge || "5A SWISS"}
                             </div>
                         </div>
 
-                        {/* Product Info - Taller touch target on mobile */}
+                        {/* Product Info */}
                         <div className="p-4 md:p-4 flex justify-between items-center font-bold uppercase text-sm md:text-base lg:text-lg bg-white min-h-[72px] md:min-h-[80px]">
-                            <span className="truncate pr-3 md:pr-4">{product.name}</span>
+                            <span className="truncate pr-3 md:pr-4 font-brutalist">{product.name}</span>
                             <Link href={`/product/${product.id}`}>
-                                <button className="bg-hot-pink text-white px-4 md:px-4 py-2 md:py-1 hover:bg-black transition-colors text-sm md:text-base whitespace-nowrap">
+                                <button className="bg-hot-pink text-white px-4 md:px-4 py-2 md:py-1 hover:bg-black transition-colors text-sm md:text-base whitespace-nowrap font-brutalist">
                                     {product.price}
                                 </button>
                             </Link>
@@ -55,13 +55,13 @@ export default function BrutalistGrid({
                     </div>
                 ))}
 
-                {/* CTA Card with better mobile sizing */}
+                {/* CTA Card */}
                 {ctaCard && (
                     <Link
                         href={ctaCard.href || "/shop"}
                         className="flex flex-col justify-center items-center bg-hot-pink text-white p-8 md:p-12 min-h-[250px] md:min-h-[300px] hover:bg-black transition-colors cursor-pointer active:scale-95"
                     >
-                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-black uppercase text-center leading-none">
+                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-brutalist text-center leading-none">
                             {ctaCard.text.split(' ').map((word, i) => (
                                 <span key={i}>{word}<br /></span>
                             ))}
