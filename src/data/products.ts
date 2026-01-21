@@ -1,6 +1,3 @@
-// Product Catalog Data
-// STRICT CATALOG: Only the 6 Specific Watches provided by user
-
 export interface Product {
     id: number;
     name: string;
@@ -19,119 +16,212 @@ export interface Product {
 }
 
 export const products: Product[] = [
-    // ========== PLAIN WATCHES (5A) ==========
+    // PLAIN WATCHES
     {
         id: 1,
-        name: "Patek Nautilus",
+        name: "ROLEX DAYDATE OLIVE",
         category: "plain-watches",
-        brand: "Patek Philippe",
-        price: "$600",
-        priceNum: 600,
-        image: "/patek-plain-1.jpg",
-        badge: "5A Swiss",
-        description: "5A Swiss movement Patek Philippe. Comes with box and papers.",
-        specs: {
-            movement: "5A Swiss Movement",
-            quality: "AAA+ Quality",
-            includes: "Box & Papers"
-        }
+        brand: "Rolex",
+        price: "$450",
+        priceNum: 450,
+        image: "/ROLEX/Rolex Daydate Olive.jpg",
+        badge: "5A SWISS",
+        description: "5A Swiss movement Rolex with box and papers",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
     {
         id: 2,
-        name: "Patek Aquanaut",
+        name: "AP SKELETON",
+        category: "plain-watches",
+        brand: "Audemars Piguet",
+        price: "$550",
+        priceNum: 550,
+        image: "/AP/AP Skeleton.jpg",
+        badge: "5A SWISS",
+        description: "5A Swiss movement AP Skeleton with box and papers",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+    },
+    {
+        id: 3,
+        name: "AP ROSE GOLD",
+        category: "plain-watches",
+        brand: "Audemars Piguet",
+        price: "$550",
+        priceNum: 550,
+        image: "/AP/AP rose gold.jpg",
+        badge: "5A SWISS",
+        description: "5A Swiss movement AP Rose Gold with box and papers",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+    },
+    {
+        id: 4,
+        name: "AP WHITE GOLD",
+        category: "plain-watches",
+        brand: "Audemars Piguet",
+        price: "$550",
+        priceNum: 550,
+        image: "/AP/AP white gold.jpg",
+        badge: "5A SWISS",
+        description: "5A Swiss movement AP White Gold with box and papers",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+    },
+    {
+        id: 5,
+        name: "WHITE RICHARD MILLE BUBBA WATSON",
+        category: "plain-watches",
+        brand: "Richard Mille",
+        price: "$650",
+        priceNum: 650,
+        image: "/RM/White Richard Mille Bubba Watson.jpg",
+        badge: "5A SWISS",
+        description: "5A Swiss movement Richard Mille with box and papers",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+    },
+    {
+        id: 6,
+        name: "CARTIER SANTOS WHITE GOLD",
+        category: "plain-watches",
+        brand: "Cartier",
+        price: "$450",
+        priceNum: 450,
+        image: "/Cartier/Cartier Santos White Gold.jpg",
+        badge: "5A SWISS",
+        description: "5A Swiss movement Cartier Santos with box and papers",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+    },
+    {
+        id: 7,
+        name: "PATEK PHILIPPE NAUTILUS X TIFFANY AND CO",
         category: "plain-watches",
         brand: "Patek Philippe",
         price: "$600",
         priceNum: 600,
-        image: "/patek-plain-2.jpg",
-        badge: "5A Swiss",
-        description: "5A Swiss movement Patek Philippe. Comes with box and papers.",
-        specs: {
-            movement: "5A Swiss Movement",
-            quality: "AAA+ Quality",
-            includes: "Box & Papers"
-        }
+        image: "/PATEK PHILLIPE /Patek Philippe Nautilus x Tiffany And Co.jpg",
+        badge: "5A SWISS",
+        description: "5A Swiss movement Patek Philippe with box and papers",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+    },
+    {
+        id: 8,
+        name: "PATEK PHILIPPE ROSE GOLD",
+        category: "plain-watches",
+        brand: "Patek Philippe",
+        price: "$600",
+        priceNum: 600,
+        image: "/PATEK PHILLIPE /Patek Philippe Rose Gold.jpg",
+        badge: "5A SWISS",
+        description: "5A Swiss movement Patek Philippe with box and papers",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
 
-    // ========== ICED OUT WATCHES (5A) ==========
+    // ICED OUT WATCHES
     {
-        id: 3,
-        name: "Iced Out Rolex I",
+        id: 9,
+        name: "AP ICED OUT ROSE GOLD",
         category: "iced-watches",
-        brand: "Rolex",
-        price: "$700",
-        priceNum: 700,
-        image: "/iced-rolex-1.jpg",
-        badge: "Iced Out",
-        description: "5A Swiss movement Iced Out Rolex. Comes with box and papers.",
-        specs: {
-            movement: "5A Swiss Movement",
-            quality: "AAA+ Iced Quality",
-            includes: "Box & Papers"
-        }
+        brand: "Audemars Piguet",
+        price: "$750",
+        priceNum: 750,
+        image: "/ICED OUT AP/AP iced out rose gold.jpg",
+        badge: "ICED OUT",
+        description: "5A Swiss movement AP Iced Out with box and papers",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
     {
-        id: 4,
-        name: "Iced Out Rolex II",
+        id: 10,
+        name: "AP ICED OUT",
         category: "iced-watches",
-        brand: "Rolex",
-        price: "$700",
-        priceNum: 700,
-        image: "/iced-rolex-2.jpg",
-        badge: "Iced Out",
-        description: "5A Swiss movement Iced Out Rolex. Comes with box and papers.",
-        specs: {
-            movement: "5A Swiss Movement",
-            quality: "AAA+ Iced Quality",
-            includes: "Box & Papers"
-        }
+        brand: "Audemars Piguet",
+        price: "$750",
+        priceNum: 750,
+        image: "/ICED OUT AP/AP iced out.jpg",
+        badge: "ICED OUT",
+        description: "5A Swiss movement AP Iced Out with box and papers",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
     {
-        id: 5,
-        name: "Iced Out Patek I",
+        id: 11,
+        name: "ICED OUT CARTIER SANTOS ROSE GOLD",
+        category: "iced-watches",
+        brand: "Cartier",
+        price: "$700",
+        priceNum: 700,
+        image: "/ICED OUT CARTIER/Iced out Cartier Santos rose good.jpg",
+        badge: "ICED OUT",
+        description: "5A Swiss movement Iced Cartier Santos with box and papers",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+    },
+    {
+        id: 12,
+        name: "ICED OUT CARTIER SANTOS WHITE GOLD",
+        category: "iced-watches",
+        brand: "Cartier",
+        price: "$700",
+        priceNum: 700,
+        image: "/ICED OUT CARTIER/Iced out Cartier Santos white gold.jpg",
+        badge: "ICED OUT",
+        description: "5A Swiss movement Iced Cartier Santos with box and papers",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+    },
+    {
+        id: 13,
+        name: "ICED OUT PATEK PHILLIPE NAUTILUS ROSE GOLD",
         category: "iced-watches",
         brand: "Patek Philippe",
         price: "$800",
         priceNum: 800,
-        image: "/iced-patek-1.jpg",
-        badge: "Iced Out",
-        description: "5A Swiss movement Iced Out Patek. Comes with box and papers.",
-        specs: {
-            movement: "5A Swiss Movement",
-            quality: "AAA+ Iced Quality",
-            includes: "Box & Papers"
-        }
+        image: "/ICET OUT Patek philipe/Iced out Patek Phillipe Nautilus ROSE GOLD.jpg",
+        badge: "ICED OUT",
+        description: "5A Swiss movement Iced Patek Philippe with box and papers",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
     {
-        id: 6,
-        name: "Iced Out Patek II",
+        id: 14,
+        name: "PATEK PHILLIPE ICED OUT NAUTILUS",
         category: "iced-watches",
         brand: "Patek Philippe",
         price: "$800",
         priceNum: 800,
-        image: "/iced-patek-2.jpg",
-        badge: "Iced Out",
-        description: "5A Swiss movement Iced Out Patek. Comes with box and papers.",
-        specs: {
-            movement: "5A Swiss Movement",
-            quality: "AAA+ Iced Quality",
-            includes: "Box & Papers"
-        }
+        image: "/ICET OUT Patek philipe/Patek Phillipe Iced out Nautilus.jpg",
+        badge: "ICED OUT",
+        description: "5A Swiss movement Iced Patek Philippe with box and papers",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
+    {
+        id: 15,
+        name: "ICED OUT ROLEX DAY DATE ROSE GOLD",
+        category: "iced-watches",
+        brand: "Rolex",
+        price: "$700",
+        priceNum: 700,
+        image: "/ICE OUT ROLEX /Iced out Rolex Day date rose gold.jpg",
+        badge: "ICED OUT",
+        description: "5A Swiss movement Iced Rolex with box and papers",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+    },
+    {
+        id: 16,
+        name: "ICED OUT ROLEX DAY DATE WHITE GOLD",
+        category: "iced-watches",
+        brand: "Rolex",
+        price: "$700",
+        priceNum: 700,
+        image: "/ICE OUT ROLEX /Iced out Rolex Day date white gold.jpg",
+        badge: "ICED OUT",
+        description: "5A Swiss movement Iced Rolex with box and papers",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+    }
 ];
 
 // Helper functions
-export const getProductById = (id: string | number): Product | undefined => {
-    return products.find(p => p.id === Number(id));
-};
+export function getProductById(id: number): Product | undefined {
+    return products.find(p => p.id === id);
+}
 
-export const getProductsByCategory = (category: Product["category"]): Product[] => {
+export function getProductsByCategory(category: "plain-watches" | "iced-watches"): Product[] {
     return products.filter(p => p.category === category);
-};
+}
 
-export const getAllCategories = () => {
-    return [
-        { id: "plain-watches", name: "Plain Watches (5A)", count: products.filter(p => p.category === "plain-watches").length },
-        { id: "iced-watches", name: "Iced Out Watches (5A)", count: products.filter(p => p.category === "iced-watches").length },
-    ];
-};
+export function getAllCategories(): string[] {
+    return ["plain-watches", "iced-watches"];
+}
