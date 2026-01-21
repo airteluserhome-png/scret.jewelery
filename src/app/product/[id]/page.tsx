@@ -8,15 +8,23 @@ import { getProductById } from "@/data/products";
 import BackButton from "@/components/back-button";
 import PaymentModal from "@/components/payment-modal";
 import { useCart } from "@/context/cart-context";
-import RetroBackground from "@/components/retro-background";
 import CrossTape from "@/components/cross-tape";
 
 export default function ProductPage({ params }: { params: { id: string } }) {
+    const product = getProductById(parseInt(params.id));
+    const { addItem } = useCart();
     const [modalOpen, setModalOpen] = useState(false);
     const [activeImage, setActiveImage] = useState(product?.image);
 
     if (!product) {
-        // ... (error handling)
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-white">
+                <div className="text-center">
+                    <h1 className="font-brutalist text-4xl mb-4 text-black">PRODUCT NOT FOUND</h1>
+                    <Link href="/shop" className="text-hot-pink hover:underline font-bold uppercase tracking-wider">Return to Shop</Link>
+                </div>
+            </div>
+        );
     }
 
     return (
