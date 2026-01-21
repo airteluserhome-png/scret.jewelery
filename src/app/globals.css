@@ -6,6 +6,47 @@
     --neon-pink: #FF0055;
     --dark: #111;
     --off-white: #ffffff;
+    /* iOS Safe Area Variables */
+    --sat: env(safe-area-inset-top);
+    --sar: env(safe-area-inset-right);
+    --sab: env(safe-area-inset-bottom);
+    --sal: env(safe-area-inset-left);
+}
+
+/* iOS Specific Optimizations */
+@layer base {
+    html {
+        -webkit-tap-highlight-color: transparent;
+        /* Remove grey tap overlay */
+        -webkit-text-size-adjust: 100%;
+        /* Prevent font scaling in landscape */
+        -webkit-font-smoothing: antialiased;
+        /* Crisp fonts */
+        touch-action: manipulation;
+        /* Improve touch response */
+    }
+
+    body {
+        /* Prevent elastic scrolling on body if not needed, or keep it natural */
+        overscroll-behavior-y: none;
+        /* Safe Area Padding */
+        padding-top: var(--sat);
+        padding-bottom: var(--sab);
+        padding-left: var(--sal);
+        padding-right: var(--sar);
+    }
+
+    /* Prevent auto-zoom on inputs */
+    input,
+    select,
+    textarea {
+        font-size: 16px !important;
+    }
+}
+
+--neon-pink: #FF0055;
+--dark: #111;
+--off-white: #ffffff;
 }
 
 body {
