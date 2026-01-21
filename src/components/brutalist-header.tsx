@@ -9,10 +9,10 @@ export default function BrutalistHeader() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const navLinks = [
-        { label: "PLAIN WATCHES", href: "/shop" },
-        { label: "ICED WATCHES", href: "/shop" },
         { label: "HOME", href: "/" },
-        { label: "ABOUT SECRETLY", href: "/shop" },
+        { label: "PLAIN WATCHES", href: "/shop?category=plain" },
+        { label: "ICED WATCHES", href: "/shop?category=iced" },
+        { label: "ACCESSORIES", href: "/accessories" },
     ];
 
     return (

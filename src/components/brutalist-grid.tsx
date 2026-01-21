@@ -13,9 +13,6 @@ export default function BrutalistGrid({
 }) {
     const products = getProductsByCategory(category);
 
-    // Urgency messages rotate
-    const urgencyMessages = ["SELLING FAST ⚡", "LOW STOCK", "HIGH DEMAND", "ALMOST GONE"];
-
     return (
         <div className="w-full px-4 md:px-8 lg:px-10 py-8 md:py-12">
             {/* 3D Trading Card Grid */}
@@ -26,12 +23,6 @@ export default function BrutalistGrid({
                         href={`/product/${product.id}`}
                         className="card-3d flex flex-col no-underline text-inherit cursor-pointer"
                     >
-                        {/* Pulsing Urgency Badge */}
-                        <div className="urgency-badge absolute top-4 right-4 bg-hot-pink text-white px-3 py-1.5 text-xs md:text-sm font-brutalist uppercase z-20 border-[2px] border-black shadow-[3px_3px_0_black]"
-                            style={{ transform: 'rotate(5deg)' }}
-                        >
-                            {urgencyMessages[index % urgencyMessages.length]}
-                        </div>
 
                         {/* Image Area with Technical Grid */}
                         <div className="card-image-grid h-[380px] flex items-center justify-center brutalist-border-b overflow-hidden relative">
