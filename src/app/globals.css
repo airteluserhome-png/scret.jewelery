@@ -3,37 +3,33 @@
 @tailwind utilities;
 
 :root {
-    --foreground-rgb: 74, 31, 46;
-    /* Pink-black for text */
-    --background-start-rgb: 255, 245, 247;
-    /* Soft pink white */
-    --background-end-rgb: 255, 228, 233;
-    /* Light pink */
+    --foreground-rgb: 0, 0, 0;
+    --background-rgb: 255, 255, 255;
+    --primary-pink: #FF007F;
 }
 
 body {
-    color: rgb(var(--foreground-rgb));
-    background: linear-gradient(to bottom, rgb(var(--background-start-rgb)), rgb(var(--background-end-rgb)));
+    color: #FF007F;
+    /* Default text hot pink */
+    background: white;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Brutalist Custom Utilities */
+.brutalist-border {
+    border: 2px solid #FF007F;
+}
+
+.brutalist-border-b {
+    border-bottom: 2px solid #FF007F;
+}
+
+.brutalist-border-r {
+    border-right: 2px solid #FF007F;
 }
 
 @layer utilities {
     .text-balance {
         text-wrap: balance;
-    }
-
-    /* Safe Area Support for iPhone Notch */
-    .safe-area-inset-top {
-        padding-top: env(safe-area-inset-top);
-    }
-
-    .safe-area-inset-bottom {
-        padding-bottom: env(safe-area-inset-bottom);
-    }
-
-    /* Mobile Performance: Disable backdrop-blur on mobile */
-    @media (max-width: 768px) {
-        .md\:backdrop-blur {
-            backdrop-filter: none !important;
-        }
     }
 }
