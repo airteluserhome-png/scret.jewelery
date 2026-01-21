@@ -31,7 +31,7 @@ export default function Page() {
                     VVS ACCESSORIES
                 </h2>
             </div>
-            <BrutalistGrid category="accessories" ctaCard={{ text: "VIEW ALL", href: "/shop" }} />
+            <BrutalistGrid category="accessories" ctaCard={{ text: "VIEW ALL", href: "/accessories" }} />
 
             {/* Footer */}
             <footer className="bg-black text-white p-6 md:p-12 lg:p-16 mt-12 md:mt-16 text-center">
