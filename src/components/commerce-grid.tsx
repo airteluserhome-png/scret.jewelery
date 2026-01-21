@@ -6,50 +6,27 @@ import { Plus } from "lucide-react";
 import Link from "next/link";
 import ScrambleText from "./scramble-text";
 import { useState, useEffect } from "react";
-
-const products = [
-    {
-        id: 1,
-        name: "Daytona Rose Gold",
-        price: "$42,000",
-        image: "/rolex-daytona.png",
-        badge: "Low Stock",
-    },
-    {
-        id: 2,
-        name: "Royal Oak Steel",
-        price: "$34,150",
-        image: "/ap-royal-oak.png",
-        badge: "New",
-    },
-    {
-        id: 3,
-        name: "Carrera Calibre",
-        price: "$6,300",
-        image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=800&q=90",
-    },
-    {
-        id: 4,
-        name: "Heritage Chrono",
-        price: "$8,900",
-        image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=90",
-    },
-];
+import { products } from "@/data/products";
 
 export default function CommerceGrid() {
+    // Show first 8 products on homepage
+    const featuredProducts = products.slice(0, 8);
+
     return (
-        <section className="bg-stone-50 border-t border-black/5">
+        <section className="bg-soft-pink border-t border-rose-pink/20">
             {/* Responsive Grid: 1 col mobile, 2 cols tablet, 4 cols desktop */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-                {products.map((product) => (
+                {featuredProducts.map((product) => (
                     <ProductCard key={product.id} product={product} />
                 ))}
             </div>
 
-            <div className="py-16 md:py-24 text-center border-t border-black/5 px-4">
-                <button className="border border-deep-pink px-8 md:px-12 py-3 md:py-4 font-mono text-xs uppercase tracking-widest hover:bg-deep-pink hover:text-white transition-colors duration-300">
-                    View Full Collection
-                </button>
+            <div className="py-16 md:py-24 text-center border-t border-rose-pink/20 px-4">
+                <Link href="/shop">
+                    <button className="border border-deep-pink px-8 md:px-12 py-3 md:py-4 font-mono text-xs uppercase tracking-widest hover:bg-deep-pink hover:text-white transition-colors duration-300">
+                        View Full Collection
+                    </button>
+                </Link>
             </div>
         </section>
     );
@@ -68,7 +45,7 @@ function ProductCard({ product }: { product: typeof products[0] }) {
     return (
         <Link href={`/product/${product.id}`} className="block">
             <motion.div
-                className="group relative h-[500px] md:h-[600px] border-b border-r border-black/5 bg-white overflow-hidden"
+                className="group relative h-[500px] md:h-[600px] border-b border-r border-rose-pink/20 bg-luxury-white overflow-hidden"
                 initial="initial"
                 whileHover="hover"
             >
@@ -82,7 +59,7 @@ function ProductCard({ product }: { product: typeof products[0] }) {
                 )}
 
                 {/* Image Area - 85% height */}
-                <div className="h-[85%] w-full relative overflow-hidden bg-stone-100">
+                <div className="h-[85%] w-full relative overflow-hidden bg-soft-pink">
                     <motion.div
                         layoutId={`image-${product.id}`}
                         className="w-full h-full relative"
@@ -102,8 +79,8 @@ function ProductCard({ product }: { product: typeof products[0] }) {
                     </motion.div>
                 </div>
 
-                {/* Bottom Bar - Strict Black Bar Interaction */}
-                <div className="absolute bottom-0 left-0 right-0 h-[15%] bg-white border-t border-black/5 flex flex-col justify-end overflow-hidden">
+                {/* Bottom Bar - Product Info */}
+                <div className="absolute bottom-0 left-0 right-0 h-[15%] bg-luxury-white border-t border-rose-pink/20 flex flex-col justify-end overflow-hidden">
                     {/* Default State: Name & Price */}
                     <motion.div
                         className="absolute inset-0 flex items-center justify-between px-4 md:px-6"
@@ -114,12 +91,12 @@ function ProductCard({ product }: { product: typeof products[0] }) {
                         transition={{ duration: 0.4, ease: "easeInOut" }}
                     >
                         <div className="flex flex-col min-w-0 flex-1">
-                            <span className="font-serif text-base md:text-lg leading-none mb-1 truncate">
+                            <span className="font-serif text-base md:text-lg leading-none mb-1 truncate text-pink-black">
                                 {isMobile ? product.name : <ScrambleText text={product.name} revealSpeed={120} delay={200} />}
                             </span>
-                            <span className="font-mono text-[10px] text-gray-400 uppercase tracking-widest">Ref. 2024</span>
+                            <span className="font-mono text-[10px] text-rose-gold uppercase tracking-widest">{product.brand}</span>
                         </div>
-                        <span className="font-mono text-sm tracking-tight ml-2 flex-shrink-0">
+                        <span className="font-mono text-sm tracking-tight ml-2 flex-shrink-0 text-pink-black">
                             {isMobile ? product.price : <ScrambleText text={product.price} revealSpeed={180} delay={500} />}
                         </span>
                     </motion.div>
