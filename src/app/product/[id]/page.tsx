@@ -151,13 +151,24 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                             let labelText = "5A SWISS // VERIFIED";
                             let labelColorClass = "text-hot-pink border-hot-pink";
 
-                            if (name.includes("GLASSES") || name.includes("CARTIER") || name.includes("SUNGLASSES")) {
+                            // 1. OPTICS (Black Label)
+                            if (name.includes("GLASSES") || name.includes("CARTIER") || name.includes("SUNGLASSES") || name.includes("FRAME")) {
                                 labelText = "VVS OPTICS // VERIFIED";
                                 labelColorClass = "text-black border-black";
-                            } else if (name.includes("BRACELET") || name.includes("CHAIN") || name.includes("NECKLACE") || name.includes("PENDANT")) {
+
+                                // 2. JEWELRY (Pink Label)
+                            } else if (name.includes("BRACELET") || name.includes("CHAIN") || name.includes("NECKLACE") || name.includes("PENDANT") || name.includes("CROSS") || name.includes("CUBAN")) {
                                 labelText = "VVS GEMS // VERIFIED";
-                            } else if (name.includes("RING")) {
+
+                                // 3. RINGS (Pink Label)    
+                            } else if (name.includes("RING") || name.includes("BAND")) {
                                 labelText = "GOLD TESTED // VERIFIED";
+
+                                // 4. WATCHES (Default Pink)
+                            } else {
+                                if (name.includes("ICED")) {
+                                    labelText = "5A SWISS // VVS SET";
+                                }
                             }
 
                             return (
