@@ -81,11 +81,11 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     className="relative flex items-center justify-center overflow-hidden min-h-[400px] lg:min-h-0"
                     style={{ background: 'radial-gradient(circle, #ffe6f2 0%, #fff 70%)' }}
                 >
-                    {/* Floating Watch Image */}
+                    {/* Floating Watch Image with Animated Shadow */}
                     <motion.div
-                        className="relative w-[80%] max-w-[500px] z-10"
+                        className="relative w-[90%] max-w-[600px] z-10"
                         animate={{
-                            y: [0, -20, 0],
+                            y: [0, -25, 0],
                         }}
                         transition={{
                             duration: 6,
@@ -93,14 +93,28 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                             repeat: Infinity
                         }}
                     >
-                        <Image
-                            src={product.image}
-                            alt={product.name}
-                            width={500}
-                            height={500}
-                            className="w-full h-auto mix-blend-multiply"
-                            style={{ filter: 'drop-shadow(0px 20px 30px rgba(0,0,0,0.3))' }}
-                        />
+                        <motion.div
+                            animate={{
+                                filter: [
+                                    'drop-shadow(0px 25px 30px rgba(0,0,0,0.3))',
+                                    'drop-shadow(0px 50px 50px rgba(0,0,0,0.15))',
+                                    'drop-shadow(0px 25px 30px rgba(0,0,0,0.3))'
+                                ]
+                            }}
+                            transition={{
+                                duration: 6,
+                                ease: "easeInOut",
+                                repeat: Infinity
+                            }}
+                        >
+                            <Image
+                                src={product.image}
+                                alt={product.name}
+                                width={600}
+                                height={600}
+                                className="w-full h-auto mix-blend-multiply"
+                            />
+                        </motion.div>
                     </motion.div>
 
                     {/* Background Text Watermark */}

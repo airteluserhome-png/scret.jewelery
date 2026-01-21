@@ -1,6 +1,7 @@
 import BrutalistHeader from "@/components/brutalist-header";
 import BrutalistTicker from "@/components/brutalist-ticker";
 import BrutalistGrid from "@/components/brutalist-grid";
+import CrossTape from "@/components/cross-tape";
 
 export default function Page() {
     return (
@@ -20,10 +21,8 @@ export default function Page() {
             </div>
             <BrutalistGrid category="plain-watches" ctaCard={{ text: "VIEW ALL", href: "/shop" }} />
 
-            {/* Angled Ticker */}
-            <div className="py-8 md:py-12 overflow-hidden">
-                <BrutalistTicker text="⚠ ICED OUT COLLECTION ⚠ SECRETLY ✽ FULL DIAMOND PAVÉ ✽ 5A SWISS ✽ LIMITED STOCK" rotated={true} />
-            </div>
+            {/* Cross Tape Effect */}
+            <CrossTape />
 
             {/* ICED OUT Section */}
             <div className="px-4 md:px-8 lg:px-10">

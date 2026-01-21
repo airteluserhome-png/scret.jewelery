@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { products, getProductsByCategory, Product } from "@/data/products";
+import CrossTape from "@/components/cross-tape";
+import BrutalistPagination from "@/components/brutalist-pagination";
 
 export default function ShopPage() {
     const [activeCategory, setActiveCategory] = useState<"all" | Product["category"]>("all");
@@ -122,6 +124,9 @@ export default function ShopPage() {
                     </div>
                 )}
             </div>
+
+            {/* Brutalist Pagination */}
+            <BrutalistPagination currentPage={1} totalPages={4} />
         </div>
     );
 }

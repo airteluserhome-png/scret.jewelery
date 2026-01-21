@@ -47,18 +47,36 @@ h3,
     z-index: 10;
 }
 
-/* Product Image Animation - Enhanced 3D */
+/* Product Image Animation - Floor Shadow Technique */
 .product-img-card {
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    /* Stronger base shadow for 3D depth */
-    filter: drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.2));
+    /* NO drop-shadow filter - it reveals the white JPG box */
 }
 
 .card-3d:hover .product-img-card {
-    /* Lifts up and grows */
-    transform: translateY(-10px) scale(1.05) rotate(-3deg);
-    /* Shadow gets deeper and softer when lifted */
-    filter: drop-shadow(0px 30px 30px rgba(0, 0, 0, 0.3));
+    /* Lifts up and rotates */
+    transform: translateY(-15px) scale(1.1) rotate(-3deg);
+}
+
+/* Floor Shadow - Fake oval shadow underneath */
+.card-3d>div:first-child::after {
+    content: '';
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 20px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.card-3d:hover>div:first-child::after {
+    width: 100px;
+    /* Shadow shrinks when watch lifts */
+    opacity: 0.6;
+    /* Shadow lightens */
 }
 
 /* Kinetic Button - Pink on Card Hover */
