@@ -5,7 +5,7 @@ import Image from "next/image";
 import { getFeaturedProducts } from "@/data/products";
 
 export default function FeaturedGrid() {
-    const products = getFeaturedProducts(6);
+    const products = getFeaturedProducts(3);
 
     return (
         <div className="w-full px-4 md:px-8 lg:px-10 py-8 md:py-12">
