@@ -67,7 +67,7 @@ export default function Header() {
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                     <Link href="/">
                         <h1 className="logo-text">
-                            SECRET
+                            SECRETLY
                         </h1>
                     </Link>
                 </div>

@@ -568,10 +568,6 @@ div[class*="product"] {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-
-    /* DEBUG: PROVE IT IS TARGETED */
-    outline: 2px solid lime !important;
-    background: rgba(0, 0, 0, 0.1) !important;
 }
 
 /* 3. Hover Effect: Flicker Speed */
