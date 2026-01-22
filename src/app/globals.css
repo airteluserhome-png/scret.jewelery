@@ -527,68 +527,73 @@ div[class*="product"] {
 
 /* --- BRUTALIST NEON LOGO ANIMATION --- */
 
-/* 1. Define the 3-Color Cycle */
-@keyframes neon-glitch-cycle {
+/* 1. Define the 3-Color Retro Neon Blink */
+@keyframes neon-retro-blink {
 
-    /* PHASE 1: HOT PINK */
+    /* PHASE 1: HOT PINK with aggressive glow */
     0%,
-    30% {
+    33% {
         color: #FF0055;
         text-shadow:
-            4px 4px 0px #000000,
-            /* Hard Black Shadow (Brutalist) */
-            0px 0px 10px #FF0055,
-            /* Inner Glow */
-            0px 0px 20px #FF0055;
-        /* Outer Glow */
+            0 0 5px #FF0055,
+            0 0 10px #FF0055,
+            0 0 20px #FF0055,
+            0 0 40px #FF0055,
+            0 0 80px #FF0055,
+            3px 3px 0px #000000;
     }
 
-    /* PHASE 2: HOT RED */
-    33%,
-    63% {
+    /* PHASE 2: HOT RED with aggressive glow */
+    34%,
+    66% {
         color: #FF3300;
         text-shadow:
-            4px 4px 0px #000000,
-            0px 0px 10px #FF3300,
-            0px 0px 20px #FF3300;
+            0 0 5px #FF3300,
+            0 0 10px #FF3300,
+            0 0 20px #FF3300,
+            0 0 40px #FF3300,
+            0 0 80px #FF3300,
+            3px 3px 0px #000000;
     }
 
-    /* PHASE 3: ELECTRIC YELLOW */
-    66%,
-    99% {
+    /* PHASE 3: ELECTRIC YELLOW with aggressive glow */
+    67%,
+    100% {
         color: #FAFF00;
         text-shadow:
-            4px 4px 0px #000000,
-            0px 0px 10px #FAFF00,
-            0px 0px 20px #FAFF00;
+            0 0 5px #FAFF00,
+            0 0 10px #FAFF00,
+            0 0 20px #FAFF00,
+            0 0 40px #FAFF00,
+            0 0 80px #FAFF00,
+            3px 3px 0px #000000;
     }
 }
 
-/* 2. Apply it to the Logo */
-.site-header__logo-link,
-/* Shopify Default */
-.h1.site-header__logo,
-/* Common Theme Class */
-.logo-text,
-/* Generic Class */
-a.site-nav__link--active
-
-/* Sometimes logo is a link */
-    {
-    /* FORCE THE FONT AND ANIMATION */
+/* 2. Apply animation to the Logo h1 and its children */
+.logo-text h1,
+.logo-text h1 *,
+.logo-text {
     font-family: 'Anton', sans-serif !important;
     text-transform: uppercase !important;
-    font-size: 2.5rem !important;
-    /* Adjust size as needed */
-    text-decoration: none !important;
-
-    /* The Animation: 0.8s is fast/energetic. Change to 2s for slower. */
-    animation: neon-glitch-cycle 0.8s steps(1) infinite;
+    animation: neon-retro-blink 1.5s steps(1) infinite !important;
+    font-weight: 900 !important;
 }
 
-/* OPTIONAL: A slight "Flicker" to make it look like a broken sign */
-.site-header__logo-link:hover,
-.logo-text:hover {
-    animation-duration: 0.1s;
-    /* Goes crazy fast on hover */
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+
+    .logo-text h1,
+    .logo-text h1 *,
+    .logo-text {
+        animation: neon-retro-blink 1.2s steps(1) infinite !important;
+        font-size: 1.875rem !important;
+        /* Ensure visibility on mobile */
+    }
+}
+
+/* Hover effect - faster blinking */
+.logo-text:hover h1,
+.logo-text:hover h1 * {
+    animation-duration: 0.3s !important;
 }
