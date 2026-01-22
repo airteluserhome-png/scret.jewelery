@@ -13,6 +13,11 @@ const config: Config = {
                 'neon-pink': '#FF0099',
                 'dark': '#111',
                 'off-white': '#ffffff',
+                'soft-pink': '#FFB6C1',
+                'rose-gold': '#B76E79',
+                'luxury-white': '#FAFAFA',
+                'pink-black': '#1A1A1A',
+                'rose-pink': '#FFC0CB',
             },
             fontFamily: {
                 sans: ['"Space Grotesk"', '"Inter"', 'sans-serif'], // Wider, more readable
