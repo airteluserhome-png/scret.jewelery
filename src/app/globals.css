@@ -553,7 +553,8 @@ div[class*="product"] {
 }
 
 /* 2. Target the Logo H1 Directly */
-.logo-text {
+/* 2. Target the Logo H1 Directly */
+.logo-neon-v2 {
     font-family: 'Anton', sans-serif !important;
     text-transform: uppercase !important;
     font-weight: 900 !important;
@@ -571,13 +572,13 @@ div[class*="product"] {
 }
 
 /* 3. Hover Effect: Flicker Speed */
-.logo-text:hover {
+.logo-neon-v2:hover {
     animation-duration: 0.1s !important;
 }
 
 /* 4. Mobile Force (Maintain for later, but keep simple) */
 @media (max-width: 768px) {
-    .logo-text {
+    .logo-neon-v2 {
         font-size: 2rem !important;
     }
 }
