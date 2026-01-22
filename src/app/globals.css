@@ -527,57 +527,77 @@ div[class*="product"] {
 
 /* --- BRUTALIST NEON LOGO ANIMATION --- */
 
-/* 1. Define the 3-Color Retro Neon Blink */
+/* 1. Define the 3-Color Retro Neon Blink with FLICKER */
 @keyframes neon-retro-blink {
 
-    /* PHASE 1: HOT PINK with aggressive glow */
-    0%,
-    33% {
+    /* PHASE 1: HOT PINK */
+    0% {
         color: #FF0055;
-        text-shadow:
-            0 0 5px #FF0055,
-            0 0 10px #FF0055,
-            0 0 20px #FF0055,
-            0 0 40px #FF0055,
-            0 0 80px #FF0055,
-            3px 3px 0px #000000;
+        text-shadow: 4px 4px 0px #000, 0 0 10px #FF0055, 0 0 40px #FF0055;
     }
 
-    /* PHASE 2: HOT RED with aggressive glow */
-    34%,
-    66% {
+    5% {
+        opacity: 0.8;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    30% {
+        color: #FF0055;
+        text-shadow: 4px 4px 0px #000, 0 0 10px #FF0055, 0 0 40px #FF0055;
+    }
+
+    /* PHASE 2: HOT RED */
+    33% {
         color: #FF3300;
-        text-shadow:
-            0 0 5px #FF3300,
-            0 0 10px #FF3300,
-            0 0 20px #FF3300,
-            0 0 40px #FF3300,
-            0 0 80px #FF3300,
-            3px 3px 0px #000000;
+        text-shadow: 4px 4px 0px #000, 0 0 10px #FF3300, 0 0 40px #FF3300;
     }
 
-    /* PHASE 3: ELECTRIC YELLOW with aggressive glow */
-    67%,
-    100% {
+    35% {
+        opacity: 0.5;
+    }
+
+    38% {
+        opacity: 1;
+    }
+
+    63% {
+        color: #FF3300;
+        text-shadow: 4px 4px 0px #000, 0 0 10px #FF3300, 0 0 40px #FF3300;
+    }
+
+    /* PHASE 3: ELECTRIC YELLOW */
+    66% {
         color: #FAFF00;
-        text-shadow:
-            0 0 5px #FAFF00,
-            0 0 10px #FAFF00,
-            0 0 20px #FAFF00,
-            0 0 40px #FAFF00,
-            0 0 80px #FAFF00,
-            3px 3px 0px #000000;
+        text-shadow: 4px 4px 0px #000, 0 0 10px #FAFF00, 0 0 40px #FAFF00;
+    }
+
+    68% {
+        opacity: 0.3;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    99% {
+        color: #FAFF00;
+        text-shadow: 4px 4px 0px #000, 0 0 10px #FAFF00, 0 0 40px #FAFF00;
     }
 }
 
 /* 2. Apply animation to the Logo h1 and its children */
-.logo-text h1,
-.logo-text h1 *,
-.logo-text {
+.logo-text h1 {
     font-family: 'Anton', sans-serif !important;
     text-transform: uppercase !important;
-    animation: neon-retro-blink 1.5s steps(1) infinite !important;
+    animation: neon-retro-blink 1.2s steps(1) infinite !important;
     font-weight: 900 !important;
+    letter-spacing: 2px !important;
+    display: block !important;
+    /* Ensure block layout for transforms/paint */
+    width: 100%;
 }
 
 /* Mobile-specific adjustments */
