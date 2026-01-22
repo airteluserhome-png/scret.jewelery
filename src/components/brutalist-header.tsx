@@ -43,7 +43,7 @@ export default function BrutalistHeader() {
 
                 <Link
                     href="/"
-                    className="md:hidden text-5xl font-brutalist tracking-[0.05em] text-black"
+                    className="md:hidden text-5xl font-brutalist tracking-[0.05em] text-hot-pink"
                     style={{
                         textShadow: '2px 2px 0px #000, 4px 4px 0px #000'
                     }}
