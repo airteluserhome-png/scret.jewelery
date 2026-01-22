@@ -177,7 +177,7 @@ h3,
     text-shadow: 1px 1px 0px #000;
     paint-order: stroke fill;
     font-weight: 800;
-    
+
 }
 
 /* 3D Trading Card Effect */
@@ -523,4 +523,72 @@ div[class*="product"] {
         width: 70% !important;
         /* Gives the watch space to "breathe" inside the brackets */
     }
+}
+
+/* --- BRUTALIST NEON LOGO ANIMATION --- */
+
+/* 1. Define the 3-Color Cycle */
+@keyframes neon-glitch-cycle {
+
+    /* PHASE 1: HOT PINK */
+    0%,
+    30% {
+        color: #FF0055;
+        text-shadow:
+            4px 4px 0px #000000,
+            /* Hard Black Shadow (Brutalist) */
+            0px 0px 10px #FF0055,
+            /* Inner Glow */
+            0px 0px 20px #FF0055;
+        /* Outer Glow */
+    }
+
+    /* PHASE 2: HOT RED */
+    33%,
+    63% {
+        color: #FF3300;
+        text-shadow:
+            4px 4px 0px #000000,
+            0px 0px 10px #FF3300,
+            0px 0px 20px #FF3300;
+    }
+
+    /* PHASE 3: ELECTRIC YELLOW */
+    66%,
+    99% {
+        color: #FAFF00;
+        text-shadow:
+            4px 4px 0px #000000,
+            0px 0px 10px #FAFF00,
+            0px 0px 20px #FAFF00;
+    }
+}
+
+/* 2. Apply it to the Logo */
+.site-header__logo-link,
+/* Shopify Default */
+.h1.site-header__logo,
+/* Common Theme Class */
+.logo-text,
+/* Generic Class */
+a.site-nav__link--active
+
+/* Sometimes logo is a link */
+    {
+    /* FORCE THE FONT AND ANIMATION */
+    font-family: 'Anton', sans-serif !important;
+    text-transform: uppercase !important;
+    font-size: 2.5rem !important;
+    /* Adjust size as needed */
+    text-decoration: none !important;
+
+    /* The Animation: 0.8s is fast/energetic. Change to 2s for slower. */
+    animation: neon-glitch-cycle 0.8s steps(1) infinite;
+}
+
+/* OPTIONAL: A slight "Flicker" to make it look like a broken sign */
+.site-header__logo-link:hover,
+.logo-text:hover {
+    animation-duration: 0.1s;
+    /* Goes crazy fast on hover */
 }

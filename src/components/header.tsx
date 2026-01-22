@@ -65,7 +65,7 @@ export default function Header() {
 
                 {/* Center: Logo */}
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <Link href="/">
+                    <Link href="/" className="logo-text">
                         <h1 className="font-serif text-3xl tracking-wide">
                             <ScrambleText text="SECRETLY" revealSpeed={120} scrambleSpeed={40} delay={0} />
                         </h1>
