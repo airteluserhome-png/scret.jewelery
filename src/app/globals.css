@@ -525,95 +525,96 @@ div[class*="product"] {
     }
 }
 
-/* --- BRUTALIST NEON LOGO ANIMATION --- */
+/* --- BRUTALIST NEON LOGO ANIMATION (FIXED) --- */
 
-/* 1. Define the 3-Color Retro Neon Blink with FLICKER */
-@keyframes neon-retro-blink {
+/* 1. Define the Aggressive 3-Color Cycle + Flicker */
+@keyframes neon-flicker-intense {
 
-    /* PHASE 1: HOT PINK */
-    0% {
-        color: #FF0055;
-        text-shadow: 4px 4px 0px #000, 0 0 10px #FF0055, 0 0 40px #FF0055;
-    }
-
-    5% {
-        opacity: 0.8;
-    }
-
-    10% {
-        opacity: 1;
-    }
-
+    /* PHASE 1: HOT PINK (0-32%) */
+    0%,
     30% {
         color: #FF0055;
-        text-shadow: 4px 4px 0px #000, 0 0 10px #FF0055, 0 0 40px #FF0055;
-    }
-
-    /* PHASE 2: HOT RED */
-    33% {
-        color: #FF3300;
-        text-shadow: 4px 4px 0px #000, 0 0 10px #FF3300, 0 0 40px #FF3300;
-    }
-
-    35% {
-        opacity: 0.5;
-    }
-
-    38% {
+        text-shadow:
+            3px 3px 0px #000,
+            0 0 15px #FF0055,
+            0 0 30px #FF0055,
+            0 0 50px #FF0055;
         opacity: 1;
     }
 
+    31% {
+        opacity: 0.2;
+    }
+
+    /* Hard flicker */
+    32% {
+        opacity: 1;
+    }
+
+    /* PHASE 2: ELECTRIC RED (33-65%) */
+    33%,
     63% {
         color: #FF3300;
-        text-shadow: 4px 4px 0px #000, 0 0 10px #FF3300, 0 0 40px #FF3300;
-    }
-
-    /* PHASE 3: ELECTRIC YELLOW */
-    66% {
-        color: #FAFF00;
-        text-shadow: 4px 4px 0px #000, 0 0 10px #FAFF00, 0 0 40px #FAFF00;
-    }
-
-    68% {
-        opacity: 0.3;
-    }
-
-    70% {
+        text-shadow:
+            3px 3px 0px #000,
+            0 0 15px #FF3300,
+            0 0 30px #FF3300,
+            0 0 50px #FF3300;
         opacity: 1;
     }
 
+    64% {
+        opacity: 0.2;
+    }
+
+    65% {
+        opacity: 1;
+    }
+
+    /* PHASE 3: ELECTRIC YELLOW (66-100%) */
+    66%,
     99% {
         color: #FAFF00;
-        text-shadow: 4px 4px 0px #000, 0 0 10px #FAFF00, 0 0 40px #FAFF00;
+        text-shadow:
+            3px 3px 0px #000,
+            0 0 15px #FAFF00,
+            0 0 30px #FAFF00,
+            0 0 50px #FAFF00;
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
     }
 }
 
-/* 2. Apply animation to the Logo h1 and its children */
+/* 2. Apply purely to the H1 inside the link */
 .logo-text h1 {
     font-family: 'Anton', sans-serif !important;
     text-transform: uppercase !important;
-    animation: neon-retro-blink 1.2s steps(1) infinite !important;
     font-weight: 900 !important;
     letter-spacing: 2px !important;
+
+    /* Use normal timing function for reliability, but hard keyframes do the work */
+    animation: neon-flicker-intense 1.5s linear infinite !important;
+
+    /* Ensure hardware acceleration */
+    transform: translateZ(0);
+    will-change: text-shadow, color, opacity;
     display: block !important;
-    /* Ensure block layout for transforms/paint */
     width: 100%;
 }
 
-/* Mobile-specific adjustments */
-@media (max-width: 768px) {
-
-    .logo-text h1,
-    .logo-text h1 *,
-    .logo-text {
-        animation: neon-retro-blink 1.2s steps(1) infinite !important;
-        font-size: 1.875rem !important;
-        /* Ensure visibility on mobile */
-    }
+/* 3. Hover: Hyper-speed */
+.logo-text:hover h1 {
+    animation-duration: 0.2s !important;
 }
 
-/* Hover effect - faster blinking */
-.logo-text:hover h1,
-.logo-text:hover h1 * {
-    animation-duration: 0.3s !important;
+/* 4. Mobile Force - Ensure it overrides EVERYTHING */
+@media (max-width: 768px) {
+    .logo-text h1 {
+        font-size: 2rem !important;
+        /* Force visible size */
+        animation: neon-flicker-intense 1.5s linear infinite !important;
+    }
 }
