@@ -525,96 +525,59 @@ div[class*="product"] {
     }
 }
 
-/* --- BRUTALIST NEON LOGO ANIMATION (FIXED) --- */
+/* --- BRUTALIST NEON LOGO ANIMATION (DESKTOP FIRST) --- */
 
-/* 1. Define the Aggressive 3-Color Cycle + Flicker */
-@keyframes neon-flicker-intense {
+/* 1. Define the 3-Color Cycle */
+@keyframes neon-cycle {
 
-    /* PHASE 1: HOT PINK (0-32%) */
+    /* PHASE 1: HOT PINK */
     0%,
-    30% {
-        color: #FF0055;
-        text-shadow:
-            3px 3px 0px #000,
-            0 0 15px #FF0055,
-            0 0 30px #FF0055,
-            0 0 50px #FF0055;
-        opacity: 1;
-    }
-
-    31% {
-        opacity: 0.2;
-    }
-
-    /* Hard flicker */
     32% {
-        opacity: 1;
+        color: #FF0055;
+        text-shadow: 4px 4px 0px #000, 0 0 20px #FF0055;
     }
 
-    /* PHASE 2: ELECTRIC RED (33-65%) */
+    /* PHASE 2: ELECTRIC RED */
     33%,
-    63% {
-        color: #FF3300;
-        text-shadow:
-            3px 3px 0px #000,
-            0 0 15px #FF3300,
-            0 0 30px #FF3300,
-            0 0 50px #FF3300;
-        opacity: 1;
-    }
-
-    64% {
-        opacity: 0.2;
-    }
-
     65% {
-        opacity: 1;
+        color: #FF3300;
+        text-shadow: 4px 4px 0px #000, 0 0 20px #FF3300;
     }
 
-    /* PHASE 3: ELECTRIC YELLOW (66-100%) */
+    /* PHASE 3: ELECTRIC YELLOW */
     66%,
-    99% {
-        color: #FAFF00;
-        text-shadow:
-            3px 3px 0px #000,
-            0 0 15px #FAFF00,
-            0 0 30px #FAFF00,
-            0 0 50px #FAFF00;
-        opacity: 1;
-    }
-
     100% {
-        opacity: 1;
+        color: #FAFF00;
+        text-shadow: 4px 4px 0px #000, 0 0 20px #FAFF00;
     }
 }
 
-/* 2. Apply purely to the H1 inside the link */
-.logo-text h1 {
+/* 2. Target the Logo H1 Directly */
+.logo-text {
     font-family: 'Anton', sans-serif !important;
     text-transform: uppercase !important;
     font-weight: 900 !important;
-    letter-spacing: 2px !important;
+    letter-spacing: 0.05em !important;
+    white-space: nowrap;
+    /* Prevent wrapping */
 
-    /* Use normal timing function for reliability, but hard keyframes do the work */
-    animation: neon-flicker-intense 1.5s linear infinite !important;
+    /* Animation: Name | Duration | Timing | Iteration */
+    animation: neon-cycle 0.8s step-end infinite !important;
 
-    /* Ensure hardware acceleration */
-    transform: translateZ(0);
-    will-change: text-shadow, color, opacity;
+    /* Ensure visibility */
     display: block !important;
-    width: 100%;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
-/* 3. Hover: Hyper-speed */
-.logo-text:hover h1 {
-    animation-duration: 0.2s !important;
+/* 3. Hover Effect: Flicker Speed */
+.logo-text:hover {
+    animation-duration: 0.1s !important;
 }
 
-/* 4. Mobile Force - Ensure it overrides EVERYTHING */
+/* 4. Mobile Force (Maintain for later, but keep simple) */
 @media (max-width: 768px) {
-    .logo-text h1 {
+    .logo-text {
         font-size: 2rem !important;
-        /* Force visible size */
-        animation: neon-flicker-intense 1.5s linear infinite !important;
     }
 }
