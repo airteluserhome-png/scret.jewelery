@@ -3,6 +3,11 @@
 import { useState, useEffect, useCallback } from "react";
 import LuxuryLoader from "./luxury-loader";
 import { Lenis as ReactLenis } from "@studio-freight/react-lenis";
+import BackToTop from "./back-to-top";
+import CustomCursor from "./custom-cursor";
+import RecentlyViewed from "./recently-viewed";
+import FloatingContact from "./floating-contact";
+import { ToastProvider } from "./toast-notification";
 
 // SHA-256 hash function for secure password comparison
 async function hashPassword(password: string): Promise<string> {
@@ -172,19 +177,25 @@ export default function AuthGate({ children }: AuthGateProps) {
         return null;
     }
 
-    // AUTHENTICATED - Render children with smooth scrolling
+    // AUTHENTICATED - Render children with smooth scrolling and premium features
     if (isAuthenticated) {
         return (
-            <ReactLenis root options={{ 
-                lerp: 0.1, 
-                duration: 1.4, 
-                smoothWheel: true, 
-                wheelMultiplier: 1.0,
-                touchMultiplier: 2,
-                infinite: false
-            }}>
-                {children}
-            </ReactLenis>
+            <ToastProvider>
+                <ReactLenis root options={{ 
+                    lerp: 0.1, 
+                    duration: 1.4, 
+                    smoothWheel: true, 
+                    wheelMultiplier: 1.0,
+                    touchMultiplier: 2,
+                    infinite: false
+                }}>
+                    <CustomCursor />
+                    {children}
+                    <BackToTop />
+                    <RecentlyViewed />
+                    <FloatingContact />
+                </ReactLenis>
+            </ToastProvider>
         );
     }
 
