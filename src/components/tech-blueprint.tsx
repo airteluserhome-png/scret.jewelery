@@ -6,22 +6,7 @@ import { useRef, useState, useEffect } from "react";
 
 // Dynamic Blueprint Data - Updated images to match new catalog
 const blueprintData = [
-    {
-        id: "rolex",
-        title: "ROLEX\nICED",
-        ref: "Ref. 116505",
-        image: "/iced-rolex-1.jpg",
-        specs: [
-            { label: "Caliber", value: "4130 Manufacture" },
-            { label: "Jewels", value: "44 Rubies" },
-            { label: "Frequency", value: "28,800 VPH" },
-            { label: "Power Reserve", value: "72 Hours" },
-            { label: "Water Resistance", value: "100 Meters" },
-            { label: "Case Material", value: "18k Everose Gold" },
-            { label: "Crystal", value: "Scratch-resistant Sapphire" },
-            { label: "Strap", value: "Oyster Bracelet" },
-        ]
-    },
+
     {
         id: "patek",
         title: "PATEK\nPLAIN",
