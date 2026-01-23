@@ -170,63 +170,70 @@ export default function LockOverlay() {
 
     return (
         <div className="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center p-4 overflow-hidden">
-            {/* Subtle Pattern Background */}
-            <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#FF0099 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-
+            
             <div className="w-full max-w-md relative z-20">
-                {/* Security Shield Icon */}
-                <div className="flex justify-center mb-8">
-                    <div className={`w-20 h-20 rounded-full ${isLockedOut ? 'bg-red-100 border-red-500' : 'bg-pink-100 border-[#FF0099]'} border-4 flex items-center justify-center shadow-lg`}>
-                        <svg className={`w-10 h-10 ${isLockedOut ? 'text-red-500' : 'text-[#FF0099]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
-                    </div>
-                </div>
-
-                {/* Title */}
-                <h1 className="text-[#FF0099] font-brutalist text-6xl md:text-7xl mb-10 text-center tracking-wider"
-                    style={{ textShadow: "3px 3px 0px rgba(255,0,153,0.2)" }}>
+                {/* Brutalist Logo */}
+                <h1 className="font-brutalist text-6xl md:text-8xl mb-12 text-center tracking-wider text-black"
+                    style={{ textShadow: "4px 4px 0px #FF0099" }}>
                     SECRETLY
                 </h1>
 
-                {/* Main Card */}
-                <div className={`bg-white rounded-2xl p-8 md:p-10 shadow-2xl border-2 ${isLockedOut ? 'border-red-400' : 'border-[#FF0099]'} transition-all duration-200 relative ${error ? 'animate-shake' : ''}`}>
+                {/* Brutalist Card with Corner Brackets */}
+                <div className={`relative bg-white p-8 md:p-10 ${isLockedOut ? 'border-red-500' : 'border-black'} transition-all duration-100 ${error ? 'translate-x-2' : ''}`}
+                    style={{ border: '3px solid', borderColor: isLockedOut ? '#ef4444' : '#000', boxShadow: isLockedOut ? '8px 8px 0px #ef4444' : '8px 8px 0px #FF0099' }}>
                     
+                    {/* Corner Brackets */}
+                    <div className={`absolute -top-1 -left-1 w-6 h-6 border-t-4 border-l-4 ${isLockedOut ? 'border-red-500' : 'border-black'}`}></div>
+                    <div className={`absolute -top-1 -right-1 w-6 h-6 border-t-4 border-r-4 ${isLockedOut ? 'border-red-500' : 'border-black'}`}></div>
+                    <div className={`absolute -bottom-1 -left-1 w-6 h-6 border-b-4 border-l-4 ${isLockedOut ? 'border-red-500' : 'border-black'}`}></div>
+                    <div className={`absolute -bottom-1 -right-1 w-6 h-6 border-b-4 border-r-4 ${isLockedOut ? 'border-red-500' : 'border-black'}`}></div>
+
                     {isLockedOut ? (
                         /* Lockout Screen */
                         <div className="text-center space-y-6">
-                            <div className="w-24 h-24 mx-auto bg-red-100 rounded-full flex items-center justify-center">
-                                <svg className="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            <div className="w-20 h-20 mx-auto border-4 border-red-500 flex items-center justify-center bg-white"
+                                style={{ boxShadow: '4px 4px 0px #000' }}>
+                                <svg className="w-10 h-10 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                 </svg>
                             </div>
                             <div>
-                                <p className="font-bold text-red-500 text-2xl tracking-wide uppercase mb-2">
-                                    Security Lockout
+                                <p className="font-brutalist text-red-500 text-3xl tracking-wider uppercase mb-2">
+                                    LOCKOUT
                                 </p>
-                                <p className="text-gray-500 text-sm">
+                                <p className="font-bold text-black/60 text-sm uppercase tracking-widest">
                                     Too many failed attempts
                                 </p>
                             </div>
-                            <div className="bg-red-50 border-2 border-red-200 rounded-xl py-6 px-8">
-                                <p className="text-red-400 text-xs tracking-widest mb-2 uppercase">Time Remaining</p>
-                                <p className="text-red-500 text-5xl font-bold tracking-wider font-mono">
+                            <div className="bg-white py-6 px-8" style={{ border: '3px solid #ef4444', boxShadow: '4px 4px 0px #000' }}>
+                                <p className="font-bold text-red-500 text-xs tracking-widest mb-2 uppercase">Time Remaining</p>
+                                <p className="font-brutalist text-red-500 text-5xl tracking-wider">
                                     {formatTime(timeRemaining)}
                                 </p>
                             </div>
-                            <p className="text-gray-400 text-xs tracking-wider">
+                            <p className="font-bold text-black/40 text-xs tracking-widest uppercase">
                                 Lockout #{lockoutCount} • Next: {Math.pow(LOCKOUT_MULTIPLIER, lockoutCount) * 5} min
                             </p>
                         </div>
                     ) : (
                         /* Login Form */
                         <>
+                            {/* Lock Icon */}
+                            <div className="flex justify-center mb-6">
+                                <div className="w-16 h-16 flex items-center justify-center bg-white"
+                                    style={{ border: '3px solid #000', boxShadow: '4px 4px 0px #FF0099' }}>
+                                    <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                    </svg>
+                                </div>
+                            </div>
+
                             <div className="mb-8 text-center">
-                                <h2 className="text-[#FF0099] font-bold text-xl tracking-widest uppercase mb-2">
+                                <h2 className="font-brutalist text-black text-2xl tracking-wider uppercase mb-2">
                                     Private Access
                                 </h2>
-                                <p className="text-gray-400 text-sm tracking-wide">
-                                    Enter your password to continue
+                                <p className="font-bold text-black/50 text-xs uppercase tracking-widest">
+                                    Enter password to continue
                                 </p>
                             </div>
 
@@ -236,8 +243,9 @@ export default function LockOverlay() {
                                         type={showPassword ? "text" : "password"}
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        placeholder="Enter password..."
-                                        className="w-full bg-gray-50 text-gray-800 text-lg py-4 px-5 rounded-xl border-2 border-gray-200 outline-none focus:border-[#FF0099] focus:bg-white placeholder-gray-400 transition-all pr-14"
+                                        placeholder="PASSWORD"
+                                        className="w-full bg-white text-black font-bold text-lg py-4 px-5 outline-none placeholder-black/30 transition-all pr-14 uppercase tracking-widest focus:shadow-[4px_4px_0px_#FF0099]"
+                                        style={{ border: '3px solid #000', boxShadow: '4px 4px 0px #000' }}
                                         autoFocus
                                         disabled={isLockedOut}
                                     />
@@ -245,7 +253,7 @@ export default function LockOverlay() {
                                     <button
                                         type="button"
                                         onClick={() => setShowPassword(!showPassword)}
-                                        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#FF0099] transition-colors"
+                                        className="absolute right-4 top-1/2 -translate-y-1/2 text-black/40 hover:text-[#FF0099] transition-colors"
                                     >
                                         {showPassword ? (
                                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -262,15 +270,16 @@ export default function LockOverlay() {
 
                                 {/* Attempts Warning */}
                                 {attempts > 0 && (
-                                    <div className="flex items-center justify-between bg-amber-50 border border-amber-200 rounded-lg py-3 px-4">
-                                        <span className="text-amber-600 text-sm font-medium">
-                                            Failed attempts: {attempts}/{MAX_ATTEMPTS}
+                                    <div className="flex items-center justify-between bg-white py-3 px-4"
+                                        style={{ border: '3px solid #eab308', boxShadow: '4px 4px 0px #000' }}>
+                                        <span className="font-bold text-yellow-600 text-xs uppercase tracking-widest">
+                                            Failed: {attempts}/{MAX_ATTEMPTS}
                                         </span>
                                         <div className="flex gap-1.5">
                                             {Array.from({ length: MAX_ATTEMPTS }).map((_, i) => (
                                                 <div
                                                     key={i}
-                                                    className={`w-2.5 h-2.5 rounded-full ${i < attempts ? 'bg-red-400' : 'bg-gray-200'}`}
+                                                    className={`w-3 h-3 border-2 border-black ${i < attempts ? 'bg-red-500' : 'bg-white'}`}
                                                 />
                                             ))}
                                         </div>
@@ -278,19 +287,24 @@ export default function LockOverlay() {
                                 )}
 
                                 {error && (
-                                    <div className="text-red-500 font-semibold text-center text-sm bg-red-50 py-3 rounded-lg border border-red-200">
-                                        Access Denied - Incorrect Password
+                                    <div className="font-brutalist text-red-500 text-center text-lg bg-white py-3 uppercase tracking-wider"
+                                        style={{ border: '3px solid #ef4444', boxShadow: '4px 4px 0px #000' }}>
+                                        Access Denied
                                     </div>
                                 )}
 
                                 <button
                                     type="submit"
                                     disabled={isLockedOut || !password}
-                                    className={`font-bold text-xl py-4 rounded-xl transition-all uppercase tracking-wider ${
+                                    className={`font-brutalist text-2xl py-4 transition-all uppercase tracking-wider ${
                                         isLockedOut || !password
                                             ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                            : 'bg-[#FF0099] text-white hover:bg-[#e6008a] hover:shadow-lg hover:shadow-pink-200 active:scale-[0.98]'
+                                            : 'bg-black text-white hover:bg-[#FF0099] hover:-translate-x-1 hover:-translate-y-1'
                                     }`}
+                                    style={{ 
+                                        border: isLockedOut || !password ? '3px solid #d1d5db' : '3px solid #000',
+                                        boxShadow: isLockedOut || !password ? 'none' : '5px 5px 0px #FF0099' 
+                                    }}
                                 >
                                     Unlock
                                 </button>
@@ -300,29 +314,12 @@ export default function LockOverlay() {
                 </div>
 
                 {/* Footer */}
-                <div className="mt-8 text-center space-y-2">
-                    <div className="flex items-center justify-center gap-3 text-xs">
-                        <span className="text-emerald-500 flex items-center gap-1.5 font-medium">
-                            <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                            Encrypted
-                        </span>
-                        <span className="text-gray-300">•</span>
-                        <span className="text-[#FF0099] font-medium">Session Protected</span>
-                    </div>
-                    <p className="text-gray-300 text-[10px] tracking-wider uppercase">Security Protocol v2.0</p>
+                <div className="mt-10 text-center">
+                    <p className="font-bold text-black/40 text-[10px] tracking-[0.3em] uppercase">
+                        Secretly • Luxury Goods • Private
+                    </p>
                 </div>
             </div>
-
-            <style jsx>{`
-                @keyframes shake {
-                    0%, 100% { transform: translateX(0); }
-                    25% { transform: translateX(-8px); }
-                    75% { transform: translateX(8px); }
-                }
-                .animate-shake {
-                    animation: shake 0.3s ease-in-out;
-                }
-            `}</style>
         </div>
     );
 }
