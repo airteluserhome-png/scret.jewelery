@@ -29,12 +29,12 @@ export default function CustomCursor() {
             const hoveredElement = document.elementFromPoint(position.x, position.y);
             if (hoveredElement) {
                 const computedStyle = window.getComputedStyle(hoveredElement);
-                const isClickable = 
+                const isClickable: boolean = 
                     computedStyle.cursor === "pointer" ||
                     hoveredElement.tagName === "A" ||
                     hoveredElement.tagName === "BUTTON" ||
-                    hoveredElement.closest("a") ||
-                    hoveredElement.closest("button") ||
+                    !!hoveredElement.closest("a") ||
+                    !!hoveredElement.closest("button") ||
                     hoveredElement.getAttribute("role") === "button";
                 setIsPointer(isClickable);
             }
