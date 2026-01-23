@@ -169,83 +169,75 @@ export default function LockOverlay() {
     if (!mounted || unlocked) return null;
 
     return (
-        <div className="fixed inset-0 z-[9999] bg-black flex flex-col items-center justify-center p-4 overflow-hidden">
-            {/* Noise Background Layer */}
-            <div className="absolute inset-0 bg-noise opacity-20"></div>
-            {/* Scanlines Overlay */}
-            <div className="scanlines"></div>
+        <div className="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center p-4 overflow-hidden">
+            {/* Subtle Pattern Background */}
+            <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#FF0099 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
 
             <div className="w-full max-w-md relative z-20">
                 {/* Security Shield Icon */}
-                <div className="flex justify-center mb-6">
-                    <div className={`w-16 h-16 border-2 ${isLockedOut ? 'border-red-600' : 'border-[#FF0099]'} flex items-center justify-center bg-black/50`}>
-                        <svg className={`w-8 h-8 ${isLockedOut ? 'text-red-600' : 'text-[#FF0099]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                <div className="flex justify-center mb-8">
+                    <div className={`w-20 h-20 rounded-full ${isLockedOut ? 'bg-red-100 border-red-500' : 'bg-pink-100 border-[#FF0099]'} border-4 flex items-center justify-center shadow-lg`}>
+                        <svg className={`w-10 h-10 ${isLockedOut ? 'text-red-500' : 'text-[#FF0099]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                         </svg>
                     </div>
                 </div>
 
-                {/* Glitch Title */}
-                <h1 className="text-[#FF0099] font-brutalist text-7xl mb-8 text-center tracking-widest glitch-text relative"
-                    data-text="SECRETLY"
-                    style={{ textShadow: "4px 4px 0px #000" }}>
+                {/* Title */}
+                <h1 className="text-[#FF0099] font-brutalist text-6xl md:text-7xl mb-10 text-center tracking-wider"
+                    style={{ textShadow: "3px 3px 0px rgba(255,0,153,0.2)" }}>
                     SECRETLY
                 </h1>
 
-                {/* Brutalist Box */}
-                <div className={`border-4 ${isLockedOut ? 'border-red-600' : 'border-[#FF0099]'} bg-black p-10 shadow-[8px_8px_0px_#111] transition-all duration-100 relative ${error ? 'translate-x-[10px] border-red-600' : ''}`}>
-                    {/* Decorative Corner Brackets */}
-                    <div className={`absolute top-0 left-0 w-4 h-4 ${isLockedOut ? 'bg-red-600' : 'bg-[#FF0099]'}`}></div>
-                    <div className={`absolute top-0 right-0 w-4 h-4 ${isLockedOut ? 'bg-red-600' : 'bg-[#FF0099]'}`}></div>
-                    <div className={`absolute bottom-0 left-0 w-4 h-4 ${isLockedOut ? 'bg-red-600' : 'bg-[#FF0099]'}`}></div>
-                    <div className={`absolute bottom-0 right-0 w-4 h-4 ${isLockedOut ? 'bg-red-600' : 'bg-[#FF0099]'}`}></div>
-
+                {/* Main Card */}
+                <div className={`bg-white rounded-2xl p-8 md:p-10 shadow-2xl border-2 ${isLockedOut ? 'border-red-400' : 'border-[#FF0099]'} transition-all duration-200 relative ${error ? 'animate-shake' : ''}`}>
+                    
                     {isLockedOut ? (
                         /* Lockout Screen */
                         <div className="text-center space-y-6">
-                            <div className="w-20 h-20 mx-auto border-4 border-red-600 rounded-full flex items-center justify-center animate-pulse">
-                                <svg className="w-10 h-10 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="w-24 h-24 mx-auto bg-red-100 rounded-full flex items-center justify-center">
+                                <svg className="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                 </svg>
                             </div>
                             <div>
-                                <p className="font-mono text-red-500 font-bold text-xl tracking-widest uppercase mb-2">
-                                    SECURITY LOCKOUT
+                                <p className="font-bold text-red-500 text-2xl tracking-wide uppercase mb-2">
+                                    Security Lockout
                                 </p>
-                                <p className="font-mono text-white/60 text-sm">
+                                <p className="text-gray-500 text-sm">
                                     Too many failed attempts
                                 </p>
                             </div>
-                            <div className="bg-red-900/30 border border-red-600 py-4 px-6">
-                                <p className="font-mono text-red-400 text-xs tracking-widest mb-2">TIME REMAINING</p>
-                                <p className="font-mono text-red-500 text-4xl font-bold tracking-wider">
+                            <div className="bg-red-50 border-2 border-red-200 rounded-xl py-6 px-8">
+                                <p className="text-red-400 text-xs tracking-widest mb-2 uppercase">Time Remaining</p>
+                                <p className="text-red-500 text-5xl font-bold tracking-wider font-mono">
                                     {formatTime(timeRemaining)}
                                 </p>
                             </div>
-                            <p className="font-mono text-white/40 text-[10px] tracking-wider">
-                                LOCKOUT #{lockoutCount} • NEXT LOCKOUT: {Math.pow(LOCKOUT_MULTIPLIER, lockoutCount) * 5} MIN
+                            <p className="text-gray-400 text-xs tracking-wider">
+                                Lockout #{lockoutCount} • Next: {Math.pow(LOCKOUT_MULTIPLIER, lockoutCount) * 5} min
                             </p>
                         </div>
                     ) : (
                         /* Login Form */
                         <>
-                            <div className="mb-8 text-center space-y-2">
-                                <p className="font-mono text-[#FF0099] font-bold text-lg tracking-widest uppercase border-b border-[#FF0099]/30 pb-2 inline-block">
-                                    Restricted Access
-                                </p>
-                                <p className="font-mono text-white/60 text-xs tracking-widest">
-                                    // ENTER SECURE PASSWORD //
+                            <div className="mb-8 text-center">
+                                <h2 className="text-[#FF0099] font-bold text-xl tracking-widest uppercase mb-2">
+                                    Private Access
+                                </h2>
+                                <p className="text-gray-400 text-sm tracking-wide">
+                                    Enter your password to continue
                                 </p>
                             </div>
 
-                            <form onSubmit={handleUnlock} className="flex flex-col gap-6">
-                                <div className="relative group">
+                            <form onSubmit={handleUnlock} className="flex flex-col gap-5">
+                                <div className="relative">
                                     <input
                                         type={showPassword ? "text" : "password"}
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                         placeholder="Enter password..."
-                                        className="w-full bg-[#111] text-[#fff] font-mono text-xl py-4 px-4 border-2 border-[#333] outline-none focus:border-[#FF0099] placeholder-[#555] transition-colors tracking-wider pr-12"
+                                        className="w-full bg-gray-50 text-gray-800 text-lg py-4 px-5 rounded-xl border-2 border-gray-200 outline-none focus:border-[#FF0099] focus:bg-white placeholder-gray-400 transition-all pr-14"
                                         autoFocus
                                         disabled={isLockedOut}
                                     />
@@ -253,7 +245,7 @@ export default function LockOverlay() {
                                     <button
                                         type="button"
                                         onClick={() => setShowPassword(!showPassword)}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[#FF0099]/50 hover:text-[#FF0099] transition-colors"
+                                        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#FF0099] transition-colors"
                                     >
                                         {showPassword ? (
                                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -270,15 +262,15 @@ export default function LockOverlay() {
 
                                 {/* Attempts Warning */}
                                 {attempts > 0 && (
-                                    <div className="flex items-center justify-between bg-yellow-900/20 border border-yellow-600/50 py-2 px-4">
-                                        <span className="font-mono text-yellow-500 text-xs tracking-wider">
-                                            FAILED: {attempts}/{MAX_ATTEMPTS}
+                                    <div className="flex items-center justify-between bg-amber-50 border border-amber-200 rounded-lg py-3 px-4">
+                                        <span className="text-amber-600 text-sm font-medium">
+                                            Failed attempts: {attempts}/{MAX_ATTEMPTS}
                                         </span>
-                                        <div className="flex gap-1">
+                                        <div className="flex gap-1.5">
                                             {Array.from({ length: MAX_ATTEMPTS }).map((_, i) => (
                                                 <div
                                                     key={i}
-                                                    className={`w-2 h-2 ${i < attempts ? 'bg-red-500' : 'bg-[#333]'}`}
+                                                    className={`w-2.5 h-2.5 rounded-full ${i < attempts ? 'bg-red-400' : 'bg-gray-200'}`}
                                                 />
                                             ))}
                                         </div>
@@ -286,39 +278,51 @@ export default function LockOverlay() {
                                 )}
 
                                 {error && (
-                                    <p className="text-red-500 font-bold text-center font-mono text-sm tracking-widest bg-red-900/20 py-2 border border-red-500 animate-pulse">
-                                        [ ACCESS DENIED ]
-                                    </p>
+                                    <div className="text-red-500 font-semibold text-center text-sm bg-red-50 py-3 rounded-lg border border-red-200">
+                                        Access Denied - Incorrect Password
+                                    </div>
                                 )}
 
                                 <button
                                     type="submit"
                                     disabled={isLockedOut || !password}
-                                    className={`font-brutalist text-3xl py-4 border-2 transition-all uppercase tracking-wider relative overflow-hidden group ${
+                                    className={`font-bold text-xl py-4 rounded-xl transition-all uppercase tracking-wider ${
                                         isLockedOut || !password
-                                            ? 'bg-[#333] text-[#666] border-[#333] cursor-not-allowed'
-                                            : 'bg-[#FF0099] text-black border-[#FF0099] hover:bg-black hover:text-[#FF0099] hover:translate-x-1 hover:translate-y-1'
+                                            ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                            : 'bg-[#FF0099] text-white hover:bg-[#e6008a] hover:shadow-lg hover:shadow-pink-200 active:scale-[0.98]'
                                     }`}
                                 >
-                                    <span className="relative z-10">AUTHENTICATE</span>
+                                    Unlock
                                 </button>
                             </form>
                         </>
                     )}
                 </div>
 
-                <div className="mt-8 text-center opacity-40 hover:opacity-100 transition-opacity space-y-2">
-                    <div className="flex items-center justify-center gap-4 text-[10px] font-mono">
-                        <span className="text-green-500 flex items-center gap-1">
-                            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                            SHA-256 ENCRYPTED
+                {/* Footer */}
+                <div className="mt-8 text-center space-y-2">
+                    <div className="flex items-center justify-center gap-3 text-xs">
+                        <span className="text-emerald-500 flex items-center gap-1.5 font-medium">
+                            <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                            Encrypted
                         </span>
-                        <span className="text-[#FF0099]">•</span>
-                        <span className="text-[#FF0099]">SESSION PROTECTED</span>
+                        <span className="text-gray-300">•</span>
+                        <span className="text-[#FF0099] font-medium">Session Protected</span>
                     </div>
-                    <p className="font-mono text-white/30 text-[9px]">SECURITY PROTOCOL v2.0 // BRUTE-FORCE PROTECTED</p>
+                    <p className="text-gray-300 text-[10px] tracking-wider uppercase">Security Protocol v2.0</p>
                 </div>
             </div>
+
+            <style jsx>{`
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    25% { transform: translateX(-8px); }
+                    75% { transform: translateX(8px); }
+                }
+                .animate-shake {
+                    animation: shake 0.3s ease-in-out;
+                }
+            `}</style>
         </div>
     );
 }
