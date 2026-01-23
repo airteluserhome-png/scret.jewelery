@@ -10,7 +10,7 @@ export default function LuxuryLoader() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsVisible(false);
-        }, 800); // 0.8s delay for snappier transitions
+        }, 2000); // 2s delay for proper branding moment
 
         return () => clearTimeout(timer);
     }, []);
@@ -50,7 +50,7 @@ export default function LuxuryLoader() {
                                 className="relative font-brutalist text-6xl md:text-8xl uppercase tracking-tighter text-black select-none z-10"
                                 initial={{ clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)" }}
                                 animate={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}
-                                transition={{ duration: 0.4, ease: "circOut" }}
+                                transition={{ duration: 0.8, ease: "circOut" }}
                             >
                                 SECRETLY
                             </motion.h1>
@@ -72,8 +72,8 @@ export default function LuxuryLoader() {
                             />
                             <motion.p
                                 className="font-mono text-xs uppercase tracking-widest text-black"
-                                animate={{ opacity: [1, 0, 1] }}
-                                transition={{ duration: 0.2, repeat: Infinity }}
+                                animate={{ opacity: [1, 0.3, 1] }}
+                                transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut" }}
                             >
                                 LOADING_ASSETS
                             </motion.p>
@@ -86,8 +86,8 @@ export default function LuxuryLoader() {
                                 initial={{ width: "0%" }}
                                 animate={{ width: "100%" }}
                                 transition={{
-                                    duration: 0.6,
-                                    ease: "circOut"
+                                    duration: 1.8,
+                                    ease: "easeInOut"
                                 }}
                             />
                         </div>
