@@ -22,7 +22,7 @@ export default function LuxuryLoader() {
         <AnimatePresence>
             {isVisible && (
                 <motion.div
-                    className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white"
+                    className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-white"
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5, ease: "circIn" }}
