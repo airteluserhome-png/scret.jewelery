@@ -284,13 +284,89 @@ When building new pages/components, ensure:
 | Tailwind Config | `tailwind.config.ts` |
 | Header | `src/components/header.tsx` |
 | Product Cards | `src/components/brutalist-grid.tsx` |
-| Lock Screen | `src/components/lock-overlay.tsx` |
+| Auth Gate | `src/components/auth-gate.tsx` |
 | Ticker | `src/components/brutalist-ticker.tsx` |
 | Cross Tape | `src/components/cross-tape.tsx` |
+| Back to Top | `src/components/back-to-top.tsx` |
+| Toast System | `src/components/toast-notification.tsx` |
+| Custom Cursor | `src/components/custom-cursor.tsx` |
+| Quick View Modal | `src/components/quick-view-modal.tsx` |
+| Recently Viewed | `src/components/recently-viewed.tsx` |
+| Floating Contact | `src/components/floating-contact.tsx` |
+| Scroll Reveal | `src/components/scroll-reveal.tsx` |
 
 ---
 
-## 9. Password Protection
+## 9. Premium Features
+
+### Back to Top Button
+- Appears after scrolling 400px
+- Brutalist style with pink shadow
+- Smooth scroll animation
+
+### Toast Notifications
+```jsx
+import { useToast } from "@/components/toast-notification";
+
+const { showToast } = useToast();
+showToast("Item added to cart!", "success");
+showToast("Error occurred", "error");
+showToast("Info message", "info");
+```
+
+### Custom Cursor (Desktop Only)
+- White square dot follows mouse
+- Pink ring expands on hover
+- Automatically hidden on mobile/touch
+
+### Product Quick View
+```jsx
+import QuickViewModal from "@/components/quick-view-modal";
+
+<QuickViewModal
+    product={selectedProduct}
+    isOpen={isOpen}
+    onClose={() => setIsOpen(false)}
+    onAddToCart={(product) => addToCart(product)}
+/>
+```
+
+### Recently Viewed Products
+```jsx
+import { addToRecentlyViewed } from "@/components/recently-viewed";
+
+// Call when user views a product
+addToRecentlyViewed({
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    image: product.image,
+});
+```
+
+### Scroll Reveal Animations
+```jsx
+// CSS classes
+<div className="reveal">Fades up</div>
+<div className="reveal-left">Slides from left</div>
+<div className="reveal-right">Slides from right</div>
+<div className="reveal-scale">Scales up</div>
+
+// Or use component
+import ScrollReveal from "@/components/scroll-reveal";
+<ScrollReveal variant="left" delay={200}>
+    <Content />
+</ScrollReveal>
+```
+
+### Smooth Scrolling (Lenis)
+- Automatically enabled for authenticated users
+- Duration: 1.4s
+- Buttery smooth Apple-like feel
+
+---
+
+## 10. Password Protection
 
 The site uses a secure lock screen:
 - **Password:** `Secretly@2024!`
