@@ -140,6 +140,30 @@ export const products: Product[] = [
         description: "5A Swiss movement Iced Cartier Santos with box and papers",
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
+    {
+        id: 17,
+        name: "ROLEX DAYDATE ICED OUT ROSE GOLD",
+        category: "iced-watches",
+        brand: "Rolex",
+        price: "$650", // Estimated price
+        priceNum: 650,
+        image: "/ICED OUT ROLEX/Iced out Rolex Day date rose gold.jpg",
+        badge: "ICED OUT",
+        description: "5A Swiss movement Rolex Iced Out Rose Gold",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+    },
+    {
+        id: 18,
+        name: "ROLEX DAYDATE ICED OUT WHITE GOLD",
+        category: "iced-watches",
+        brand: "Rolex",
+        price: "$650", // Estimated price
+        priceNum: 650,
+        image: "/ICED OUT ROLEX/Iced out Rolex Day date white gold.jpg",
+        badge: "ICED OUT",
+        description: "5A Swiss movement Rolex Iced Out White Gold",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+    },
 
     // ACCESSORIES
     {

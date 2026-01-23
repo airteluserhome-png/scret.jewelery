@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 
 import { CartProvider } from "@/context/cart-context";
 import CartDrawer from "@/components/cart-drawer";
+import LockOverlay from "@/components/lock-overlay";
 
 export default function RootLayout({
     children,
@@ -28,6 +29,7 @@ export default function RootLayout({
                 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
             </head>
             <body>
+                <LockOverlay />
                 <CartProvider>
                     <CartDrawer />
                     {children}
