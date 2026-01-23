@@ -18,6 +18,18 @@ export interface Product {
 
 export const products: Product[] = [
     // PLAIN WATCHES
+    // {
+    //     id: 1,
+    //     name: "ROLEX DAYDATE OLIVE",
+    //     category: "plain-watches",
+    //     brand: "Rolex",
+    //     price: "$450",
+    //     priceNum: 450,
+    //     image: "/ROLEX/Rolex Daydate Olive.jpg",
+    //     badge: "5A SWISS",
+    //     description: "5A Swiss movement Rolex with box and papers",
+    //     specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+    // },
 
     {
         id: 2,

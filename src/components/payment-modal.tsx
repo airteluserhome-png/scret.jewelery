@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 const watchFacts = [
     "The first wristwatch was made for a Countess in 1868.",
+    "Rolex watches have visited the deepest point of the ocean.",
 
     "Patek Philippe watches are often auctioned for millions.",
     "The 'tick-tock' sound comes from the pallet fork locking.",
@@ -14,12 +15,14 @@ const watchFacts = [
     "Watches worn on the moon must be manually wound.",
     "Switzerland produces about half of the world's luxury watches.",
     "The tourbillon was invented to counter gravity's effect on accuracy.",
+    "Rolex uses a special steel called 904L, which is harder than normal steel.",
 
     "Cartier designed the first pilot watch in 1904.",
     "Juste un Clou bracelets by Cartier were designed in the 70s as a 'nail'.",
     "Van Cleef & Arpels Alhambra collection is inspired by four-leaf clovers.",
     "The Love Bracelet by Cartier requires a screwdriver to remove.",
     "G-Shock watches are designed to survive a 10-meter drop.",
+    "The first waterproof watch was the Rolex Oyster.",
 
     "Diamonds are the hardest natural substance on Earth.",
     "Gold used in watches is often mixed with copper for durability.",
@@ -39,13 +42,16 @@ const watchFacts = [
     "Some dive watches can go deeper than submarines.",
     "A 'skeleton' watch shows the moving parts inside.",
     "Watches were originally worn as pendants.",
+    "Rolex creates all its own gold in a private foundry.",
 
     "The Apple Watch sells more units than the entire Swiss industry.",
     "A 'sweeping' second hand means the watch is mechanical.",
     "Quartz watches tick once per second to save battery.",
     "Tennis players wear ultra-light watches to avoid wrist drag.",
+    "James Bond famously wore a Rolex Submariner.",
 
     "Later, James Bond switched to Omega Seamaster.",
+    "Paul Newman's Rolex Daytona sold for $17.8 million.",
 
     "Watches lose accuracy near strong magnets.",
     "Ceramic watches are scratch-proof but can shatter if dropped.",
@@ -59,6 +65,7 @@ const watchFacts = [
     "Synthetic rubies are used inside movements to reduce friction.",
     "A 'hacking' seconds hand stops when you pull the crown.",
     "Nato straps were invented for the British military.",
+    "The 'Cyclops' lens on a Rolex magnifies the date 2.5 times.",
 
     "Patek Philippe slogans say you never actually own one, you look after it.",
     "Japanese quartz watches almost destroyed the Swiss industry in the 70s.",

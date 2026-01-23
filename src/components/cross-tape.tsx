@@ -40,7 +40,7 @@ export default function CrossTape() {
                     }}
                 >
                     <span className="px-4">
-                        NEW DROPS: AP, PATEK ✦ ICED OUT COLLECTION RESTOCKED ✦ WORLDWIDE SHIPPING ✦ NEW DROPS: AP, PATEK ✦ ICED OUT COLLECTION RESTOCKED ✦ WORLDWIDE SHIPPING
+                        NEW DROPS: ROLEX, AP, PATEK ✦ ICED OUT COLLECTION RESTOCKED ✦ WORLDWIDE SHIPPING ✦ NEW DROPS: ROLEX, AP, PATEK ✦ ICED OUT COLLECTION RESTOCKED ✦ WORLDWIDE SHIPPING
                     </span>
                 </motion.div>
             </div>
