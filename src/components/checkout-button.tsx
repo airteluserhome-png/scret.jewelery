@@ -68,9 +68,7 @@ export default function CheckoutButton({
             }
 
             // Record this checkout attempt BEFORE redirect
-            console.log("[Checkout Button] Recording attempt for:", productName, productId);
             recordCheckoutAttempt(productId, productName, price, data.sessionId);
-            console.log("[Checkout Button] Attempt recorded, redirecting to Stripe...");
 
             // Redirect to Stripe Checkout
             if (data.url) {

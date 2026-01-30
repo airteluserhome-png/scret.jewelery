@@ -21,31 +21,20 @@ export default function CheckoutAssistanceBanner({ productId }: CheckoutAssistan
     const hasChecked = useRef(false);
 
     const checkFailedAttempts = useCallback(() => {
-        console.log("[Checkout Banner] Checking failed attempts...");
+        // Don't check if already dismissed
+        if (isDismissed) return;
         
         // Mark any pending (started but not completed) checkouts as abandoned
         markPendingAsAbandoned();
         
         // Small delay to ensure localStorage is synced
         setTimeout(() => {
-            // Get failed attempts - check ALL products if no productId, or specific product
+            // Get failed attempts for this specific product only
             const failed = getRecentFailedAttempts(productId);
-            const allFailed = getRecentFailedAttempts(); // Also check all
+            setFailedAttempts(failed);
             
-            // Debug logs
-            console.log("[Checkout Banner] Product ID:", productId);
-            console.log("[Checkout Banner] Failed for product:", failed.length);
-            console.log("[Checkout Banner] Failed total:", allFailed.length);
-            console.log("[Checkout Banner] Full history:", getCheckoutHistory());
-            console.log("[Checkout Banner] isDismissed:", isDismissed);
-            
-            // Use all failed attempts if productId filtering returns less
-            const attemptsToUse = failed.length >= 2 ? failed : allFailed;
-            setFailedAttempts(attemptsToUse);
-            
-            // Show popup if 2+ failed attempts
-            if (attemptsToUse.length >= 2 && !isDismissed) {
-                console.log("[Checkout Banner] SHOWING POPUP!");
+            // Show popup if 2+ failed attempts for THIS product
+            if (failed.length >= 2 && !isDismissed) {
                 setIsVisible(true);
             }
         }, 150);
@@ -61,29 +50,24 @@ export default function CheckoutAssistanceBanner({ productId }: CheckoutAssistan
         // Also check when page becomes visible (user returns from another tab/Stripe)
         const handleVisibilityChange = () => {
             if (document.visibilityState === 'visible') {
-                console.log("[Checkout Banner] Visibility changed to visible");
                 checkFailedAttempts();
             }
         };
         
         // Check when user navigates back (popstate)
         const handlePopState = () => {
-            console.log("[Checkout Banner] PopState event");
             checkFailedAttempts();
         };
         
         // pageshow event fires even when page is loaded from bfcache (browser back/forward cache)
         const handlePageShow = (event: PageTransitionEvent) => {
-            console.log("[Checkout Banner] PageShow event, persisted:", event.persisted);
             if (event.persisted) {
-                // Page was restored from bfcache
                 checkFailedAttempts();
             }
         };
         
         // Focus event when window gains focus
         const handleFocus = () => {
-            console.log("[Checkout Banner] Focus event");
             checkFailedAttempts();
         };
         
@@ -107,12 +91,15 @@ export default function CheckoutAssistanceBanner({ productId }: CheckoutAssistan
     const handleDismiss = () => {
         setIsDismissed(true);
         setIsVisible(false);
+        // Clear the history when user dismisses to prevent it showing again
+        clearCheckoutHistory();
     };
 
     const handleClearHistory = () => {
         clearCheckoutHistory();
         setFailedAttempts([]);
         setIsVisible(false);
+        setIsDismissed(true); // Prevent popup from showing again
     };
 
     if (!isVisible || failedAttempts.length < 2) return null;

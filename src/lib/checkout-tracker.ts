@@ -71,7 +71,6 @@ export function recordCheckoutAttempt(
     };
     
     history.attempts.push(newAttempt);
-    console.log("[Checkout Tracker] Recorded new attempt:", newAttempt);
     
     // Keep only last 10 attempts
     if (history.attempts.length > 10) {
@@ -79,7 +78,6 @@ export function recordCheckoutAttempt(
     }
     
     saveCheckoutHistory(history);
-    console.log("[Checkout Tracker] History saved, total attempts:", history.attempts.length);
 }
 
 // Update the status of the last attempt
@@ -106,7 +104,7 @@ export function getRecentFailedAttempts(productId?: number): CheckoutAttempt[] {
         ? (typeof productId === 'string' ? parseInt(productId, 10) : productId)
         : undefined;
     
-    const filtered = history.attempts.filter(attempt => {
+    return history.attempts.filter(attempt => {
         const isRecent = attempt.timestamp > oneDayAgo;
         const isFailed = attempt.status === "abandoned" || attempt.status === "declined";
         // Compare as numbers to avoid type mismatch
@@ -118,9 +116,6 @@ export function getRecentFailedAttempts(productId?: number): CheckoutAttempt[] {
             : true;
         return isRecent && isFailed && matchesProduct;
     });
-    
-    console.log("[Checkout Tracker] getRecentFailedAttempts - productId:", productId, "found:", filtered.length);
-    return filtered;
 }
 
 // Check if we should show intervention (payment assistance)
@@ -160,7 +155,6 @@ export function markPendingAsAbandoned(): void {
         // Only mark recent "started" attempts as abandoned
         if (attempt.status === "started" && attempt.timestamp > oneHourAgo) {
             markedCount++;
-            console.log("[Checkout Tracker] Marking as abandoned:", attempt.productName);
             return { ...attempt, status: "abandoned" as const };
         }
         return attempt;
@@ -168,7 +162,6 @@ export function markPendingAsAbandoned(): void {
     
     if (markedCount > 0) {
         saveCheckoutHistory(history);
-        console.log(`[Checkout Tracker] Marked ${markedCount} pending attempt(s) as abandoned`);
     }
 }
 
