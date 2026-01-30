@@ -23,10 +23,10 @@ export const products: Product[] = [
         name: "ROLEX DAYDATE OLIVE",
         category: "plain-watches",
         brand: "Rolex",
-        price: "$450",
-        priceNum: 450,
+        price: "$0",
+        priceNum: 0,
         image: "/ROLEX/Rolex Daydate Olive.jpg",
-        badge: "5A SWISS",
+        badge: "FREE",
         description: "5A Swiss movement Rolex with box and papers",
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
