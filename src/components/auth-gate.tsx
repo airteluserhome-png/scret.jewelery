@@ -1,7 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import LuxuryLoader from "./luxury-loader";
 import { ToastProvider } from "./toast-notification";
 import BackToTop from "./back-to-top";
 import FloatingContact from "./floating-contact";
@@ -11,23 +9,7 @@ interface AuthGateProps {
 }
 
 export default function AuthGate({ children }: AuthGateProps) {
-    const [showLoader, setShowLoader] = useState(true);
-
-    // Show loader on initial load
-    useEffect(() => {
-        const loaderTimer = setTimeout(() => {
-            setShowLoader(false);
-        }, 800);
-
-        return () => clearTimeout(loaderTimer);
-    }, []);
-
-    // Show loader first
-    if (showLoader) {
-        return <LuxuryLoader />;
-    }
-
-    // Site is now open - with all features
+    // No loader here - handled by template.tsx for all page transitions
     return (
         <ToastProvider>
             {children}

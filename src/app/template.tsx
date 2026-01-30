@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import LuxuryLoader from "@/components/luxury-loader";
 
 export default function Template({ children }: { children: React.ReactNode }) {
+    const pathname = usePathname();
     const [showLoader, setShowLoader] = useState(true);
 
     useEffect(() => {
-        // Show loader for exactly 0.8 seconds on every page navigation
+        // Show loader for exactly 0.8 seconds on every route change
         setShowLoader(true);
         
         const timer = setTimeout(() => {
@@ -15,7 +17,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
         }, 800);
 
         return () => clearTimeout(timer);
-    }, [children]); // Re-run when page changes
+    }, [pathname]); // Only re-run when route actually changes
 
     return (
         <>
