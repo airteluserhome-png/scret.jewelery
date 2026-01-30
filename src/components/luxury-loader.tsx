@@ -7,15 +7,16 @@ export default function LuxuryLoader() {
     const [isFading, setIsFading] = useState(false);
 
     useEffect(() => {
-        // Start fade out
+        // Show loader for exactly 0.8 seconds
+        // Start fade out at 600ms
         const fadeTimer = setTimeout(() => {
             setIsFading(true);
         }, 600);
 
-        // Remove from DOM
+        // Remove from DOM at exactly 800ms
         const hideTimer = setTimeout(() => {
             setIsVisible(false);
-        }, 900);
+        }, 800);
 
         return () => {
             clearTimeout(fadeTimer);
@@ -27,7 +28,7 @@ export default function LuxuryLoader() {
 
     return (
         <div 
-            className={`fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-white transition-opacity duration-400 ${isFading ? 'opacity-0' : 'opacity-100'}`}
+            className={`fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-white transition-opacity duration-200 ${isFading ? 'opacity-0' : 'opacity-100'}`}
         >
             <div className="relative flex flex-col items-center">
                 {/* BRUTALIST BRANDING */}
@@ -59,16 +60,16 @@ export default function LuxuryLoader() {
 
             <style jsx>{`
                 .loader-text-reveal {
-                    animation: textReveal 0.6s ease-out forwards;
+                    animation: textReveal 0.3s ease-out forwards;
                 }
                 .loader-pulse {
-                    animation: pulse 0.6s ease-in-out infinite;
+                    animation: pulse 0.5s ease-in-out infinite;
                 }
                 .loader-blink {
-                    animation: blink 0.8s ease-in-out infinite;
+                    animation: blink 0.6s ease-in-out infinite;
                 }
                 .loader-progress {
-                    animation: progress 1.6s ease-out forwards;
+                    animation: progress 0.7s ease-out forwards;
                 }
                 @keyframes textReveal {
                     from { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
@@ -85,16 +86,6 @@ export default function LuxuryLoader() {
                 @keyframes progress {
                     from { width: 0%; }
                     to { width: 100%; }
-                }
-                @keyframes textReveal {
-                    from { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
-                    to { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-                }
-                .loader-text-reveal {
-                    animation: textReveal 0.4s ease-out forwards;
-                }
-                .loader-progress {
-                    animation: progress 0.6s ease-out forwards;
                 }
             `}</style>
         </div>

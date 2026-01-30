@@ -1,21 +1,28 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import LuxuryLoader from "@/components/luxury-loader";
 
 export default function Template({ children }: { children: React.ReactNode }) {
-    const [isVisible, setIsVisible] = useState(false);
+    const [showLoader, setShowLoader] = useState(true);
 
     useEffect(() => {
-        // Small delay then fade in
-        const timer = setTimeout(() => setIsVisible(true), 50);
+        // Show loader for exactly 0.8 seconds on every page navigation
+        setShowLoader(true);
+        
+        const timer = setTimeout(() => {
+            setShowLoader(false);
+        }, 800);
+
         return () => clearTimeout(timer);
-    }, []);
+    }, [children]); // Re-run when page changes
 
     return (
-        <div 
-            className={`transition-opacity duration-300 ease-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-        >
-            {children}
-        </div>
+        <>
+            {showLoader && <LuxuryLoader />}
+            <div className={`transition-opacity duration-300 ${showLoader ? 'opacity-0' : 'opacity-100'}`}>
+                {children}
+            </div>
+        </>
     );
 }
