@@ -27,14 +27,14 @@ export const stripe = {
 // Maps product IDs to Stripe price configuration with images
 export const PRODUCT_PRICES: Record<number, { name: string; price: number; description: string; image: string }> = {
     // PLAIN WATCHES
-    1: { name: "ROLLY DAYDATE OLIVE", price: 45000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/ROLEX/Rolex Daydate Olive.jpg" },
-    2: { name: "AP SKELETON", price: 55000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/AP/AP Skeleton.jpg" },
-    3: { name: "AP ROSE GOLD", price: 55000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/AP/AP rose gold.jpg" },
-    4: { name: "AP WHITE GOLD", price: 55000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/AP/AP white gold.jpg" },
-    5: { name: "WHITE RM BUBBA WATSON", price: 65000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/RM/White Richard Mille Bubba Watson.jpg" },
-    6: { name: "CARTI SANTOS WHITE GOLD", price: 45000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/Cartier/Cartier Santos White Gold.jpg" },
-    19: { name: "PATEK NAUTILUS X TIFFANY", price: 75000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/PATEK/Patek Philippe Nautilus x Tiffany And Co.jpg" },
-    20: { name: "PATEK ROSE GOLD", price: 75000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/PATEK/Patek Philippe Rose Gold.jpg" },
+    1: { name: "ROLLY DAYDATE OLIVE", price: 45000, description: "5A Swiss Movement • Box & Papers Included • 5A+ Quality", image: "/ROLEX/Rolex Daydate Olive.jpg" },
+    2: { name: "AP SKELETON", price: 55000, description: "5A Swiss Movement • Box & Papers Included • 5A+ Quality", image: "/AP/AP Skeleton.jpg" },
+    3: { name: "AP ROSE GOLD", price: 55000, description: "5A Swiss Movement • Box & Papers Included • 5A+ Quality", image: "/AP/AP rose gold.jpg" },
+    4: { name: "AP WHITE GOLD", price: 55000, description: "5A Swiss Movement • Box & Papers Included • 5A+ Quality", image: "/AP/AP white gold.jpg" },
+    5: { name: "WHITE RM BUBBA WATSON", price: 65000, description: "5A Swiss Movement • Box & Papers Included • 5A+ Quality", image: "/RM/White Richard Mille Bubba Watson.jpg" },
+    6: { name: "CARTI SANTOS WHITE GOLD", price: 45000, description: "5A Swiss Movement • Box & Papers Included • 5A+ Quality", image: "/Cartier/Cartier Santos White Gold.jpg" },
+    19: { name: "PATEK NAUTILUS X TIFFANY", price: 75000, description: "5A Swiss Movement • Box & Papers Included • 5A+ Quality", image: "/PATEK/Patek Philippe Nautilus x Tiffany And Co.jpg" },
+    20: { name: "PATEK ROSE GOLD", price: 75000, description: "5A Swiss Movement • Box & Papers Included • 5A+ Quality", image: "/PATEK/Patek Philippe Rose Gold.jpg" },
     
     // ICED OUT WATCHES
     7: { name: "AP ICED OUT ROSE GOLD", price: 75000, description: "5A Swiss Movement • VVS Diamonds • Box & Papers Included", image: "/ICED OUT AP/AP iced out rose gold.jpg" },

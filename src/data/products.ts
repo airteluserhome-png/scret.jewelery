@@ -28,7 +28,7 @@ export const products: Product[] = [
         image: "/ROLEX/Rolex Daydate Olive.jpg",
         badge: "5A SWISS",
         description: "5A Swiss movement Rolly with box and papers",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+        specs: { movement: "5A Swiss Movement", quality: "5A+ Quality", includes: "Box & Papers" }
     },
 
     {
@@ -41,7 +41,7 @@ export const products: Product[] = [
         image: "/AP/AP Skeleton.jpg",
         badge: "5A SWISS",
         description: "5A Swiss movement AP Skeleton with box and papers",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+        specs: { movement: "5A Swiss Movement", quality: "5A+ Quality", includes: "Box & Papers" }
     },
     {
         id: 3,
@@ -53,7 +53,7 @@ export const products: Product[] = [
         image: "/AP/AP rose gold.jpg",
         badge: "5A SWISS",
         description: "5A Swiss movement AP Rose Gold with box and papers",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+        specs: { movement: "5A Swiss Movement", quality: "5A+ Quality", includes: "Box & Papers" }
     },
     {
         id: 4,
@@ -65,7 +65,7 @@ export const products: Product[] = [
         image: "/AP/AP white gold.jpg",
         badge: "5A SWISS",
         description: "5A Swiss movement AP White Gold with box and papers",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+        specs: { movement: "5A Swiss Movement", quality: "5A+ Quality", includes: "Box & Papers" }
     },
     {
         id: 5,
@@ -77,7 +77,7 @@ export const products: Product[] = [
         image: "/RM/White Richard Mille Bubba Watson.jpg",
         badge: "5A SWISS",
         description: "5A Swiss movement RM with box and papers",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+        specs: { movement: "5A Swiss Movement", quality: "5A+ Quality", includes: "Box & Papers" }
     },
     {
         id: 6,
@@ -89,7 +89,7 @@ export const products: Product[] = [
         image: "/Cartier/Cartier Santos White Gold.jpg",
         badge: "5A SWISS",
         description: "5A Swiss movement Carti Santos with box and papers",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+        specs: { movement: "5A Swiss Movement", quality: "5A+ Quality", includes: "Box & Papers" }
     },
     {
         id: 19,
@@ -101,7 +101,7 @@ export const products: Product[] = [
         image: "/PATEK/Patek Philippe Nautilus x Tiffany And Co.jpg",
         badge: "5A SWISS",
         description: "5A Swiss movement Patek Nautilus Tiffany with box and papers",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+        specs: { movement: "5A Swiss Movement", quality: "5A+ Quality", includes: "Box & Papers" }
     },
     {
         id: 20,
@@ -113,7 +113,7 @@ export const products: Product[] = [
         image: "/PATEK/Patek Philippe Rose Gold.jpg",
         badge: "5A SWISS",
         description: "5A Swiss movement Patek Rose Gold with box and papers",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+        specs: { movement: "5A Swiss Movement", quality: "5A+ Quality", includes: "Box & Papers" }
     },
 
     // ICED OUT WATCHES
@@ -127,7 +127,7 @@ export const products: Product[] = [
         image: "/ICED OUT AP/AP iced out rose gold.jpg",
         badge: "ICED OUT",
         description: "5A Swiss movement AP Iced Out with box and papers",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+        specs: { movement: "5A Swiss Movement", quality: "5A+ Quality", includes: "Box & Papers" }
     },
     {
         id: 8,
@@ -139,7 +139,7 @@ export const products: Product[] = [
         image: "/ICED OUT AP/AP iced out.jpg",
         badge: "ICED OUT",
         description: "5A Swiss movement AP Iced Out with box and papers",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+        specs: { movement: "5A Swiss Movement", quality: "5A+ Quality", includes: "Box & Papers" }
     },
     {
         id: 9,
@@ -151,7 +151,7 @@ export const products: Product[] = [
         image: "/ICED OUT CARTIER/Iced out Cartier Santos rose good.jpg",
         badge: "ICED OUT",
         description: "5A Swiss movement Iced Carti Santos with box and papers",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+        specs: { movement: "5A Swiss Movement", quality: "5A+ Quality", includes: "Box & Papers" }
     },
     {
         id: 10,
@@ -163,7 +163,7 @@ export const products: Product[] = [
         image: "/ICED OUT CARTIER/Iced out Cartier Santos white gold.jpg",
         badge: "ICED OUT",
         description: "5A Swiss movement Iced Carti Santos with box and papers",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+        specs: { movement: "5A Swiss Movement", quality: "5A+ Quality", includes: "Box & Papers" }
     },
     {
         id: 17,
@@ -175,7 +175,7 @@ export const products: Product[] = [
         image: "/ICED OUT ROLEX/Iced out Rolex Day date rose gold.jpg",
         badge: "ICED OUT",
         description: "5A Swiss movement Rolly Iced Out Rose Gold",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+        specs: { movement: "5A Swiss Movement", quality: "5A+ Quality", includes: "Box & Papers" }
     },
     {
         id: 18,
@@ -187,7 +187,7 @@ export const products: Product[] = [
         image: "/ICED OUT ROLEX/Iced out Rolex Day date white gold.jpg",
         badge: "ICED OUT",
         description: "5A Swiss movement Rolly Iced Out White Gold",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+        specs: { movement: "5A Swiss Movement", quality: "5A+ Quality", includes: "Box & Papers" }
     },
     {
         id: 21,
@@ -199,7 +199,7 @@ export const products: Product[] = [
         image: "/ICET OUT Patek philipe/Iced out Patek Phillipe Nautilus ROSE GOLD.jpg",
         badge: "ICED OUT",
         description: "5A Swiss movement Patek Iced Out Rose Gold",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+        specs: { movement: "5A Swiss Movement", quality: "5A+ Quality", includes: "Box & Papers" }
     },
     {
         id: 22,
@@ -211,7 +211,7 @@ export const products: Product[] = [
         image: "/ICET OUT Patek philipe/Patek Phillipe Iced out Nautilus.jpg",
         badge: "ICED OUT",
         description: "5A Swiss movement Patek Iced Out Nautilus",
-        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+        specs: { movement: "5A Swiss Movement", quality: "5A+ Quality", includes: "Box & Papers" }
     },
 
     // ACCESSORIES
