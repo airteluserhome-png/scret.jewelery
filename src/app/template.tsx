@@ -1,5 +1,21 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 export default function Template({ children }: { children: React.ReactNode }) {
-    return <>{children}</>;
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        // Small delay then fade in
+        const timer = setTimeout(() => setIsVisible(true), 50);
+        return () => clearTimeout(timer);
+    }, []);
+
+    return (
+        <div 
+            className={`transition-opacity duration-300 ease-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+        >
+            {children}
+        </div>
+    );
 }
