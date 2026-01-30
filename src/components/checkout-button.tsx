@@ -9,6 +9,7 @@ import {
     shouldShowPaymentAssistance,
     updateLastAttemptStatus
 } from "@/lib/checkout-tracker";
+import { useToast } from "./toast-notification";
 
 interface CheckoutButtonProps {
     productId: number;
@@ -33,6 +34,7 @@ export default function CheckoutButton({
 }: CheckoutButtonProps) {
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
+    const { showToast } = useToast();
 
     // Mark any pending checkouts as abandoned when component mounts
     useEffect(() => {
@@ -56,26 +58,28 @@ export default function CheckoutButton({
                 body: JSON.stringify({ productId, quantity }),
             });
 
-            const { url, sessionId, error } = await response.json();
+            const data = await response.json();
 
-            if (error) {
-                console.error("Checkout error:", error);
+            if (!response.ok || data.error) {
+                console.error("Checkout error:", data.error);
                 updateLastAttemptStatus("declined");
-                alert("Checkout failed. Please try again.");
+                showToast(data.error || "Checkout failed. Please try again.", "error", 5000);
                 return;
             }
 
             // Record this checkout attempt
-            recordCheckoutAttempt(productId, productName, price, sessionId);
+            recordCheckoutAttempt(productId, productName, price, data.sessionId);
 
             // Redirect to Stripe Checkout
-            if (url) {
-                window.location.href = url;
+            if (data.url) {
+                window.location.href = data.url;
+            } else {
+                showToast("Unable to start checkout. Please try again.", "error", 5000);
             }
         } catch (error) {
             console.error("Checkout error:", error);
             updateLastAttemptStatus("declined");
-            alert("Checkout failed. Please try again.");
+            showToast("Connection error. Please check your internet and try again.", "error", 5000);
         } finally {
             setIsLoading(false);
         }

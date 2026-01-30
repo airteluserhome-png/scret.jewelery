@@ -43,12 +43,12 @@ export const PRODUCT_PRICES: Record<number, { name: string; price: number; descr
     18: { name: "ROLEX DAYDATE ICED OUT WHITE GOLD", price: 65000, description: "5A Swiss Movement • VVS Diamonds • Box & Papers Included", image: "/ICED OUT ROLEX/Iced out Rolex Day date white gold.jpg" },
     
     // ACCESSORIES
-    11: { name: "VVS CROSS BRACELET ROSE GOLD", price: 35000, description: "VVS Quality Diamonds • Premium Rose Gold Plating", image: "/VVS Cross Bracelet rose gold/2026-01-21 23.08.42.jpg" },
-    12: { name: "VVS CROSS BRACELET WHITE GOLD", price: 35000, description: "VVS Quality Diamonds • Premium White Gold Plating", image: "/VVS Cross Bracelet white gold/IMAGE 2026-01-21 18:37:19.jpg" },
-    13: { name: "VAN CLEEF BLUE DIAMONDS", price: 20000, description: "VVS Blue Diamonds • Premium Craftsmanship", image: "/VVS FLOWER BRACALET BLUE DIAMONDS/2026-01-21 18.36.38.jpg" },
-    14: { name: "VAN CLEEF PINK DIAMONDS", price: 20000, description: "VVS Pink Diamonds • Premium Craftsmanship", image: "/VVS FLOWER BRACALET PINK DIAMONDS/2026-01-21 18.26.58.jpg" },
-    15: { name: "VVS CARTIER GLASSES (TAN)", price: 65000, description: "VVS Quality • Authentic Cartier Style • Luxury Eyewear", image: "/VVS CARTIER GLASSES (TAN)/2026-01-21 18.18.57.jpg" },
-    16: { name: "VVS CARTIER GLASSES (BLACK)", price: 65000, description: "VVS Quality • Authentic Cartier Style • Luxury Eyewear", image: "/VVS CARTIER GLASSES (BLACK)/2026-01-21 18.20.04.jpg" },
+    11: { name: "VVS CROSS BRACELET ROSE GOLD", price: 35000, description: "VVS Quality Diamonds • Premium Rose Gold Plating", image: "/VVS Cross Bracelet rose gold/cross-bracelet-rose-gold.jpg" },
+    12: { name: "VVS CROSS BRACELET WHITE GOLD", price: 35000, description: "VVS Quality Diamonds • Premium White Gold Plating", image: "/VVS Cross Bracelet white gold/cross-bracelet-white-gold.jpg" },
+    13: { name: "VAN CLEEF BLUE DIAMONDS", price: 20000, description: "VVS Blue Diamonds • Premium Craftsmanship", image: "/VVS FLOWER BRACALET BLUE DIAMONDS/van-cleef-blue.jpg" },
+    14: { name: "VAN CLEEF PINK DIAMONDS", price: 20000, description: "VVS Pink Diamonds • Premium Craftsmanship", image: "/VVS FLOWER BRACALET PINK DIAMONDS/van-cleef-pink.jpg" },
+    15: { name: "VVS CARTIER GLASSES (TAN)", price: 65000, description: "VVS Quality • Authentic Cartier Style • Luxury Eyewear", image: "/VVS CARTIER GLASSES (TAN)/glasses-tan-1.jpg" },
+    16: { name: "VVS CARTIER GLASSES (BLACK)", price: 65000, description: "VVS Quality • Authentic Cartier Style • Luxury Eyewear", image: "/VVS CARTIER GLASSES (BLACK)/glasses-black-1.jpg" },
 };
 
 // Get product price in cents for Stripe
