@@ -74,21 +74,26 @@
 .loader-text-reveal {
     animation: loaderTextReveal 0.3s ease-out forwards !important;
     -webkit-animation: loaderTextReveal 0.3s ease-out forwards !important;
+    will-change: clip-path;
 }
 
 .loader-pulse {
     animation: loaderPulse 0.5s ease-in-out infinite !important;
     -webkit-animation: loaderPulse 0.5s ease-in-out infinite !important;
+    will-change: transform, opacity;
 }
 
 .loader-blink {
     animation: loaderBlink 0.6s ease-in-out infinite !important;
     -webkit-animation: loaderBlink 0.6s ease-in-out infinite !important;
+    will-change: opacity;
 }
 
 .loader-progress {
     animation: loaderProgress 0.7s ease-out forwards !important;
     -webkit-animation: loaderProgress 0.7s ease-out forwards !important;
+    will-change: width;
+    width: 0%;
 }
 
 :root {
@@ -222,9 +227,9 @@ a, button, .card, .card-3d, .btn, [role="button"] {
 /* Respect accessibility - disable animations for users who prefer reduced motion */
 /* BUT keep marquee/ticker animations running as they're essential UI */
 @media (prefers-reduced-motion: reduce) {
-    *:not(.animate-scroll-left):not(.animate-scroll-right):not(.animate-ticker),
-    *:not(.animate-scroll-left):not(.animate-scroll-right):not(.animate-ticker)::before,
-    *:not(.animate-scroll-left):not(.animate-scroll-right):not(.animate-ticker)::after {
+    *:not(.animate-scroll-left):not(.animate-scroll-right):not(.animate-ticker):not(.loader-progress):not(.loader-pulse):not(.loader-blink):not(.loader-text-reveal),
+    *:not(.animate-scroll-left):not(.animate-scroll-right):not(.animate-ticker):not(.loader-progress):not(.loader-pulse):not(.loader-blink):not(.loader-text-reveal)::before,
+    *:not(.animate-scroll-left):not(.animate-scroll-right):not(.animate-ticker):not(.loader-progress):not(.loader-pulse):not(.loader-blink):not(.loader-text-reveal)::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
