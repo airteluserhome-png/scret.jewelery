@@ -27,7 +27,7 @@ export const stripe = {
 // Maps product IDs to Stripe price configuration with images
 export const PRODUCT_PRICES: Record<number, { name: string; price: number; description: string; image: string }> = {
     // PLAIN WATCHES
-    1: { name: "ROLEX DAYDATE OLIVE", price: 0, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/ROLEX/Rolex Daydate Olive.jpg" },
+    1: { name: "ROLEX DAYDATE OLIVE", price: 45000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/ROLEX/Rolex Daydate Olive.jpg" },
     2: { name: "AP SKELETON", price: 55000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/AP/AP Skeleton.jpg" },
     3: { name: "AP ROSE GOLD", price: 55000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/AP/AP rose gold.jpg" },
     4: { name: "AP WHITE GOLD", price: 55000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/AP/AP white gold.jpg" },
