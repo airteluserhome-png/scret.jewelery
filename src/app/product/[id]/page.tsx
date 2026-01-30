@@ -120,6 +120,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                         </motion.button>
                         <CheckoutButton 
                             productId={product.id}
+                            productName={product.name}
+                            price={parseInt(product.price.replace(/[^0-9]/g, '')) * 100}
                             className="text-xl md:text-2xl"
                         >
                             BUY NOW

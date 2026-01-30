@@ -1,10 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { 
+    recordCheckoutAttempt, 
+    markPendingAsAbandoned,
+    shouldShowPaymentAssistance,
+    updateLastAttemptStatus
+} from "@/lib/checkout-tracker";
 
 interface CheckoutButtonProps {
     productId: number;
+    productName?: string;
+    price?: number;
     quantity?: number;
     className?: string;
     variant?: "primary" | "secondary";
@@ -14,6 +23,8 @@ interface CheckoutButtonProps {
 
 export default function CheckoutButton({
     productId,
+    productName = "Product",
+    price = 0,
     quantity = 1,
     className = "",
     variant = "primary",
@@ -21,9 +32,22 @@ export default function CheckoutButton({
     children,
 }: CheckoutButtonProps) {
     const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter();
+
+    // Mark any pending checkouts as abandoned when component mounts
+    useEffect(() => {
+        markPendingAsAbandoned();
+    }, []);
 
     const handleCheckout = async () => {
         setIsLoading(true);
+
+        // Check if user has multiple failed attempts - show assistance page
+        if (shouldShowPaymentAssistance(productId)) {
+            router.push(`/checkout/verify?product_id=${productId}`);
+            setIsLoading(false);
+            return;
+        }
 
         try {
             const response = await fetch("/api/checkout/single", {
@@ -32,13 +56,17 @@ export default function CheckoutButton({
                 body: JSON.stringify({ productId, quantity }),
             });
 
-            const { url, error } = await response.json();
+            const { url, sessionId, error } = await response.json();
 
             if (error) {
                 console.error("Checkout error:", error);
+                updateLastAttemptStatus("declined");
                 alert("Checkout failed. Please try again.");
                 return;
             }
+
+            // Record this checkout attempt
+            recordCheckoutAttempt(productId, productName, price, sessionId);
 
             // Redirect to Stripe Checkout
             if (url) {
@@ -46,6 +74,7 @@ export default function CheckoutButton({
             }
         } catch (error) {
             console.error("Checkout error:", error);
+            updateLastAttemptStatus("declined");
             alert("Checkout failed. Please try again.");
         } finally {
             setIsLoading(false);

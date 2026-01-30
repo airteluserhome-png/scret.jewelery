@@ -4,6 +4,7 @@ import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { updateLastAttemptStatus, clearCheckoutHistory } from "@/lib/checkout-tracker";
 
 interface OrderStatus {
     status: "paid" | "unpaid" | "expired" | "canceled" | "processing" | "invalid" | "error" | "loading";
@@ -48,9 +49,13 @@ function CheckoutSuccessContent() {
                     order: data.order,
                 });
 
-                // Only clear cart if payment was successful
+                // Only clear cart and checkout history if payment was successful
                 if (data.status === "paid") {
                     localStorage.removeItem("secretly_cart");
+                    updateLastAttemptStatus("completed", sessionId);
+                    clearCheckoutHistory();
+                } else if (data.status === "expired" || data.status === "canceled") {
+                    updateLastAttemptStatus("abandoned", sessionId);
                 }
             } catch {
                 setOrderStatus({
