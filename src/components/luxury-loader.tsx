@@ -10,12 +10,12 @@ export default function LuxuryLoader() {
         // Start fade out
         const fadeTimer = setTimeout(() => {
             setIsFading(true);
-        }, 1800);
+        }, 600);
 
         // Remove from DOM
         const hideTimer = setTimeout(() => {
             setIsVisible(false);
-        }, 2200);
+        }, 900);
 
         return () => {
             clearTimeout(fadeTimer);
@@ -85,6 +85,16 @@ export default function LuxuryLoader() {
                 @keyframes progress {
                     from { width: 0%; }
                     to { width: 100%; }
+                }
+                @keyframes textReveal {
+                    from { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+                    to { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+                }
+                .loader-text-reveal {
+                    animation: textReveal 0.4s ease-out forwards;
+                }
+                .loader-progress {
+                    animation: progress 0.6s ease-out forwards;
                 }
             `}</style>
         </div>

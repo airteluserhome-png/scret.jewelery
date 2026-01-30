@@ -15,7 +15,7 @@ export default function AuthGate({ children }: AuthGateProps) {
     useEffect(() => {
         const loaderTimer = setTimeout(() => {
             setShowLoader(false);
-        }, 2000);
+        }, 800);
 
         return () => clearTimeout(loaderTimer);
     }, []);
