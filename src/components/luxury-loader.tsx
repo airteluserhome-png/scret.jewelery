@@ -1,99 +1,92 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function LuxuryLoader() {
     const [isVisible, setIsVisible] = useState(true);
+    const [isFading, setIsFading] = useState(false);
 
-    // Minimum "Luxury Pause" Duration
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsVisible(false);
-        }, 2000); // 2s delay for proper branding moment
+        // Start fade out
+        const fadeTimer = setTimeout(() => {
+            setIsFading(true);
+        }, 1800);
 
-        return () => clearTimeout(timer);
+        // Remove from DOM
+        const hideTimer = setTimeout(() => {
+            setIsVisible(false);
+        }, 2200);
+
+        return () => {
+            clearTimeout(fadeTimer);
+            clearTimeout(hideTimer);
+        };
     }, []);
 
-    // Noise texture SVG
-    const noiseSvg = `data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E`;
+    if (!isVisible) return null;
 
     return (
-        <AnimatePresence>
-            {isVisible && (
-                <motion.div
-                    className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-white"
-                    initial={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5, ease: "circIn" }}
-                >
-                    {/* Global Noise Overlay */}
-                    <div
-                        style={{ backgroundImage: `url(${noiseSvg})` }}
-                        className="absolute inset-0 z-0 opacity-[0.05] mix-blend-multiply pointer-events-none"
-                    />
+        <div 
+            className={`fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-white transition-opacity duration-400 ${isFading ? 'opacity-0' : 'opacity-100'}`}
+        >
+            <div className="relative flex flex-col items-center">
+                {/* BRUTALIST BRANDING */}
+                <div className="relative">
+                    {/* Pink Shadow Layer */}
+                    <h1 className="absolute top-1 left-1 font-brutalist text-6xl md:text-8xl uppercase tracking-tighter text-hot-pink select-none loader-text-reveal">
+                        SECRETLY
+                    </h1>
 
-                    <div className="relative z-10 flex flex-col items-center">
-                        {/* BRUTALIST BRANDING */}
-                        <div className="relative">
-                            {/* Pink Shadow Layer */}
-                            <motion.h1
-                                className="absolute top-1 left-1 font-brutalist text-6xl md:text-8xl uppercase tracking-tighter text-hot-pink select-none"
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                            >
-                                SECRETLY
-                            </motion.h1>
+                    {/* Main Black Text */}
+                    <h1 className="relative font-brutalist text-6xl md:text-8xl uppercase tracking-tighter text-black select-none z-10 loader-text-reveal">
+                        SECRETLY
+                    </h1>
+                </div>
 
-                            {/* Main Black Text */}
-                            <motion.h1
-                                className="relative font-brutalist text-6xl md:text-8xl uppercase tracking-tighter text-black select-none z-10"
-                                initial={{ clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)" }}
-                                animate={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}
-                                transition={{ duration: 0.8, ease: "circOut" }}
-                            >
-                                SECRETLY
-                            </motion.h1>
-                        </div>
+                {/* LOADING STATUS */}
+                <div className="mt-8 flex items-center gap-4">
+                    <div className="w-3 h-3 bg-hot-pink loader-pulse" />
+                    <p className="font-mono text-xs uppercase tracking-widest text-black loader-blink">
+                        LOADING
+                    </p>
+                </div>
 
-                        {/* LOADING STATUS */}
-                        <div className="mt-8 flex items-center gap-4">
-                            <motion.div
-                                className="w-3 h-3 bg-hot-pink"
-                                animate={{
-                                    scale: [1, 0, 1],
-                                    rotate: [0, 90, 180]
-                                }}
-                                transition={{
-                                    duration: 0.8,
-                                    repeat: Infinity,
-                                    ease: "steps(1)"
-                                }}
-                            />
-                            <motion.p
-                                className="font-mono text-xs uppercase tracking-widest text-black"
-                                animate={{ opacity: [1, 0.3, 1] }}
-                                transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut" }}
-                            >
-                                LOADING_ASSETS
-                            </motion.p>
-                        </div>
+                {/* Progress Bar */}
+                <div className="w-64 h-2 bg-black/10 mt-4 overflow-hidden border border-black">
+                    <div className="h-full bg-hot-pink loader-progress" />
+                </div>
+            </div>
 
-                        {/* Thicker Progress Bar */}
-                        <div className="w-64 h-2 bg-black/10 mt-4 overflow-hidden border border-black">
-                            <motion.div
-                                className="h-full bg-hot-pink"
-                                initial={{ width: "0%" }}
-                                animate={{ width: "100%" }}
-                                transition={{
-                                    duration: 1.8,
-                                    ease: "easeInOut"
-                                }}
-                            />
-                        </div>
-                    </div>
-                </motion.div>
-            )}
-        </AnimatePresence>
+            <style jsx>{`
+                .loader-text-reveal {
+                    animation: textReveal 0.6s ease-out forwards;
+                }
+                .loader-pulse {
+                    animation: pulse 0.6s ease-in-out infinite;
+                }
+                .loader-blink {
+                    animation: blink 0.8s ease-in-out infinite;
+                }
+                .loader-progress {
+                    animation: progress 1.6s ease-out forwards;
+                }
+                @keyframes textReveal {
+                    from { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+                    to { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+                }
+                @keyframes pulse {
+                    0%, 100% { transform: scale(1); opacity: 1; }
+                    50% { transform: scale(0.5); opacity: 0.5; }
+                }
+                @keyframes blink {
+                    0%, 100% { opacity: 1; }
+                    50% { opacity: 0.3; }
+                }
+                @keyframes progress {
+                    from { width: 0%; }
+                    to { width: 100%; }
+                }
+            `}</style>
+        </div>
     );
 }

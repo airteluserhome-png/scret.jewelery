@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+/* --- PERFORMANCE OPTIMIZED ANIMATIONS --- */
+
+/* Product card fade-in animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.product-card-animate {
+    animation: fadeInUp 0.4s ease-out forwards;
+    opacity: 0;
+}
+
+/* GPU-accelerated ticker */
+.ticker-track {
+    will-change: transform;
+}
+
 :root {
     --neon-pink: #FF0099;
     --dark: #111;

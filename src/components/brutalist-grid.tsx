@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { getProductsByCategory } from "@/data/products";
@@ -21,7 +19,8 @@ export default function BrutalistGrid({
                     <Link
                         key={product.id}
                         href={`/product/${product.id}`}
-                        className="card-3d flex flex-col no-underline text-inherit cursor-pointer"
+                        className="card-3d flex flex-col no-underline text-inherit cursor-pointer product-card-animate"
+                        style={{ animationDelay: `${index * 50}ms` }}
                     >
 
                         {/* Image Area with Technical Grid */}
@@ -33,6 +32,7 @@ export default function BrutalistGrid({
                                     fill
                                     className="object-contain mix-blend-multiply product-img-card"
                                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    loading={index < 3 ? "eager" : "lazy"}
                                 />
                             </div>
                         </div>
