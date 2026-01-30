@@ -50,6 +50,47 @@
     -webkit-animation: scroll-left 20s linear infinite !important;
 }
 
+/* Loader animations - must be in global CSS for production builds */
+@keyframes loaderTextReveal {
+    from { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+    to { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+}
+
+@keyframes loaderPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(0.5); opacity: 0.5; }
+}
+
+@keyframes loaderBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+@keyframes loaderProgress {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+.loader-text-reveal {
+    animation: loaderTextReveal 0.3s ease-out forwards !important;
+    -webkit-animation: loaderTextReveal 0.3s ease-out forwards !important;
+}
+
+.loader-pulse {
+    animation: loaderPulse 0.5s ease-in-out infinite !important;
+    -webkit-animation: loaderPulse 0.5s ease-in-out infinite !important;
+}
+
+.loader-blink {
+    animation: loaderBlink 0.6s ease-in-out infinite !important;
+    -webkit-animation: loaderBlink 0.6s ease-in-out infinite !important;
+}
+
+.loader-progress {
+    animation: loaderProgress 0.7s ease-out forwards !important;
+    -webkit-animation: loaderProgress 0.7s ease-out forwards !important;
+}
+
 :root {
     --neon-pink: #FF0099;
     --dark: #111;

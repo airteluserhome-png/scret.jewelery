@@ -57,37 +57,7 @@ export default function LuxuryLoader() {
                     <div className="h-full bg-hot-pink loader-progress" />
                 </div>
             </div>
-
-            <style jsx>{`
-                .loader-text-reveal {
-                    animation: textReveal 0.3s ease-out forwards;
-                }
-                .loader-pulse {
-                    animation: pulse 0.5s ease-in-out infinite;
-                }
-                .loader-blink {
-                    animation: blink 0.6s ease-in-out infinite;
-                }
-                .loader-progress {
-                    animation: progress 0.7s ease-out forwards;
-                }
-                @keyframes textReveal {
-                    from { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
-                    to { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-                }
-                @keyframes pulse {
-                    0%, 100% { transform: scale(1); opacity: 1; }
-                    50% { transform: scale(0.5); opacity: 0.5; }
-                }
-                @keyframes blink {
-                    0%, 100% { opacity: 1; }
-                    50% { opacity: 0.3; }
-                }
-                @keyframes progress {
-                    from { width: 0%; }
-                    to { width: 100%; }
-                }
-            `}</style>
+            {/* Animations are now in globals.css for production reliability */}
         </div>
     );
 }
