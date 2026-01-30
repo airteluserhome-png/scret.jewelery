@@ -35,10 +35,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 <BackButton fallback="/shop" />
             </div>
 
-            {/* Checkout Assistance Banner - shows when user has multiple failed attempts */}
-            <div className="px-6 md:px-12 pt-4">
-                <CheckoutAssistanceBanner productId={product.id} />
-            </div>
+            {/* Checkout Assistance Popup - shows when user has multiple failed attempts */}
+            <CheckoutAssistanceBanner productId={product.id} />
 
             {/* Split Screen Container */}
             <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[90vh] brutalist-border-b">

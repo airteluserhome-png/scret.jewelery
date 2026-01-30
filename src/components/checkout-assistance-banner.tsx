@@ -33,7 +33,7 @@ export default function CheckoutAssistanceBanner({ productId }: CheckoutAssistan
             console.log("[Checkout Tracker] Failed attempts:", failed.length, failed);
             console.log("[Checkout Tracker] Full history:", getCheckoutHistory());
             
-            // Show banner if 2+ failed attempts
+            // Show popup if 2+ failed attempts
             if (failed.length >= 2 && !isDismissed) {
                 setIsVisible(true);
             }
@@ -82,87 +82,104 @@ export default function CheckoutAssistanceBanner({ productId }: CheckoutAssistan
 
     return (
         <AnimatePresence>
+            {/* Full screen overlay */}
             <motion.div
-                initial={{ opacity: 0, y: -20, height: 0 }}
-                animate={{ opacity: 1, y: 0, height: "auto" }}
-                exit={{ opacity: 0, y: -20, height: 0 }}
-                className="w-full mb-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-6"
+                style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}
+                onClick={handleDismiss}
             >
-                <div 
-                    className="bg-[#FF0099] text-white p-4 md:p-6 relative"
+                {/* Popup Modal */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                    transition={{ type: "spring", duration: 0.5 }}
+                    className="bg-white w-full max-w-lg relative"
                     style={{ 
-                        border: "3px solid #000",
-                        boxShadow: "6px 6px 0px #000"
+                        border: "4px solid #000",
+                        boxShadow: "12px 12px 0px #FF0099"
                     }}
+                    onClick={(e) => e.stopPropagation()}
                 >
                     {/* Close button */}
                     <button
                         onClick={handleDismiss}
-                        className="absolute top-2 right-2 md:top-3 md:right-3 w-8 h-8 flex items-center justify-center bg-black/20 hover:bg-black/40 transition-colors"
-                        aria-label="Dismiss"
+                        className="absolute -top-3 -right-3 w-10 h-10 bg-black text-white flex items-center justify-center hover:bg-[#FF0099] transition-colors z-10"
+                        style={{ border: "3px solid #000" }}
+                        aria-label="Close"
                     >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
 
-                    <div className="flex items-start gap-4">
-                        {/* Icon */}
-                        <div className="hidden md:flex w-12 h-12 bg-white/20 items-center justify-center flex-shrink-0">
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
-
-                        {/* Content */}
-                        <div className="flex-1 pr-8">
-                            <h3 className="font-brutalist text-lg md:text-xl uppercase tracking-wider mb-2">
-                                Having Trouble Checking Out?
-                            </h3>
-                            <p className="text-white/90 text-sm mb-4">
-                                We noticed {failedAttempts.length} checkout attempt{failedAttempts.length > 1 ? 's' : ''} didn&apos;t complete. 
-                                Here are some common solutions:
-                            </p>
-
-                            <ul className="text-sm text-white/80 space-y-1 mb-4">
-                                <li className="flex items-center gap-2">
-                                    <span className="text-white">→</span>
-                                    <span>Try a different card (some banks block international purchases)</span>
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="text-white">→</span>
-                                    <span>Call your bank to approve the transaction</span>
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="text-white">→</span>
-                                    <span>Double-check card number, expiry, and CVV</span>
-                                </li>
-                            </ul>
-
-                            <div className="flex flex-wrap gap-3">
-                                <button
-                                    onClick={handleClearHistory}
-                                    className="bg-white text-[#FF0099] font-bold text-sm uppercase tracking-wider px-4 py-2 hover:bg-black hover:text-white transition-all"
-                                    style={{ border: "2px solid #000" }}
-                                >
-                                    Try Again with New Card
-                                </button>
-                                <button
-                                    onClick={() => {
-                                        // Try to open contact form
-                                        const contactBtn = document.querySelector('[aria-label="Contact us"]') as HTMLButtonElement;
-                                        if (contactBtn) contactBtn.click();
-                                        handleDismiss();
-                                    }}
-                                    className="bg-black/20 text-white font-bold text-sm uppercase tracking-wider px-4 py-2 hover:bg-black/40 transition-all"
-                                    style={{ border: "2px solid rgba(0,0,0,0.3)" }}
-                                >
-                                    Contact Support
-                                </button>
+                    {/* Header */}
+                    <div className="bg-[#FF0099] text-white p-4 md:p-6">
+                        <div className="flex items-center gap-4">
+                            <div className="w-14 h-14 bg-white/20 flex items-center justify-center flex-shrink-0">
+                                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 className="font-brutalist text-2xl md:text-3xl uppercase tracking-wider">
+                                    Need Help?
+                                </h3>
+                                <p className="text-white/80 text-sm mt-1">
+                                    {failedAttempts.length} checkout attempt{failedAttempts.length > 1 ? 's' : ''} didn&apos;t complete
+                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
+
+                    {/* Content */}
+                    <div className="p-4 md:p-6">
+                        <p className="text-black/70 text-sm mb-5">
+                            We noticed you had trouble completing your purchase. Here are some quick fixes:
+                        </p>
+
+                        <ul className="space-y-3 mb-6">
+                            <li className="flex items-start gap-3 p-3 bg-gray-50" style={{ border: "2px solid #eee" }}>
+                                <span className="w-6 h-6 bg-[#FF0099] text-white flex items-center justify-center flex-shrink-0 font-bold text-sm">1</span>
+                                <span className="text-sm text-black/80"><strong>Try a different card</strong> — Some banks block international purchases</span>
+                            </li>
+                            <li className="flex items-start gap-3 p-3 bg-gray-50" style={{ border: "2px solid #eee" }}>
+                                <span className="w-6 h-6 bg-[#FF0099] text-white flex items-center justify-center flex-shrink-0 font-bold text-sm">2</span>
+                                <span className="text-sm text-black/80"><strong>Call your bank</strong> — Ask them to approve the transaction</span>
+                            </li>
+                            <li className="flex items-start gap-3 p-3 bg-gray-50" style={{ border: "2px solid #eee" }}>
+                                <span className="w-6 h-6 bg-[#FF0099] text-white flex items-center justify-center flex-shrink-0 font-bold text-sm">3</span>
+                                <span className="text-sm text-black/80"><strong>Verify card details</strong> — Check number, expiry, and CVV</span>
+                            </li>
+                        </ul>
+
+                        {/* Action Buttons */}
+                        <div className="flex flex-col gap-3">
+                            <button
+                                onClick={handleClearHistory}
+                                className="w-full bg-black text-white font-brutalist text-lg py-4 uppercase tracking-wider hover:bg-[#FF0099] transition-colors"
+                                style={{ border: "3px solid #000", boxShadow: "4px 4px 0px #FF0099" }}
+                            >
+                                Try Again
+                            </button>
+                            <button
+                                onClick={() => {
+                                    // Try to open contact form
+                                    const contactBtn = document.querySelector('[aria-label="Contact us"]') as HTMLButtonElement;
+                                    if (contactBtn) contactBtn.click();
+                                    handleDismiss();
+                                }}
+                                className="w-full bg-white text-black font-bold text-sm py-3 uppercase tracking-wider hover:bg-gray-100 transition-colors"
+                                style={{ border: "3px solid #000" }}
+                            >
+                                Contact Support
+                            </button>
+                        </div>
+                    </div>
+                </motion.div>
             </motion.div>
         </AnimatePresence>
     );
