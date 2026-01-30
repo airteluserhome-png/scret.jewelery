@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import LuxuryLoader from "./luxury-loader";
 import { ToastProvider } from "./toast-notification";
+import BackToTop from "./back-to-top";
+import FloatingContact from "./floating-contact";
 
 interface AuthGateProps {
     children: React.ReactNode;
@@ -25,10 +27,12 @@ export default function AuthGate({ children }: AuthGateProps) {
         return <LuxuryLoader />;
     }
 
-    // Site is now open - clean and fast
+    // Site is now open - with all features
     return (
         <ToastProvider>
             {children}
+            <BackToTop />
+            <FloatingContact />
         </ToastProvider>
     );
 }
