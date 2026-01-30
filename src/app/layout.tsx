@@ -9,6 +9,7 @@ import AuthGate from "@/components/auth-gate";
 
 // Enhanced SEO Metadata
 export const metadata: Metadata = {
+    metadataBase: new URL("https://secretly.jewelry"),
     title: {
         default: "Secretly - Luxury Goods",
         template: "%s | Secretly",

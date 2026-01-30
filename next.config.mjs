@@ -8,15 +8,10 @@ const nextConfig = {
         imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     },
     
-    // Performance Optimizations
-    experimental: {
-        optimizeCss: true,
-    },
-    
     // Compression
     compress: true,
     
-    // Power performance
+    // Remove X-Powered-By header
     poweredByHeader: false,
     
     // React Strict Mode for better debugging
