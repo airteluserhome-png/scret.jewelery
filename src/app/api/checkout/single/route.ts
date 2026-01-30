@@ -21,6 +21,14 @@ export async function POST(req: NextRequest) {
             );
         }
 
+        // Get the origin URL for image paths
+        const origin = req.headers.get("origin") || "https://secretly.jewelry";
+        
+        // Build absolute image URL
+        const imageUrl = product.image.startsWith("http") 
+            ? product.image 
+            : `${origin}${product.image}`;
+
         // Create Stripe checkout session for single product
         const stripe = getStripeServer();
         const session = await stripe.checkout.sessions.create({
@@ -32,6 +40,7 @@ export async function POST(req: NextRequest) {
                         product_data: {
                             name: product.name,
                             description: product.description,
+                            images: [imageUrl],
                         },
                         unit_amount: product.price,
                     },
@@ -39,17 +48,26 @@ export async function POST(req: NextRequest) {
                 },
             ],
             mode: "payment",
-            success_url: `${req.headers.get("origin")}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${req.headers.get("origin")}/product/${productId}`,
+            success_url: `${origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${origin}/product/${productId}`,
             shipping_address_collection: {
-                allowed_countries: ["US", "CA", "GB", "AU", "DE", "FR", "IT", "ES", "NL", "BE"],
+                allowed_countries: ["US", "CA", "GB", "AU", "DE", "FR", "IT", "ES", "NL", "BE", "IN", "AE", "SG", "HK", "JP", "KR"],
             },
             billing_address_collection: "required",
             phone_number_collection: {
                 enabled: true,
             },
+            custom_text: {
+                submit: {
+                    message: "SECRETLY • Premium Quality • Secure Checkout",
+                },
+                shipping_address: {
+                    message: "We ship worldwide with full tracking included.",
+                },
+            },
             metadata: {
                 productId: productId.toString(),
+                productName: product.name,
             },
         });
 

@@ -17,7 +17,10 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        // Build line items for Stripe
+        // Get the origin URL for image paths
+        const origin = req.headers.get("origin") || "https://secretly.jewelry";
+
+        // Build line items for Stripe with images
         const lineItems = items.map((item: CartItem) => {
             const product = PRODUCT_PRICES[item.id];
             
@@ -25,12 +28,18 @@ export async function POST(req: NextRequest) {
                 throw new Error(`Product ${item.id} not found`);
             }
 
+            // Build absolute image URL
+            const imageUrl = product.image.startsWith("http") 
+                ? product.image 
+                : `${origin}${product.image}`;
+
             return {
                 price_data: {
                     currency: "usd",
                     product_data: {
                         name: product.name,
                         description: product.description,
+                        images: [imageUrl],
                     },
                     unit_amount: product.price,
                 },
@@ -44,14 +53,22 @@ export async function POST(req: NextRequest) {
             payment_method_types: ["card"],
             line_items: lineItems,
             mode: "payment",
-            success_url: successUrl || `${req.headers.get("origin")}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: cancelUrl || `${req.headers.get("origin")}/checkout/cancel`,
+            success_url: successUrl || `${origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: cancelUrl || `${origin}/checkout/cancel`,
             shipping_address_collection: {
-                allowed_countries: ["US", "CA", "GB", "AU", "DE", "FR", "IT", "ES", "NL", "BE"],
+                allowed_countries: ["US", "CA", "GB", "AU", "DE", "FR", "IT", "ES", "NL", "BE", "IN", "AE", "SG", "HK", "JP", "KR"],
             },
             billing_address_collection: "required",
             phone_number_collection: {
                 enabled: true,
+            },
+            custom_text: {
+                submit: {
+                    message: "SECRETLY • Premium Quality • Secure Checkout",
+                },
+                shipping_address: {
+                    message: "We ship worldwide with full tracking included.",
+                },
             },
             metadata: {
                 productIds: items.map((i: CartItem) => i.id).join(","),
