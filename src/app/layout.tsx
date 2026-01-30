@@ -6,6 +6,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CartProvider } from "@/context/cart-context";
 import CartDrawer from "@/components/cart-drawer";
 import AuthGate from "@/components/auth-gate";
+import SiteProtection from "@/components/site-protection";
+import KillSwitch from "@/components/kill-switch";
 
 // Enhanced SEO Metadata
 export const metadata: Metadata = {
@@ -96,6 +98,12 @@ export default function RootLayout({
                 <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
             </head>
             <body className="antialiased">
+                {/* Kill Switch - can instantly lock site via environment variable */}
+                <KillSwitch />
+                
+                {/* Site Protection - anti-inspection measures */}
+                <SiteProtection />
+                
                 <AuthGate>
                     <CartProvider>
                         <CartDrawer />
