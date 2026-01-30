@@ -26,8 +26,8 @@ export const products: Product[] = [
         price: "$1",
         priceNum: 1,
         image: "/ROLEX/Rolex Daydate Olive.jpg",
-        badge: "TEST $1",
-        description: "⚠️ TEST PURCHASE - $1 charge will be auto-refunded",
+        badge: "5A SWISS",
+        description: "5A Swiss movement Rolex with box and papers",
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
 
