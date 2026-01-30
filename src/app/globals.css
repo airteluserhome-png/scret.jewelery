@@ -23,25 +23,31 @@
 
 /* GPU-accelerated marquee animations */
 @keyframes scroll-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
 }
 
 @keyframes scroll-right {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
+    0% { transform: translate3d(-50%, 0, 0); }
+    100% { transform: translate3d(0, 0, 0); }
 }
 
 .animate-scroll-left {
-    animation: scroll-left 20s linear infinite;
+    animation: scroll-left 15s linear infinite !important;
+    will-change: transform;
+    -webkit-animation: scroll-left 15s linear infinite !important;
 }
 
 .animate-scroll-right {
-    animation: scroll-right 25s linear infinite;
+    animation: scroll-right 18s linear infinite !important;
+    will-change: transform;
+    -webkit-animation: scroll-right 18s linear infinite !important;
 }
 
 .animate-ticker {
-    animation: scroll-left 25s linear infinite;
+    animation: scroll-left 20s linear infinite !important;
+    will-change: transform;
+    -webkit-animation: scroll-left 20s linear infinite !important;
 }
 
 :root {
@@ -135,8 +141,11 @@ a, button, .card, .card-3d, .btn, [role="button"] {
 .reveal-stagger.is-visible > *:nth-child(8) { transition-delay: 560ms; opacity: 1; transform: translateY(0); }
 
 /* Respect accessibility - disable animations for users who prefer reduced motion */
+/* BUT keep marquee/ticker animations running as they're essential UI */
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+    *:not(.animate-scroll-left):not(.animate-scroll-right):not(.animate-ticker),
+    *:not(.animate-scroll-left):not(.animate-scroll-right):not(.animate-ticker)::before,
+    *:not(.animate-scroll-left):not(.animate-scroll-right):not(.animate-ticker)::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
