@@ -20,14 +20,14 @@ export const products: Product[] = [
     // PLAIN WATCHES
     {
         id: 1,
-        name: "ROLEX DAYDATE OLIVE",
+        name: "ROLLY DAYDATE OLIVE",
         category: "plain-watches",
-        brand: "Rolex",
+        brand: "Rolly",
         price: "$450",
         priceNum: 450,
         image: "/ROLEX/Rolex Daydate Olive.jpg",
         badge: "5A SWISS",
-        description: "5A Swiss movement Rolex with box and papers",
+        description: "5A Swiss movement Rolly with box and papers",
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
 
@@ -69,14 +69,14 @@ export const products: Product[] = [
     },
     {
         id: 5,
-        name: "WHITE RICHARD MILLE BUBBA WATSON",
+        name: "WHITE RM BUBBA WATSON",
         category: "plain-watches",
-        brand: "Richard Mille",
+        brand: "RM",
         price: "$650",
         priceNum: 650,
         image: "/RM/White Richard Mille Bubba Watson.jpg",
         badge: "5A SWISS",
-        description: "5A Swiss movement Richard Mille with box and papers",
+        description: "5A Swiss movement RM with box and papers",
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
     {
@@ -142,26 +142,26 @@ export const products: Product[] = [
     },
     {
         id: 17,
-        name: "ROLEX DAYDATE ICED OUT ROSE GOLD",
+        name: "ROLLY DAYDATE ICED OUT ROSE GOLD",
         category: "iced-watches",
-        brand: "Rolex",
+        brand: "Rolly",
         price: "$650", // Estimated price
         priceNum: 650,
         image: "/ICED OUT ROLEX/Iced out Rolex Day date rose gold.jpg",
         badge: "ICED OUT",
-        description: "5A Swiss movement Rolex Iced Out Rose Gold",
+        description: "5A Swiss movement Rolly Iced Out Rose Gold",
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
     {
         id: 18,
-        name: "ROLEX DAYDATE ICED OUT WHITE GOLD",
+        name: "ROLLY DAYDATE ICED OUT WHITE GOLD",
         category: "iced-watches",
-        brand: "Rolex",
+        brand: "Rolly",
         price: "$650", // Estimated price
         priceNum: 650,
         image: "/ICED OUT ROLEX/Iced out Rolex Day date white gold.jpg",
         badge: "ICED OUT",
-        description: "5A Swiss movement Rolex Iced Out White Gold",
+        description: "5A Swiss movement Rolly Iced Out White Gold",
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
 
