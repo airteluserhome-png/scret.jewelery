@@ -67,12 +67,17 @@ export default function CheckoutButton({
                 return;
             }
 
-            // Record this checkout attempt
+            // Record this checkout attempt BEFORE redirect
+            console.log("[Checkout Button] Recording attempt for:", productName, productId);
             recordCheckoutAttempt(productId, productName, price, data.sessionId);
+            console.log("[Checkout Button] Attempt recorded, redirecting to Stripe...");
 
             // Redirect to Stripe Checkout
             if (data.url) {
-                window.location.href = data.url;
+                // Small delay to ensure localStorage is written before navigation
+                setTimeout(() => {
+                    window.location.href = data.url;
+                }, 50);
             } else {
                 showToast("Unable to start checkout. Please try again.", "error", 5000);
             }

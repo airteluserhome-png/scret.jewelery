@@ -57,15 +57,21 @@ export function recordCheckoutAttempt(
 ): void {
     const history = getCheckoutHistory();
     
+    // Ensure productId is a number
+    const numericProductId = typeof productId === 'string' ? parseInt(productId, 10) : productId;
+    
     // Add new attempt
-    history.attempts.push({
-        productId,
+    const newAttempt: CheckoutAttempt = {
+        productId: numericProductId,
         productName,
         price,
         timestamp: Date.now(),
         sessionId,
         status: "started",
-    });
+    };
+    
+    history.attempts.push(newAttempt);
+    console.log("[Checkout Tracker] Recorded new attempt:", newAttempt);
     
     // Keep only last 10 attempts
     if (history.attempts.length > 10) {
@@ -73,6 +79,7 @@ export function recordCheckoutAttempt(
     }
     
     saveCheckoutHistory(history);
+    console.log("[Checkout Tracker] History saved, total attempts:", history.attempts.length);
 }
 
 // Update the status of the last attempt
@@ -94,12 +101,26 @@ export function getRecentFailedAttempts(productId?: number): CheckoutAttempt[] {
     const history = getCheckoutHistory();
     const oneDayAgo = Date.now() - 24 * 60 * 60 * 1000;
     
-    return history.attempts.filter(attempt => {
+    // Ensure productId comparison works with both string and number
+    const numericProductId = productId !== undefined 
+        ? (typeof productId === 'string' ? parseInt(productId, 10) : productId)
+        : undefined;
+    
+    const filtered = history.attempts.filter(attempt => {
         const isRecent = attempt.timestamp > oneDayAgo;
         const isFailed = attempt.status === "abandoned" || attempt.status === "declined";
-        const matchesProduct = productId ? attempt.productId === productId : true;
+        // Compare as numbers to avoid type mismatch
+        const attemptProductId = typeof attempt.productId === 'string' 
+            ? parseInt(attempt.productId, 10) 
+            : attempt.productId;
+        const matchesProduct = numericProductId !== undefined 
+            ? attemptProductId === numericProductId 
+            : true;
         return isRecent && isFailed && matchesProduct;
     });
+    
+    console.log("[Checkout Tracker] getRecentFailedAttempts - productId:", productId, "found:", filtered.length);
+    return filtered;
 }
 
 // Check if we should show intervention (payment assistance)

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
     getRecentFailedAttempts, 
@@ -18,52 +18,89 @@ export default function CheckoutAssistanceBanner({ productId }: CheckoutAssistan
     const [failedAttempts, setFailedAttempts] = useState<CheckoutAttempt[]>([]);
     const [isVisible, setIsVisible] = useState(false);
     const [isDismissed, setIsDismissed] = useState(false);
+    const hasChecked = useRef(false);
 
     const checkFailedAttempts = useCallback(() => {
+        console.log("[Checkout Banner] Checking failed attempts...");
+        
         // Mark any pending (started but not completed) checkouts as abandoned
         markPendingAsAbandoned();
         
-        // Small delay to ensure state is updated
+        // Small delay to ensure localStorage is synced
         setTimeout(() => {
-            // Get failed attempts for this product or all products
+            // Get failed attempts - check ALL products if no productId, or specific product
             const failed = getRecentFailedAttempts(productId);
-            setFailedAttempts(failed);
+            const allFailed = getRecentFailedAttempts(); // Also check all
             
-            // Debug log
-            console.log("[Checkout Tracker] Failed attempts:", failed.length, failed);
-            console.log("[Checkout Tracker] Full history:", getCheckoutHistory());
+            // Debug logs
+            console.log("[Checkout Banner] Product ID:", productId);
+            console.log("[Checkout Banner] Failed for product:", failed.length);
+            console.log("[Checkout Banner] Failed total:", allFailed.length);
+            console.log("[Checkout Banner] Full history:", getCheckoutHistory());
+            console.log("[Checkout Banner] isDismissed:", isDismissed);
+            
+            // Use all failed attempts if productId filtering returns less
+            const attemptsToUse = failed.length >= 2 ? failed : allFailed;
+            setFailedAttempts(attemptsToUse);
             
             // Show popup if 2+ failed attempts
-            if (failed.length >= 2 && !isDismissed) {
+            if (attemptsToUse.length >= 2 && !isDismissed) {
+                console.log("[Checkout Banner] SHOWING POPUP!");
                 setIsVisible(true);
             }
-        }, 100);
+        }, 150);
     }, [productId, isDismissed]);
 
     useEffect(() => {
-        // Check on mount
-        checkFailedAttempts();
+        // Immediate check on mount
+        if (!hasChecked.current) {
+            hasChecked.current = true;
+            checkFailedAttempts();
+        }
         
         // Also check when page becomes visible (user returns from another tab/Stripe)
         const handleVisibilityChange = () => {
             if (document.visibilityState === 'visible') {
+                console.log("[Checkout Banner] Visibility changed to visible");
                 checkFailedAttempts();
             }
         };
         
-        // Check when user navigates back
+        // Check when user navigates back (popstate)
         const handlePopState = () => {
+            console.log("[Checkout Banner] PopState event");
+            checkFailedAttempts();
+        };
+        
+        // pageshow event fires even when page is loaded from bfcache (browser back/forward cache)
+        const handlePageShow = (event: PageTransitionEvent) => {
+            console.log("[Checkout Banner] PageShow event, persisted:", event.persisted);
+            if (event.persisted) {
+                // Page was restored from bfcache
+                checkFailedAttempts();
+            }
+        };
+        
+        // Focus event when window gains focus
+        const handleFocus = () => {
+            console.log("[Checkout Banner] Focus event");
             checkFailedAttempts();
         };
         
         document.addEventListener('visibilitychange', handleVisibilityChange);
         window.addEventListener('popstate', handlePopState);
-        window.addEventListener('focus', checkFailedAttempts);
+        window.addEventListener('pageshow', handlePageShow);
+        window.addEventListener('focus', handleFocus);
+        
+        // Also check after a short delay in case of race conditions
+        const delayedCheck = setTimeout(checkFailedAttempts, 500);
         
         return () => {
             document.removeEventListener('visibilitychange', handleVisibilityChange);
             window.removeEventListener('popstate', handlePopState);
-            window.removeEventListener('focus', checkFailedAttempts);
+            window.removeEventListener('pageshow', handlePageShow);
+            window.removeEventListener('focus', handleFocus);
+            clearTimeout(delayedCheck);
         };
     }, [checkFailedAttempts]);
 
