@@ -67,6 +67,44 @@
     --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Mobile Performance & UX Optimizations */
+@media (max-width: 768px) {
+    /* Optimize touch targets for mobile */
+    button, a, [role="button"], [tabindex="0"] {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Prevent text size adjustment on rotation */
+    html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+    
+    /* Smooth momentum scrolling on iOS */
+    body {
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: none;
+    }
+    
+    /* Prevent pull-to-refresh on Chrome Android */
+    body {
+        overscroll-behavior-y: contain;
+    }
+    
+    /* Remove tap highlight on mobile */
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Optimize font rendering on mobile */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+}
+
 /* --- PREMIUM SMOOTH TRANSITIONS --- */
 
 /* Global smooth transitions for interactive elements */

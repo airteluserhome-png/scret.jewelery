@@ -37,7 +37,7 @@ export default function FloatingContact() {
             {/* Floating Button */}
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className="fixed left-6 bottom-6 z-50 w-14 h-14 bg-[#FF0099] text-white flex items-center justify-center group"
+                className="fixed left-4 bottom-4 md:left-6 md:bottom-6 z-50 w-12 h-12 md:w-14 md:h-14 bg-[#FF0099] text-white flex items-center justify-center group touch-manipulation active:scale-95"
                 style={{
                     border: "3px solid #000",
                     boxShadow: "4px 4px 0px #000",
@@ -46,13 +46,14 @@ export default function FloatingContact() {
                     y: -4,
                     boxShadow: "6px 6px 0px #000"
                 }}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 0.9 }}
                 animate={{ rotate: isOpen ? 90 : 0 }}
+                aria-label={isOpen ? "Close contact" : "Contact us"}
             >
                 {isOpen ? (
-                    <X className="w-6 h-6" />
+                    <X className="w-5 h-5 md:w-6 md:h-6" />
                 ) : (
-                    <MessageCircle className="w-6 h-6" />
+                    <MessageCircle className="w-5 h-5 md:w-6 md:h-6" />
                 )}
             </motion.button>
 
@@ -64,7 +65,7 @@ export default function FloatingContact() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
                         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                        className="fixed left-6 bottom-24 z-50 w-80 bg-white"
+                        className="fixed left-4 right-4 bottom-20 md:left-6 md:right-auto md:bottom-24 z-50 md:w-80 bg-white max-h-[80vh] overflow-y-auto"
                         style={{
                             border: "3px solid #000",
                             boxShadow: "8px 8px 0px #FF0099",
