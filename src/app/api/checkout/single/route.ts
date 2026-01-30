@@ -24,10 +24,15 @@ export async function POST(req: NextRequest) {
         // Get the origin URL for image paths
         const origin = req.headers.get("origin") || "https://secretly.jewelry";
         
-        // Build absolute image URL
+        // Build absolute image URL with proper encoding for spaces and special chars
+        const encodedImagePath = product.image
+            .split('/')
+            .map(segment => encodeURIComponent(segment))
+            .join('/');
+        
         const imageUrl = product.image.startsWith("http") 
             ? product.image 
-            : `${origin}${product.image}`;
+            : `${origin}${encodedImagePath}`;
 
         // Create Stripe checkout session for single product
         const stripe = getStripeServer();

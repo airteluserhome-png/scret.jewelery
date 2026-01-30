@@ -28,10 +28,15 @@ export async function POST(req: NextRequest) {
                 throw new Error(`Product ${item.id} not found`);
             }
 
-            // Build absolute image URL
+            // Build absolute image URL with proper encoding for spaces and special chars
+            const encodedImagePath = product.image
+                .split('/')
+                .map(segment => encodeURIComponent(segment))
+                .join('/');
+            
             const imageUrl = product.image.startsWith("http") 
                 ? product.image 
-                : `${origin}${product.image}`;
+                : `${origin}${encodedImagePath}`;
 
             return {
                 price_data: {
