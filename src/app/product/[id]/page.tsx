@@ -7,6 +7,7 @@ import Link from "next/link";
 import { getProductById } from "@/data/products";
 import BackButton from "@/components/back-button";
 import CheckoutButton from "@/components/checkout-button";
+import CheckoutAssistanceBanner from "@/components/checkout-assistance-banner";
 import { useCart } from "@/context/cart-context";
 import CrossTape from "@/components/cross-tape";
 
@@ -32,6 +33,11 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             {/* Back Button */}
             <div className="px-6 md:px-12 pt-6 md:pt-8 flex justify-start">
                 <BackButton fallback="/shop" />
+            </div>
+
+            {/* Checkout Assistance Banner - shows when user has multiple failed attempts */}
+            <div className="px-6 md:px-12 pt-4">
+                <CheckoutAssistanceBanner productId={product.id} />
             </div>
 
             {/* Split Screen Container */}

@@ -129,16 +129,40 @@ export function clearCheckoutHistory(): void {
     localStorage.removeItem(STORAGE_KEY);
 }
 
-// Mark all pending attempts as abandoned
+// Mark all pending attempts as abandoned (only recent ones - last 1 hour)
 export function markPendingAsAbandoned(): void {
     const history = getCheckoutHistory();
+    const oneHourAgo = Date.now() - 60 * 60 * 1000;
+    let markedCount = 0;
     
     history.attempts = history.attempts.map(attempt => {
-        if (attempt.status === "started") {
+        // Only mark recent "started" attempts as abandoned
+        if (attempt.status === "started" && attempt.timestamp > oneHourAgo) {
+            markedCount++;
+            console.log("[Checkout Tracker] Marking as abandoned:", attempt.productName);
             return { ...attempt, status: "abandoned" as const };
         }
         return attempt;
     });
     
-    saveCheckoutHistory(history);
+    if (markedCount > 0) {
+        saveCheckoutHistory(history);
+        console.log(`[Checkout Tracker] Marked ${markedCount} pending attempt(s) as abandoned`);
+    }
+}
+
+// Debug function - can be called from browser console
+export function debugCheckoutTracker(): void {
+    const history = getCheckoutHistory();
+    const failed = getRecentFailedAttempts();
+    console.log("=== Checkout Tracker Debug ===");
+    console.log("All attempts:", history.attempts);
+    console.log("Failed attempts (last 24h):", failed);
+    console.log("Should show assistance:", failed.length >= 2);
+    console.log("==============================");
+}
+
+// Expose debug function to window for testing
+if (typeof window !== "undefined") {
+    (window as unknown as { debugCheckoutTracker: typeof debugCheckoutTracker }).debugCheckoutTracker = debugCheckoutTracker;
 }
