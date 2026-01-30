@@ -6,14 +6,13 @@ import { useState } from "react";
 import Link from "next/link";
 import { getProductById } from "@/data/products";
 import BackButton from "@/components/back-button";
-import PaymentModal from "@/components/payment-modal";
+import CheckoutButton from "@/components/checkout-button";
 import { useCart } from "@/context/cart-context";
 import CrossTape from "@/components/cross-tape";
 
 export default function ProductPage({ params }: { params: { id: string } }) {
     const product = getProductById(parseInt(params.id));
     const { addItem } = useCart();
-    const [modalOpen, setModalOpen] = useState(false);
     const [activeImage, setActiveImage] = useState(product?.image);
     const [zoomOpen, setZoomOpen] = useState(false);
 
@@ -106,7 +105,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     {/* CTA Button */}
                     {/* Action Buttons Grid */}
                     <div className="grid grid-cols-2 gap-4 w-full">
-                        <button
+                        <motion.button
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
                             className="bg-white text-black font-brutalist text-xl md:text-2xl py-4 border-[3px] border-black hover:bg-black hover:text-white transition-all uppercase"
                             onClick={() => addItem({
                                 id: product.id,
@@ -116,17 +117,14 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                             })}
                         >
                             ADD TO CART
-                        </button>
-                        <button
-                            className="bg-hot-pink text-white font-brutalist text-xl md:text-2xl py-4 border-[3px] border-black shadow-[5px_5px_0_black] hover:translate-y-1 hover:shadow-none transition-all uppercase"
-                            onClick={() => setModalOpen(true)}
+                        </motion.button>
+                        <CheckoutButton 
+                            productId={product.id}
+                            className="text-xl md:text-2xl"
                         >
-                            BUY NOW ⚡
-                        </button>
+                            BUY NOW
+                        </CheckoutButton>
                     </div>
-
-                    {/* Modal */}
-                    <PaymentModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 
                     <p className="text-center md:text-left mt-4 text-xs opacity-60 uppercase tracking-widest w-full">
                         Secure Checkout • Worldwide Shipping

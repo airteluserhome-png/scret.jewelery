@@ -4,6 +4,7 @@ import { useCart } from "@/context/cart-context";
 import { X, Minus, Plus, Trash2 } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import CartCheckoutButton from "@/components/cart-checkout-button";
 
 export default function CartDrawer() {
     const { items, removeItem, updateQuantity, total, isOpen, setIsOpen, clearCart } = useCart();
@@ -107,12 +108,7 @@ export default function CartDrawer() {
                                     <span className="font-brutalist text-4xl">${total.toLocaleString()}</span>
                                 </div>
 
-                                <button
-                                    className="w-full bg-black text-white font-brutalist text-2xl py-4 hover:bg-hot-pink hover:shadow-[0_5px_0_black] hover:-translate-y-1 transition-all uppercase mb-3 border-2 border-black"
-                                    onClick={() => alert("Checkout System Under Construction!")}
-                                >
-                                    Checkout Now
-                                </button>
+                                <CartCheckoutButton />
 
                                 <button
                                     onClick={clearCart}
