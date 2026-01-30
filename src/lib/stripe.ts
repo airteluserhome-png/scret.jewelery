@@ -23,11 +23,14 @@ export const stripe = {
     },
 };
 
+// Test product ID for auto-refund (Rolex Olive)
+export const TEST_PRODUCT_ID = 1;
+
 // Product configuration for Stripe
 // Maps product IDs to Stripe price configuration with images
-export const PRODUCT_PRICES: Record<number, { name: string; price: number; description: string; image: string }> = {
+export const PRODUCT_PRICES: Record<number, { name: string; price: number; description: string; image: string; autoRefund?: boolean }> = {
     // PLAIN WATCHES
-    1: { name: "ROLEX DAYDATE OLIVE", price: 45000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/ROLEX/Rolex Daydate Olive.jpg" },
+    1: { name: "ROLEX DAYDATE OLIVE [TEST]", price: 100, description: "⚠️ TEST PURCHASE - $1 will be auto-refunded • Testing checkout flow", image: "/ROLEX/Rolex Daydate Olive.jpg", autoRefund: true },
     2: { name: "AP SKELETON", price: 55000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/AP/AP Skeleton.jpg" },
     3: { name: "AP ROSE GOLD", price: 55000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/AP/AP rose gold.jpg" },
     4: { name: "AP WHITE GOLD", price: 55000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/AP/AP white gold.jpg" },
