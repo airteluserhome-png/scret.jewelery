@@ -241,26 +241,26 @@ export const products: Product[] = [
     },
     {
         id: 13,
-        name: "VAN CLEEF BLUE DIAMONDS",
+        name: "6 CLOVER ICED BRACELET (BLUE)",
         category: "accessories",
-        brand: "Van Cleef",
+        brand: "VVS",
         price: "$200",
         priceNum: 200,
         image: "/VVS FLOWER BRACALET BLUE DIAMONDS/van-cleef-blue.jpg",
         badge: "VVS",
-        description: "Van Cleef bracelet with blue diamonds",
+        description: "6 Clover iced bracelet with blue diamonds",
         specs: { movement: "N/A", quality: "VVS Diamonds", includes: "Premium Packaging" }
     },
     {
         id: 14,
-        name: "VAN CLEEF PINK DIAMONDS",
+        name: "6 CLOVER ICED BRACELET (PINK)",
         category: "accessories",
-        brand: "Van Cleef",
+        brand: "VVS",
         price: "$200",
         priceNum: 200,
         image: "/VVS FLOWER BRACALET PINK DIAMONDS/van-cleef-pink.jpg",
         badge: "VVS",
-        description: "Van Cleef bracelet with pink diamonds",
+        description: "6 Clover iced bracelet with pink diamonds",
         specs: { movement: "N/A", quality: "VVS Diamonds", includes: "Premium Packaging" }
     },
     {
