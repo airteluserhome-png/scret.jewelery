@@ -81,14 +81,14 @@ export const products: Product[] = [
     },
     {
         id: 6,
-        name: "CARTIER SANTOS WHITE GOLD",
+        name: "CARTI SANTOS WHITE GOLD",
         category: "plain-watches",
-        brand: "Cartier",
+        brand: "Carti",
         price: "$450",
         priceNum: 450,
         image: "/Cartier/Cartier Santos White Gold.jpg",
         badge: "5A SWISS",
-        description: "5A Swiss movement Cartier Santos with box and papers",
+        description: "5A Swiss movement Carti Santos with box and papers",
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
     {
@@ -143,26 +143,26 @@ export const products: Product[] = [
     },
     {
         id: 9,
-        name: "ICED OUT CARTIER SANTOS ROSE GOLD",
+        name: "ICED OUT CARTI SANTOS ROSE GOLD",
         category: "iced-watches",
-        brand: "Cartier",
+        brand: "Carti",
         price: "$700",
         priceNum: 700,
         image: "/ICED OUT CARTIER/Iced out Cartier Santos rose good.jpg",
         badge: "ICED OUT",
-        description: "5A Swiss movement Iced Cartier Santos with box and papers",
+        description: "5A Swiss movement Iced Carti Santos with box and papers",
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
     {
         id: 10,
-        name: "ICED OUT CARTIER SANTOS WHITE GOLD",
+        name: "ICED OUT CARTI SANTOS WHITE GOLD",
         category: "iced-watches",
-        brand: "Cartier",
+        brand: "Carti",
         price: "$700",
         priceNum: 700,
         image: "/ICED OUT CARTIER/Iced out Cartier Santos white gold.jpg",
         badge: "ICED OUT",
-        description: "5A Swiss movement Iced Cartier Santos with box and papers",
+        description: "5A Swiss movement Iced Carti Santos with box and papers",
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
     {
@@ -265,9 +265,9 @@ export const products: Product[] = [
     },
     {
         id: 15,
-        name: "VVS CARTIER GLASSES (TAN)",
+        name: "VVS CARTI GLASSES (TAN)",
         category: "accessories",
-        brand: "Cartier",
+        brand: "Carti",
         price: "$650",
         priceNum: 650,
         image: "/VVS CARTIER GLASSES (TAN)/glasses-tan-1.jpg",
@@ -277,14 +277,14 @@ export const products: Product[] = [
             "/VVS CARTIER GLASSES (TAN)/glasses-tan-3.jpg"
         ],
         badge: "LUXURY",
-        description: "VVS quality Cartier glasses in tan",
+        description: "VVS quality Carti glasses in tan",
         specs: { movement: "N/A", quality: "VVS Quality", includes: "Case & Cloth" }
     },
     {
         id: 16,
-        name: "VVS CARTIER GLASSES (BLACK)",
+        name: "VVS CARTI GLASSES (BLACK)",
         category: "accessories",
-        brand: "Cartier",
+        brand: "Carti",
         price: "$650",
         priceNum: 650,
         image: "/VVS CARTIER GLASSES (BLACK)/glasses-black-1.jpg",
@@ -294,7 +294,7 @@ export const products: Product[] = [
             "/VVS CARTIER GLASSES (BLACK)/glasses-black-3.jpg"
         ],
         badge: "LUXURY",
-        description: "VVS quality Cartier glasses in black",
+        description: "VVS quality Carti glasses in black",
         specs: { movement: "N/A", quality: "VVS Quality", includes: "Case & Cloth" }
     }
 ];
