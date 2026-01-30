@@ -33,6 +33,8 @@ export const PRODUCT_PRICES: Record<number, { name: string; price: number; descr
     4: { name: "AP WHITE GOLD", price: 55000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/AP/AP white gold.jpg" },
     5: { name: "WHITE RM BUBBA WATSON", price: 65000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/RM/White Richard Mille Bubba Watson.jpg" },
     6: { name: "CARTIER SANTOS WHITE GOLD", price: 45000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/Cartier/Cartier Santos White Gold.jpg" },
+    19: { name: "PATEK NAUTILUS X TIFFANY", price: 75000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/PATEK/Patek Philippe Nautilus x Tiffany And Co.jpg" },
+    20: { name: "PATEK ROSE GOLD", price: 75000, description: "5A Swiss Movement • Box & Papers Included • AAA+ Quality", image: "/PATEK/Patek Philippe Rose Gold.jpg" },
     
     // ICED OUT WATCHES
     7: { name: "AP ICED OUT ROSE GOLD", price: 75000, description: "5A Swiss Movement • VVS Diamonds • Box & Papers Included", image: "/ICED OUT AP/AP iced out rose gold.jpg" },
@@ -41,6 +43,8 @@ export const PRODUCT_PRICES: Record<number, { name: string; price: number; descr
     10: { name: "ICED OUT CARTIER SANTOS WHITE GOLD", price: 70000, description: "5A Swiss Movement • VVS Diamonds • Box & Papers Included", image: "/ICED OUT CARTIER/Iced out Cartier Santos white gold.jpg" },
     17: { name: "ROLLY DAYDATE ICED OUT ROSE GOLD", price: 65000, description: "5A Swiss Movement • VVS Diamonds • Box & Papers Included", image: "/ICED OUT ROLEX/Iced out Rolex Day date rose gold.jpg" },
     18: { name: "ROLLY DAYDATE ICED OUT WHITE GOLD", price: 65000, description: "5A Swiss Movement • VVS Diamonds • Box & Papers Included", image: "/ICED OUT ROLEX/Iced out Rolex Day date white gold.jpg" },
+    21: { name: "PATEK ICED OUT ROSE GOLD", price: 85000, description: "5A Swiss Movement • VVS Diamonds • Box & Papers Included", image: "/ICET OUT Patek philipe/Iced out Patek Phillipe Nautilus ROSE GOLD.jpg" },
+    22: { name: "PATEK ICED OUT NAUTILUS", price: 85000, description: "5A Swiss Movement • VVS Diamonds • Box & Papers Included", image: "/ICET OUT Patek philipe/Patek Phillipe Iced out Nautilus.jpg" },
     
     // ACCESSORIES
     11: { name: "VVS CROSS BRACELET ROSE GOLD", price: 35000, description: "VVS Quality Diamonds • Premium Rose Gold Plating", image: "/VVS Cross Bracelet rose gold/cross-bracelet-rose-gold.jpg" },

@@ -87,7 +87,32 @@ export const products: Product[] = [
         price: "$450",
         priceNum: 450,
         image: "/Cartier/Cartier Santos White Gold.jpg",
-        badge: "5A SWISS", description: "5A Swiss movement Cartier Santos with box and papers",
+        badge: "5A SWISS",
+        description: "5A Swiss movement Cartier Santos with box and papers",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+    },
+    {
+        id: 19,
+        name: "PATEK NAUTILUS X TIFFANY",
+        category: "plain-watches",
+        brand: "Patek",
+        price: "$750",
+        priceNum: 750,
+        image: "/PATEK/Patek Philippe Nautilus x Tiffany And Co.jpg",
+        badge: "5A SWISS",
+        description: "5A Swiss movement Patek Nautilus Tiffany with box and papers",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+    },
+    {
+        id: 20,
+        name: "PATEK ROSE GOLD",
+        category: "plain-watches",
+        brand: "Patek",
+        price: "$750",
+        priceNum: 750,
+        image: "/PATEK/Patek Philippe Rose Gold.jpg",
+        badge: "5A SWISS",
+        description: "5A Swiss movement Patek Rose Gold with box and papers",
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
 
@@ -157,11 +182,35 @@ export const products: Product[] = [
         name: "ROLLY DAYDATE ICED OUT WHITE GOLD",
         category: "iced-watches",
         brand: "Rolly",
-        price: "$650", // Estimated price
+        price: "$650",
         priceNum: 650,
         image: "/ICED OUT ROLEX/Iced out Rolex Day date white gold.jpg",
         badge: "ICED OUT",
         description: "5A Swiss movement Rolly Iced Out White Gold",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+    },
+    {
+        id: 21,
+        name: "PATEK ICED OUT ROSE GOLD",
+        category: "iced-watches",
+        brand: "Patek",
+        price: "$850",
+        priceNum: 850,
+        image: "/ICET OUT Patek philipe/Iced out Patek Phillipe Nautilus ROSE GOLD.jpg",
+        badge: "ICED OUT",
+        description: "5A Swiss movement Patek Iced Out Rose Gold",
+        specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
+    },
+    {
+        id: 22,
+        name: "PATEK ICED OUT NAUTILUS",
+        category: "iced-watches",
+        brand: "Patek",
+        price: "$850",
+        priceNum: 850,
+        image: "/ICET OUT Patek philipe/Patek Phillipe Iced out Nautilus.jpg",
+        badge: "ICED OUT",
+        description: "5A Swiss movement Patek Iced Out Nautilus",
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
 
