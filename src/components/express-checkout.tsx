@@ -49,72 +49,72 @@ export default function ExpressCheckout({ onCryptoSelect }: ExpressCheckoutProps
                     Pay With Crypto
                 </span>
                 
-                {/* Crypto Buttons */}
-                <div className="flex items-center gap-4 md:gap-5 flex-wrap justify-center w-full">
-                    {/* Bitcoin - Logo + Text */}
+                {/* Crypto Buttons - ALL LOGOS LARGE */}
+                <div className="flex items-center gap-4 md:gap-6 flex-wrap justify-center w-full">
+                    {/* Bitcoin - Large Logo + Text */}
                     <motion.button
                         onClick={() => handleCryptoClick("bitcoin")}
-                        whileHover={{ y: -3, boxShadow: "6px 6px 0px #FF0099" }}
+                        whileHover={{ y: -4, boxShadow: "8px 8px 0px #FF0099" }}
                         whileTap={{ scale: 0.97 }}
-                        className="flex items-center gap-3 px-5 py-3 bg-white text-black select-none cursor-pointer transition-all"
+                        className="flex items-center gap-4 px-6 py-4 bg-white text-black select-none cursor-pointer transition-all"
                         style={{ 
                             border: "3px solid #000",
-                            boxShadow: "4px 4px 0px #FF0099"
+                            boxShadow: "5px 5px 0px #FF0099"
                         }}
                         aria-label="Pay with Bitcoin"
                     >
                         <Image 
                             src="/crypto/bitcoin.png" 
                             alt="Bitcoin" 
-                            width={32} 
-                            height={32}
+                            width={48} 
+                            height={48}
                             className="object-contain"
                         />
-                        <span className="font-brutalist text-base md:text-lg uppercase tracking-wider">Bitcoin</span>
+                        <span className="font-brutalist text-xl md:text-2xl uppercase tracking-wider">Bitcoin</span>
                     </motion.button>
 
-                    {/* Ethereum - New logo with text built-in */}
+                    {/* Ethereum - Large Logo with text built-in */}
                     <motion.button
                         onClick={() => handleCryptoClick("ethereum")}
-                        whileHover={{ y: -3, boxShadow: "6px 6px 0px #FF0099" }}
+                        whileHover={{ y: -4, boxShadow: "8px 8px 0px #FF0099" }}
                         whileTap={{ scale: 0.97 }}
-                        className="flex items-center justify-center px-5 py-3 bg-white text-black select-none cursor-pointer transition-all"
+                        className="flex items-center justify-center px-6 py-4 bg-white text-black select-none cursor-pointer transition-all"
                         style={{ 
                             border: "3px solid #000",
-                            boxShadow: "4px 4px 0px #FF0099"
+                            boxShadow: "5px 5px 0px #FF0099"
                         }}
                         aria-label="Pay with Ethereum"
                     >
                         <Image 
                             src="/crypto/ethereum.png" 
                             alt="Ethereum" 
-                            width={140} 
-                            height={40}
+                            width={200} 
+                            height={60}
                             className="object-contain"
-                            style={{ height: "32px", width: "auto" }}
+                            style={{ height: "48px", width: "auto" }}
                         />
                     </motion.button>
 
-                    {/* Solana - Logo + Text */}
+                    {/* Solana - Large Logo + Text */}
                     <motion.button
                         onClick={() => handleCryptoClick("solana")}
-                        whileHover={{ y: -3, boxShadow: "6px 6px 0px #FF0099" }}
+                        whileHover={{ y: -4, boxShadow: "8px 8px 0px #FF0099" }}
                         whileTap={{ scale: 0.97 }}
-                        className="flex items-center gap-3 px-5 py-3 bg-white text-black select-none cursor-pointer transition-all"
+                        className="flex items-center gap-4 px-6 py-4 bg-white text-black select-none cursor-pointer transition-all"
                         style={{ 
                             border: "3px solid #000",
-                            boxShadow: "4px 4px 0px #FF0099"
+                            boxShadow: "5px 5px 0px #FF0099"
                         }}
                         aria-label="Pay with Solana"
                     >
                         <Image 
                             src="/crypto/solana.png" 
                             alt="Solana" 
-                            width={32} 
-                            height={32}
+                            width={48} 
+                            height={48}
                             className="object-contain"
                         />
-                        <span className="font-brutalist text-base md:text-lg uppercase tracking-wider">Solana</span>
+                        <span className="font-brutalist text-xl md:text-2xl uppercase tracking-wider">Solana</span>
                     </motion.button>
                 </div>
             </div>
