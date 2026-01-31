@@ -8,6 +8,9 @@ import { getProductById } from "@/data/products";
 import BackButton from "@/components/back-button";
 import CheckoutButton from "@/components/checkout-button";
 import CheckoutAssistanceBanner from "@/components/checkout-assistance-banner";
+import LiveViewers from "@/components/live-viewers";
+import CountdownTimer from "@/components/countdown-timer";
+import ExpressCheckout from "@/components/express-checkout";
 import { useCart } from "@/context/cart-context";
 import CrossTape from "@/components/cross-tape";
 
@@ -43,6 +46,11 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
                 {/* LEFT: Product Details (Bottom on Mobile, Left on Desktop) */}
                 <div className="order-2 lg:order-1 p-8 md:p-12 lg:p-16 lg:brutalist-border-r bg-white flex flex-col justify-center items-start text-left brutalist-border-b lg:border-b-0">
+                    {/* Live Viewers Badge */}
+                    <div className="mb-4">
+                        <LiveViewers productId={product.id} minViewers={4} maxViewers={15} />
+                    </div>
+
                     {/* Brand Tag */}
                     <div className="font-bold text-gray-500 uppercase tracking-[0.2em] text-sm">
                         {product.brand}
@@ -80,6 +88,11 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                             </div>
                             <div className="w-3/5 p-2 md:p-4 text-left">{product.specs.quality}</div>
                         </div>
+                    </div>
+
+                    {/* Countdown Timer - Limited Edition */}
+                    <div className="w-full max-w-md lg:max-w-full mb-6">
+                        <CountdownTimer hoursFromNow={48} label="LIMITED DROP ENDS IN" />
                     </div>
 
                     {/* IMAGE GALLERY THUMBNAILS (Only if multiple images exist) */}
@@ -130,6 +143,15 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                         >
                             BUY NOW
                         </CheckoutButton>
+                    </div>
+
+                    {/* Express Checkout Options */}
+                    <div className="w-full mt-2">
+                        <ExpressCheckout 
+                            productId={product.id}
+                            productName={product.name}
+                            price={parseInt(product.price.replace(/[^0-9]/g, '')) * 100}
+                        />
                     </div>
 
                     <p className="text-center md:text-left mt-4 text-xs opacity-60 uppercase tracking-widest w-full">
