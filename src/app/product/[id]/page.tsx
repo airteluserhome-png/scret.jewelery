@@ -145,13 +145,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                         </CheckoutButton>
                     </div>
 
-                    {/* Express Checkout Options */}
-                    <div className="w-full mt-2">
-                        <ExpressCheckout 
-                            productId={product.id}
-                            productName={product.name}
-                            price={parseInt(product.price.replace(/[^0-9]/g, '')) * 100}
-                        />
+                    {/* Payment Methods Accepted */}
+                    <div className="w-full mt-4">
+                        <ExpressCheckout />
                     </div>
 
                     <p className="text-center md:text-left mt-4 text-xs opacity-60 uppercase tracking-widest w-full">

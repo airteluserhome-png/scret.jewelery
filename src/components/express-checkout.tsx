@@ -1,133 +1,64 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { useToast } from "./toast-notification";
+// This component shows available payment methods as trust indicators
+// Apple Pay and Google Pay are handled automatically by Stripe Checkout
+// when enabled in Stripe Dashboard
 
-interface ExpressCheckoutProps {
-    productId: number;
-    productName: string;
-    price: number; // in cents
-}
-
-export default function ExpressCheckout({ 
-    productId, 
-    productName, 
-    price 
-}: ExpressCheckoutProps) {
-    const [isLoading, setIsLoading] = useState<string | null>(null);
-    const { showToast } = useToast();
-
-    const handleExpressCheckout = async (method: "apple_pay" | "google_pay") => {
-        setIsLoading(method);
-
-        try {
-            // For now, redirect to regular Stripe checkout
-            // Stripe will auto-show Apple Pay/Google Pay if available
-            const response = await fetch("/api/checkout/single", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ 
-                    productId, 
-                    quantity: 1,
-                    expressCheckout: method 
-                }),
-            });
-
-            const data = await response.json();
-
-            if (!response.ok || data.error) {
-                showToast(data.error || "Checkout failed. Please try again.", "error", 5000);
-                return;
-            }
-
-            if (data.url) {
-                window.location.href = data.url;
-            }
-        } catch (error) {
-            console.error("Express checkout error:", error);
-            showToast("Connection error. Please try again.", "error", 5000);
-        } finally {
-            setIsLoading(null);
-        }
-    };
-
+export default function ExpressCheckout() {
     return (
-        <div className="w-full space-y-3">
-            {/* Divider */}
-            <div className="flex items-center gap-4 my-4">
-                <div className="flex-1 h-[2px] bg-black/20"></div>
-                <span className="text-xs uppercase tracking-widest text-black/50 font-bold">Express Checkout</span>
-                <div className="flex-1 h-[2px] bg-black/20"></div>
-            </div>
+        <div className="w-full">
+            {/* Payment Methods Indicator */}
+            <div className="flex items-center justify-center gap-4 py-3 px-4 bg-gray-50"
+                style={{
+                    border: "2px solid #e5e5e5",
+                }}
+            >
+                <span className="text-[10px] uppercase tracking-widest text-black/50 font-bold">
+                    We Accept
+                </span>
+                
+                {/* Payment Icons */}
+                <div className="flex items-center gap-3">
+                    {/* Visa */}
+                    <svg className="h-6 w-auto" viewBox="0 0 50 16" fill="none">
+                        <path d="M19.5 1.5L17 14.5H14L16.5 1.5H19.5Z" fill="#1A1F71"/>
+                        <path d="M30.5 1.8C29.8 1.5 28.7 1.2 27.3 1.2C23.8 1.2 21.3 3.1 21.3 5.8C21.3 7.8 23.1 8.9 24.5 9.6C25.9 10.3 26.4 10.7 26.4 11.3C26.4 12.2 25.3 12.6 24.3 12.6C22.9 12.6 22.1 12.4 20.9 11.9L20.4 11.7L19.9 15C20.8 15.4 22.4 15.7 24 15.8C27.7 15.8 30.2 13.9 30.2 11C30.2 9.4 29.2 8.2 27.1 7.2C25.8 6.5 25 6.1 25 5.4C25 4.8 25.7 4.2 27.2 4.2C28.4 4.2 29.3 4.4 30 4.7L30.4 4.9L30.5 1.8Z" fill="#1A1F71"/>
+                        <path d="M36.2 1.5C35.5 1.5 35 1.6 34.6 2.3L29.2 14.5H33L33.7 12.4H38.2L38.6 14.5H42L39.1 1.5H36.2ZM34.6 9.8C34.9 9 36.3 5.4 36.3 5.4C36.3 5.4 36.6 4.5 36.8 4L37.1 5.3C37.1 5.3 37.9 9 38.1 9.8H34.6Z" fill="#1A1F71"/>
+                        <path d="M12.5 1.5L9 10.3L8.6 8.4C7.9 6.1 5.7 3.6 3.2 2.4L6.4 14.5H10.2L16.3 1.5H12.5Z" fill="#1A1F71"/>
+                        <path d="M6.3 1.5H0.5L0.4 1.8C4.9 2.9 7.9 5.6 8.9 8.9L7.8 2.4C7.6 1.7 7.1 1.5 6.3 1.5Z" fill="#F9A51A"/>
+                    </svg>
 
-            {/* Express Buttons Grid */}
-            <div className="grid grid-cols-2 gap-3">
-                {/* Apple Pay Button */}
-                <motion.button
-                    onClick={() => handleExpressCheckout("apple_pay")}
-                    disabled={isLoading !== null}
-                    whileHover={{ y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="flex items-center justify-center gap-2 py-4 bg-black text-white font-bold uppercase tracking-wider transition-all disabled:opacity-50"
-                    style={{
-                        border: "3px solid #000",
-                    }}
-                >
-                    {isLoading === "apple_pay" ? (
-                        <span className="flex items-center gap-2">
-                            <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                            </svg>
-                        </span>
-                    ) : (
-                        <>
-                            {/* Apple Logo */}
-                            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                            </svg>
-                            <span className="text-sm">Pay</span>
-                        </>
-                    )}
-                </motion.button>
+                    {/* Mastercard */}
+                    <svg className="h-6 w-auto" viewBox="0 0 32 20" fill="none">
+                        <circle cx="11" cy="10" r="8" fill="#EB001B"/>
+                        <circle cx="21" cy="10" r="8" fill="#F79E1B"/>
+                        <path d="M16 3.8C17.7 5.2 18.8 7.5 18.8 10C18.8 12.5 17.7 14.8 16 16.2C14.3 14.8 13.2 12.5 13.2 10C13.2 7.5 14.3 5.2 16 3.8Z" fill="#FF5F00"/>
+                    </svg>
 
-                {/* Google Pay Button */}
-                <motion.button
-                    onClick={() => handleExpressCheckout("google_pay")}
-                    disabled={isLoading !== null}
-                    whileHover={{ y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="flex items-center justify-center gap-2 py-4 bg-white text-black font-bold uppercase tracking-wider transition-all disabled:opacity-50"
-                    style={{
-                        border: "3px solid #000",
-                    }}
-                >
-                    {isLoading === "google_pay" ? (
-                        <span className="flex items-center gap-2">
-                            <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                            </svg>
-                        </span>
-                    ) : (
-                        <>
-                            {/* Google G Logo */}
-                            <svg className="w-5 h-5" viewBox="0 0 24 24">
-                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                            </svg>
-                            <span className="text-sm">Pay</span>
-                        </>
-                    )}
-                </motion.button>
+                    {/* Apple Pay */}
+                    <svg className="h-5 w-auto" viewBox="0 0 50 20" fill="none">
+                        <path d="M9.3 2.6C8.7 3.3 7.8 3.8 6.9 3.7C6.8 2.8 7.2 1.9 7.7 1.2C8.3 0.5 9.3 0 10.1 0C10.2 1 9.8 1.9 9.3 2.6ZM10.1 3.9C8.8 3.8 7.7 4.6 7.1 4.6C6.5 4.6 5.5 3.9 4.5 3.9C3.1 4 1.9 4.7 1.2 5.9C-0.3 8.3 0.8 11.8 2.2 13.8C2.9 14.8 3.7 15.9 4.8 15.8C5.7 15.8 6.1 15.2 7.3 15.2C8.5 15.2 8.8 15.8 9.8 15.8C10.9 15.8 11.6 14.8 12.3 13.8C13.1 12.7 13.4 11.6 13.4 11.5C13.4 11.5 11.3 10.7 11.3 8.3C11.3 6.2 13 5.2 13.1 5.2C12 3.5 10.3 3.9 10.1 3.9Z" fill="black"/>
+                        <path d="M18.5 1.1V15.7H21.2V10.8H25C28.3 10.8 30.6 8.6 30.6 5.9C30.6 3.2 28.4 1.1 25.1 1.1H18.5ZM21.2 3.5H24.3C26.5 3.5 27.8 4.6 27.8 6C27.8 7.4 26.5 8.5 24.3 8.5H21.2V3.5Z" fill="black"/>
+                        <path d="M36.6 15.9C38.5 15.9 40.2 14.9 41 13.3H41.1V15.7H43.6V8.3C43.6 5.6 41.5 3.9 38.3 3.9C35.4 3.9 33.1 5.6 33 8H35.4C35.6 6.8 36.7 6 38.2 6C40 6 41 6.8 41 8.3V9.3L37.5 9.5C34.3 9.7 32.5 11.1 32.5 13.4C32.5 15 34.2 15.9 36.6 15.9ZM37.3 13.7C35.8 13.7 34.9 13 34.9 12C34.9 10.9 35.8 10.3 37.6 10.2L41 10V11C41 12.6 39.5 13.7 37.3 13.7Z" fill="black"/>
+                        <path d="M46.3 19.8C48.9 19.8 50.1 18.8 51.2 15.5L55.8 4.1H53L50.1 13.1H50L47.1 4.1H44.2L48.6 15.4L48.4 16.1C48 17.3 47.3 17.8 46.1 17.8C45.9 17.8 45.5 17.8 45.3 17.7V19.7C45.5 19.8 46 19.8 46.3 19.8Z" fill="black"/>
+                    </svg>
+
+                    {/* Google Pay */}
+                    <svg className="h-5 w-auto" viewBox="0 0 50 20" fill="none">
+                        <path d="M23.8 10V14.5H22.3V4H26.2C27.2 4 28.1 4.4 28.8 5C29.5 5.6 29.9 6.5 29.9 7.5C29.9 8.5 29.5 9.4 28.8 10C28.1 10.6 27.2 11 26.2 11H23.8V10ZM23.8 5.4V9H26.2C26.8 9 27.3 8.8 27.7 8.4C28.1 8 28.3 7.5 28.3 7C28.3 6.5 28.1 6 27.7 5.6C27.3 5.2 26.8 5 26.2 5H23.8V5.4Z" fill="#5F6368"/>
+                        <path d="M34.3 7.5C35.6 7.5 36.7 7.9 37.5 8.6L36.4 9.7C35.9 9.2 35.2 9 34.4 9C33 9 31.8 10 31.8 11.5C31.8 13 33 14 34.4 14C35.3 14 36 13.7 36.5 13.1L37.6 14.2C36.8 15 35.6 15.5 34.3 15.5C32 15.5 30.2 13.8 30.2 11.5C30.2 9.2 32 7.5 34.3 7.5Z" fill="#5F6368"/>
+                        <path d="M42.2 7.5C44.4 7.5 46.1 9.2 46.1 11.5C46.1 13.8 44.4 15.5 42.2 15.5C40 15.5 38.3 13.8 38.3 11.5C38.3 9.2 40 7.5 42.2 7.5ZM42.2 14C43.5 14 44.5 13 44.5 11.5C44.5 10 43.5 9 42.2 9C40.9 9 39.9 10 39.9 11.5C39.9 13 40.9 14 42.2 14Z" fill="#5F6368"/>
+                        <path d="M9.8 9.3C9.8 8.9 9.8 8.5 9.7 8.1H5V10.4H7.7C7.6 11.2 7.2 11.8 6.5 12.3V13.9H8.2C9.2 13 9.8 11.3 9.8 9.3Z" fill="#4285F4"/>
+                        <path d="M5 15.5C6.7 15.5 8.1 15 9.1 14L7.4 12.4C6.8 12.8 6 13 5 13C3.4 13 2.1 11.8 1.7 10.3H0V11.9C1 14 2.9 15.5 5 15.5Z" fill="#34A853"/>
+                        <path d="M1.7 10.3C1.5 9.7 1.5 9.1 1.7 8.5V6.9H0C-0.5 7.9 -0.5 11 0 12L1.7 10.3Z" fill="#FBBC04"/>
+                        <path d="M5 5.5C5.9 5.5 6.8 5.8 7.5 6.5L9.2 4.8C8.1 3.8 6.6 3.3 5 3.3C2.9 3.3 1 4.8 0 6.9L1.7 8.5C2.1 7 3.4 5.5 5 5.5Z" fill="#EA4335"/>
+                    </svg>
+                </div>
             </div>
 
             {/* Security Note */}
-            <p className="text-center text-[10px] uppercase tracking-widest text-black/40 font-bold mt-2">
-                🔒 Secured by Stripe • 256-bit Encryption
+            <p className="text-center text-[10px] uppercase tracking-widest text-black/40 font-bold mt-3">
+                🔒 Secured by Stripe • 256-bit SSL Encryption
             </p>
         </div>
     );
