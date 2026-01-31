@@ -12,7 +12,7 @@ interface CountdownTimerProps {
 export default function CountdownTimer({ 
     hoursFromNow = 24,
     endDate,
-    label = "LIMITED DROP ENDS IN"
+    label = "LIMITED OFFER ENDS IN"
 }: CountdownTimerProps) {
     const [timeLeft, setTimeLeft] = useState({
         hours: 0,
@@ -65,8 +65,8 @@ export default function CountdownTimer({
             const newTime = calculateTimeLeft();
             setTimeLeft(newTime);
             
-            // Set urgent mode when under 1 hour
-            setIsUrgent(newTime.hours === 0 && newTime.minutes < 60);
+            // Set urgent mode when under 2 hours
+            setIsUrgent(newTime.hours < 2);
         }, 1000);
 
         return () => clearInterval(timer);
@@ -76,70 +76,66 @@ export default function CountdownTimer({
 
     return (
         <div 
-            className={`w-full py-3 px-4 ${isUrgent ? 'bg-[#FF0099]' : 'bg-black'} text-white transition-colors duration-300`}
+            className="w-full py-3 px-4 bg-white"
             style={{
-                border: "3px solid #000",
-                boxShadow: isUrgent ? "4px 4px 0px #000" : "4px 4px 0px #FF0099"
+                border: "2px solid #FF0099",
             }}
         >
             {/* Label */}
-            <div className="text-center mb-2">
+            <div className="text-center mb-3">
                 <span 
-                    className="text-xs uppercase tracking-[0.2em] font-bold"
-                    style={{
-                        animation: isUrgent ? "pulse 1s ease-in-out infinite" : "none"
-                    }}
+                    className={`text-xs uppercase tracking-[0.15em] font-bold ${isUrgent ? 'text-[#FF0099]' : 'text-black/70'}`}
                 >
-                    {isUrgent ? "⚡ HURRY! " : "⏰ "}{label}
+                    {isUrgent ? "🔥 " : "⏰ "}{label}
                 </span>
             </div>
 
             {/* Timer Display */}
-            <div className="flex items-center justify-center gap-2 md:gap-4">
+            <div className="flex items-center justify-center gap-3 md:gap-4">
                 {/* Hours */}
                 <div className="text-center">
                     <div 
-                        className="font-brutalist text-3xl md:text-4xl tracking-wider bg-white/10 px-3 py-1"
+                        className={`font-brutalist text-2xl md:text-3xl tracking-wider px-3 py-2 ${isUrgent ? 'bg-[#FF0099] text-white' : 'bg-gray-100 text-black'}`}
                         style={{
-                            border: "2px solid rgba(255,255,255,0.3)",
-                            minWidth: "60px"
+                            border: "2px solid #000",
+                            minWidth: "55px"
                         }}
                     >
                         {formatNumber(timeLeft.hours)}
                     </div>
-                    <span className="text-[10px] uppercase tracking-widest opacity-70 mt-1 block">HRS</span>
+                    <span className="text-[9px] uppercase tracking-widest text-black/50 mt-1 block font-bold">HRS</span>
                 </div>
 
-                <span className="font-brutalist text-2xl md:text-3xl opacity-50">:</span>
+                <span className="font-brutalist text-xl md:text-2xl text-black/30">:</span>
 
                 {/* Minutes */}
                 <div className="text-center">
                     <div 
-                        className="font-brutalist text-3xl md:text-4xl tracking-wider bg-white/10 px-3 py-1"
+                        className={`font-brutalist text-2xl md:text-3xl tracking-wider px-3 py-2 ${isUrgent ? 'bg-[#FF0099] text-white' : 'bg-gray-100 text-black'}`}
                         style={{
-                            border: "2px solid rgba(255,255,255,0.3)",
-                            minWidth: "60px"
+                            border: "2px solid #000",
+                            minWidth: "55px"
                         }}
                     >
                         {formatNumber(timeLeft.minutes)}
                     </div>
-                    <span className="text-[10px] uppercase tracking-widest opacity-70 mt-1 block">MIN</span>
+                    <span className="text-[9px] uppercase tracking-widest text-black/50 mt-1 block font-bold">MIN</span>
                 </div>
 
-                <span className="font-brutalist text-2xl md:text-3xl opacity-50">:</span>
+                <span className="font-brutalist text-xl md:text-2xl text-black/30">:</span>
 
                 {/* Seconds */}
                 <div className="text-center">
                     <div 
-                        className={`font-brutalist text-3xl md:text-4xl tracking-wider bg-white/10 px-3 py-1 ${isUrgent ? 'animate-pulse' : ''}`}
+                        className={`font-brutalist text-2xl md:text-3xl tracking-wider px-3 py-2 ${isUrgent ? 'bg-[#FF0099] text-white' : 'bg-gray-100 text-black'}`}
                         style={{
-                            border: "2px solid rgba(255,255,255,0.3)",
-                            minWidth: "60px"
+                            border: "2px solid #000",
+                            minWidth: "55px"
                         }}
                     >
                         {formatNumber(timeLeft.seconds)}
                     </div>
-                    <span className="text-[10px] uppercase tracking-widest opacity-70 mt-1 block">SEC</span>
+                    <span className="text-[9px] uppercase tracking-widest text-black/50 mt-1 block font-bold">SEC</span>
                 </div>
             </div>
         </div>

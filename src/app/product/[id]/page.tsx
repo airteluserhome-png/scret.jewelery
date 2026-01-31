@@ -15,11 +15,24 @@ import ExpressCheckout from "@/components/express-checkout";
 import { useCart } from "@/context/cart-context";
 import CrossTape from "@/components/cross-tape";
 
+// Limited edition product IDs - only these show countdown timer
+const LIMITED_EDITION_PRODUCTS = [
+    7,  // AP ICED OUT ROSE GOLD
+    8,  // AP ICED OUT
+    19, // PATEK NAUTILUS X TIFFANY
+    20, // PATEK ROSE GOLD
+    21, // PATEK ICED OUT ROSE GOLD
+    22, // PATEK ICED OUT NAUTILUS
+];
+
 export default function ProductPage({ params }: { params: { id: string } }) {
     const product = getProductById(parseInt(params.id));
     const { addItem } = useCart();
     const [activeImage, setActiveImage] = useState(product?.image);
     const [zoomOpen, setZoomOpen] = useState(false);
+    
+    // Check if product is limited edition
+    const isLimitedEdition = product ? LIMITED_EDITION_PRODUCTS.includes(product.id) : false;
 
     if (!product) {
         return (
@@ -91,10 +104,12 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                         </div>
                     </div>
 
-                    {/* Countdown Timer - Limited Edition */}
-                    <div className="w-full max-w-md lg:max-w-full mb-6">
-                        <CountdownTimer hoursFromNow={48} label="LIMITED DROP ENDS IN" />
-                    </div>
+                    {/* Countdown Timer - Only for Limited Edition Products */}
+                    {isLimitedEdition && (
+                        <div className="w-full max-w-md lg:max-w-full mb-6">
+                            <CountdownTimer hoursFromNow={48} label="LIMITED EDITION • ENDS IN" />
+                        </div>
+                    )}
 
                     {/* IMAGE GALLERY THUMBNAILS (Only if multiple images exist) */}
                     {product.images && product.images.length > 1 && (
