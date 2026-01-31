@@ -73,12 +73,12 @@ export default function ExpressCheckout({ onCryptoSelect }: ExpressCheckoutProps
                         <span className="font-brutalist text-base md:text-lg uppercase tracking-wider">Bitcoin</span>
                     </motion.button>
 
-                    {/* Ethereum - Logo ONLY (no text, larger size) */}
+                    {/* Ethereum - Logo + Text (same style as others) */}
                     <motion.button
                         onClick={() => handleCryptoClick("ethereum")}
                         whileHover={{ y: -3, boxShadow: "6px 6px 0px #FF0099" }}
                         whileTap={{ scale: 0.97 }}
-                        className="flex items-center justify-center px-5 py-3 bg-white text-black select-none cursor-pointer transition-all"
+                        className="flex items-center gap-3 px-5 py-3 bg-white text-black select-none cursor-pointer transition-all"
                         style={{ 
                             border: "3px solid #000",
                             boxShadow: "4px 4px 0px #FF0099"
@@ -88,10 +88,11 @@ export default function ExpressCheckout({ onCryptoSelect }: ExpressCheckoutProps
                         <Image 
                             src="/crypto/ethereum.png" 
                             alt="Ethereum" 
-                            width={120} 
-                            height={40}
-                            className="object-contain h-8 w-auto"
+                            width={32} 
+                            height={32}
+                            className="object-contain"
                         />
+                        <span className="font-brutalist text-base md:text-lg uppercase tracking-wider">Ethereum</span>
                     </motion.button>
 
                     {/* Solana - Logo + Text */}
