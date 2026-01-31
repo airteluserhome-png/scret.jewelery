@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { 
-    recordCheckoutAttempt, 
-    markPendingAsAbandoned,
-    shouldShowPaymentAssistance,
-    updateLastAttemptStatus
-} from "@/lib/checkout-tracker";
+// Checkout tracking disabled - was causing false positive popups
+// import { 
+//     recordCheckoutAttempt, 
+//     markPendingAsAbandoned,
+//     shouldShowPaymentAssistance,
+//     updateLastAttemptStatus
+// } from "@/lib/checkout-tracker";
 import { useToast } from "./toast-notification";
 
 interface CheckoutButtonProps {
@@ -33,23 +33,15 @@ export default function CheckoutButton({
     children,
 }: CheckoutButtonProps) {
     const [isLoading, setIsLoading] = useState(false);
-    const router = useRouter();
     const { showToast } = useToast();
 
-    // Mark any pending checkouts as abandoned when component mounts
+    // Checkout tracking disabled
     useEffect(() => {
-        markPendingAsAbandoned();
+        // Previously tracked abandoned checkouts - disabled due to false positives
     }, []);
 
     const handleCheckout = async () => {
         setIsLoading(true);
-
-        // Check if user has multiple failed attempts - show assistance page
-        if (shouldShowPaymentAssistance(productId)) {
-            router.push(`/checkout/verify?product_id=${productId}`);
-            setIsLoading(false);
-            return;
-        }
 
         try {
             const response = await fetch("/api/checkout/single", {
@@ -62,26 +54,18 @@ export default function CheckoutButton({
 
             if (!response.ok || data.error) {
                 console.error("Checkout error:", data.error);
-                updateLastAttemptStatus("declined");
                 showToast(data.error || "Checkout failed. Please try again.", "error", 5000);
                 return;
             }
 
-            // Record this checkout attempt BEFORE redirect
-            recordCheckoutAttempt(productId, productName, price, data.sessionId);
-
             // Redirect to Stripe Checkout
             if (data.url) {
-                // Small delay to ensure localStorage is written before navigation
-                setTimeout(() => {
-                    window.location.href = data.url;
-                }, 50);
+                window.location.href = data.url;
             } else {
                 showToast("Unable to start checkout. Please try again.", "error", 5000);
             }
         } catch (error) {
             console.error("Checkout error:", error);
-            updateLastAttemptStatus("declined");
             showToast("Connection error. Please check your internet and try again.", "error", 5000);
         } finally {
             setIsLoading(false);

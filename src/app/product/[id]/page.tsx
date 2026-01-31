@@ -7,7 +7,8 @@ import Link from "next/link";
 import { getProductById } from "@/data/products";
 import BackButton from "@/components/back-button";
 import CheckoutButton from "@/components/checkout-button";
-import CheckoutAssistanceBanner from "@/components/checkout-assistance-banner";
+// CheckoutAssistanceBanner disabled - was triggering false positives
+// import CheckoutAssistanceBanner from "@/components/checkout-assistance-banner";
 import LiveViewers from "@/components/live-viewers";
 import CountdownTimer from "@/components/countdown-timer";
 import ExpressCheckout from "@/components/express-checkout";
@@ -38,8 +39,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 <BackButton fallback="/shop" />
             </div>
 
-            {/* Checkout Assistance Popup - shows when user has multiple failed attempts */}
-            <CheckoutAssistanceBanner productId={product.id} />
+            {/* Checkout Assistance Popup - DISABLED (was triggering false positives) */}
+            {/* <CheckoutAssistanceBanner productId={product.id} /> */}
 
             {/* Split Screen Container */}
             <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[90vh] brutalist-border-b">
