@@ -166,6 +166,18 @@ export const products: Product[] = [
         specs: { movement: "5A Swiss Movement", quality: "AAA+ Quality", includes: "Box & Papers" }
     },
     {
+        id: 23,
+        name: "ICED OUT SKELETON CARTI WHITE GOLD",
+        category: "iced-watches",
+        brand: "Carti",
+        price: "$700",
+        priceNum: 700,
+        image: "/new-items/iced-out-skeleton-carti-white-gold.jpg",
+        badge: "ICED OUT",
+        description: "Swiss movement iced out skeleton Carti in white gold",
+        specs: { movement: "Swiss Movement", quality: "5A+ Quality", includes: "Box & Papers" }
+    },
+    {
         id: 17,
         name: "ROLLY DAYDATE ICED OUT ROSE GOLD",
         category: "iced-watches",
@@ -296,6 +308,42 @@ export const products: Product[] = [
         badge: "LUXURY",
         description: "VVS quality Carti glasses in black",
         specs: { movement: "N/A", quality: "VVS Quality", includes: "Case & Cloth" }
+    },
+    {
+        id: 24,
+        name: "VVS TENNIS BRACELET GOLD",
+        category: "accessories",
+        brand: "VVS",
+        price: "$100",
+        priceNum: 100,
+        image: "/new-items/vvs-tennis-bracelet-gold.jpg",
+        badge: "VVS",
+        description: "VVS tennis bracelet in gold",
+        specs: { movement: "N/A", quality: "VVS Quality", includes: "Premium Packaging" }
+    },
+    {
+        id: 25,
+        name: "VVS TENNIS BRACELET ROSE GOLD",
+        category: "accessories",
+        brand: "VVS",
+        price: "$100",
+        priceNum: 100,
+        image: "/new-items/vvs-tennis-bracelet-rose-gold.jpg",
+        badge: "VVS",
+        description: "VVS tennis bracelet in rose gold",
+        specs: { movement: "N/A", quality: "VVS Quality", includes: "Premium Packaging" }
+    },
+    {
+        id: 26,
+        name: "VVS TENNIS BRACELET SILVER",
+        category: "accessories",
+        brand: "VVS",
+        price: "$100",
+        priceNum: 100,
+        image: "/new-items/vvs-tennis-bracelet-silver.jpg",
+        badge: "VVS",
+        description: "VVS tennis bracelet in silver",
+        specs: { movement: "N/A", quality: "VVS Quality", includes: "Premium Packaging" }
     }
 ];
 

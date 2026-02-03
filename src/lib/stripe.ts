@@ -41,6 +41,7 @@ export const PRODUCT_PRICES: Record<number, { name: string; price: number; descr
     8: { name: "AP ICED OUT", price: 75000, description: "Swiss Movement • VVS Diamonds • Box & Papers Included • 5A+ Quality", image: "/ICED OUT AP/AP iced out.jpg" },
     9: { name: "ICED OUT CARTI SANTOS ROSE GOLD", price: 70000, description: "Swiss Movement • VVS Diamonds • Box & Papers Included • 5A+ Quality", image: "/ICED OUT CARTIER/Iced out Cartier Santos rose good.jpg" },
     10: { name: "ICED OUT CARTI SANTOS WHITE GOLD", price: 70000, description: "Swiss Movement • VVS Diamonds • Box & Papers Included • 5A+ Quality", image: "/ICED OUT CARTIER/Iced out Cartier Santos white gold.jpg" },
+    23: { name: "ICED OUT SKELETON CARTI WHITE GOLD", price: 70000, description: "Swiss Movement • VVS Diamonds • Box & Papers Included • 5A+ Quality", image: "/new-items/iced-out-skeleton-carti-white-gold.jpg" },
     17: { name: "ROLLY DAYDATE ICED OUT ROSE GOLD", price: 65000, description: "Swiss Movement • VVS Diamonds • Box & Papers Included • 5A+ Quality", image: "/ICED OUT ROLEX/Iced out Rolex Day date rose gold.jpg" },
     18: { name: "ROLLY DAYDATE ICED OUT WHITE GOLD", price: 65000, description: "Swiss Movement • VVS Diamonds • Box & Papers Included • 5A+ Quality", image: "/ICED OUT ROLEX/Iced out Rolex Day date white gold.jpg" },
     21: { name: "PATEK ICED OUT ROSE GOLD", price: 85000, description: "Swiss Movement • VVS Diamonds • Box & Papers Included • 5A+ Quality", image: "/ICET OUT Patek philipe/Iced out Patek Phillipe Nautilus ROSE GOLD.jpg" },
@@ -53,6 +54,9 @@ export const PRODUCT_PRICES: Record<number, { name: string; price: number; descr
     14: { name: "6 CLOVER ICED BRACELET (PINK)", price: 20000, description: "VVS Pink Diamonds • Premium Craftsmanship", image: "/VVS FLOWER BRACALET PINK DIAMONDS/van-cleef-pink.jpg" },
     15: { name: "VVS CARTI GLASSES (TAN)", price: 65000, description: "VVS Quality • Authentic Carti Style • Luxury Eyewear", image: "/VVS CARTIER GLASSES (TAN)/glasses-tan-1.jpg" },
     16: { name: "VVS CARTI GLASSES (BLACK)", price: 65000, description: "VVS Quality • Authentic Carti Style • Luxury Eyewear", image: "/VVS CARTIER GLASSES (BLACK)/glasses-black-1.jpg" },
+    24: { name: "VVS TENNIS BRACELET GOLD", price: 10000, description: "VVS Quality • Premium Craftsmanship", image: "/new-items/vvs-tennis-bracelet-gold.jpg" },
+    25: { name: "VVS TENNIS BRACELET ROSE GOLD", price: 10000, description: "VVS Quality • Premium Craftsmanship", image: "/new-items/vvs-tennis-bracelet-rose-gold.jpg" },
+    26: { name: "VVS TENNIS BRACELET SILVER", price: 10000, description: "VVS Quality • Premium Craftsmanship", image: "/new-items/vvs-tennis-bracelet-silver.jpg" },
 };
 
 // Get product price in cents for Stripe
