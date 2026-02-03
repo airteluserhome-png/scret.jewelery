@@ -3,6 +3,7 @@ import BrutalistTicker from "@/components/brutalist-ticker";
 import BrutalistGrid from "@/components/brutalist-grid";
 import CrossTape from "@/components/cross-tape";
 import FullProductGrid from "@/components/full-product-grid";
+import BrutalistFooter from "@/components/brutalist-footer";
 
 export default function Page() {
     return (
@@ -21,15 +22,7 @@ export default function Page() {
             <CrossTape />
 
             {/* Footer */}
-            <footer className="bg-black text-white p-6 md:p-12 lg:p-16 mt-12 md:mt-16 text-center">
-
-                <p className="font-bold tracking-widest text-sm md:text-base lg:text-lg opacity-80 mt-6 uppercase">
-                    SECRETLY - LUXURY GOODS
-                </p>
-                <p className="mt-2 md:mt-4 font-bold tracking-widest uppercase text-xs md:text-sm">
-                    Box and Papers Included.
-                </p>
-            </footer>
+            <BrutalistFooter />
 
         </main>
     );

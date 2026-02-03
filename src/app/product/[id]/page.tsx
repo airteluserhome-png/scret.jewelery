@@ -13,6 +13,7 @@ import LiveViewers from "@/components/live-viewers";
 import CountdownTimer from "@/components/countdown-timer";
 import { useCart } from "@/context/cart-context";
 import CrossTape from "@/components/cross-tape";
+import BrutalistFooter from "@/components/brutalist-footer";
 
 // Limited edition product IDs - only these show countdown timer
 const LIMITED_EDITION_PRODUCTS = [
@@ -234,6 +235,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             {/* Back Link Removed per user request */}
             {/* Cross Tape for Hype */}
             <CrossTape />
+
+            {/* Footer */}
+            <BrutalistFooter />
 
             {/* Fullscreen Zoom Modal */}
             {zoomOpen && (
