@@ -11,7 +11,6 @@ import CheckoutButton from "@/components/checkout-button";
 // import CheckoutAssistanceBanner from "@/components/checkout-assistance-banner";
 import LiveViewers from "@/components/live-viewers";
 import CountdownTimer from "@/components/countdown-timer";
-import ExpressCheckout from "@/components/express-checkout";
 import { useCart } from "@/context/cart-context";
 import CrossTape from "@/components/cross-tape";
 
@@ -30,7 +29,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     const { addItem } = useCart();
     const [activeImage, setActiveImage] = useState(product?.image);
     const [zoomOpen, setZoomOpen] = useState(false);
-    
+
     // Check if product is limited edition
     const isLimitedEdition = product ? LIMITED_EDITION_PRODUCTS.includes(product.id) : false;
 
@@ -151,7 +150,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                         >
                             ADD TO CART
                         </motion.button>
-                        <CheckoutButton 
+                        <CheckoutButton
                             productId={product.id}
                             productName={product.name}
                             price={parseInt(product.price.replace(/[^0-9]/g, '')) * 100}
@@ -161,10 +160,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                         </CheckoutButton>
                     </div>
 
-                    {/* Payment Methods Accepted */}
-                    <div className="w-full mt-4">
-                        <ExpressCheckout />
-                    </div>
+
 
                     <p className="text-center md:text-left mt-4 text-xs opacity-60 uppercase tracking-widest w-full">
                         Secure Checkout • Worldwide Shipping
