@@ -4,6 +4,7 @@ import Link from "next/link";
 import { products } from "@/data/products";
 import BrutalistPagination from "@/components/brutalist-pagination";
 import BackButton from "@/components/back-button";
+import BrutalistFooter from "@/components/brutalist-footer";
 
 function ShopContent() {
     return (
@@ -86,6 +87,9 @@ function ShopContent() {
 
             {/* Brutalist Pagination */}
             <BrutalistPagination currentPage={1} totalPages={4} />
+
+            {/* Brutalist Footer */}
+            <BrutalistFooter />
         </div>
     );
 }

@@ -3,6 +3,7 @@ import BrutalistTicker from "@/components/brutalist-ticker";
 import BrutalistGrid from "@/components/brutalist-grid";
 import CrossTape from "@/components/cross-tape";
 import BackButton from "@/components/back-button";
+import BrutalistFooter from "@/components/brutalist-footer";
 
 export default function AccessoriesPage() {
     return (
@@ -27,10 +28,7 @@ export default function AccessoriesPage() {
 
             <CrossTape />
 
-            <div className="px-4 md:px-8 lg:px-10 py-12 text-center">
-                <h2 className="text-4xl font-brutalist mb-6">NEED HELP?</h2>
-                <p>DM us on Instagram for stock inquiries.</p>
-            </div>
+            <BrutalistFooter />
         </main>
     );
 }
