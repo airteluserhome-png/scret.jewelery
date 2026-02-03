@@ -1,36 +1,103 @@
 "use client";
 
-// Last updated: 2026-02-03 22:23 IST - Contact widget fix
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Mail, Instagram } from "lucide-react";
+import { MessageCircle, X, Mail, Instagram, Bot, ChevronRight } from "lucide-react";
+
+// FAQ data with questions and auto-responses
+const FAQ_DATA = [
+    {
+        id: 1,
+        question: "Where is my order?",
+        answer: "Your order is being processed! Once shipped, you'll receive a tracking link via email within 24-48 hours. For urgent inquiries, DM us on Instagram @skhh."
+    },
+    {
+        id: 2,
+        question: "I want to reschedule my order",
+        answer: "To reschedule your delivery, please email us at hello@secretly.jewelry with your order number and preferred delivery date. We'll get back to you within 24 hours."
+    },
+    {
+        id: 3,
+        question: "What's the return policy?",
+        answer: "We offer 7-day returns for unworn items in original packaging. Contact us at hello@secretly.jewelry to initiate a return. Refunds are processed within 5-7 business days."
+    },
+    {
+        id: 4,
+        question: "Is my order authentic?",
+        answer: "All our pieces are 5A Swiss quality replicas with full box and papers included. We guarantee premium craftsmanship and attention to detail."
+    },
+    {
+        id: 5,
+        question: "What payment methods do you accept?",
+        answer: "We accept all major credit/debit cards through Stripe. Your payment is 100% secure and encrypted."
+    },
+    {
+        id: 6,
+        question: "Do you ship internationally?",
+        answer: "Yes! We ship worldwide. International orders typically arrive within 7-14 business days. Shipping is discreet with no branding on packages."
+    },
+    {
+        id: 7,
+        question: "How do I track my order?",
+        answer: "Once your order ships, you'll receive an email with tracking information. You can also DM us on Instagram @skhh with your order number for updates."
+    },
+    {
+        id: 8,
+        question: "Can I cancel my order?",
+        answer: "Orders can be cancelled within 2 hours of placing. After that, please wait for delivery and initiate a return. Email hello@secretly.jewelry immediately to request cancellation."
+    }
+];
+
+interface Message {
+    id: number;
+    type: "bot" | "user";
+    text: string;
+}
 
 export default function FloatingContact() {
     const [isOpen, setIsOpen] = useState(false);
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        message: "",
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [messages, setMessages] = useState<Message[]>([
+        {
+            id: 0,
+            type: "bot",
+            text: "Hey! 👋 I'm here to help. Tap a question below or reach out directly!"
+        }
+    ]);
+    const [isTyping, setIsTyping] = useState(false);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
+    const handleQuestionClick = async (faq: typeof FAQ_DATA[0]) => {
+        // Add user question
+        const userMessage: Message = {
+            id: messages.length,
+            type: "user",
+            text: faq.question
+        };
+        setMessages(prev => [...prev, userMessage]);
 
-        // Simulate form submission
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        // Show typing indicator
+        setIsTyping(true);
 
-        setIsSubmitting(false);
-        setIsSubmitted(true);
+        // Simulate bot typing delay
+        await new Promise(resolve => setTimeout(resolve, 800));
 
-        // Reset after showing success
-        setTimeout(() => {
-            setFormData({ name: "", email: "", message: "" });
-            setIsSubmitted(false);
-            setIsOpen(false);
-        }, 2000);
+        // Add bot response
+        const botMessage: Message = {
+            id: messages.length + 1,
+            type: "bot",
+            text: faq.answer
+        };
+        setMessages(prev => [...prev, botMessage]);
+        setIsTyping(false);
+    };
+
+    const resetChat = () => {
+        setMessages([
+            {
+                id: 0,
+                type: "bot",
+                text: "Hey! 👋 I'm here to help. Tap a question below or reach out directly!"
+            }
+        ]);
     };
 
     return (
@@ -49,7 +116,7 @@ export default function FloatingContact() {
                 }}
                 whileTap={{ scale: 0.9 }}
                 animate={{ rotate: isOpen ? 90 : 0 }}
-                aria-label={isOpen ? "Close contact" : "Contact us"}
+                aria-label={isOpen ? "Close chat" : "Open chat"}
             >
                 {isOpen ? (
                     <X className="w-5 h-5 md:w-6 md:h-6" />
@@ -58,7 +125,7 @@ export default function FloatingContact() {
                 )}
             </motion.button>
 
-            {/* Contact Panel */}
+            {/* Chat Panel */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
@@ -66,100 +133,107 @@ export default function FloatingContact() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
                         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                        className="fixed left-4 right-4 bottom-20 md:left-6 md:right-auto md:bottom-24 z-50 md:w-80 bg-white max-h-[80vh] overflow-y-auto"
+                        className="fixed left-4 right-4 bottom-20 md:left-6 md:right-auto md:bottom-24 z-50 md:w-96 bg-white max-h-[80vh] flex flex-col"
                         style={{
                             border: "3px solid #000",
                             boxShadow: "8px 8px 0px #FF0099",
                         }}
                     >
                         {/* Header */}
-                        <div className="p-5 border-b-3 border-black bg-black text-white">
-                            <h3 className="font-brutalist text-2xl uppercase tracking-wider">
-                                Get in Touch
-                            </h3>
-                            <p className="text-xs font-bold uppercase tracking-widest text-white/60 mt-1">
-                                We respond within 24 hours
-                            </p>
+                        <div className="p-4 border-b-3 border-black bg-black text-white flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 bg-[#FF0099] flex items-center justify-center">
+                                    <Bot className="w-5 h-5" />
+                                </div>
+                                <div>
+                                    <h3 className="font-brutalist text-lg uppercase tracking-wider">
+                                        Secretly Bot
+                                    </h3>
+                                    <p className="text-[10px] font-bold uppercase tracking-widest text-white/60">
+                                        Usually replies instantly
+                                    </p>
+                                </div>
+                            </div>
+                            <button
+                                onClick={resetChat}
+                                className="text-xs font-bold uppercase tracking-wider text-white/60 hover:text-white transition-colors"
+                            >
+                                Reset
+                            </button>
                         </div>
 
-                        {isSubmitted ? (
-                            /* Success Message */
-                            <div className="p-8 text-center">
+                        {/* Messages Area */}
+                        <div className="flex-1 overflow-y-auto p-4 space-y-3 max-h-[300px] min-h-[200px] bg-gray-50">
+                            {messages.map((message) => (
                                 <motion.div
-                                    initial={{ scale: 0 }}
-                                    animate={{ scale: 1 }}
-                                    className="w-16 h-16 mx-auto bg-[#FF0099] flex items-center justify-center mb-4"
+                                    key={message.id}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className={`flex ${message.type === "user" ? "justify-end" : "justify-start"}`}
                                 >
-                                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                                    </svg>
+                                    <div
+                                        className={`max-w-[85%] px-4 py-3 text-sm ${message.type === "user"
+                                                ? "bg-[#FF0099] text-white"
+                                                : "bg-white text-black border-2 border-black"
+                                            }`}
+                                    >
+                                        {message.text}
+                                    </div>
                                 </motion.div>
-                                <p className="font-brutalist text-xl uppercase">Message Sent!</p>
-                                <p className="text-sm text-black/50 mt-2">We&apos;ll be in touch soon.</p>
-                            </div>
-                        ) : (
-                            /* Contact Form */
-                            <form onSubmit={handleSubmit} className="p-5 space-y-4">
-                                <div>
-                                    <input
-                                        type="text"
-                                        placeholder="YOUR NAME"
-                                        value={formData.name}
-                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                        required
-                                        className="w-full px-4 py-3 bg-white font-bold text-sm uppercase tracking-widest placeholder-black/30 outline-none"
-                                        style={{ border: "3px solid #000" }}
-                                    />
-                                </div>
-                                <div>
-                                    <input
-                                        type="email"
-                                        placeholder="YOUR EMAIL"
-                                        value={formData.email}
-                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                        required
-                                        className="w-full px-4 py-3 bg-white font-bold text-sm uppercase tracking-widest placeholder-black/30 outline-none"
-                                        style={{ border: "3px solid #000" }}
-                                    />
-                                </div>
-                                <div>
-                                    <textarea
-                                        placeholder="YOUR MESSAGE"
-                                        value={formData.message}
-                                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                        required
-                                        rows={3}
-                                        className="w-full px-4 py-3 bg-white font-bold text-sm uppercase tracking-widest placeholder-black/30 outline-none resize-none"
-                                        style={{ border: "3px solid #000" }}
-                                    />
-                                </div>
-                                <button
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                    className="w-full py-4 bg-black text-white font-brutalist text-lg uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-[#FF0099] transition-colors disabled:opacity-50"
-                                    style={{
-                                        border: "3px solid #000",
-                                        boxShadow: "4px 4px 0px #FF0099",
-                                    }}
-                                >
-                                    {isSubmitting ? (
-                                        <motion.div
-                                            animate={{ rotate: 360 }}
-                                            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                                            className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
-                                        />
-                                    ) : (
-                                        <>
-                                            Send <Send className="w-4 h-4" />
-                                        </>
-                                    )}
-                                </button>
-                            </form>
-                        )}
+                            ))}
 
-                        {/* Quick Contact Options */}
-                        <div className="p-4 border-t-3 border-black bg-black/5">
-                            <p className="text-xs font-bold uppercase tracking-widest text-black/50 mb-3">
+                            {/* Typing Indicator */}
+                            {isTyping && (
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    className="flex justify-start"
+                                >
+                                    <div className="bg-white border-2 border-black px-4 py-3 flex gap-1">
+                                        <motion.span
+                                            animate={{ opacity: [0.4, 1, 0.4] }}
+                                            transition={{ duration: 1, repeat: Infinity }}
+                                            className="w-2 h-2 bg-black rounded-full"
+                                        />
+                                        <motion.span
+                                            animate={{ opacity: [0.4, 1, 0.4] }}
+                                            transition={{ duration: 1, repeat: Infinity, delay: 0.2 }}
+                                            className="w-2 h-2 bg-black rounded-full"
+                                        />
+                                        <motion.span
+                                            animate={{ opacity: [0.4, 1, 0.4] }}
+                                            transition={{ duration: 1, repeat: Infinity, delay: 0.4 }}
+                                            className="w-2 h-2 bg-black rounded-full"
+                                        />
+                                    </div>
+                                </motion.div>
+                            )}
+                        </div>
+
+                        {/* Quick Questions */}
+                        <div className="p-3 border-t-2 border-black bg-white max-h-[180px] overflow-y-auto">
+                            <p className="text-[10px] font-bold uppercase tracking-widest text-black/50 mb-2">
+                                Quick Questions
+                            </p>
+                            <div className="space-y-2">
+                                {FAQ_DATA.map((faq) => (
+                                    <button
+                                        key={faq.id}
+                                        onClick={() => handleQuestionClick(faq)}
+                                        disabled={isTyping}
+                                        className="w-full text-left px-3 py-2 text-xs font-bold uppercase tracking-wider bg-gray-100 hover:bg-[#FF0099] hover:text-white transition-colors flex items-center justify-between group disabled:opacity-50 disabled:cursor-not-allowed"
+                                        style={{ border: "2px solid #000" }}
+                                    >
+                                        <span>{faq.question}</span>
+                                        <ChevronRight className="w-4 h-4 opacity-50 group-hover:opacity-100" />
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Direct Contact Options */}
+                        <div className="p-3 border-t-2 border-black bg-black/5">
+                            <p className="text-[10px] font-bold uppercase tracking-widest text-black/50 mb-2">
                                 Or reach us directly
                             </p>
                             <div className="flex gap-2">
