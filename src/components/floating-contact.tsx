@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Mail, Phone, Instagram } from "lucide-react";
+import { MessageCircle, X, Send, Mail, Instagram } from "lucide-react";
 
 export default function FloatingContact() {
     const [isOpen, setIsOpen] = useState(false);
@@ -17,13 +17,13 @@ export default function FloatingContact() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        
+
         // Simulate form submission
         await new Promise(resolve => setTimeout(resolve, 1500));
-        
+
         setIsSubmitting(false);
         setIsSubmitted(true);
-        
+
         // Reset after showing success
         setTimeout(() => {
             setFormData({ name: "", email: "", message: "" });
@@ -42,7 +42,7 @@ export default function FloatingContact() {
                     border: "3px solid #000",
                     boxShadow: "4px 4px 0px #000",
                 }}
-                whileHover={{ 
+                whileHover={{
                     y: -4,
                     boxShadow: "6px 6px 0px #000"
                 }}
@@ -170,14 +170,7 @@ export default function FloatingContact() {
                                     <Mail className="w-4 h-4" />
                                 </a>
                                 <a
-                                    href="tel:+1234567890"
-                                    className="flex-1 py-2 bg-white flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider hover:bg-black hover:text-white transition-colors"
-                                    style={{ border: "2px solid #000" }}
-                                >
-                                    <Phone className="w-4 h-4" />
-                                </a>
-                                <a
-                                    href="https://instagram.com/secretly"
+                                    href="https://instagram.com/skhh"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex-1 py-2 bg-white flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider hover:bg-[#FF0099] hover:text-white transition-colors"
