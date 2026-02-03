@@ -1,5 +1,6 @@
 "use client";
 
+// Last updated: 2026-02-03 22:23 IST - Contact widget fix
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Mail, Instagram } from "lucide-react";
